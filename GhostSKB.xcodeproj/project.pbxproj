@@ -70,6 +70,7 @@
 		DE1B71C41D2C082F00A85EE0 /* GHDefaultInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHDefaultInfo.h; path = Classes/GHDefaultInfo.h; sourceTree = "<group>"; };
 		DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHDefaultInfo.m; path = Classes/GHDefaultInfo.m; sourceTree = "<group>"; };
 		DE1B71C61D2C082F00A85EE0 /* GHDefaultManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHDefaultManager.h; path = Classes/GHDefaultManager.h; sourceTree = "<group>"; };
+		DE53E5181D375BC2003D6E72 /* GhostSKB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GhostSKB.entitlements; sourceTree = "<group>"; };
 		DE5EC36F1D3163C000B51843 /* ChinesePinyinModifer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChinesePinyinModifer.h; path = Classes/ChinesePinyinModifer.h; sourceTree = "<group>"; };
 		DE5EC3701D3163C000B51843 /* ChinesePinyinModifer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChinesePinyinModifer.m; path = Classes/ChinesePinyinModifer.m; sourceTree = "<group>"; };
 		DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-64.png"; path = "Resources/ghostkbd-64.png"; sourceTree = "<group>"; };
@@ -171,6 +172,7 @@
 		DE6634821CB21552009EE247 /* GhostSKB */ = {
 			isa = PBXGroup;
 			children = (
+				DE53E5181D375BC2003D6E72 /* GhostSKB.entitlements */,
 				DE6634831CB21552009EE247 /* AppDelegate.h */,
 				DE6634841CB21552009EE247 /* AppDelegate.m */,
 				DE6634891CB21552009EE247 /* Assets.xcassets */,
@@ -256,7 +258,12 @@
 				TargetAttributes = {
 					DE66347F1CB21552009EE247 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 8XT97GTK9J;
+						DevelopmentTeam = V6P6ZB26T6;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					DE6634921CB21552009EE247 = {
 						CreatedOnToolsVersion = 7.1;
@@ -467,7 +474,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_ENTITLEMENTS = GhostSKB/GhostSKB.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = GhostSKB/Info.plist;
@@ -483,7 +491,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_ENTITLEMENTS = GhostSKB/GhostSKB.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = GhostSKB/Info.plist;

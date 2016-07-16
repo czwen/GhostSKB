@@ -15,8 +15,7 @@ Mac OS X 10.8 or above
 
 # Install 
 
-1. Downloads: [GhostSKB releases](https://github.com/dingmingxin/GhostSKB/releases) get the lastest version.
-2. unzip the release version and `mv /path/to/GhostSKB.app /Applications`
+[GhostSKB in Mac AppStore](https://itunes.apple.com/us/app/ghostskb/id1134384859?l=zh&ls=1&mt=12)
 
 # Screenshot
 

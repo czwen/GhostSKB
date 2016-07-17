@@ -21,10 +21,10 @@
 @property (nonatomic,strong) NSPopover *appPopOver;
 
 - (IBAction)terminateSelf:(id)sender;
+- (IBAction)onSettingPressed:(id)sender;
 
-- (IBAction)onAboutPress:(id)sender;
 @property (assign) IBOutlet NSTableView *tableView;
-//@property (weak) IBOutlet NSButton *addButton;
+
 - (IBAction)onAddDefault:(id)sender;
 - (IBAction)onRemoveDefault:(id)sender;
 - (IBAction)onAppButtonClick:(id)sender;

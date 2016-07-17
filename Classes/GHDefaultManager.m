@@ -8,15 +8,22 @@
 
 #import "GHDefaultManager.h"
 #import "GHDefaultInfo.h"
+#import "Constant.h"
 static GHDefaultManager *sharedGHDefaultManager = nil;
 
 @implementation GHDefaultManager
+@synthesize rememberAppLastInput;
+@synthesize rememberAppInputExpireTime;
 
 -(id)init
 {
     if (self = [super init]) {
         //do something;
     }
+    
+    NSUserDefaults *nc = [NSUserDefaults standardUserDefaults];
+    self.rememberAppLastInput = [nc boolForKey:GH_SETTING_REMEMBER_APP_LAST_INPUT_KEY];
+    self.rememberAppInputExpireTime = [nc integerForKey:GH_SETTING_REMEMBER_APP_LAST_INPUT_EXPIRE_TIME_KEY];
     return self;
 }
 
@@ -81,6 +88,9 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 
 - (void)recordAppLastInputSourceId:(NSString *)bundleId inputId:(NSString *)inputId
 {
+    if (! self.rememberAppLastInput) {
+        return;
+    }
     NSUserDefaults *nc = [NSUserDefaults standardUserDefaults];
     time_t timestamp = (time_t)[[NSDate date] timeIntervalSince1970];
     [nc setInteger:(long)timestamp forKey:[NSString stringWithFormat:@"%@_last_deacitve_time", bundleId]];
@@ -90,14 +100,36 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 
 - (NSString *)getAppLastInputSourceId:(NSString *)bundleId
 {
+    if (! self.rememberAppLastInput) {
+        return NULL;
+    }
+    
     NSUserDefaults *nc = [NSUserDefaults standardUserDefaults];
     NSInteger appLastDeactiveTime = [nc integerForKey:[NSString stringWithFormat:@"%@_last_deacitve_time", bundleId]];
     time_t timestamp = (time_t)[[NSDate date] timeIntervalSince1970];
-    if (timestamp - appLastDeactiveTime > INPUT_CHANGE_EXPIRE_T) {
+    if (timestamp - appLastDeactiveTime > self.rememberAppInputExpireTime) {
         return NULL;
     }
     NSString *lastInputId = [nc stringForKey:[NSString stringWithFormat:@"%@_last_input_id", bundleId]];
     return lastInputId;
 }
+
+- (void)setIsRememberAppLastInput:(BOOL)remember
+{
+    NSUserDefaults *nc = [NSUserDefaults standardUserDefaults];
+    NSString *settingKey = GH_SETTING_REMEMBER_APP_LAST_INPUT_KEY;
+    [nc setBool:remember forKey:settingKey];
+    [nc synchronize];
+    self.rememberAppLastInput = remember;
+}
+
+- (void)setRememberAppLastExpireTime:(NSInteger )expireSeconds
+{
+    NSUserDefaults *nc = [NSUserDefaults standardUserDefaults];
+    [nc setInteger:expireSeconds forKey:GH_SETTING_REMEMBER_APP_LAST_INPUT_EXPIRE_TIME_KEY];
+    [nc synchronize];
+    self.rememberAppInputExpireTime = expireSeconds;
+}
+
 
 @end

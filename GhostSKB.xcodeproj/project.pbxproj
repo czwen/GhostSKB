@@ -29,6 +29,11 @@
 		DE66348A1CB21552009EE247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE6634891CB21552009EE247 /* Assets.xcassets */; };
 		DE66348D1CB21552009EE247 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE66348B1CB21552009EE247 /* MainMenu.xib */; };
 		DE6634B31CB21890009EE247 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6634B21CB21890009EE247 /* AppKit.framework */; };
+		DE7CE11F1D3A87360054EC41 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7CE11E1D3A87360054EC41 /* setting.png */; };
+		DE7CE1211D3A88780054EC41 /* quit.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7CE1201D3A88780054EC41 /* quit.png */; };
+		DE7CE1251D3A906A0054EC41 /* GHSettingWindowControler.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */; };
+		DE7CE1261D3A906A0054EC41 /* GHSettingWindowControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7CE1241D3A906A0054EC41 /* GHSettingWindowControler.xib */; };
+		DE7CE1281D3B094A0054EC41 /* arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7CE1271D3B094A0054EC41 /* arrow-right.png */; };
 		DEEAE1321D3364B6005893F5 /* ghost_dark_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DEEAE1301D3364B6005893F5 /* ghost_dark_small.png */; };
 		DEEAE1331D3364B6005893F5 /* ghost_white_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DEEAE1311D3364B6005893F5 /* ghost_white_small.png */; };
 /* End PBXBuildFile section */
@@ -85,6 +90,12 @@
 		DE6634931CB21552009EE247 /* GhostSKB.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhostSKB.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE66349E1CB21552009EE247 /* GhostSKB.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhostSKB.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE6634B21CB21890009EE247 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		DE7CE11E1D3A87360054EC41 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting.png; path = Resources/setting.png; sourceTree = "<group>"; };
+		DE7CE1201D3A88780054EC41 /* quit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quit.png; path = Resources/quit.png; sourceTree = "<group>"; };
+		DE7CE1221D3A906A0054EC41 /* GHSettingWindowControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHSettingWindowControler.h; path = Classes/GHSettingWindowControler.h; sourceTree = "<group>"; };
+		DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHSettingWindowControler.m; path = Classes/GHSettingWindowControler.m; sourceTree = "<group>"; };
+		DE7CE1241D3A906A0054EC41 /* GHSettingWindowControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GHSettingWindowControler.xib; path = Classes/GHSettingWindowControler.xib; sourceTree = "<group>"; };
+		DE7CE1271D3B094A0054EC41 /* arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-right.png"; path = "Resources/arrow-right.png"; sourceTree = "<group>"; };
 		DEEAE12F1D3363D6005893F5 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		DEEAE1301D3364B6005893F5 /* ghost_dark_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ghost_dark_small.png; path = Resources/ghost_dark_small.png; sourceTree = "<group>"; };
 		DEEAE1311D3364B6005893F5 /* ghost_white_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ghost_white_small.png; path = Resources/ghost_white_small.png; sourceTree = "<group>"; };
@@ -119,10 +130,14 @@
 		DE1B71BA1D2C082300A85EE0 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				DE7CE1271D3B094A0054EC41 /* arrow-right.png */,
+				DE7CE1201D3A88780054EC41 /* quit.png */,
+				DE7CE11E1D3A87360054EC41 /* setting.png */,
 				DEEAE1301D3364B6005893F5 /* ghost_dark_small.png */,
 				DEEAE1311D3364B6005893F5 /* ghost_white_small.png */,
 				DE1B71A41D2C081B00A85EE0 /* screenshot.png */,
 				DE1B71A51D2C081B00A85EE0 /* PopoverViewController.xib */,
+				DE7CE1241D3A906A0054EC41 /* GHSettingWindowControler.xib */,
 				DE1B71A61D2C081B00A85EE0 /* info.png */,
 				DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */,
 				DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */,
@@ -139,6 +154,8 @@
 		DE6634771CB21551009EE247 = {
 			isa = PBXGroup;
 			children = (
+				DE7CE1221D3A906A0054EC41 /* GHSettingWindowControler.h */,
+				DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */,
 				DEEAE12F1D3363D6005893F5 /* Constant.h */,
 				DE5EC36F1D3163C000B51843 /* ChinesePinyinModifer.h */,
 				DE5EC3701D3163C000B51843 /* ChinesePinyinModifer.m */,
@@ -302,6 +319,7 @@
 			files = (
 				DE1B71B61D2C081B00A85EE0 /* ghostkbd-512.png in Resources */,
 				DE1B71B21D2C081B00A85EE0 /* ghostkbd-16.png in Resources */,
+				DE7CE1211D3A88780054EC41 /* quit.png in Resources */,
 				DE1B71B41D2C081B00A85EE0 /* ghostkbd-128.png in Resources */,
 				DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */,
 				DEEAE1321D3364B6005893F5 /* ghost_dark_small.png in Resources */,
@@ -311,9 +329,12 @@
 				DE66348A1CB21552009EE247 /* Assets.xcassets in Resources */,
 				DE1B71AF1D2C081B00A85EE0 /* screenshot.png in Resources */,
 				DE1B71B71D2C081B00A85EE0 /* AppListController.xib in Resources */,
+				DE7CE1261D3A906A0054EC41 /* GHSettingWindowControler.xib in Resources */,
 				DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */,
+				DE7CE11F1D3A87360054EC41 /* setting.png in Resources */,
 				DE1B71B31D2C081B00A85EE0 /* ghostkbd-32.png in Resources */,
 				DE1B71B51D2C081B00A85EE0 /* ghostkbd-256.png in Resources */,
+				DE7CE1281D3B094A0054EC41 /* arrow-right.png in Resources */,
 				DE66348D1CB21552009EE247 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +366,7 @@
 				DE1B71C71D2C082F00A85EE0 /* GHDefaultManager.m in Sources */,
 				DE1B71C91D2C082F00A85EE0 /* GHInputDefaultCellView.m in Sources */,
 				DE5EC3711D3163C000B51843 /* ChinesePinyinModifer.m in Sources */,
+				DE7CE1251D3A906A0054EC41 /* GHSettingWindowControler.m in Sources */,
 				DE1B71C81D2C082F00A85EE0 /* GHInputAddDefaultCellView.m in Sources */,
 				DE6634851CB21552009EE247 /* AppDelegate.m in Sources */,
 			);

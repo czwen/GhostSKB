@@ -10,6 +10,7 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 #import "ChinesePinyinModifer.h"
+#import "GHSettingWindowControler.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate> {
     @private
@@ -23,6 +24,8 @@
     __weak IBOutlet NSMenu *imenu;
 }
 
+@property(strong) GHSettingWindowControler *settingWinCon;
+- (void)showSettingWindow;
 
 @end
 

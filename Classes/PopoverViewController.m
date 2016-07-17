@@ -10,9 +10,9 @@
 #import "GHInputDefaultCellView.h"
 #import "GHInputAddDefaultCellView.h"
 #import "GHDefaultManager.h"
-//#import "AppListController.h"
+#import "GHSettingWindowControler.h"
 #import "GHDefaultInfo.h"
-
+#import "AppDelegate.h"
 #import <Foundation/Foundation.h>
 #import <Carbon/Carbon.h>
 
@@ -257,7 +257,9 @@
     [[NSApplication sharedApplication] terminate:self];
 }
 
-- (IBAction)onAboutPress:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://dingmingxin.github.io/blog/2016/07/04/ghostskb/"]];
+- (IBAction)onSettingPressed:(id)sender {
+    AppDelegate *delegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+    [delegate showSettingWindow];
 }
+
 @end

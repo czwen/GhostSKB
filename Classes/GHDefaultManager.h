@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-#define INPUT_CHANGE_EXPIRE_T 20
+
 
 @interface GHDefaultManager : NSObject
+
+@property(assign) BOOL rememberAppLastInput;
+@property(assign) NSInteger rememberAppInputExpireTime;
 
 + (GHDefaultManager *)getInstance;
 - (NSMutableArray *)getDefaultKeyBoards;
@@ -18,4 +21,7 @@
 - (void)removeAppInputDefault:(NSString *)appBundleId;
 - (void)recordAppLastInputSourceId:(NSString *)bundleId inputId:(NSString *)inputId;
 - (NSString *)getAppLastInputSourceId:(NSString *)bundleId;
+- (void)setIsRememberAppLastInput:(BOOL) remember;
+- (void)setRememberAppLastExpireTime:(NSInteger )expireSeconds;
+
 @end

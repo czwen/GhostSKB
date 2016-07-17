@@ -19,7 +19,10 @@
 
 @end
 
+
+
 @implementation AppDelegate
+@synthesize settingWinCon;
 #pragma mark - App Life Cycle
 
 //BOOL checkAccessibility()
@@ -177,6 +180,14 @@
     [popover showRelativeToRect:_statusBarButton.bounds ofView:_statusBarButton preferredEdge:NSRectEdgeMaxY];
 }
 
+- (void)showSettingWindow {
+    if (self.settingWinCon == NULL) {
+        self.settingWinCon = [[GHSettingWindowControler alloc] init];
+    }
+    
+    [self.settingWinCon showWindow:NULL];
+
+}
 
 
 @end

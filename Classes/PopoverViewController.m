@@ -57,6 +57,7 @@
     if (_inputIdInfo == NULL) {
         _inputIdInfo = [[NSMutableDictionary alloc] initWithCapacity:3];
     }
+    int inputMethodCount = 0;
     for (int i = 0; i < count; i++) {
         TISInputSourceRef inputSource = (TISInputSourceRef)CFArrayGetValueAtIndex(availableInputs, i);
         CFStringRef type = TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceCategory);
@@ -69,11 +70,12 @@
             }
             
             NSMutableString *inputName = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyLocalizedName));
-            
+
             NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[thisID description],@"id", [inputName description], @"inputName", nil];
             
             [self.availableInputMethods addObject:dict];
-            [_inputIdInfo setObject:[NSString stringWithFormat:@"%d", i] forKey:[thisID description]];
+            [_inputIdInfo setObject:[NSString stringWithFormat:@"%d", inputMethodCount] forKey:[thisID description]];
+            inputMethodCount++;
         }
     }
 }

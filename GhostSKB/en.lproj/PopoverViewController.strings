@@ -1,0 +1,9 @@
+
+/* Class = "NSTextFieldCell"; placeholderString = "选择应用程序"; ObjectID = "PIp-9P-by3"; */
+"PIp-9P-by3.placeholderString" = "Select Application";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "hwH-ny-qWo"; */
+"hwH-ny-qWo.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "增加一个默认输入法选项"; ObjectID = "jsw-Nv-uo8"; */
+"jsw-Nv-uo8.title" = "Add one default input source";

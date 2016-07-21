@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		DE1B71AF1D2C081B00A85EE0 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A41D2C081B00A85EE0 /* screenshot.png */; };
-		DE1B71B01D2C081B00A85EE0 /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A51D2C081B00A85EE0 /* PopoverViewController.xib */; };
 		DE1B71B11D2C081B00A85EE0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A61D2C081B00A85EE0 /* info.png */; };
 		DE1B71B21D2C081B00A85EE0 /* ghostkbd-16.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */; };
 		DE1B71B31D2C081B00A85EE0 /* ghostkbd-32.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */; };
@@ -20,6 +19,8 @@
 		DE1B71C91D2C082F00A85EE0 /* GHInputDefaultCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71BF1D2C082F00A85EE0 /* GHInputDefaultCellView.m */; };
 		DE1B71CA1D2C082F00A85EE0 /* PopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71C11D2C082F00A85EE0 /* PopoverViewController.m */; };
 		DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */; };
+		DE2272BF1D41191A00CD6A5C /* GHSettingWindowControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2272C11D41191A00CD6A5C /* GHSettingWindowControler.xib */; };
+		DE2272C21D41191F00CD6A5C /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2272C41D41191F00CD6A5C /* PopoverViewController.xib */; };
 		DE5EC3711D3163C000B51843 /* ChinesePinyinModifer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5EC3701D3163C000B51843 /* ChinesePinyinModifer.m */; };
 		DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */; };
 		DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */; };
@@ -31,7 +32,6 @@
 		DE7CE11F1D3A87360054EC41 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7CE11E1D3A87360054EC41 /* setting.png */; };
 		DE7CE1211D3A88780054EC41 /* quit.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7CE1201D3A88780054EC41 /* quit.png */; };
 		DE7CE1251D3A906A0054EC41 /* GHSettingWindowControler.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */; };
-		DE7CE1261D3A906A0054EC41 /* GHSettingWindowControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7CE1241D3A906A0054EC41 /* GHSettingWindowControler.xib */; };
 		DE7CE1281D3B094A0054EC41 /* arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7CE1271D3B094A0054EC41 /* arrow-right.png */; };
 		DEEAE1321D3364B6005893F5 /* ghost_dark_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DEEAE1301D3364B6005893F5 /* ghost_dark_small.png */; };
 		DEEAE1331D3364B6005893F5 /* ghost_white_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DEEAE1311D3364B6005893F5 /* ghost_white_small.png */; };
@@ -56,7 +56,6 @@
 
 /* Begin PBXFileReference section */
 		DE1B71A41D2C081B00A85EE0 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screenshot.png; path = Resources/screenshot.png; sourceTree = "<group>"; };
-		DE1B71A51D2C081B00A85EE0 /* PopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopoverViewController.xib; path = Resources/PopoverViewController.xib; sourceTree = "<group>"; };
 		DE1B71A61D2C081B00A85EE0 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = Resources/info.png; sourceTree = "<group>"; };
 		DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-16.png"; path = "Resources/ghostkbd-16.png"; sourceTree = "<group>"; };
 		DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-32.png"; path = "Resources/ghostkbd-32.png"; sourceTree = "<group>"; };
@@ -73,6 +72,12 @@
 		DE1B71C41D2C082F00A85EE0 /* GHDefaultInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHDefaultInfo.h; path = Classes/GHDefaultInfo.h; sourceTree = "<group>"; };
 		DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHDefaultInfo.m; path = Classes/GHDefaultInfo.m; sourceTree = "<group>"; };
 		DE1B71C61D2C082F00A85EE0 /* GHDefaultManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHDefaultManager.h; path = Classes/GHDefaultManager.h; sourceTree = "<group>"; };
+		DE2272C01D41191A00CD6A5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GHSettingWindowControler.xib; sourceTree = "<group>"; };
+		DE2272C31D41191F00CD6A5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PopoverViewController.xib; sourceTree = "<group>"; };
+		DE2272C61D41193000CD6A5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/GHSettingWindowControler.strings; sourceTree = "<group>"; };
+		DE2272C81D41193400CD6A5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PopoverViewController.strings; sourceTree = "<group>"; };
+		DE2272C91D41198B00CD6A5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/GHSettingWindowControler.strings"; sourceTree = "<group>"; };
+		DE2272CA1D41198B00CD6A5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PopoverViewController.strings"; sourceTree = "<group>"; };
 		DE53E5181D375BC2003D6E72 /* GhostSKB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GhostSKB.entitlements; sourceTree = "<group>"; };
 		DE5EC36F1D3163C000B51843 /* ChinesePinyinModifer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChinesePinyinModifer.h; path = Classes/ChinesePinyinModifer.h; sourceTree = "<group>"; };
 		DE5EC3701D3163C000B51843 /* ChinesePinyinModifer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChinesePinyinModifer.m; path = Classes/ChinesePinyinModifer.m; sourceTree = "<group>"; };
@@ -92,7 +97,6 @@
 		DE7CE1201D3A88780054EC41 /* quit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quit.png; path = Resources/quit.png; sourceTree = "<group>"; };
 		DE7CE1221D3A906A0054EC41 /* GHSettingWindowControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHSettingWindowControler.h; path = Classes/GHSettingWindowControler.h; sourceTree = "<group>"; };
 		DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHSettingWindowControler.m; path = Classes/GHSettingWindowControler.m; sourceTree = "<group>"; };
-		DE7CE1241D3A906A0054EC41 /* GHSettingWindowControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GHSettingWindowControler.xib; path = Classes/GHSettingWindowControler.xib; sourceTree = "<group>"; };
 		DE7CE1271D3B094A0054EC41 /* arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-right.png"; path = "Resources/arrow-right.png"; sourceTree = "<group>"; };
 		DEEAE12F1D3363D6005893F5 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		DEEAE1301D3364B6005893F5 /* ghost_dark_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ghost_dark_small.png; path = Resources/ghost_dark_small.png; sourceTree = "<group>"; };
@@ -134,8 +138,6 @@
 				DEEAE1301D3364B6005893F5 /* ghost_dark_small.png */,
 				DEEAE1311D3364B6005893F5 /* ghost_white_small.png */,
 				DE1B71A41D2C081B00A85EE0 /* screenshot.png */,
-				DE1B71A51D2C081B00A85EE0 /* PopoverViewController.xib */,
-				DE7CE1241D3A906A0054EC41 /* GHSettingWindowControler.xib */,
 				DE1B71A61D2C081B00A85EE0 /* info.png */,
 				DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */,
 				DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */,
@@ -151,6 +153,8 @@
 		DE6634771CB21551009EE247 = {
 			isa = PBXGroup;
 			children = (
+				DE2272C11D41191A00CD6A5C /* GHSettingWindowControler.xib */,
+				DE2272C41D41191F00CD6A5C /* PopoverViewController.xib */,
 				DE7CE1221D3A906A0054EC41 /* GHSettingWindowControler.h */,
 				DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */,
 				DEEAE12F1D3363D6005893F5 /* Constant.h */,
@@ -316,16 +320,16 @@
 			files = (
 				DE1B71B61D2C081B00A85EE0 /* ghostkbd-512.png in Resources */,
 				DE1B71B21D2C081B00A85EE0 /* ghostkbd-16.png in Resources */,
+				DE2272C21D41191F00CD6A5C /* PopoverViewController.xib in Resources */,
 				DE7CE1211D3A88780054EC41 /* quit.png in Resources */,
 				DE1B71B41D2C081B00A85EE0 /* ghostkbd-128.png in Resources */,
 				DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */,
 				DEEAE1321D3364B6005893F5 /* ghost_dark_small.png in Resources */,
-				DE1B71B01D2C081B00A85EE0 /* PopoverViewController.xib in Resources */,
 				DE1B71B11D2C081B00A85EE0 /* info.png in Resources */,
 				DEEAE1331D3364B6005893F5 /* ghost_white_small.png in Resources */,
 				DE66348A1CB21552009EE247 /* Assets.xcassets in Resources */,
 				DE1B71AF1D2C081B00A85EE0 /* screenshot.png in Resources */,
-				DE7CE1261D3A906A0054EC41 /* GHSettingWindowControler.xib in Resources */,
+				DE2272BF1D41191A00CD6A5C /* GHSettingWindowControler.xib in Resources */,
 				DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */,
 				DE7CE11F1D3A87360054EC41 /* setting.png in Resources */,
 				DE1B71B31D2C081B00A85EE0 /* ghostkbd-32.png in Resources */,
@@ -398,6 +402,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		DE2272C11D41191A00CD6A5C /* GHSettingWindowControler.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE2272C01D41191A00CD6A5C /* Base */,
+				DE2272C61D41193000CD6A5C /* en */,
+				DE2272C91D41198B00CD6A5C /* zh-Hans */,
+			);
+			name = GHSettingWindowControler.xib;
+			path = GhostSKB;
+			sourceTree = "<group>";
+		};
+		DE2272C41D41191F00CD6A5C /* PopoverViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE2272C31D41191F00CD6A5C /* Base */,
+				DE2272C81D41193400CD6A5C /* en */,
+				DE2272CA1D41198B00CD6A5C /* zh-Hans */,
+			);
+			name = PopoverViewController.xib;
+			path = GhostSKB;
+			sourceTree = "<group>";
+		};
 		DE66348B1CB21552009EE247 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

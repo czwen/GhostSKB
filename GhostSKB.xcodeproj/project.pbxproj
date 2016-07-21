@@ -15,7 +15,6 @@
 		DE1B71B41D2C081B00A85EE0 /* ghostkbd-128.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A91D2C081B00A85EE0 /* ghostkbd-128.png */; };
 		DE1B71B51D2C081B00A85EE0 /* ghostkbd-256.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71AA1D2C081B00A85EE0 /* ghostkbd-256.png */; };
 		DE1B71B61D2C081B00A85EE0 /* ghostkbd-512.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71AB1D2C081B00A85EE0 /* ghostkbd-512.png */; };
-		DE1B71B71D2C081B00A85EE0 /* AppListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71AC1D2C081B00A85EE0 /* AppListController.xib */; };
 		DE1B71C71D2C082F00A85EE0 /* GHDefaultManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71BB1D2C082F00A85EE0 /* GHDefaultManager.m */; };
 		DE1B71C81D2C082F00A85EE0 /* GHInputAddDefaultCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71BD1D2C082F00A85EE0 /* GHInputAddDefaultCellView.m */; };
 		DE1B71C91D2C082F00A85EE0 /* GHInputDefaultCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71BF1D2C082F00A85EE0 /* GHInputDefaultCellView.m */; };
@@ -64,7 +63,6 @@
 		DE1B71A91D2C081B00A85EE0 /* ghostkbd-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-128.png"; path = "Resources/ghostkbd-128.png"; sourceTree = "<group>"; };
 		DE1B71AA1D2C081B00A85EE0 /* ghostkbd-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-256.png"; path = "Resources/ghostkbd-256.png"; sourceTree = "<group>"; };
 		DE1B71AB1D2C081B00A85EE0 /* ghostkbd-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-512.png"; path = "Resources/ghostkbd-512.png"; sourceTree = "<group>"; };
-		DE1B71AC1D2C081B00A85EE0 /* AppListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AppListController.xib; path = Resources/AppListController.xib; sourceTree = "<group>"; };
 		DE1B71BB1D2C082F00A85EE0 /* GHDefaultManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHDefaultManager.m; path = Classes/GHDefaultManager.m; sourceTree = "<group>"; };
 		DE1B71BC1D2C082F00A85EE0 /* GHInputAddDefaultCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHInputAddDefaultCellView.h; path = Classes/GHInputAddDefaultCellView.h; sourceTree = "<group>"; };
 		DE1B71BD1D2C082F00A85EE0 /* GHInputAddDefaultCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHInputAddDefaultCellView.m; path = Classes/GHInputAddDefaultCellView.m; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				DE1B71AA1D2C081B00A85EE0 /* ghostkbd-256.png */,
 				DE1B71AB1D2C081B00A85EE0 /* ghostkbd-512.png */,
 				DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */,
-				DE1B71AC1D2C081B00A85EE0 /* AppListController.xib */,
 			);
 			name = Resouces;
 			sourceTree = "<group>";
@@ -328,7 +325,6 @@
 				DEEAE1331D3364B6005893F5 /* ghost_white_small.png in Resources */,
 				DE66348A1CB21552009EE247 /* Assets.xcassets in Resources */,
 				DE1B71AF1D2C081B00A85EE0 /* screenshot.png in Resources */,
-				DE1B71B71D2C081B00A85EE0 /* AppListController.xib in Resources */,
 				DE7CE1261D3A906A0054EC41 /* GHSettingWindowControler.xib in Resources */,
 				DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */,
 				DE7CE11F1D3A87360054EC41 /* setting.png in Resources */,

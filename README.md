@@ -21,7 +21,7 @@ Mac OS X 10.8 or above
 
 ![screenshot 1 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot-1.png)
 
-![screenshot 2 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot-1.png)
+![screenshot 2 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot-2.png)
 
 # Known Issues
 

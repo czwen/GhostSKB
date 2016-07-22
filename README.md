@@ -11,7 +11,7 @@ Mac OS X 10.8 or above
 ## Features
 
 1. Automatically change inputmethod by Application.
-2. Remember App`s last used input method with expired time(20s)
+2. Remember App`s last used input method with expired time(Users can customize it).
 
 # Install 
 
@@ -19,11 +19,9 @@ Mac OS X 10.8 or above
 
 # Screenshot
 
-![screenshot of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot.png)
+![screenshot 1 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot-1.png)
 
-# Todo
-
-1. Add setting interface
+![screenshot 2 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot-1.png)
 
 # Known Issues
 

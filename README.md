@@ -26,4 +26,4 @@ Mac OS X 10.8 or above
 # Known Issues
 
 1. This app will be conflicted with OS X setting "Allow a different one for each document".
-2. For unkown reason, GhostSKB not working well with latest(2016 version) Microsoft Office apps(include Word,Excel...). Office 2011 version is ok.
+2. For unkown reason, GhostSKB work not well with latest(2016 version) Microsoft Office apps(include Word,Excel...). Office 2011 version is ok.

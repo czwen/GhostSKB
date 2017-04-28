@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DE1B71AF1D2C081B00A85EE0 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A41D2C081B00A85EE0 /* screenshot.png */; };
 		DE1B71B11D2C081B00A85EE0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A61D2C081B00A85EE0 /* info.png */; };
 		DE1B71B21D2C081B00A85EE0 /* ghostkbd-16.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */; };
 		DE1B71B31D2C081B00A85EE0 /* ghostkbd-32.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */; };
@@ -21,7 +20,6 @@
 		DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */; };
 		DE2272BF1D41191A00CD6A5C /* GHSettingWindowControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2272C11D41191A00CD6A5C /* GHSettingWindowControler.xib */; };
 		DE2272C21D41191F00CD6A5C /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2272C41D41191F00CD6A5C /* PopoverViewController.xib */; };
-		DE5EC3711D3163C000B51843 /* ChinesePinyinModifer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5EC3701D3163C000B51843 /* ChinesePinyinModifer.m */; };
 		DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */; };
 		DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */; };
 		DE6634851CB21552009EE247 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6634841CB21552009EE247 /* AppDelegate.m */; };
@@ -55,7 +53,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DE1B71A41D2C081B00A85EE0 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screenshot.png; path = Resources/screenshot.png; sourceTree = "<group>"; };
 		DE1B71A61D2C081B00A85EE0 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = Resources/info.png; sourceTree = "<group>"; };
 		DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-16.png"; path = "Resources/ghostkbd-16.png"; sourceTree = "<group>"; };
 		DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-32.png"; path = "Resources/ghostkbd-32.png"; sourceTree = "<group>"; };
@@ -79,8 +76,6 @@
 		DE2272C91D41198B00CD6A5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/GHSettingWindowControler.strings"; sourceTree = "<group>"; };
 		DE2272CA1D41198B00CD6A5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PopoverViewController.strings"; sourceTree = "<group>"; };
 		DE53E5181D375BC2003D6E72 /* GhostSKB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GhostSKB.entitlements; sourceTree = "<group>"; };
-		DE5EC36F1D3163C000B51843 /* ChinesePinyinModifer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChinesePinyinModifer.h; path = Classes/ChinesePinyinModifer.h; sourceTree = "<group>"; };
-		DE5EC3701D3163C000B51843 /* ChinesePinyinModifer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChinesePinyinModifer.m; path = Classes/ChinesePinyinModifer.m; sourceTree = "<group>"; };
 		DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-64.png"; path = "Resources/ghostkbd-64.png"; sourceTree = "<group>"; };
 		DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-1024.png"; path = "Resources/ghostkbd-1024.png"; sourceTree = "<group>"; };
 		DE6634801CB21552009EE247 /* GhostSKB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GhostSKB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +132,6 @@
 				DE7CE11E1D3A87360054EC41 /* setting.png */,
 				DEEAE1301D3364B6005893F5 /* ghost_dark_small.png */,
 				DEEAE1311D3364B6005893F5 /* ghost_white_small.png */,
-				DE1B71A41D2C081B00A85EE0 /* screenshot.png */,
 				DE1B71A61D2C081B00A85EE0 /* info.png */,
 				DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */,
 				DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */,
@@ -158,8 +152,6 @@
 				DE7CE1221D3A906A0054EC41 /* GHSettingWindowControler.h */,
 				DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */,
 				DEEAE12F1D3363D6005893F5 /* Constant.h */,
-				DE5EC36F1D3163C000B51843 /* ChinesePinyinModifer.h */,
-				DE5EC3701D3163C000B51843 /* ChinesePinyinModifer.m */,
 				DE1B71BC1D2C082F00A85EE0 /* GHInputAddDefaultCellView.h */,
 				DE1B71BD1D2C082F00A85EE0 /* GHInputAddDefaultCellView.m */,
 				DE1B71BE1D2C082F00A85EE0 /* GHInputDefaultCellView.h */,
@@ -328,7 +320,6 @@
 				DE1B71B11D2C081B00A85EE0 /* info.png in Resources */,
 				DEEAE1331D3364B6005893F5 /* ghost_white_small.png in Resources */,
 				DE66348A1CB21552009EE247 /* Assets.xcassets in Resources */,
-				DE1B71AF1D2C081B00A85EE0 /* screenshot.png in Resources */,
 				DE2272BF1D41191A00CD6A5C /* GHSettingWindowControler.xib in Resources */,
 				DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */,
 				DE7CE11F1D3A87360054EC41 /* setting.png in Resources */,
@@ -365,7 +356,6 @@
 				DE6634881CB21552009EE247 /* main.m in Sources */,
 				DE1B71C71D2C082F00A85EE0 /* GHDefaultManager.m in Sources */,
 				DE1B71C91D2C082F00A85EE0 /* GHInputDefaultCellView.m in Sources */,
-				DE5EC3711D3163C000B51843 /* ChinesePinyinModifer.m in Sources */,
 				DE7CE1251D3A906A0054EC41 /* GHSettingWindowControler.m in Sources */,
 				DE1B71C81D2C082F00A85EE0 /* GHInputAddDefaultCellView.m in Sources */,
 				DE6634851CB21552009EE247 /* AppDelegate.m in Sources */,

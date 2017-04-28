@@ -20,25 +20,13 @@
 @end
 
 
-
 @implementation AppDelegate
 @synthesize settingWinCon;
 #pragma mark - App Life Cycle
 
-//BOOL checkAccessibility()
-//{
-//    NSDictionary* opts = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
-//    return AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)opts);
-//}
-
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-//    checkAccessibility();
-//    _cpm = [[ChinesePinyinModifer alloc] init];
 
-//    [_cpm startListenShiftKey];
-
-    
     NSNotificationCenter *nc = [[NSWorkspace sharedWorkspace] notificationCenter];
     [nc addObserver:self selector:@selector(handleAppActivateNoti:) name:NSWorkspaceDidActivateApplicationNotification object:NULL];
     [nc addObserver:self selector:@selector(handleAppDeactiveNoti:) name:NSWorkspaceDidDeactivateApplicationNotification object:NULL];
@@ -110,29 +98,23 @@
 
 - (void)changeInputSource:(NSString *)inputId
 {
-    NSMutableString *thisID;
     TISInputSourceRef inputSource = NULL;
     
     CFArrayRef availableInputs = TISCreateInputSourceList(NULL, false);
     NSUInteger count = CFArrayGetCount(availableInputs);
-
     for (int i = 0; i < count; i++) {
         inputSource = (TISInputSourceRef)CFArrayGetValueAtIndex(availableInputs, i);
+        //获取输入源的 type
         CFStringRef type = TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceCategory);
-        if (!CFStringCompare(type, kTISCategoryKeyboardInputSource, 0)) {
-            thisID = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
-            if ([thisID isEqualToString:inputId]) {
-                OSStatus err = TISSelectInputSource(inputSource);
-                if (err) {
-                    printf("Error %i\n", (int)err);
-                }
-                else {
-//                    [self changeStatusItemImage:[inputId isEqualToString:CHINESE_PINYIN_INPUT_SOURCE_ID]];
-                    _cpm.currentBaseInputSource = inputSource;
-                }
-                break;
+        //获取输入源的id
+        NSMutableString *inputSourceId = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
+        //只针对键盘输入法
+        if ([inputSourceId isEqualToString:inputId] && !CFStringCompare(type, kTISCategoryKeyboardInputSource, 0)) {
+            OSStatus err = TISSelectInputSource(inputSource);
+            if (err) {
+                printf("Error %i\n", (int)err);
             }
-            
+            break;
         }
     }
 }
@@ -140,7 +122,6 @@
 - (void) handleAppDeactiveNoti:(NSNotification *)noti {
     NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
     NSString *identifier = runningApp.bundleIdentifier;
-    [[GHDefaultManager getInstance] recordAppLastInputSourceId:identifier inputId:_lastAppInputSourceId];
 }
 
 - (void) handleAppActivateNoti:(NSNotification *)noti {
@@ -149,16 +130,13 @@
     NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
     NSString *bundleIdentifier = runningApp.bundleIdentifier;
     
-    NSString *lastUsedInputId = [[GHDefaultManager getInstance] getAppLastInputSourceId:bundleIdentifier];
+    
     NSString *targetInputId = NULL;
-    if (lastUsedInputId != NULL) {
-        targetInputId = lastUsedInputId;
-    }
-    else {
-        NSDictionary *defaultInput = [[GHDefaultManager getInstance] getDefaultKeyBoardsDict];
-        NSDictionary *info = [defaultInput objectForKey:bundleIdentifier];
-        targetInputId = [[info objectForKey:@"defaultInput"] description];
-    }
+   
+    NSDictionary *defaultInput = [[GHDefaultManager getInstance] getDefaultKeyBoardsDict];
+    NSDictionary *info = [defaultInput objectForKey:bundleIdentifier];
+    targetInputId = [[info objectForKey:@"defaultInput"] description];
+    
 
     if (targetInputId != NULL) {
         [self changeInputSource:targetInputId];

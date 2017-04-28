@@ -9,10 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface GHSettingWindowControler : NSWindowController
-@property (weak) IBOutlet NSPopUpButtonCell *expireSeconds;
-@property (weak) IBOutlet NSButton *rememberInputToggle;
-@property (weak) IBOutlet NSMenu *secondList;
-
-- (IBAction)onRememberInputToggle:(id)sender;
 - (IBAction)gotoGithub:(id)sender;
 @end

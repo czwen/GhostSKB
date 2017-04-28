@@ -9,11 +9,8 @@
 #ifndef Constant_h
 #define Constant_h
 
-#define CHINESE_PINYIN_INPUT_SOURCE_ID @"com.apple.inputmethod.SCIM.ITABC"
 
-#define GH_SETTING_REMEMBER_APP_LAST_INPUT_KEY @"gh_rememeber_app_last_input"
-#define GH_SETTING_REMEMBER_APP_LAST_INPUT_EXPIRE_TIME_KEY @"gh_remember_app_last_input_expire_t"
-#define GH_GITHUB_LINK @"http://www.github.com/dingmingxin"
-#define INPUT_CHANGE_EXPIRE_T 20
+#define GH_GITHUB_LINK @"http://www.github.com/dingmingxin/GhostSKB"
+
 
 #endif /* Constant_h */

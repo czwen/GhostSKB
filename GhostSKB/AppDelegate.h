@@ -9,14 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
-#import "ChinesePinyinModifer.h"
 #import "GHSettingWindowControler.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate> {
     @private
     NSStatusBarButton *_statusBarButton;
     NSMutableString *_lastAppInputSourceId;
-    ChinesePinyinModifer *_cpm;
     @public
     NSStatusItem *statusItem;
     BOOL statusItemSelected;

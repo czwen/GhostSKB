@@ -100,13 +100,17 @@
             defaultInfo.defaultInput = defaultInputId;
         }
         
+        
         if (defaultInfo.appUrl != NULL && defaultInfo.appBundleId != NULL){
             NSURL *appUrl = [NSURL fileURLWithPath:defaultInfo.appUrl];
             NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:[appUrl path]];
             NSBundle *appBundle =[NSBundle bundleWithPath:[appUrl path]];
             NSString *appName = [[NSFileManager defaultManager] displayNameAtPath: [appBundle bundlePath]];
-            view.appName.stringValue = appName;
-            view.appButton.image = icon;
+            //防止app被删除导致的错误
+            if (appName != NULL) {
+                view.appName.stringValue = appName;
+                view.appButton.image = icon;
+            }
         }
         else {
             view.appButton.image = NULL;

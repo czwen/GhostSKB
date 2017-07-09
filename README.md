@@ -21,9 +21,7 @@ Mac OS X 10.8 or above
 
 ![screenshot 1 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot-1.png)
 
-![screenshot 2 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot-2.png)
-
 # Known Issues
 
-1. This app will be conflicted with OS X setting "Allow a different one for each document".
+1. This app will be conflicted with OS X setting "Allow a different one for each document". Please deselect "automatically switch to document's input source" 
 2. For unkown reason, GhostSKB works not well with latest(2016 version) Microsoft Office apps(include Word,Excel...). Office 2011 version is ok.

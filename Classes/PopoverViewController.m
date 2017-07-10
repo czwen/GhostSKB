@@ -18,6 +18,8 @@
 
 @interface PopoverViewController ()
 
+- (BOOL)isAppDuplicated: (NSString *)bundleId;
+
 @end
 
 @implementation PopoverViewController
@@ -220,10 +222,16 @@
     if (clicked == NSFileHandlingPanelOKButton) {
         for (NSURL *url in [panel URLs]) {
             
-            NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:[url path]];
-            _currentSelectedCell.appButton.image = icon;
+            
             NSBundle *selectedAppBundle =[NSBundle bundleWithURL:url];
             NSString *bundleIdentifier = [selectedAppBundle bundleIdentifier];
+            if([self isAppDuplicated:bundleIdentifier]) {
+                NSRunAlertPanel(NSLocalizedString(@"duplicated_app", @""), NSLocalizedString(@"already_have_same_app", @""), @"OK", nil, nil);
+                break;
+            }
+            NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:[url path]];
+            _currentSelectedCell.appButton.image = icon;
+            
             NSString *appName = [[NSFileManager defaultManager] displayNameAtPath: [selectedAppBundle bundlePath]];
             _currentSelectedCell.appName.stringValue = appName;
             
@@ -266,6 +274,16 @@
 - (IBAction)onSettingPressed:(id)sender {
     AppDelegate *delegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
     [delegate showSettingWindow];
+}
+
+- (BOOL) isAppDuplicated: (NSString *)bundleId{
+    for(id defaultInfo in self.defaultKeyBoards) {
+        GHDefaultInfo *info = (GHDefaultInfo *)defaultInfo;
+        if(bundleId!= NULL && bundleId.length > 0 && [bundleId isEqualToString:info.appBundleId]) {
+            return true;
+        }
+    }
+    return false;
 }
 
 @end

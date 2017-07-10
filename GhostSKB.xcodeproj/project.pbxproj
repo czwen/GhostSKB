@@ -20,6 +20,7 @@
 		DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */; };
 		DE2272BF1D41191A00CD6A5C /* GHSettingWindowControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2272C11D41191A00CD6A5C /* GHSettingWindowControler.xib */; };
 		DE2272C21D41191F00CD6A5C /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2272C41D41191F00CD6A5C /* PopoverViewController.xib */; };
+		DE25403F1F141DA50093EEB2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE25403D1F141DA50093EEB2 /* Localizable.strings */; };
 		DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */; };
 		DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */; };
 		DE6634851CB21552009EE247 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6634841CB21552009EE247 /* AppDelegate.m */; };
@@ -75,6 +76,8 @@
 		DE2272C81D41193400CD6A5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PopoverViewController.strings; sourceTree = "<group>"; };
 		DE2272C91D41198B00CD6A5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/GHSettingWindowControler.strings"; sourceTree = "<group>"; };
 		DE2272CA1D41198B00CD6A5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PopoverViewController.strings"; sourceTree = "<group>"; };
+		DE25403E1F141DA50093EEB2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = GhostSKB/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DE2540401F141DD70093EEB2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "GhostSKB/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DE53E5181D375BC2003D6E72 /* GhostSKB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GhostSKB.entitlements; sourceTree = "<group>"; };
 		DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-64.png"; path = "Resources/ghostkbd-64.png"; sourceTree = "<group>"; };
 		DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-1024.png"; path = "Resources/ghostkbd-1024.png"; sourceTree = "<group>"; };
@@ -149,6 +152,7 @@
 			children = (
 				DE2272C11D41191A00CD6A5C /* GHSettingWindowControler.xib */,
 				DE2272C41D41191F00CD6A5C /* PopoverViewController.xib */,
+				DE25403D1F141DA50093EEB2 /* Localizable.strings */,
 				DE7CE1221D3A906A0054EC41 /* GHSettingWindowControler.h */,
 				DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */,
 				DEEAE12F1D3363D6005893F5 /* Constant.h */,
@@ -292,6 +296,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = DE6634771CB21551009EE247;
 			productRefGroup = DE6634811CB21552009EE247 /* Products */;
@@ -323,6 +328,7 @@
 				DE2272BF1D41191A00CD6A5C /* GHSettingWindowControler.xib in Resources */,
 				DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */,
 				DE7CE11F1D3A87360054EC41 /* setting.png in Resources */,
+				DE25403F1F141DA50093EEB2 /* Localizable.strings in Resources */,
 				DE1B71B31D2C081B00A85EE0 /* ghostkbd-32.png in Resources */,
 				DE1B71B51D2C081B00A85EE0 /* ghostkbd-256.png in Resources */,
 				DE7CE1281D3B094A0054EC41 /* arrow-right.png in Resources */,
@@ -412,6 +418,15 @@
 			);
 			name = PopoverViewController.xib;
 			path = GhostSKB;
+			sourceTree = "<group>";
+		};
+		DE25403D1F141DA50093EEB2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE25403E1F141DA50093EEB2 /* en */,
+				DE2540401F141DD70093EEB2 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		DE66348B1CB21552009EE247 /* MainMenu.xib */ = {

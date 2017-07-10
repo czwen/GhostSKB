@@ -1,0 +1,10 @@
+/* 
+  GhostSKB.strings
+  GhostSKB
+
+  Created by dmx on 2017/7/11.
+  Copyright © 2017年 丁明信. All rights reserved.
+*/
+
+"duplicated_app" = "Duplicated Application";
+"already_have_same_app" = "The app you selected is already in the list";

@@ -110,7 +110,6 @@
         NSMutableString *inputSourceId = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
         if ([inputSourceId isEqualToString:targetInputId]) {
             OSStatus err = TISSelectInputSource(inputSource);
-            err = TISSelectInputSource(inputSource);
             if (err) {
                 NSLog(@"Error %i\n", (int)err);
             }
@@ -140,7 +139,7 @@
     
 
     if (targetInputId != NULL) {
-        [self performSelector:@selector(changeInputSource:) withObject:targetInputId afterDelay:0.08];
+        [self performSelector:@selector(changeInputSource:) withObject:targetInputId afterDelay:0.02];
 //        [self changeInputSource:targetInputId];
     }
 }

@@ -29,7 +29,7 @@
 
     NSNotificationCenter *nc = [[NSWorkspace sharedWorkspace] notificationCenter];
     [nc addObserver:self selector:@selector(handleAppActivateNoti:) name:NSWorkspaceDidActivateApplicationNotification object:NULL];
-    [nc addObserver:self selector:@selector(handleAppDeactiveNoti:) name:NSWorkspaceDidDeactivateApplicationNotification object:NULL];
+//    [nc addObserver:self selector:@selector(handleAppDeactiveNoti:) name:NSWorkspaceDidDeactivateApplicationNotification object:NULL];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleGHAppSelectedNoti:) name:@"GH_APP_SELECTED" object:NULL];
@@ -96,22 +96,21 @@
     return inputId;
 }
 
-- (void)changeInputSource:(NSString *)inputId
+- (void)changeInputSource:(NSString *)targetInputId
 {
     TISInputSourceRef inputSource = NULL;
     
-    CFArrayRef availableInputs = TISCreateInputSourceList(NULL, false);
+    NSDictionary *property=[NSDictionary dictionaryWithObject:(NSString*)kTISCategoryKeyboardInputSource
+                                                      forKey:(NSString*)kTISPropertyInputSourceCategory];
+    CFArrayRef availableInputs = TISCreateInputSourceList((__bridge CFDictionaryRef)property, false);
     NSUInteger count = CFArrayGetCount(availableInputs);
     for (int i = 0; i < count; i++) {
         inputSource = (TISInputSourceRef)CFArrayGetValueAtIndex(availableInputs, i);
-        //获取输入源的 type
-        CFStringRef type = TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceCategory);
         //获取输入源的id
         NSMutableString *inputSourceId = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
-        //只针对键盘输入法
-        if ([inputSourceId isEqualToString:inputId] && !CFStringCompare(type, kTISCategoryKeyboardInputSource, 0)) {
+        if ([inputSourceId isEqualToString:targetInputId]) {
             OSStatus err = TISSelectInputSource(inputSource);
-//            NSLog(@"dmx--select input: %@", inputId);
+            err = TISSelectInputSource(inputSource);
             if (err) {
                 NSLog(@"Error %i\n", (int)err);
             }
@@ -120,10 +119,10 @@
     }
 }
 
-- (void) handleAppDeactiveNoti:(NSNotification *)noti {
-    NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
-    NSString *identifier = runningApp.bundleIdentifier;
-}
+//- (void) handleAppDeactiveNoti:(NSNotification *)noti {
+//    NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
+//    NSString *identifier = runningApp.bundleIdentifier;
+//}
 
 - (void) handleAppActivateNoti:(NSNotification *)noti {
     
@@ -141,9 +140,8 @@
     
 
     if (targetInputId != NULL) {
-//        NSLog(@"==========================================");
-//        NSLog(@"app: %@ inputId:%@", bundleIdentifier, targetInputId);
-        [self changeInputSource:targetInputId];
+        [self performSelector:@selector(changeInputSource:) withObject:targetInputId afterDelay:0.08];
+//        [self changeInputSource:targetInputId];
     }
 }
 

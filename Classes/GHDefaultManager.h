@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
+#import "Constant.h"
 
 @interface GHDefaultManager : NSObject
 
@@ -19,5 +19,6 @@
 - (NSMutableArray *)getDefaultKeyBoards;
 - (NSDictionary *)getDefaultKeyBoardsDict;
 - (void)removeAppInputDefault:(NSString *)appBundleId;
+- (NSString *)getDefaultPrefrenceKey;
 
 @end

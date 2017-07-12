@@ -11,6 +11,8 @@
 
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
+#import "Constant.h"
+#import "GHDefaultManager.h"
 
 @interface GHDefaultInfo : NSObject 
 

@@ -47,6 +47,10 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     NSDictionary *keyBoardDefault = [self getDefaultKeyBoardsDict];
     NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
     
+    if(keyBoardDefault == NULL) {
+        return arr;
+    }
+    
     [keyBoardDefault enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
         GHDefaultInfo *info = [[GHDefaultInfo alloc] initWithAppBundle:[object objectForKey:@"appBundleId"]
                                                                 appUrl:[[object objectForKey:@"appUrl"] description]
@@ -62,26 +66,30 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 -(NSDictionary *)getDefaultKeyBoardsDict {
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"gh_default_keyboards"];
-    if (data == NULL) {
-        return [[NSDictionary alloc] init];
-    }
-    NSDictionary *retrievedDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    NSDictionary *keyBoardDefault = [[NSDictionary alloc] initWithDictionary:retrievedDictionary];
-    return keyBoardDefault;
+    NSString *keyBoardDefaultInputKey = [[GHDefaultManager getInstance] getDefaultPrefrenceKey];
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:keyBoardDefaultInputKey];
+    return dict;
 }
 
 -(void)removeAppInputDefault:(NSString *)appBundleId {
     NSDictionary *defaultInputs = [self getDefaultKeyBoardsDict];
-    if ([defaultInputs objectForKey:appBundleId] != NULL) {
-        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:defaultInputs];
-        [dict removeObjectForKey:appBundleId];
-        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        [prefs setObject:[NSKeyedArchiver archivedDataWithRootObject:(NSDictionary *)dict] forKey:@"gh_default_keyboards"];
-        [prefs synchronize];
+    if(defaultInputs == NULL) {
+        return;
+    }
+    NSMutableDictionary *settings = [NSMutableDictionary dictionaryWithDictionary:defaultInputs];
+    NSString *keyBoardDefaultInputKey = [[GHDefaultManager getInstance] getDefaultPrefrenceKey];
+    
+    if ([settings objectForKey:appBundleId] != NULL) {
+        [settings removeObjectForKey:appBundleId];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:settings forKey:keyBoardDefaultInputKey];
+        [userDefaults synchronize];
     }
 }
 
-
+- (NSString *)getDefaultPrefrenceKey {
+    NSString *key = [NSString stringWithFormat:@"gh_default_keyboards_%@", GH_DATA_VERSION];
+    return key;
+}
 
 @end

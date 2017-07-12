@@ -35,20 +35,20 @@
     if (self.appUrl == NULL || self.appBundleId == NULL || self.defaultInput == NULL) {
         return;
     }
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
-    NSString *keyBoardDefaultInputKey = @"gh_default_keyboards";
-    NSData *data = [prefs objectForKey:keyBoardDefaultInputKey];
-    NSDictionary *retrievedDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    NSMutableDictionary *keyBoardDefault = [[NSMutableDictionary alloc] initWithDictionary:retrievedDictionary];
-    if (keyBoardDefault == NULL) {
-        keyBoardDefault = [NSMutableDictionary dictionaryWithCapacity:1];
-    }
-    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:self.appUrl, @"appUrl", self.defaultInput, @"defaultInput", self.appBundleId, @"appBundleId", nil];
-    [keyBoardDefault setObject:info forKey:self.appBundleId];
+    NSString *keyBoardDefaultInputKey = [[GHDefaultManager getInstance] getDefaultPrefrenceKey];
+    NSMutableDictionary *settings = [[userDefaults dictionaryForKey:keyBoardDefaultInputKey] mutableCopy];
     
-    [prefs setObject:[NSKeyedArchiver archivedDataWithRootObject:(NSDictionary *)keyBoardDefault] forKey:keyBoardDefaultInputKey];
-    [prefs synchronize];
+    if(settings == NULL) {
+        settings = [NSMutableDictionary dictionaryWithCapacity:1];
+    }
+ 
+    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:self.appUrl, @"appUrl", self.defaultInput, @"defaultInput", self.appBundleId, @"appBundleId", nil];
+    [settings setObject:info forKey:self.appBundleId];
+    
+    [userDefaults setObject:settings forKey:keyBoardDefaultInputKey];
+    [userDefaults synchronize];
     
 }
 

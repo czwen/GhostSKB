@@ -111,8 +111,9 @@
         //只针对键盘输入法
         if ([inputSourceId isEqualToString:inputId] && !CFStringCompare(type, kTISCategoryKeyboardInputSource, 0)) {
             OSStatus err = TISSelectInputSource(inputSource);
+//            NSLog(@"dmx--select input: %@", inputId);
             if (err) {
-                printf("Error %i\n", (int)err);
+                NSLog(@"Error %i\n", (int)err);
             }
             break;
         }
@@ -137,8 +138,11 @@
     NSDictionary *info = [defaultInput objectForKey:bundleIdentifier];
     targetInputId = [[info objectForKey:@"defaultInput"] description];
     
+    
 
     if (targetInputId != NULL) {
+//        NSLog(@"==========================================");
+//        NSLog(@"app: %@ inputId:%@", bundleIdentifier, targetInputId);
         [self changeInputSource:targetInputId];
     }
 }

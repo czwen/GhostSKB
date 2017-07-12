@@ -11,6 +11,7 @@
 
 
 #define GH_GITHUB_LINK @"http://www.github.com/dingmingxin/GhostSKB"
+#define GH_DATA_VERSION @"1"
 
 
 #endif /* Constant_h */

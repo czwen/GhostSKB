@@ -272,7 +272,7 @@
 				TargetAttributes = {
 					DE66347F1CB21552009EE247 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 8XT97GTK9J;
+						DevelopmentTeam = V6P6ZB26T6;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -527,7 +527,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8XT97GTK9J;
+				DEVELOPMENT_TEAM = V6P6ZB26T6;
 				INFOPLIST_FILE = GhostSKB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -545,7 +545,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8XT97GTK9J;
+				DEVELOPMENT_TEAM = V6P6ZB26T6;
 				INFOPLIST_FILE = GhostSKB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;

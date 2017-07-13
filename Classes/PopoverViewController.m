@@ -125,8 +125,11 @@
             for (int i=0; i<[self.availableInputMethods count]; i++) {
                 NSDictionary *inputInfo = self.availableInputMethods[i];
                 NSString *inputName = [inputInfo objectForKey:@"inputName"];
-                NSMenuItem *item = [view.menu addItemWithTitle:inputName action:@selector(onInputSourceChange:) keyEquivalent:[[inputInfo objectForKey:@"id"] description]];
-                item.representedObject = [NSString stringWithFormat:@"%ld",(long)row];
+                NSMenuItem *item = [view.menu
+                                    addItemWithTitle:inputName
+                                    action:@selector(onInputSourceChange:)
+                                    keyEquivalent:[[inputInfo objectForKey:@"id"] description]];
+                item.representedObject = view;
             }
         }
         int inputIndex = [[_inputIdInfo objectForKey:defaultInfo.defaultInput] intValue];
@@ -261,10 +264,13 @@
 
 -(void)onInputSourceChange:(id)sender {
     NSMenuItem *item = (NSMenuItem *)sender;
-    NSInteger row = [[item.representedObject description] integerValue];
+    GHInputAddDefaultCellView *cellView = (GHInputAddDefaultCellView *)item.representedObject;
+    NSInteger row = cellView.row;
+    
     GHDefaultInfo *info = [self.defaultKeyBoards objectAtIndex:row];
     info.defaultInput = [item keyEquivalent];
     [info saveToDefaultStorage];
+    
 }
 
 - (IBAction)terminateSelf:(id)sender {

@@ -1,10 +1,6 @@
-/* 
-  GhostSKB.strings
-  GhostSKB
-
-  Created by dmx on 2017/7/11.
-  Copyright © 2017年 丁明信. All rights reserved.
-*/
-
-"duplicated_app" = "重复的应用";
+/* No comment provided by engineer. */
 "already_have_same_app" = "您选择的App已经在列表中";
+
+/* No comment provided by engineer. */
+"duplicated_app" = "重复的应用";
+

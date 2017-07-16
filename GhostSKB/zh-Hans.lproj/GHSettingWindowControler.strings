@@ -1,39 +1,12 @@
 
-/* Class = "NSBox"; title = "Box"; ObjectID = "6Hz-mu-Ujs"; */
-"6Hz-mu-Ujs.title" = "Box";
-
-/* Class = "NSTextFieldCell"; title = "超时"; ObjectID = "7oN-gz-XvE"; */
-"7oN-gz-XvE.title" = "超时";
-
 /* Class = "NSTextFieldCell"; title = "Copyright © 2016 dingmingxin"; ObjectID = "82L-oe-VeW"; */
 "82L-oe-VeW.title" = "Copyright © 2016 dingmingxin";
 
-/* Class = "NSBox"; title = "Box"; ObjectID = "C0q-Bv-U5u"; */
-"C0q-Bv-U5u.title" = "Box";
-
-/* Class = "NSTextFieldCell"; title = "设置"; ObjectID = "DAD-DT-4Xu"; */
-"DAD-DT-4Xu.title" = "设置";
-
 /* Class = "NSWindow"; title = "GhostSKB 设置"; ObjectID = "F0z-JX-Cv5"; */
-"F0z-JX-Cv5.title" = "GhostSKB 设置";
+"F0z-JX-Cv5.title" = "关于GhostSKB";
 
-/* Class = "NSTextFieldCell"; title = "关于"; ObjectID = "H1R-lD-4Ug"; */
-"H1R-lD-4Ug.title" = "关于";
-
-/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "V9k-Hi-pY5"; */
-"V9k-Hi-pY5.title" = "Item 1";
-
-/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "W9w-cq-xPO"; */
-"W9w-cq-xPO.title" = "Item 2";
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "Kzh-xX-Cc8"; */
+"Kzh-xX-Cc8.title" = "Label";
 
 /* Class = "NSTextFieldCell"; title = "支持：http://www.github.com/dingmingxin/GhostSKB"; ObjectID = "Y3m-DR-PHj"; */
 "Y3m-DR-PHj.title" = "支持：http://www.github.com/dingmingxin/GhostSKB";
-
-/* Class = "NSBox"; title = "Box"; ObjectID = "eNY-8B-W1u"; */
-"eNY-8B-W1u.title" = "Box";
-
-/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "h6C-g3-ma6"; */
-"h6C-g3-ma6.title" = "Item 3";
-
-/* Class = "NSButtonCell"; title = "记忆应用程序上次使用的输入法"; ObjectID = "p4w-dy-TIL"; */
-"p4w-dy-TIL.title" = "记忆应用程序上次使用的输入法";

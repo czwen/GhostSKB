@@ -25,6 +25,8 @@
 
 
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    self.version.stringValue = (NSString *)[[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleShortVersionString"];
+    
 }
 
 - (IBAction)gotoGithub:(id)sender {

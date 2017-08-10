@@ -29,7 +29,7 @@
 
     NSNotificationCenter *nc = [[NSWorkspace sharedWorkspace] notificationCenter];
     [nc addObserver:self selector:@selector(handleAppActivateNoti:) name:NSWorkspaceDidActivateApplicationNotification object:NULL];
-//    [nc addObserver:self selector:@selector(handleAppDeactiveNoti:) name:NSWorkspaceDidDeactivateApplicationNotification object:NULL];
+    [nc addObserver:self selector:@selector(handleAppUnhideNoti:) name:NSWorkspaceDidUnhideApplicationNotification object:NULL];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleGHAppSelectedNoti:) name:@"GH_APP_SELECTED" object:NULL];
@@ -96,7 +96,7 @@
     return inputId;
 }
 
-- (void)changeInputSource:(NSString *)targetInputId
+- (void)doChangeInputSource:(NSString *)targetInputId
 {
     TISInputSourceRef inputSource = NULL;
     
@@ -104,43 +104,42 @@
                                                       forKey:(NSString*)kTISPropertyInputSourceCategory];
     CFArrayRef availableInputs = TISCreateInputSourceList((__bridge CFDictionaryRef)property, false);
     NSUInteger count = CFArrayGetCount(availableInputs);
+    
+    
+    
     for (int i = 0; i < count; i++) {
         inputSource = (TISInputSourceRef)CFArrayGetValueAtIndex(availableInputs, i);
         //获取输入源的id
         NSMutableString *inputSourceId = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
         if ([inputSourceId isEqualToString:targetInputId]) {
             OSStatus err = TISSelectInputSource(inputSource);
-            if (err) {
-                NSLog(@"Error %i\n", (int)err);
-            }
             break;
         }
     }
 }
 
-//- (void) handleAppDeactiveNoti:(NSNotification *)noti {
-//    NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
-//    NSString *identifier = runningApp.bundleIdentifier;
-//}
+- (void) handleAppUnhideNoti:(NSNotification *)noti {
+    NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
+    NSString *identifier = runningApp.bundleIdentifier;
+    [self changeInputSourceForApp:identifier];
+}
 
 - (void) handleAppActivateNoti:(NSNotification *)noti {
     
     _lastAppInputSourceId = [self getCurrentInputSourceId];
     NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
     NSString *bundleIdentifier = runningApp.bundleIdentifier;
-    
-    
+    [self changeInputSourceForApp:bundleIdentifier];
+}
+
+- (void)changeInputSourceForApp:(NSString *)bundleId {
     NSString *targetInputId = NULL;
-   
     NSDictionary *defaultInput = [[GHDefaultManager getInstance] getDefaultKeyBoardsDict];
-    NSDictionary *info = [defaultInput objectForKey:bundleIdentifier];
+    NSDictionary *info = [defaultInput objectForKey:bundleId];
     targetInputId = [[info objectForKey:@"defaultInput"] description];
     
-    
-
     if (targetInputId != NULL) {
-        [self performSelector:@selector(changeInputSource:) withObject:targetInputId afterDelay:0.02];
-//        [self changeInputSource:targetInputId];
+        [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.02];
     }
 }
 

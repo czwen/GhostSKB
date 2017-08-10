@@ -99,7 +99,11 @@
 - (void)doChangeInputSource:(NSString *)targetInputId
 {
     TISInputSourceRef inputSource = NULL;
-    
+    TISInputSourceRef currentInputSource = TISCopyCurrentKeyboardInputSource();
+    NSMutableString *currentInputSourceId = (__bridge NSMutableString *)(TISGetInputSourceProperty(currentInputSource, kTISPropertyInputSourceID));
+    if ([targetInputId isEqualToString:currentInputSourceId]) {
+        return;
+    }
     NSDictionary *property=[NSDictionary dictionaryWithObject:(NSString*)kTISCategoryKeyboardInputSource
                                                       forKey:(NSString*)kTISPropertyInputSourceCategory];
     CFArrayRef availableInputs = TISCreateInputSourceList((__bridge CFDictionaryRef)property, false);
@@ -128,8 +132,8 @@
     
     _lastAppInputSourceId = [self getCurrentInputSourceId];
     NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
-    NSString *bundleIdentifier = runningApp.bundleIdentifier;
-    [self changeInputSourceForApp:bundleIdentifier];
+    NSString *identifier = runningApp.bundleIdentifier;
+    [self changeInputSourceForApp:identifier];
 }
 
 - (void)changeInputSourceForApp:(NSString *)bundleId {

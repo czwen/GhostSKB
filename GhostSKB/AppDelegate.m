@@ -113,10 +113,22 @@
     
     for (int i = 0; i < count; i++) {
         inputSource = (TISInputSourceRef)CFArrayGetValueAtIndex(availableInputs, i);
+        
         //获取输入源的id
         NSMutableString *inputSourceId = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
         if ([inputSourceId isEqualToString:targetInputId]) {
-            OSStatus err = TISSelectInputSource(inputSource);
+            NSNumber* pIsSelectCapable = (__bridge NSNumber*)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceIsSelectCapable));
+            BOOL canSelect = [pIsSelectCapable boolValue];
+            
+            NSNumber *pIsEnableCapable= (__bridge NSNumber *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceIsEnableCapable));
+            BOOL canEnable = [pIsEnableCapable boolValue];
+            if (canEnable) {
+                TISEnableInputSource(inputSource);
+            }
+            if (canSelect) {
+                TISSelectInputSource(inputSource);
+            }
+            
             break;
         }
     }
@@ -143,7 +155,8 @@
     targetInputId = [[info objectForKey:@"defaultInput"] description];
     
     if (targetInputId != NULL) {
-        [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.02];
+        [self doChangeInputSource:targetInputId];
+//        [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.001];
     }
 }
 

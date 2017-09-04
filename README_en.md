@@ -20,4 +20,4 @@ Mac OS X 10.8 or above
 # Known Issues
 
 1. This app will be conflicted with OS X setting "Allow a different one for each document". Please deselect "automatically switch to document's input source" 
-2. For unkown reason, GhostSKB works not well with latest(2016 version) Microsoft Office apps(include Word,Excel...). Office 2011 version is ok.
+2. Spotlight is not supported because Ghostskb can not catch the event of window pop up of spotlight.

@@ -20,4 +20,4 @@ Mac OS X 10.8 or above
 # Known Issues
 
 1. This app will be conflicted with OS X setting "Allow a different one for each document". Please deselect "automatically switch to document's input source" 
-2. Spotlight is not supported because Ghostskb can not catch the event of window pop up of spotlight.
+2. Spotlight is not supported because of that Ghostskb can not catch the event of window pop up of spotlight.

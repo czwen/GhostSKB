@@ -56,16 +56,12 @@
 - (void)initStatusItem {
     statusItemSelected = false;
     NSString *imageName = @"ghost_dark_small";
-    NSString *alternateImageName = @"ghost_color_19";
     NSImage *normalImage = [NSImage imageNamed:imageName];
     [normalImage setTemplate:YES];
-    NSImage *alternateImage = [NSImage imageNamed:alternateImageName];
-    [alternateImage setTemplate:YES];
     
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     statusItem.highlightMode = YES;
     statusItem.image = normalImage;
-    statusItem.alternateImage = alternateImage;
     
     [statusItem.button setAction:@selector(onStatusItemSelected:)];
 }

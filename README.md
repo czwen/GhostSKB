@@ -8,7 +8,7 @@ Mac OS X 10.8 or above
 
 # 下载安装
 
-[GhostSKB in Mac AppStore](https://itunes.apple.com/us/app/ghostskb/id1134384859?l=zh&ls=1&mt=12)
+[GhostSKB in Mac AppStore](https://itunes.apple.com/cn/app/ghostskb/id1134384859)
 
 # 截图
 

@@ -152,7 +152,7 @@
     
     if (targetInputId != NULL) {
 //        [self doChangeInputSource:targetInputId];
-        [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.018];
+        [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.01];
     }
 }
 

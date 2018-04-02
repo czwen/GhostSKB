@@ -48,6 +48,7 @@
     //init app popover
     self.appPopOver = [[NSPopover alloc] init];
     self.appPopOver.behavior = NSPopoverBehaviorTransient;
+    [self toggleDarkMode];
 }
 
 - (void) getAlivibleInputMethods {
@@ -82,7 +83,16 @@
     }
 }
 
-
+- (void)toggleDarkMode {
+    if ([AppDelegate isSystemCurrentDarkMode]) {
+        self.appPopOver.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+        [_tableView setAppearance:[NSAppearance appearanceNamed:NSAppearanceNameVibrantDark]];
+    }
+    else {
+        self.appPopOver.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantLight];
+        [_tableView setAppearance:[NSAppearance appearanceNamed:NSAppearanceNameVibrantLight]];
+    }
+}
 #pragma mark - table view datasource
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {

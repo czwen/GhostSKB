@@ -20,8 +20,12 @@
 @property (nonatomic,strong) NSMutableArray *availableInputMethods;
 @property (nonatomic,strong) NSPopover *appPopOver;
 
+- (void)toggleDarkMode;
+
 - (IBAction)terminateSelf:(id)sender;
 - (IBAction)onSettingPressed:(id)sender;
+@property (weak) IBOutlet NSButton *settingButton;
+@property (weak) IBOutlet NSButton *quitButton;
 
 @property (assign) IBOutlet NSTableView *tableView;
 

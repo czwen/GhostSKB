@@ -16,6 +16,7 @@
 #import <ApplicationServices/ApplicationServices.h>
 @interface AppDelegate ()
 
+-(void)toggleDarkModeTheme;
 
 @end
 
@@ -31,12 +32,15 @@
     [nc addObserver:self selector:@selector(handleAppActivateNoti:) name:NSWorkspaceDidActivateApplicationNotification object:NULL];
     [nc addObserver:self selector:@selector(handleAppUnhideNoti:) name:NSWorkspaceDidUnhideApplicationNotification object:NULL];
     
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(darkModeChanged:) name:@"AppleInterfaceThemeChangedNotification" object:nil];
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleGHAppSelectedNoti:) name:@"GH_APP_SELECTED" object:NULL];
     [GHDefaultManager getInstance];
     
     [self initStatusItem];
     [self initPopover];
+    [self toggleDarkModeTheme];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -45,6 +49,18 @@
 
 - (void)awakeFromNib {
     [imenu setDelegate:self];
+}
+
+
++ (BOOL)isSystemCurrentDarkMode {
+    NSDictionary *globalPersistentDomain = [[NSUserDefaults standardUserDefaults] persistentDomainForName:NSGlobalDomain];
+    @try {
+        NSString *interfaceStyle = [globalPersistentDomain valueForKey:@"AppleInterfaceStyle"];
+        return [interfaceStyle isEqualToString:@"Dark"];
+    }
+    @catch (NSException *exception) {
+        return NO;
+    }
 }
 
 - (void)initPopover {
@@ -64,6 +80,19 @@
     statusItem.image = normalImage;
     
     [statusItem.button setAction:@selector(onStatusItemSelected:)];
+}
+
+-(void)darkModeChanged:(NSNotification *)notif
+{
+    [self toggleDarkModeTheme];
+}
+
+-(void)toggleDarkModeTheme
+{
+    popover.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+    PopoverViewController *controller = (PopoverViewController *)popover.contentViewController;
+    [controller toggleDarkMode];
+
 }
 
 - (void) onStatusItemSelected:(id) sender {

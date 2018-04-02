@@ -24,6 +24,6 @@
 
 @property(strong) GHSettingWindowControler *settingWinCon;
 - (void)showSettingWindow;
-
++ (BOOL)isSystemCurrentDarkMode;
 @end
 

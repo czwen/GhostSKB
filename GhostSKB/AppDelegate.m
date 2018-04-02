@@ -23,11 +23,11 @@
 
 @implementation AppDelegate
 @synthesize settingWinCon;
+@synthesize isBecomeActiveTheFirstTime;
 #pragma mark - App Life Cycle
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-
     NSNotificationCenter *nc = [[NSWorkspace sharedWorkspace] notificationCenter];
     [nc addObserver:self selector:@selector(handleAppActivateNoti:) name:NSWorkspaceDidActivateApplicationNotification object:NULL];
     [nc addObserver:self selector:@selector(handleAppUnhideNoti:) name:NSWorkspaceDidUnhideApplicationNotification object:NULL];
@@ -41,6 +41,18 @@
     [self initStatusItem];
     [self initPopover];
     [self toggleDarkModeTheme];
+    isBecomeActiveTheFirstTime = true;
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+    if (isBecomeActiveTheFirstTime) {
+        isBecomeActiveTheFirstTime = false;
+    }
+    else {
+        //再次点击的时候显示icon
+        [statusItem setVisible:true];
+    }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

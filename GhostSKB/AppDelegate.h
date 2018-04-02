@@ -23,6 +23,7 @@
 }
 
 @property(strong) GHSettingWindowControler *settingWinCon;
+@property BOOL isBecomeActiveTheFirstTime;
 - (void)showSettingWindow;
 + (BOOL)isSystemCurrentDarkMode;
 @end

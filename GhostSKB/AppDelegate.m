@@ -143,7 +143,7 @@
     }
     NSDictionary *property=[NSDictionary dictionaryWithObject:(NSString*)kTISCategoryKeyboardInputSource
                                                       forKey:(NSString*)kTISPropertyInputSourceCategory];
-    CFArrayRef availableInputs = TISCreateInputSourceList((__bridge CFDictionaryRef)property, false);
+    CFArrayRef availableInputs = TISCreateInputSourceList((__bridge CFDictionaryRef)property, FALSE);
     NSUInteger count = CFArrayGetCount(availableInputs);
     
     
@@ -192,8 +192,7 @@
     targetInputId = [[info objectForKey:@"defaultInput"] description];
     
     if (targetInputId != NULL) {
-//        [self doChangeInputSource:targetInputId];
-        [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.01];
+        [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.018];
     }
 }
 

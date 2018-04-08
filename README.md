@@ -6,6 +6,13 @@
 
 Mac OS X 10.8 or above
 
+# 特点
+
+1. 自动根据应用切换输入法
+2. icloud同步配置文件
+3. 支持多个profile
+4. 每个应用的切换延迟时间可变
+
 # 下载安装
 
 [GhostSKB in Mac AppStore](https://itunes.apple.com/cn/app/ghostskb/id1134384859)

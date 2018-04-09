@@ -20,6 +20,8 @@
     CGSize originSize = self.view.bounds.size;
     CGPoint origin = self.view.bounds.origin;
     self.view.bounds = NSMakeRect(origin.x, origin.y+30, originSize.width, originSize.height);
+//    self.view.constraints
+//    self.tabView
 }
 
 @end

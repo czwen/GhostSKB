@@ -17,9 +17,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    CGSize originSize = self.view.bounds.size;
-    CGPoint origin = self.view.bounds.origin;
-//    self.view.bounds = NSMakeRect(origin.x, origin.y, originSize.width-40, originSize.height-40);
+    
+    //hide header view of tables
+    //these two tables have the same delegate and datasource : self
+    self.profileList.headerView = NULL;
+    self.profileConfigList.headerView = NULL;
 }
+
+#pragma mark - table view datasource
+
+-(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    NSLog(@"identifiler:%@", tableView.identifier);
+    if ([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_LIST]) {
+        return 1;
+    }
+    else if ([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_CONFIG_LIST]) {
+        return 2;
+    }
+    return 0;
+}
+
+//// for view-based tableview
+//-(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+//
+//}
+
+
 
 @end

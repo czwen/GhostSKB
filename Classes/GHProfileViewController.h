@@ -7,7 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#define TBL_IDENTIFIER_PROFILE_LIST @"profileList"
+#define TBL_IDENTIFIER_PROFILE_CONFIG_LIST @"profileConfigList"
 
-@interface GHProfileViewController : NSViewController
+@interface GHProfileViewController : NSViewController<NSTableViewDelegate,NSTableViewDataSource>
+@property (weak) IBOutlet NSTableView *profileList;
+@property (weak) IBOutlet NSTableView *profileConfigList;
 
 @end

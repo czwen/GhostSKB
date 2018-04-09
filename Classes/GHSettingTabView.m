@@ -20,11 +20,7 @@ const double kRadius = 8.f;
     // actual colours - but just transparent. So we hardcode something here for now.
     //
     if (backgroundColor == nil) {
-        self.backgroundColor = [NSColor colorWithDeviceRed:236.f/255
-                                                     green:236.f/255
-                                                      blue:236.f/255
-                                                     alpha:1];
-//        self.backgroundColor = [NSColor redColor];
+        self.backgroundColor = [NSColor colorWithDeviceRed:236.f/255 green:236.f/255 blue:236.f/255 alpha:1];
     }
     
     if (windowBackgroundColor == nil) {
@@ -52,7 +48,7 @@ const double kRadius = 8.f;
 
 
 - (void)drawRect:(NSRect)dirtyRect {
-    
+//    [super drawRect:dirtyRect];
     NSGraphicsContext * nsGraphicsContext = [NSGraphicsContext currentContext];
     CGContextRef ctx = (CGContextRef) [nsGraphicsContext graphicsPort];
     
@@ -71,8 +67,8 @@ const double kRadius = 8.f;
     // around the shadow cast by the bar itself.
     //
     const double S = kSegHeight / 2;
-//    inside.origin.x += S/2;
-//    inside.origin.y += S/2 + 2.0;
+    inside.origin.x += S/2;
+    inside.origin.y += S/2 + 2.0;
     inside.size.width -= S;
     inside.size.height -= 70;
     
@@ -98,13 +94,15 @@ const double kRadius = 8.f;
     // the bezel shining through. We also acknowledge that
     // it has round edges here.
     //
-//    CGRect barFrame =  segmentedControl.frame;
+    
+    NSTabViewItem *item = self.selectedTabViewItem;
+    CGRect barFrame = CGRectMake(0, item.view.frame.origin.y, self.frame.size.width, self.frame.size.height);
 //    barFrame.origin.x += 2.0;
-//    barFrame.origin.y += 2.0;
-//    barFrame.size.width -= 4.0;
-//    barFrame.size.height -= 5.0;
-//    CGPathRef barPath = [self newPathForRoundedRect:barFrame radius:2.0];
-//    CGContextAddPath(ctx, barPath); CGContextClosePath(ctx);
+    barFrame.origin.y -= 20.0;
+    barFrame.size.width -= 4.0;
+    barFrame.size.height -= 5.0;
+    CGPathRef barPath = [self newPathForRoundedRect:barFrame radius:2.0];
+    CGContextAddPath(ctx, barPath); CGContextClosePath(ctx);
     CGContextFillPath(ctx);
     
     // Remove shadow again - and draw a very thin outline around it all.
@@ -124,7 +122,7 @@ const double kRadius = 8.f;
     CGPathRelease(roundedRectPath);
 //    CGPathRelease(barPath);
     
-    [super drawRect:dirtyRect];
+    
     
     // Drawing code here.
 }

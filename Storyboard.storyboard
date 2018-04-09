@@ -21,7 +21,7 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="3Rg-6e-N5K" kind="relationship" relationship="window.shadowedContentViewController" id="fRX-aM-yZg"/>
+                        <segue destination="luk-OQ-of6" kind="relationship" relationship="window.shadowedContentViewController" id="XYg-Jy-N35"/>
                     </connections>
                 </windowController>
                 <customObject id="3bi-yl-sxb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -36,7 +36,7 @@
                         <tabViewItem identifier="" id="Wgm-E8-wPZ"/>
                         <tabViewItem identifier="" id="TOt-e5-Mwe"/>
                     </tabViewItems>
-                    <tabView key="tabView" type="noTabsBezelBorder" id="YJY-4M-ZI7">
+                    <tabView key="tabView" type="noTabsBezelBorder" id="YJY-4M-ZI7" customClass="GHSettingTabView">
                         <rect key="frame" x="0.0" y="0.0" width="469" height="338"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="system"/>

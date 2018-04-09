@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZTj-V6-hp3">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="rXC-Sf-FK3">
+            <objects>
+                <windowController id="ZTj-V6-hp3" customClass="GHSettingWindowControler" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="WNe-5K-rXM">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="ZTj-V6-hp3" id="dah-4c-kC1"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="luk-OQ-of6" kind="relationship" relationship="window.shadowedContentViewController" id="4Vo-yG-xKa"/>
+                    </connections>
+                </windowController>
+                <customObject id="3bi-yl-sxb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-901" y="-209"/>
+        </scene>
+        <!--Setting Tab View Controller-->
+        <scene sceneID="xgS-vR-88o">
+            <objects>
+                <tabViewController selectedTabViewItemIndex="0" id="luk-OQ-of6" customClass="GHSettingTabViewController" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="Wgm-E8-wPZ"/>
+                        <tabViewItem identifier="" id="TOt-e5-Mwe"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsBezelBorder" id="YJY-4M-ZI7">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="luk-OQ-of6" id="UbC-z8-sub"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="YJY-4M-ZI7" id="iIy-Z8-bBT"/>
+                        <segue destination="Q6c-W7-Wwe" kind="relationship" relationship="tabItems" id="5zQ-0F-Ok8"/>
+                        <segue destination="Iuq-xJ-IWX" kind="relationship" relationship="tabItems" id="Q1T-Dz-fuX"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="ySU-PW-mSb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-697" y="338"/>
+        </scene>
+        <!--Profiles-->
+        <scene sceneID="cCc-X8-6vs">
+            <objects>
+                <viewController title="Profiles" id="Q6c-W7-Wwe" customClass="GHProfileViewController" sceneMemberID="viewController">
+                    <view key="view" id="vnn-s1-Lo7">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box fixedFrame="YES" boxType="custom" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="cFf-Sk-O1Y">
+                                <rect key="frame" x="79" y="75" width="242" height="162"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" ambiguous="YES" id="hlU-jU-kls">
+                                    <rect key="frame" x="1" y="1" width="240" height="160"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="fillColor" red="0.35019367626515824" green="0.85903092616580312" blue="0.13733198293217977" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </box>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FE2-j1-Rvt">
+                                <rect key="frame" x="138" y="256" width="99" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="qBk-x4-7M2">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Item 1</string>
+                                        <string>Item 2</string>
+                                        <string>Item 3</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="950-GU-OU1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="620"/>
+        </scene>
+        <!--Info-->
+        <scene sceneID="Xk7-Si-17Q">
+            <objects>
+                <viewController title="Info" id="Iuq-xJ-IWX" customClass="GHInfoViewController" sceneMemberID="viewController">
+                    <view key="view" id="MNm-EX-wVV">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="UUW-KV-1hH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="209"/>
+        </scene>
+    </scenes>
+</document>

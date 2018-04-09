@@ -18,9 +18,13 @@
 		DE1B71C91D2C082F00A85EE0 /* GHInputDefaultCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71BF1D2C082F00A85EE0 /* GHInputDefaultCellView.m */; };
 		DE1B71CA1D2C082F00A85EE0 /* PopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71C11D2C082F00A85EE0 /* PopoverViewController.m */; };
 		DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */; };
+		DE204265207A12E800DB3661 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE204264207A12E800DB3661 /* Storyboard.storyboard */; };
 		DE2272BF1D41191A00CD6A5C /* GHSettingWindowControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2272C11D41191A00CD6A5C /* GHSettingWindowControler.xib */; };
 		DE2272C21D41191F00CD6A5C /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2272C41D41191F00CD6A5C /* PopoverViewController.xib */; };
 		DE25403F1F141DA50093EEB2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE25403D1F141DA50093EEB2 /* Localizable.strings */; };
+		DE39697B207B020C00376496 /* GHSettingTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE39697A207B020C00376496 /* GHSettingTabViewController.m */; };
+		DE396981207B061C00376496 /* GHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE396980207B061C00376496 /* GHInfoViewController.m */; };
+		DE396984207B064500376496 /* GHProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE396983207B064400376496 /* GHProfileViewController.m */; };
 		DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */; };
 		DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */; };
 		DE6634851CB21552009EE247 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6634841CB21552009EE247 /* AppDelegate.m */; };
@@ -72,12 +76,19 @@
 		DE1B71C41D2C082F00A85EE0 /* GHDefaultInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHDefaultInfo.h; path = Classes/GHDefaultInfo.h; sourceTree = "<group>"; };
 		DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHDefaultInfo.m; path = Classes/GHDefaultInfo.m; sourceTree = "<group>"; };
 		DE1B71C61D2C082F00A85EE0 /* GHDefaultManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHDefaultManager.h; path = Classes/GHDefaultManager.h; sourceTree = "<group>"; };
+		DE204264207A12E800DB3661 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		DE2272C01D41191A00CD6A5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GHSettingWindowControler.xib; sourceTree = "<group>"; };
 		DE2272C31D41191F00CD6A5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PopoverViewController.xib; sourceTree = "<group>"; };
 		DE2272C81D41193400CD6A5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PopoverViewController.strings; sourceTree = "<group>"; };
 		DE2272CA1D41198B00CD6A5C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PopoverViewController.strings"; sourceTree = "<group>"; };
 		DE25403E1F141DA50093EEB2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = GhostSKB/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE2540401F141DD70093EEB2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "GhostSKB/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		DE396979207B020C00376496 /* GHSettingTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHSettingTabViewController.h; path = Classes/GHSettingTabViewController.h; sourceTree = "<group>"; };
+		DE39697A207B020C00376496 /* GHSettingTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHSettingTabViewController.m; path = Classes/GHSettingTabViewController.m; sourceTree = "<group>"; };
+		DE39697F207B061C00376496 /* GHInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHInfoViewController.h; path = Classes/GHInfoViewController.h; sourceTree = "<group>"; };
+		DE396980207B061C00376496 /* GHInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHInfoViewController.m; path = Classes/GHInfoViewController.m; sourceTree = "<group>"; };
+		DE396982207B064400376496 /* GHProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHProfileViewController.h; path = Classes/GHProfileViewController.h; sourceTree = "<group>"; };
+		DE396983207B064400376496 /* GHProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHProfileViewController.m; path = Classes/GHProfileViewController.m; sourceTree = "<group>"; };
 		DE53E5181D375BC2003D6E72 /* GhostSKB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GhostSKB.entitlements; sourceTree = "<group>"; };
 		DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-64.png"; path = "Resources/ghostkbd-64.png"; sourceTree = "<group>"; };
 		DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-1024.png"; path = "Resources/ghostkbd-1024.png"; sourceTree = "<group>"; };
@@ -157,10 +168,17 @@
 			isa = PBXGroup;
 			children = (
 				DE2272C11D41191A00CD6A5C /* GHSettingWindowControler.xib */,
+				DE204264207A12E800DB3661 /* Storyboard.storyboard */,
 				DE2272C41D41191F00CD6A5C /* PopoverViewController.xib */,
 				DE25403D1F141DA50093EEB2 /* Localizable.strings */,
 				DE7CE1221D3A906A0054EC41 /* GHSettingWindowControler.h */,
 				DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */,
+				DE396979207B020C00376496 /* GHSettingTabViewController.h */,
+				DE39697A207B020C00376496 /* GHSettingTabViewController.m */,
+				DE396982207B064400376496 /* GHProfileViewController.h */,
+				DE396983207B064400376496 /* GHProfileViewController.m */,
+				DE39697F207B061C00376496 /* GHInfoViewController.h */,
+				DE396980207B061C00376496 /* GHInfoViewController.m */,
 				DEEAE12F1D3363D6005893F5 /* Constant.h */,
 				DE1B71BC1D2C082F00A85EE0 /* GHInputAddDefaultCellView.h */,
 				DE1B71BD1D2C082F00A85EE0 /* GHInputAddDefaultCellView.m */,
@@ -327,6 +345,7 @@
 				DE2272C21D41191F00CD6A5C /* PopoverViewController.xib in Resources */,
 				DE7CE1211D3A88780054EC41 /* quit.png in Resources */,
 				DE1B71B41D2C081B00A85EE0 /* ghostkbd-128.png in Resources */,
+				DE204265207A12E800DB3661 /* Storyboard.storyboard in Resources */,
 				DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */,
 				DE8D104A1F72862F00718AD0 /* ghost_dark_small@2x.png in Resources */,
 				DE1B71B11D2C081B00A85EE0 /* info.png in Resources */,
@@ -368,12 +387,15 @@
 			files = (
 				DE1B71CA1D2C082F00A85EE0 /* PopoverViewController.m in Sources */,
 				DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */,
+				DE39697B207B020C00376496 /* GHSettingTabViewController.m in Sources */,
 				DE6634881CB21552009EE247 /* main.m in Sources */,
 				DE1B71C71D2C082F00A85EE0 /* GHDefaultManager.m in Sources */,
 				DE1B71C91D2C082F00A85EE0 /* GHInputDefaultCellView.m in Sources */,
 				DE7CE1251D3A906A0054EC41 /* GHSettingWindowControler.m in Sources */,
+				DE396984207B064500376496 /* GHProfileViewController.m in Sources */,
 				DE1B71C81D2C082F00A85EE0 /* GHInputAddDefaultCellView.m in Sources */,
 				DE6634851CB21552009EE247 /* AppDelegate.m in Sources */,
+				DE396981207B061C00376496 /* GHInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

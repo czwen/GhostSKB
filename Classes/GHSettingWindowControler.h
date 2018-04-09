@@ -9,6 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface GHSettingWindowControler : NSWindowController
-- (IBAction)gotoGithub:(id)sender;
-@property (weak) IBOutlet NSTextField *version;
+
 @end

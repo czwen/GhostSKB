@@ -212,12 +212,14 @@
 }
 
 - (void)showSettingWindow {
-    if (self.settingWinCon == NULL) {
-        self.settingWinCon = [[GHSettingWindowControler alloc] init];
-    }
-    
-    [self.settingWinCon showWindow:NULL];
-
+//    if (self.settingWinCon == NULL) {
+//        self.settingWinCon = [[GHSettingWindowControler alloc] init];
+//    }
+//
+//    [self.settingWinCon showWindow:NULL];
+    NSStoryboard *board = [NSStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    NSWindowController *controller = [board instantiateInitialController];
+    [controller showWindow:nil];
 }
 
 

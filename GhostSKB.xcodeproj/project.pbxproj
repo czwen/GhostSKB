@@ -176,10 +176,7 @@
 		DE6634771CB21551009EE247 = {
 			isa = PBXGroup;
 			children = (
-				DEE204FD207B42E6009627BB /* NSColor+Extensions.h */,
-				DEE204FC207B42E6009627BB /* NSColor+Extensions.m */,
-				DEE204FB207B42E6009627BB /* NSView+MyCategory.h */,
-				DEE204FE207B42E6009627BB /* NSView+MyCategory.m */,
+				DEE20504207B85F3009627BB /* Categories */,
 				DEE204F8207B3DFB009627BB /* GHSettingTabView.h */,
 				DEE204F9207B3DFB009627BB /* GHSettingTabView.m */,
 				DE2272C11D41191A00CD6A5C /* GHSettingWindowControler.xib */,
@@ -243,6 +240,17 @@
 				DE6634871CB21552009EE247 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DEE20504207B85F3009627BB /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				DEE204FD207B42E6009627BB /* NSColor+Extensions.h */,
+				DEE204FC207B42E6009627BB /* NSColor+Extensions.m */,
+				DEE204FB207B42E6009627BB /* NSView+MyCategory.h */,
+				DEE204FE207B42E6009627BB /* NSView+MyCategory.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

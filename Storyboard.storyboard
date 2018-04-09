@@ -14,50 +14,24 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="WNe-5K-rXM">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="contentRect" x="294" y="313" width="483" height="304"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                         <connections>
                             <outlet property="delegate" destination="ZTj-V6-hp3" id="dah-4c-kC1"/>
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="luk-OQ-of6" kind="relationship" relationship="window.shadowedContentViewController" id="XYg-Jy-N35"/>
+                        <segue destination="3Rg-6e-N5K" kind="relationship" relationship="window.shadowedContentViewController" id="EoH-u7-Xaa"/>
                     </connections>
                 </windowController>
                 <customObject id="3bi-yl-sxb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-901" y="-209"/>
-        </scene>
-        <!--Setting Tab View Controller-->
-        <scene sceneID="xgS-vR-88o">
-            <objects>
-                <tabViewController selectedTabViewItemIndex="0" id="luk-OQ-of6" customClass="GHSettingTabViewController" sceneMemberID="viewController">
-                    <tabViewItems>
-                        <tabViewItem identifier="" id="Wgm-E8-wPZ"/>
-                        <tabViewItem identifier="" id="TOt-e5-Mwe"/>
-                    </tabViewItems>
-                    <tabView key="tabView" type="noTabsBezelBorder" id="YJY-4M-ZI7" customClass="GHSettingTabView">
-                        <rect key="frame" x="0.0" y="0.0" width="469" height="338"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="system"/>
-                        <connections>
-                            <outlet property="delegate" destination="luk-OQ-of6" id="UbC-z8-sub"/>
-                        </connections>
-                    </tabView>
-                    <connections>
-                        <outlet property="tabView" destination="YJY-4M-ZI7" id="iIy-Z8-bBT"/>
-                        <segue destination="Q6c-W7-Wwe" kind="relationship" relationship="tabItems" id="5zQ-0F-Ok8"/>
-                        <segue destination="Iuq-xJ-IWX" kind="relationship" relationship="tabItems" id="Q1T-Dz-fuX"/>
-                    </connections>
-                </tabViewController>
-                <customObject id="ySU-PW-mSb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-697" y="357"/>
+            <point key="canvasLocation" x="-962.5" y="-100"/>
         </scene>
         <!--Profiles-->
         <scene sceneID="cCc-X8-6vs">
             <objects>
-                <viewController title="Profiles" id="Q6c-W7-Wwe" customClass="GHProfileViewController" sceneMemberID="viewController">
+                <viewController title="Profiles" storyboardIdentifier="ProfileViewController" id="Q6c-W7-Wwe" customClass="GHProfileViewController" sceneMemberID="viewController">
                     <view key="view" id="vnn-s1-Lo7">
                         <rect key="frame" x="0.0" y="0.0" width="490" height="262"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -96,12 +70,12 @@
                 </viewController>
                 <customObject id="950-GU-OU1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-78" y="601"/>
+            <point key="canvasLocation" x="260" y="55"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting Tab View Controller-->
         <scene sceneID="eQT-pe-57f">
             <objects>
-                <viewController id="3Rg-6e-N5K" sceneMemberID="viewController">
+                <viewController id="3Rg-6e-N5K" customClass="GHSettingTabViewController" sceneMemberID="viewController">
                     <view key="view" id="qTK-NL-xe8">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -111,39 +85,58 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
-                                    <tabViewItem label="Tab" identifier="" id="9Vi-Wm-CZQ">
+                                    <tabViewItem label="Profiles" identifier="" id="9Vi-Wm-CZQ">
                                         <view key="view" ambiguous="YES" id="jha-Jx-81N">
                                             <rect key="frame" x="10" y="33" width="404" height="215"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                     </tabViewItem>
-                                    <tabViewItem label="View" identifier="" id="8Xs-dA-Wtc">
+                                    <tabViewItem label="Info" identifier="" id="8Xs-dA-Wtc">
                                         <view key="view" id="r94-Y7-3i1">
                                             <rect key="frame" x="10" y="33" width="404" height="215"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                     </tabViewItem>
                                 </tabViewItems>
+                                <connections>
+                                    <outlet property="delegate" destination="3Rg-6e-N5K" id="Tm0-gT-8BP"/>
+                                </connections>
                             </tabView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="tabView" destination="1GH-xY-88L" id="w5J-NN-6k6"/>
+                    </connections>
                 </viewController>
                 <customObject id="DKr-JQ-o0U" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-286" y="-206"/>
+            <point key="canvasLocation" x="-374" y="-102"/>
         </scene>
         <!--Info-->
         <scene sceneID="Xk7-Si-17Q">
             <objects>
-                <viewController title="Info" id="Iuq-xJ-IWX" customClass="GHInfoViewController" sceneMemberID="viewController">
+                <viewController title="Info" storyboardIdentifier="InfoViewController" id="Iuq-xJ-IWX" customClass="GHInfoViewController" sceneMemberID="viewController">
                     <view key="view" id="MNm-EX-wVV">
-                        <rect key="frame" x="0.0" y="0.0" width="328" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oWB-VM-HAS">
+                                <rect key="frame" x="185" y="154" width="13" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3mC-2e-nIl">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
                     </view>
                 </viewController>
                 <customObject id="UUW-KV-1hH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="209"/>
+            <point key="canvasLocation" x="180" y="-316"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+    </resources>
 </document>

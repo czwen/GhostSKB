@@ -7,7 +7,7 @@
 //
 
 #import "GHSettingTabViewController.h"
-
+#import "GHProfileViewController.h"
 @interface GHSettingTabViewController ()
 
 @end
@@ -17,11 +17,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    CGSize originSize = self.view.bounds.size;
-    CGPoint origin = self.view.bounds.origin;
-    self.view.bounds = NSMakeRect(origin.x, origin.y+30, originSize.width, originSize.height);
-//    self.view.constraints
-//    self.tabView
+    NSArray *tabControllers = [NSArray arrayWithObjects:@"ProfileViewController", @"InfoViewController", nil];
+    NSStoryboard *board = [NSStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+
+    NSArray *items = self.tabView.tabViewItems;
+    for (int i=0; i< [items count]; i++) {
+        NSTabViewItem *item = [items objectAtIndex:i];
+        NSString *identifier = [tabControllers objectAtIndex:i];
+        NSViewController *controller = [board instantiateControllerWithIdentifier:identifier];
+        [item setView:controller.view];
+    }
 }
 
 @end

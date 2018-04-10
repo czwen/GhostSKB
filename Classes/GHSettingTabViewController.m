@@ -14,19 +14,13 @@
 
 @implementation GHSettingTabViewController
 
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    NSArray *tabControllers = [NSArray arrayWithObjects:@"ProfileViewController", @"InfoViewController", nil];
-    NSStoryboard *board = [NSStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-
-    NSArray *items = self.tabView.tabViewItems;
-    for (int i=0; i< [items count]; i++) {
-        NSTabViewItem *item = [items objectAtIndex:i];
-        NSString *identifier = [tabControllers objectAtIndex:i];
-        NSViewController *controller = [board instantiateControllerWithIdentifier:identifier];
-        [item setView:controller.view];
-    }
 }
 
 @end

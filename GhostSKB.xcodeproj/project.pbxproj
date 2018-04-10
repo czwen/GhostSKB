@@ -38,6 +38,8 @@
 		DE7CE1281D3B094A0054EC41 /* arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7CE1271D3B094A0054EC41 /* arrow-right.png */; };
 		DE8D10491F72862F00718AD0 /* ghost_dark_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8D10471F72862F00718AD0 /* ghost_dark_small.png */; };
 		DE8D104A1F72862F00718AD0 /* ghost_dark_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8D10481F72862F00718AD0 /* ghost_dark_small@2x.png */; };
+		DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B5207C564A00D682D8 /* GHProfileCellView.m */; };
+		DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */; };
 		DEDE04091F1B1D2D005F9D70 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEDE040B1F1B1D2D005F9D70 /* InfoPlist.strings */; };
 		DEE204FA207B3DFB009627BB /* GHSettingTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE204F9207B3DFB009627BB /* GHSettingTabView.m */; };
 		DEE204FF207B42E6009627BB /* NSColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE204FC207B42E6009627BB /* NSColor+Extensions.m */; };
@@ -112,6 +114,10 @@
 		DE7CE1271D3B094A0054EC41 /* arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-right.png"; path = "Resources/arrow-right.png"; sourceTree = "<group>"; };
 		DE8D10471F72862F00718AD0 /* ghost_dark_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ghost_dark_small.png; path = Resources/ghost_dark_small.png; sourceTree = "<group>"; };
 		DE8D10481F72862F00718AD0 /* ghost_dark_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghost_dark_small@2x.png"; path = "Resources/ghost_dark_small@2x.png"; sourceTree = "<group>"; };
+		DEA777B4207C564A00D682D8 /* GHProfileCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileCellView.h; path = Classes/GHProfileCellView.h; sourceTree = "<group>"; };
+		DEA777B5207C564A00D682D8 /* GHProfileCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileCellView.m; path = Classes/GHProfileCellView.m; sourceTree = "<group>"; };
+		DEA777B7207C566F00D682D8 /* GHProfileContentCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileContentCellView.h; path = Classes/GHProfileContentCellView.h; sourceTree = "<group>"; };
+		DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileContentCellView.m; path = Classes/GHProfileContentCellView.m; sourceTree = "<group>"; };
 		DEDE040A1F1B1D2D005F9D70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DEDE040C1F1B1D2D005F9D70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		DEDE040E1F1B1D58005F9D70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/GHSettingWindowControler.strings; sourceTree = "<group>"; };
@@ -176,6 +182,7 @@
 		DE6634771CB21551009EE247 = {
 			isa = PBXGroup;
 			children = (
+				DEA777B3207C561200D682D8 /* TableCellViews */,
 				DEE20504207B85F3009627BB /* Categories */,
 				DEE204F8207B3DFB009627BB /* GHSettingTabView.h */,
 				DEE204F9207B3DFB009627BB /* GHSettingTabView.m */,
@@ -192,10 +199,6 @@
 				DE39697F207B061C00376496 /* GHInfoViewController.h */,
 				DE396980207B061C00376496 /* GHInfoViewController.m */,
 				DEEAE12F1D3363D6005893F5 /* Constant.h */,
-				DE1B71BC1D2C082F00A85EE0 /* GHInputAddDefaultCellView.h */,
-				DE1B71BD1D2C082F00A85EE0 /* GHInputAddDefaultCellView.m */,
-				DE1B71BE1D2C082F00A85EE0 /* GHInputDefaultCellView.h */,
-				DE1B71BF1D2C082F00A85EE0 /* GHInputDefaultCellView.m */,
 				DE1B71C01D2C082F00A85EE0 /* PopoverViewController.h */,
 				DE1B71C11D2C082F00A85EE0 /* PopoverViewController.m */,
 				DE1B71C41D2C082F00A85EE0 /* GHDefaultInfo.h */,
@@ -240,6 +243,21 @@
 				DE6634871CB21552009EE247 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DEA777B3207C561200D682D8 /* TableCellViews */ = {
+			isa = PBXGroup;
+			children = (
+				DE1B71BC1D2C082F00A85EE0 /* GHInputAddDefaultCellView.h */,
+				DE1B71BD1D2C082F00A85EE0 /* GHInputAddDefaultCellView.m */,
+				DE1B71BE1D2C082F00A85EE0 /* GHInputDefaultCellView.h */,
+				DE1B71BF1D2C082F00A85EE0 /* GHInputDefaultCellView.m */,
+				DEA777B4207C564A00D682D8 /* GHProfileCellView.h */,
+				DEA777B5207C564A00D682D8 /* GHProfileCellView.m */,
+				DEA777B7207C566F00D682D8 /* GHProfileContentCellView.h */,
+				DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */,
+			);
+			name = TableCellViews;
 			sourceTree = "<group>";
 		};
 		DEE20504207B85F3009627BB /* Categories */ = {
@@ -419,8 +437,10 @@
 				DE7CE1251D3A906A0054EC41 /* GHSettingWindowControler.m in Sources */,
 				DEE204FF207B42E6009627BB /* NSColor+Extensions.m in Sources */,
 				DE396984207B064500376496 /* GHProfileViewController.m in Sources */,
+				DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */,
 				DE1B71C81D2C082F00A85EE0 /* GHInputAddDefaultCellView.m in Sources */,
 				DE6634851CB21552009EE247 /* AppDelegate.m in Sources */,
+				DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */,
 				DE396981207B061C00376496 /* GHInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

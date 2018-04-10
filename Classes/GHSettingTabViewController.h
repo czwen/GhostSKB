@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface GHSettingTabViewController : NSViewController<NSTabViewDelegate>
-
-@property (weak) IBOutlet NSTabView *tabView;
+@interface GHSettingTabViewController : NSTabViewController
 
 @end

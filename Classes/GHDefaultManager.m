@@ -20,6 +20,7 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     }
     
     NSUserDefaults *nc = [NSUserDefaults standardUserDefaults];
+    [self tryConvertPrefrences];
     return self;
 }
 
@@ -40,6 +41,32 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 //        }
 //    }
     return sharedGHDefaultManager;
+}
+
+- (NSMutableArray *)getProfileInputConfig:(NSString *)profileName {
+    NSDictionary *dict = [self getDefaultKeyBoardsDict];
+    NSDictionary *profilesDict = (NSDictionary *)[dict objectForKey:@"profiles"];
+    NSDictionary *dictOfProfile = (NSDictionary *)[profilesDict objectForKey:profileName];
+    NSDictionary *configDict = [dictOfProfile objectForKey:@"config"];
+    NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    if(configDict == NULL) {
+        return arr;
+    }
+    
+    [configDict enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
+        GHDefaultInfo *info = [[GHDefaultInfo alloc] initWithAppBundle:[object objectForKey:@"appBundleId"]
+                                                                appUrl:[[object objectForKey:@"appUrl"] description]
+                                                                 input:[object objectForKey:@"defaultInput"]];
+        [arr addObject:info];
+    }];
+    [arr sortUsingComparator:^NSComparisonResult(id  _Nonnull a, id  _Nonnull b) {
+        GHDefaultInfo *aInfo = (GHDefaultInfo *)a;
+        GHDefaultInfo *bInfo = (GHDefaultInfo *)b;
+        return [aInfo.appBundleId compare:bInfo.appBundleId];
+    }];
+    return arr;
+
 }
 
 - (NSMutableArray *)getDefaultKeyBoards {
@@ -88,8 +115,67 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 - (NSString *)getDefaultPrefrenceKey {
-    NSString *key = [NSString stringWithFormat:@"gh_default_keyboards_%@", GH_DATA_VERSION];
+    return [self getPrefrenceKeyByVersion:GH_DATA_VERSION];
+}
+
+- (NSString *)getPrefrenceKeyByVersion: (NSString *)version {
+    NSString *key = [NSString stringWithFormat:@"%@%@", GH_DATA_KEY_FORMAT, version];
     return key;
 }
+
+//convert versions from low version to high version
+- (void)tryConvertPrefrences {
+    NSInteger currentVersion = [GH_DATA_VERSION integerValue];
+    NSInteger minVersion = 1;
+    NSInteger currentMinVersion = 0;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    for (NSInteger i=minVersion; i<currentVersion; i++) {
+        currentMinVersion = i+1;
+        NSString *key = [self getPrefrenceKeyByVersion:[@(currentMinVersion) stringValue]];
+        NSDictionary *dict = [defaults dictionaryForKey:key];
+//        [defaults removeObjectForKey:key];
+//        [defaults synchronize];
+        if (dict == NULL) {
+            SEL selector = NSSelectorFromString([NSString stringWithFormat:@"convert_%ld_to_%ld", i, currentMinVersion]);
+            if (selector != NULL && [self respondsToSelector:selector]) {
+                [self performSelector:selector];
+            }
+        }
+        else {
+            for (NSString *key in dict) {
+                NSLog(@"key %@", key);
+            }
+        }
+    }
+}
+
+- (void)convert_1_to_2 {
+    NSLog(@"convert ---");
+    NSInteger from = 1;
+    NSInteger to = 2;
+    NSString *fromKey = [self getPrefrenceKeyByVersion:[@(from) stringValue]];
+    NSString *toKey = [self getPrefrenceKeyByVersion:[@(to) stringValue]];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dict = [defaults dictionaryForKey:fromKey];
+    NSDictionary *configDict = [NSDictionary dictionaryWithObjectsAndKeys:dict, @"config", nil];
+    NSDictionary *profilesDict = [NSDictionary dictionaryWithObjectsAndKeys:configDict, @"default", nil];
+    NSDictionary *newDict = [NSDictionary dictionaryWithObjectsAndKeys:profilesDict, @"profiles", @"default", @"currentProfile", nil];
+
+    [defaults setObject:newDict forKey:toKey];
+    [defaults synchronize];
+}
+
+- (NSArray *)getProfileList {
+    NSString *key = [self getDefaultPrefrenceKey];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dict = [defaults dictionaryForKey:key];
+    NSDictionary *profilesDict = (NSDictionary *)[dict objectForKey:@"profiles"];
+    if(profilesDict == NULL) {
+        return NULL;
+    }
+    return [profilesDict allKeys];
+}
+
 
 @end

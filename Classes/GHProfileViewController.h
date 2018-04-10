@@ -24,5 +24,6 @@
 
 
 @property (strong) NSArray *profiles;
+@property (strong) NSMutableDictionary *profileConfigs;
 
 @end

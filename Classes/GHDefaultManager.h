@@ -20,5 +20,7 @@
 - (NSDictionary *)getDefaultKeyBoardsDict;
 - (void)removeAppInputDefault:(NSString *)appBundleId;
 - (NSString *)getDefaultPrefrenceKey;
+- (NSArray *)getProfileList;
+- (NSMutableArray *)getProfileInputConfig:(NSString *)profileName;
 
 @end

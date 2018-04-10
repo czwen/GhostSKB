@@ -289,7 +289,7 @@
 
 - (IBAction)onSettingPressed:(id)sender {
     AppDelegate *delegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
-    [delegate showSettingWindow];
+//    [delegate showSettingWindow];
 }
 
 - (BOOL) isAppDuplicated: (NSString *)bundleId{

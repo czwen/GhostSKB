@@ -9,9 +9,10 @@
 #import <Cocoa/Cocoa.h>
 
 @interface GHProfileContentCellView : NSTableCellView
+@property(nonatomic, assign) NSInteger row;
 
-@property (weak) IBOutlet NSButton *appButton;
-@property (weak) IBOutlet NSTextField *appName;
-@property (weak) IBOutlet NSPopUpButton *inputMethodsPopButton;
+@property (retain) IBOutlet NSButton *appButton;
+@property (retain) IBOutlet NSTextField *appName;
+@property (retain) IBOutlet NSPopUpButton *inputMethodsPopButton;
 
 @end

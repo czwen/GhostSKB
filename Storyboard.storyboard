@@ -114,13 +114,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCq-5E-cUy">
-                                <rect key="frame" x="190" y="45" width="490" height="418"/>
+                                <rect key="frame" x="190" y="42" width="490" height="421"/>
                                 <clipView key="contentView" id="NwN-Dj-Mm3">
-                                    <rect key="frame" x="1" y="0.0" width="488" height="417"/>
+                                    <rect key="frame" x="1" y="0.0" width="488" height="420"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView identifier="profileDetailTable" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" headerView="0mU-e1-qYY" viewBased="YES" id="3De-TF-vt9">
-                                            <rect key="frame" x="0.0" y="0.0" width="488" height="394"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="488" height="397"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -359,7 +359,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="rCq-5E-cUy" firstAttribute="top" secondItem="5cc-lF-SUE" secondAttribute="top" constant="20" id="7vF-op-ZmK"/>
-                            <constraint firstAttribute="bottom" secondItem="rCq-5E-cUy" secondAttribute="bottom" constant="45" id="ELV-YS-cz4"/>
+                            <constraint firstAttribute="bottom" secondItem="rCq-5E-cUy" secondAttribute="bottom" constant="42" id="ELV-YS-cz4"/>
                             <constraint firstItem="rCq-5E-cUy" firstAttribute="leading" secondItem="5cc-lF-SUE" secondAttribute="leading" constant="190" id="HNP-BA-5QM"/>
                             <constraint firstItem="rCq-5E-cUy" firstAttribute="leading" secondItem="Lv6-JP-wE2" secondAttribute="trailing" constant="8" id="I4N-kW-DA5"/>
                             <constraint firstItem="rCq-5E-cUy" firstAttribute="leading" secondItem="Lv6-JP-wE2" secondAttribute="trailing" constant="8" id="NCF-D9-Ie7"/>

@@ -60,4 +60,15 @@
     return NULL;
 }
 
+- (IBAction)addNewProfile:(id)sender {
+    NSLog(@"addNewProfile");
+}
+
+- (IBAction)removeProfile:(id)sender {
+    NSLog(@"removeProfile");
+}
+
+- (IBAction)profileAdvanceAction:(id)sender {
+    NSLog(@"profileAdvanceAction");
+}
 @end

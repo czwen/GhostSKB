@@ -195,7 +195,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="6gR-Dk-ybn">
-                                    <rect key="frame" x="1" y="118" width="478" height="16"/>
+                                    <rect key="frame" x="1" y="7" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="ILE-3N-zG4">
@@ -221,6 +221,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="addNewProfile:" target="v4h-vN-eCv" id="R7B-as-XkV"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X7D-b6-1hM">
                                             <rect key="frame" x="28" y="-2" width="29" height="30"/>
@@ -229,6 +232,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="removeProfile:" target="v4h-vN-eCv" id="Sjg-zT-rBQ"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXE-3k-V9S">
                                             <rect key="frame" x="125" y="-2" width="29" height="30"/>
@@ -237,6 +243,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="profileAdvanceAction:" target="v4h-vN-eCv" id="mDq-Kr-TDO"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </view>
@@ -298,7 +307,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="bc7-T9-0Vd">
-                                    <rect key="frame" x="1" y="327" width="153" height="16"/>
+                                    <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="23m-Bd-0cW">

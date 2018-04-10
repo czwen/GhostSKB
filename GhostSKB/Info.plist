@@ -30,8 +30,8 @@
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2017 丁明信. All rights reserved.</string>
-	<key>NSMainStoryboardFile</key>
-	<string>Storyboard</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

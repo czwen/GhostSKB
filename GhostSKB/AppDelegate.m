@@ -90,8 +90,39 @@
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     statusItem.highlightMode = YES;
     statusItem.image = normalImage;
+    NSMenu *menu = [[NSMenu alloc] init];
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Profile1" action:@selector(chooseProfile:) keyEquivalent:@""]];
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Profile2" action:@selector(chooseProfile:) keyEquivalent:@""]];
+    [menu addItem:[NSMenuItem separatorItem]];
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Preference..." action:@selector(showPreference) keyEquivalent:@","]];
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Disable GhostSKB" action:@selector(toggleGhostSKB:) keyEquivalent:@""]];
+    [menu addItem:[NSMenuItem separatorItem]];
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit GhostSKB" action:@selector(quitGhostSKB) keyEquivalent:@"Q"]];
+    statusItem.menu = menu;
     
     [statusItem.button setAction:@selector(onStatusItemSelected:)];
+}
+
+- (void)chooseProfile:(id)sender {
+    NSMenuItem *item = (NSMenuItem *)sender;
+    NSLog(@"chooseProfile: %@", item.title);
+}
+
+- (void)toggleGhostSKB:(id)sender {
+    NSMenuItem *item = (NSMenuItem *)sender;
+    if ([sender respondsToSelector:@selector(setState:)]) {
+        [item setState:NSOnState];
+    }
+}
+
+- (void)quitGhostSKB {
+    
+}
+
+- (void)showPreference {
+    NSStoryboard *board = [NSStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    NSWindowController *controller = [board instantiateInitialController];
+    [controller showWindow:nil];
 }
 
 -(void)darkModeChanged:(NSNotification *)notif
@@ -109,7 +140,7 @@
 
 - (void) onStatusItemSelected:(id) sender {
     statusItemSelected = !statusItemSelected;
-    [self showPopover:sender];
+//    [self showPopover:sender];
 }
 
 - (void)showPopover:(id)sender {
@@ -210,12 +241,5 @@
     //show popover
     [popover showRelativeToRect:_statusBarButton.bounds ofView:_statusBarButton preferredEdge:NSRectEdgeMaxY];
 }
-
-- (void)showSettingWindow {
-	NSStoryboard *board = [NSStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-	NSWindowController *controller = [board instantiateInitialController];
-	[controller showWindow:nil];
-}
-
 
 @end

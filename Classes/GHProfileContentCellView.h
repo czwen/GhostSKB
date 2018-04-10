@@ -10,4 +10,8 @@
 
 @interface GHProfileContentCellView : NSTableCellView
 
+@property (weak) IBOutlet NSButton *appButton;
+@property (weak) IBOutlet NSTextField *appName;
+@property (weak) IBOutlet NSPopUpButton *inputMethodsPopButton;
+
 @end

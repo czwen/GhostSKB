@@ -34,27 +34,27 @@
     
     NSInteger rowCount = 0;
     if ([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_LIST]) {
-        rowCount = 2;
+        rowCount = [self.profiles count];
     }
     else if ([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_CONFIG_LIST]) {
-        rowCount = 0;
+        rowCount = 3;
     }
     
     NSLog(@"numberOfRowsInTableView identifiler:%@ %ld", tableView.identifier, rowCount);
     return rowCount;
 }
 
-//- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-//    return 30.0;
-//}
-
-
 // for view-based tableview
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    //profile list
     if([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_LIST]) {
         GHProfileCellView *view = [tableView makeViewWithIdentifier:TBL_CELL_IDENTIFIER_PROFILE_CELL owner:self];
         NSString *pname = (NSString *)[self.profiles objectAtIndex:row];
         [view.profileName setStringValue:pname];
+        return view;
+    }
+    else if([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_CONFIG_LIST]) {
+        GHProfileContentCellView *view = [tableView makeViewWithIdentifier:TBL_CELL_IDENTIFIER_PROFILE_CONTENT_CELL owner:self];
         return view;
     }
     return NULL;

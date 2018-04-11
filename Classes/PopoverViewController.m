@@ -43,7 +43,7 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.headerView = NULL;
-    self.defaultKeyBoards = [[GHDefaultManager getInstance] getDefaultKeyBoards];
+//    self.defaultKeyBoards = [[GHDefaultManager getInstance] getDefaultKeyBoards];
     
     //init app popover
     self.appPopOver = [[NSPopover alloc] init];
@@ -239,7 +239,14 @@
             NSBundle *selectedAppBundle =[NSBundle bundleWithURL:url];
             NSString *bundleIdentifier = [selectedAppBundle bundleIdentifier];
             if([self isAppDuplicated:bundleIdentifier]) {
-                NSRunAlertPanel(NSLocalizedString(@"duplicated_app", @""), NSLocalizedString(@"already_have_same_app", @""), @"OK", nil, nil);
+//                NSRunAlertPanel(NSLocalizedString(@"duplicated_app", @""), NSLocalizedString(@"already_have_same_app", @""), @"OK", nil, nil);
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert addButtonWithTitle:@"OK"];
+                [alert setMessageText:NSLocalizedString(@"duplicated_app", @"")];
+                [alert setInformativeText:NSLocalizedString(@"already_have_same_app", @"")];
+                [alert setAlertStyle:NSWarningAlertStyle];
+                [alert runModal];
+                
                 break;
             }
             NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:[url path]];
@@ -288,7 +295,7 @@
 }
 
 - (IBAction)onSettingPressed:(id)sender {
-    AppDelegate *delegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+//    AppDelegate *delegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
 //    [delegate showSettingWindow];
 }
 

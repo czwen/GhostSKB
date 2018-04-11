@@ -16,11 +16,19 @@
 @property(assign) NSInteger rememberAppInputExpireTime;
 
 + (GHDefaultManager *)getInstance;
-- (NSMutableArray *)getDefaultKeyBoards;
-- (NSDictionary *)getDefaultKeyBoardsDict;
+
 - (void)removeAppInputDefault:(NSString *)appBundleId;
-- (NSString *)getDefaultPrefrenceKey;
+- (NSString *)getInputId:(NSString *)appBundleId withProfile:(nullable NSString *)profileName;
+//获取键盘切换配置的key
+- (NSString *)getPreferenceConfigKey;
+//获取键盘切换配置的Dict
+- (NSDictionary *)getPreferenceConfigDict;
+//获取配置名的列表
 - (NSArray *)getProfileList;
+
+//根据配置名，获取配置的内容列表
 - (NSMutableArray *)getProfileInputConfig:(NSString *)profileName;
+//默认配置的名字
+- (NSString *)getDefaultProfileName;
 
 @end

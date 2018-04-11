@@ -90,9 +90,21 @@
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     statusItem.highlightMode = YES;
     statusItem.image = normalImage;
+    
+    //menus
     NSMenu *menu = [[NSMenu alloc] init];
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Profile1" action:@selector(chooseProfile:) keyEquivalent:@""]];
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Profile2" action:@selector(chooseProfile:) keyEquivalent:@""]];
+    NSArray *profiles = [[GHDefaultManager getInstance] getProfileList];
+    NSString *defaultProfile = [[GHDefaultManager getInstance] getDefaultProfileName];
+    for (NSString *profileName in profiles) {
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:profileName action:@selector(chooseProfile:) keyEquivalent:@""];
+        [menu addItem:item];
+        if([profileName isEqualToString:defaultProfile]) {
+            [item setState:NSOnState];
+        }
+        else {
+            [item setState:NSOffState];
+        }
+    }
     [menu addItem:[NSMenuItem separatorItem]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Preference..." action:@selector(showPreference) keyEquivalent:@","]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Disable GhostSKB" action:@selector(toggleGhostSKB:) keyEquivalent:@""]];
@@ -106,6 +118,7 @@
 - (void)chooseProfile:(id)sender {
     NSMenuItem *item = (NSMenuItem *)sender;
     NSLog(@"chooseProfile: %@", item.title);
+    
 }
 
 - (void)toggleGhostSKB:(id)sender {
@@ -217,10 +230,8 @@
 }
 
 - (void)changeInputSourceForApp:(NSString *)bundleId {
-    NSString *targetInputId = NULL;
-    NSDictionary *defaultInput = [[GHDefaultManager getInstance] getDefaultKeyBoardsDict];
-    NSDictionary *info = [defaultInput objectForKey:bundleId];
-    targetInputId = [[info objectForKey:@"defaultInput"] description];
+    NSDictionary *targetInputId = [[GHDefaultManager getInstance] getInputId:bundleId withProfile:NULL];
+    NSLog(@"defaultInput: %@", targetInputId);
     
     if (targetInputId != NULL) {
         [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.018];

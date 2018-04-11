@@ -11,6 +11,10 @@
 #import "Constant.h"
 static GHDefaultManager *sharedGHDefaultManager = nil;
 
+@interface GHDefaultManager ()
+- (NSDictionary *)getProfileInputConfigDict:(NSString *)profileName;
+@end
+
 @implementation GHDefaultManager
 
 -(id)init
@@ -19,7 +23,6 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
         //do something;
     }
     
-    NSUserDefaults *nc = [NSUserDefaults standardUserDefaults];
     [self tryConvertPrefrences];
     return self;
 }
@@ -42,12 +45,16 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 //    }
     return sharedGHDefaultManager;
 }
-
-- (NSMutableArray *)getProfileInputConfig:(NSString *)profileName {
-    NSDictionary *dict = [self getDefaultKeyBoardsDict];
+- (NSDictionary *)getProfileInputConfigDict:(NSString *)profileName {
+    NSDictionary *dict = [self getPreferenceConfigDict];
     NSDictionary *profilesDict = (NSDictionary *)[dict objectForKey:@"profiles"];
     NSDictionary *dictOfProfile = (NSDictionary *)[profilesDict objectForKey:profileName];
     NSDictionary *configDict = [dictOfProfile objectForKey:@"config"];
+    return configDict;
+}
+
+- (NSMutableArray *)getProfileInputConfig:(NSString *)profileName {
+    NSDictionary *configDict = [self getProfileInputConfigDict:profileName];
     NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
     
     if(configDict == NULL) {
@@ -66,45 +73,21 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
         return [aInfo.appBundleId compare:bInfo.appBundleId];
     }];
     return arr;
-
 }
 
-- (NSMutableArray *)getDefaultKeyBoards {
-
-    NSDictionary *keyBoardDefault = [self getDefaultKeyBoardsDict];
-    NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
-    
-    if(keyBoardDefault == NULL) {
-        return arr;
-    }
-    
-    [keyBoardDefault enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
-        GHDefaultInfo *info = [[GHDefaultInfo alloc] initWithAppBundle:[object objectForKey:@"appBundleId"]
-                                                                appUrl:[[object objectForKey:@"appUrl"] description]
-                                                                input:[object objectForKey:@"defaultInput"]];
-        [arr addObject:info];
-    }];
-    [arr sortUsingComparator:^NSComparisonResult(id  _Nonnull a, id  _Nonnull b) {
-        GHDefaultInfo *aInfo = (GHDefaultInfo *)a;
-        GHDefaultInfo *bInfo = (GHDefaultInfo *)b;
-        return [aInfo.appBundleId compare:bInfo.appBundleId];
-    }];
-    return arr;
-}
-
--(NSDictionary *)getDefaultKeyBoardsDict {
-    NSString *keyBoardDefaultInputKey = [[GHDefaultManager getInstance] getDefaultPrefrenceKey];
-    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:keyBoardDefaultInputKey];
+-(NSDictionary *)getPreferenceConfigDict {
+    NSString *key = [[GHDefaultManager getInstance] getPreferenceConfigKey];
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:key];
     return dict;
 }
 
 -(void)removeAppInputDefault:(NSString *)appBundleId {
-    NSDictionary *defaultInputs = [self getDefaultKeyBoardsDict];
+    NSDictionary *defaultInputs = [self getPreferenceConfigDict];
     if(defaultInputs == NULL) {
         return;
     }
     NSMutableDictionary *settings = [NSMutableDictionary dictionaryWithDictionary:defaultInputs];
-    NSString *keyBoardDefaultInputKey = [[GHDefaultManager getInstance] getDefaultPrefrenceKey];
+    NSString *keyBoardDefaultInputKey = [[GHDefaultManager getInstance] getPreferenceConfigKey];
     
     if ([settings objectForKey:appBundleId] != NULL) {
         [settings removeObjectForKey:appBundleId];
@@ -114,13 +97,29 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     }
 }
 
-- (NSString *)getDefaultPrefrenceKey {
+- (NSString *)getPreferenceConfigKey {
     return [self getPrefrenceKeyByVersion:GH_DATA_VERSION];
+}
+
+- (NSString *)getDefaultProfileName {
+    NSDictionary *dict = [self getPreferenceConfigDict];
+    NSString *currentProfile = (NSString *)[dict objectForKey:@"currentProfile"];
+    return currentProfile;
 }
 
 - (NSString *)getPrefrenceKeyByVersion: (NSString *)version {
     NSString *key = [NSString stringWithFormat:@"%@%@", GH_DATA_KEY_FORMAT, version];
     return key;
+}
+
+- (NSString *)getInputId:(NSString *)appBundleId withProfile:(nullable NSString *)profileName {
+    if (profileName == NULL) {
+        profileName = [self getDefaultProfileName];
+    }
+    NSDictionary *dict = [self getProfileInputConfigDict:profileName];
+    NSDictionary *infoDict = [dict objectForKey:appBundleId];
+    NSString *inputId = [[infoDict objectForKey:@"defaultInput"] description];
+    return inputId;
 }
 
 //convert versions from low version to high version
@@ -150,7 +149,6 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 - (void)convert_1_to_2 {
-    NSLog(@"convert ---");
     NSInteger from = 1;
     NSInteger to = 2;
     NSString *fromKey = [self getPrefrenceKeyByVersion:[@(from) stringValue]];
@@ -167,7 +165,7 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 - (NSArray *)getProfileList {
-    NSString *key = [self getDefaultPrefrenceKey];
+    NSString *key = [self getPreferenceConfigKey];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *dict = [defaults dictionaryForKey:key];
     NSDictionary *profilesDict = (NSDictionary *)[dict objectForKey:@"profiles"];

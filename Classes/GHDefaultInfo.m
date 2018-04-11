@@ -37,7 +37,7 @@
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
-    NSString *keyBoardDefaultInputKey = [[GHDefaultManager getInstance] getDefaultPrefrenceKey];
+    NSString *keyBoardDefaultInputKey = [[GHDefaultManager getInstance] getPreferenceConfigKey];
     NSMutableDictionary *settings = [[userDefaults dictionaryForKey:keyBoardDefaultInputKey] mutableCopy];
     
     if(settings == NULL) {

@@ -63,7 +63,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.profiles = [[GHDefaultManager getInstance] getProfileList];
+    self.profiles = [NSMutableArray arrayWithArray:[[GHDefaultManager getInstance] getProfileList]];
     self.currentProfile = [self.profiles objectAtIndex:0];
     self.profileConfigs = [[NSMutableDictionary alloc] initWithCapacity:1];
     for (NSString *profileName in self.profiles) {
@@ -153,10 +153,19 @@
 
 - (IBAction)addNewProfile:(id)sender {
     NSLog(@"addNewProfile");
+    NSInteger count = [self.profiles count];
+    NSString *newProfileName = [NSString stringWithFormat:@"profile%ld", count+1];
+    BOOL ok = [[GHDefaultManager getInstance] addProfile:newProfileName];
+    if(ok) {
+        [self.profiles addObject:newProfileName];
+        [self.profilesTableView reloadData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+    }
 }
 
 - (IBAction)removeProfile:(id)sender {
     NSLog(@"removeProfile");
+    [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
 }
 
 - (IBAction)profileAdvanceAction:(id)sender {

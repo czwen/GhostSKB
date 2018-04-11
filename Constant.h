@@ -14,5 +14,7 @@
 #define GH_DATA_VERSION @"2"
 #define GH_DATA_KEY_FORMAT @"gh_default_keyboards_"
 
+#define GH_NK_APP_SELECTED @"GH_APP_SELECTED"
+#define GH_NK_PROFILE_LIST_CHANGED @"GH_PROFILE_LIST_CHANGED"
 
 #endif /* Constant_h */

@@ -16,8 +16,8 @@
 #import <ApplicationServices/ApplicationServices.h>
 @interface AppDelegate ()
 
--(void)toggleDarkModeTheme;
-
+- (void)toggleDarkModeTheme;
+- (void)updateProfilesMenu:(NSMenu *)menu;
 @end
 
 
@@ -35,7 +35,8 @@
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(darkModeChanged:) name:@"AppleInterfaceThemeChangedNotification" object:nil];
     
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleGHAppSelectedNoti:) name:@"GH_APP_SELECTED" object:NULL];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleGHAppSelectedNoti:) name:GH_NK_APP_SELECTED object:NULL];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profileListChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
     [GHDefaultManager getInstance];
     
     [self initStatusItem];
@@ -93,18 +94,7 @@
     
     //menus
     NSMenu *menu = [[NSMenu alloc] init];
-    NSArray *profiles = [[GHDefaultManager getInstance] getProfileList];
-    NSString *defaultProfile = [[GHDefaultManager getInstance] getDefaultProfileName];
-    for (NSString *profileName in profiles) {
-        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:profileName action:@selector(chooseProfile:) keyEquivalent:@""];
-        [menu addItem:item];
-        if([profileName isEqualToString:defaultProfile]) {
-            [item setState:NSOnState];
-        }
-        else {
-            [item setState:NSOffState];
-        }
-    }
+    [self updateProfilesMenu:menu];
     [menu addItem:[NSMenuItem separatorItem]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Preference..." action:@selector(showPreference) keyEquivalent:@","]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Disable GhostSKB" action:@selector(toggleGhostSKB:) keyEquivalent:@""]];
@@ -115,10 +105,39 @@
     [statusItem.button setAction:@selector(onStatusItemSelected:)];
 }
 
+//TODO sort
+- (void)updateProfilesMenu:(NSMenu *)menu {
+    NSArray *profiles = [[GHDefaultManager getInstance] getProfileList];
+    NSString *defaultProfile = [[GHDefaultManager getInstance] getDefaultProfileName];
+    for (NSInteger i=0; i<[profiles count]; i++) {
+        NSString *profileName = (NSString *)[profiles objectAtIndex:i];
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:profileName action:@selector(chooseProfile:) keyEquivalent:@""];
+        [menu insertItem:item atIndex:i];
+        if([profileName isEqualToString:defaultProfile]) {
+            [item setState:NSOnState];
+        }
+        else {
+            [item setState:NSOffState];
+        }
+    }
+}
+
 - (void)chooseProfile:(id)sender {
     NSMenuItem *item = (NSMenuItem *)sender;
     NSLog(@"chooseProfile: %@", item.title);
     
+}
+
+- (void)profileListChanged {
+    NSMenu *menu = statusItem.menu;
+    for (NSMenuItem *item in menu.itemArray) {
+        if ([item.title isEqualToString:@""] || item.title == NULL) {
+            break;
+        }
+        [menu removeItem:item];
+    }
+    
+    [self updateProfilesMenu:menu];
 }
 
 - (void)toggleGhostSKB:(id)sender {

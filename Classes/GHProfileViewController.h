@@ -23,7 +23,7 @@
 - (IBAction)profileAdvanceAction:(id)sender;
 
 
-@property (strong) NSArray *profiles;
+@property (strong) NSMutableArray *profiles;
 @property (strong) NSMutableDictionary *profileConfigs;
 
 @end

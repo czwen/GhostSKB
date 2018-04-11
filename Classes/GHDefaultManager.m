@@ -175,5 +175,27 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     return [profilesDict allKeys];
 }
 
+- (BOOL)addProfile:(NSString *)profileName {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
+    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
+    if([profilesDict objectForKey:profileName] != NULL) {
+        return FALSE;
+    }
+    [profilesDict setObject:@{@"config":@{}} forKey:profileName];
+    [dict setObject:profilesDict forKey:@"profiles"];
+    [[NSUserDefaults standardUserDefaults] setObject:dict forKey:[self getPreferenceConfigKey]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    return TRUE;
+}
+
+- (BOOL)changeDefaultProfile:(NSString *)profileName {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
+    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
+    if([profilesDict objectForKey:profileName] != NULL) {
+        return FALSE;
+    }
+    [dict setObject:profileName forKey:@"currentProfile"];
+    return TRUE;
+}
 
 @end

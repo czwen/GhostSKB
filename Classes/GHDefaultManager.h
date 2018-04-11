@@ -31,4 +31,8 @@
 //默认配置的名字
 - (NSString *)getDefaultProfileName;
 
+- (BOOL)addProfile:(NSString *)profileName;
+
+- (BOOL)changeDefaultProfile:(NSString *)profileName;
+
 @end

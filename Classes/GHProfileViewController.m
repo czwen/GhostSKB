@@ -180,9 +180,8 @@
 
 - (IBAction)removeProfile:(id)sender {
     NSInteger selectedRow = self.profilesTableView.selectedRow;
-    NSLog(@"removeProfile, %ld", selectedRow);
     if(selectedRow < 0) {
-        
+        //TODO alert
     }
     else {
         NSString *pname = (NSString *)[self.profiles objectAtIndex:selectedRow];
@@ -193,10 +192,13 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
         }
     }
- 
 }
 
 - (IBAction)profileAdvanceAction:(id)sender {
+    NSPopUpButton *button = (NSPopUpButton *)sender;
+//    [button addItemWithTitle:@"Sync"];
+//    button.menu = [[NSMenu alloc] init];
+//    [button.menu addItemWithTitle:@"Sync with iCloud" action:NULL keyEquivalent:@""];
     NSLog(@"profileAdvanceAction");
 }
 @end

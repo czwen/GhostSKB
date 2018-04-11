@@ -23,6 +23,8 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
         //do something;
     }
     
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
+    
     [self tryConvertPrefrences];
     return self;
 }

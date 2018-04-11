@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE166F7F207E55C200E3FA71 /* SyncButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DE166F7E207E55C200E3FA71 /* SyncButton.m */; };
 		DE1B71B11D2C081B00A85EE0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A61D2C081B00A85EE0 /* info.png */; };
 		DE1B71B21D2C081B00A85EE0 /* ghostkbd-16.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */; };
 		DE1B71B31D2C081B00A85EE0 /* ghostkbd-32.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */; };
@@ -63,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE166F7D207E55C200E3FA71 /* SyncButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SyncButton.h; path = Classes/SyncButton.h; sourceTree = "<group>"; };
+		DE166F7E207E55C200E3FA71 /* SyncButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SyncButton.m; path = Classes/SyncButton.m; sourceTree = "<group>"; };
 		DE1B71A61D2C081B00A85EE0 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = Resources/info.png; sourceTree = "<group>"; };
 		DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-16.png"; path = "Resources/ghostkbd-16.png"; sourceTree = "<group>"; };
 		DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-32.png"; path = "Resources/ghostkbd-32.png"; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 		DE6634771CB21551009EE247 = {
 			isa = PBXGroup;
 			children = (
+				DE166F7D207E55C200E3FA71 /* SyncButton.h */,
+				DE166F7E207E55C200E3FA71 /* SyncButton.m */,
 				DEA777B3207C561200D682D8 /* TableCellViews */,
 				DEE20504207B85F3009627BB /* Categories */,
 				DEE204F8207B3DFB009627BB /* GHSettingTabView.h */,
@@ -416,6 +421,7 @@
 			files = (
 				DEE204FA207B3DFB009627BB /* GHSettingTabView.m in Sources */,
 				DE1B71CA1D2C082F00A85EE0 /* PopoverViewController.m in Sources */,
+				DE166F7F207E55C200E3FA71 /* SyncButton.m in Sources */,
 				DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */,
 				DEE20500207B42E6009627BB /* NSView+MyCategory.m in Sources */,
 				DE39697B207B020C00376496 /* GHSettingTabViewController.m in Sources */,

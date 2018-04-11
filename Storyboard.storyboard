@@ -328,7 +328,7 @@
                                                             <action selector="removeProfile:" target="v4h-vN-eCv" id="Sjg-zT-rBQ"/>
                                                         </connections>
                                                     </button>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXE-3k-V9S">
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXE-3k-V9S" customClass="SyncButton">
                                                         <rect key="frame" x="125" y="0.0" width="30" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSActionTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W2x-Z2-82I">
@@ -356,6 +356,21 @@
                                 </view>
                                 <color key="fillColor" red="0.99991601705551147" green="1" blue="0.99987202882766724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </box>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5X-Td-T6v">
+                                <rect key="frame" x="280" y="8" width="80" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="noArrow" selectedItem="ogT-dl-Sk2" id="vIf-2h-Xlh">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <menu key="menu" id="iFD-e2-Kt1">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" image="NSActionTemplate" id="AdS-rq-C6E"/>
+                                            <menuItem title="Item 2" state="on" image="NSActionTemplate" id="ogT-dl-Sk2"/>
+                                            <menuItem title="Item 3" id="FBB-rr-q8x"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="rCq-5E-cUy" firstAttribute="top" secondItem="5cc-lF-SUE" secondAttribute="top" constant="20" id="7vF-op-ZmK"/>

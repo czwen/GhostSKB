@@ -179,8 +179,21 @@
 }
 
 - (IBAction)removeProfile:(id)sender {
-    NSLog(@"removeProfile");
-    [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+    NSInteger selectedRow = self.profilesTableView.selectedRow;
+    NSLog(@"removeProfile, %ld", selectedRow);
+    if(selectedRow < 0) {
+        
+    }
+    else {
+        NSString *pname = (NSString *)[self.profiles objectAtIndex:selectedRow];
+        BOOL ok = [[GHDefaultManager getInstance] removeProfile:pname];
+        if (ok) {
+            [self.profiles removeObjectAtIndex:selectedRow];
+            [self.profilesTableView reloadData];
+            [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+        }
+    }
+ 
 }
 
 - (IBAction)profileAdvanceAction:(id)sender {

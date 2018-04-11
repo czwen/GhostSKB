@@ -165,6 +165,13 @@
     return NULL;
 }
 
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    NSInteger selectedRow = self.profilesTableView.selectedRow;
+    NSString *profileName = [self.profiles objectAtIndex:selectedRow];
+    self.currentProfile = profileName;
+    [self.profileDetailTableView reloadData];
+}
+
 - (IBAction)addNewProfile:(id)sender {
     NSLog(@"addNewProfile");
     NSInteger count = [self.profiles count];
@@ -194,11 +201,4 @@
     }
 }
 
-- (IBAction)profileAdvanceAction:(id)sender {
-    NSPopUpButton *button = (NSPopUpButton *)sender;
-//    [button addItemWithTitle:@"Sync"];
-//    button.menu = [[NSMenu alloc] init];
-//    [button.menu addItemWithTitle:@"Sync with iCloud" action:NULL keyEquivalent:@""];
-    NSLog(@"profileAdvanceAction");
-}
 @end

@@ -118,7 +118,7 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     }
     NSDictionary *dict = [self getProfileInputConfigDict:profileName];
     NSDictionary *infoDict = [dict objectForKey:appBundleId];
-    NSString *inputId = [[infoDict objectForKey:@"defaultInput"] description];
+    NSString *inputId = (NSString *)[infoDict objectForKey:@"defaultInput"];
     return inputId;
 }
 

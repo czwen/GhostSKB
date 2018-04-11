@@ -108,6 +108,11 @@
 //TODO sort
 - (void)updateProfilesMenu:(NSMenu *)menu {
     NSArray *profiles = [[GHDefaultManager getInstance] getProfileList];
+    profiles = [profiles sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSString *str1 = (NSString *)obj1;
+        NSString *str2 = (NSString *)obj2;
+        return [str1 compare:str2];
+    }];
     NSString *defaultProfile = [[GHDefaultManager getInstance] getDefaultProfileName];
     for (NSInteger i=0; i<[profiles count]; i++) {
         NSString *profileName = (NSString *)[profiles objectAtIndex:i];
@@ -250,7 +255,6 @@
 
 - (void)changeInputSourceForApp:(NSString *)bundleId {
     NSDictionary *targetInputId = [[GHDefaultManager getInstance] getInputId:bundleId withProfile:NULL];
-    NSLog(@"defaultInput: %@", targetInputId);
     
     if (targetInputId != NULL) {
         [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.018];

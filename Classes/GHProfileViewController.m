@@ -15,6 +15,8 @@
 
 @interface GHProfileViewController ()
 
+- (void)sortProfileNames;
+
 @property (strong) NSString *currentProfile;
 @property (strong) NSMutableArray *availableInputMethods;
 @property (strong) NSMutableDictionary *inputIdInfo;
@@ -23,6 +25,16 @@
 @implementation GHProfileViewController
 @synthesize profilesTableView, profiles, profileConfigs;
 @synthesize availableInputMethods;
+
+
+- (void)sortProfileNames {
+    NSArray *arr = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSString *str1 = (NSString *)obj1;
+        NSString *str2 = (NSString *)obj2;
+        return [str1 compare:str2];
+    }];
+    self.profiles = [NSMutableArray arrayWithArray:arr];
+}
 
 - (void) getAlivibleInputMethods {
     [self.availableInputMethods removeAllObjects];
@@ -64,6 +76,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.profiles = [NSMutableArray arrayWithArray:[[GHDefaultManager getInstance] getProfileList]];
+    [self sortProfileNames];
+
     self.currentProfile = [self.profiles objectAtIndex:0];
     self.profileConfigs = [[NSMutableDictionary alloc] initWithCapacity:1];
     for (NSString *profileName in self.profiles) {
@@ -158,6 +172,7 @@
     BOOL ok = [[GHDefaultManager getInstance] addProfile:newProfileName];
     if(ok) {
         [self.profiles addObject:newProfileName];
+        [self sortProfileNames];
         [self.profilesTableView reloadData];
         [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
     }

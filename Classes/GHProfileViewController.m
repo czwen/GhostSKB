@@ -165,6 +165,13 @@
     return NULL;
 }
 
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    NSInteger selectedRow = self.profilesTableView.selectedRow;
+    NSString *profileName = [self.profiles objectAtIndex:selectedRow];
+    self.currentProfile = profileName;
+    [self.profileDetailTableView reloadData];
+}
+
 - (IBAction)addNewProfile:(id)sender {
     NSLog(@"addNewProfile");
     NSInteger count = [self.profiles count];
@@ -180,9 +187,8 @@
 
 - (IBAction)removeProfile:(id)sender {
     NSInteger selectedRow = self.profilesTableView.selectedRow;
-    NSLog(@"removeProfile, %ld", selectedRow);
     if(selectedRow < 0) {
-        
+        //TODO alert
     }
     else {
         NSString *pname = (NSString *)[self.profiles objectAtIndex:selectedRow];
@@ -193,10 +199,6 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
         }
     }
- 
 }
 
-- (IBAction)profileAdvanceAction:(id)sender {
-    NSLog(@"profileAdvanceAction");
-}
 @end

@@ -20,7 +20,6 @@
 @property (weak) IBOutlet NSTableView *profileDetailTableView;
 - (IBAction)addNewProfile:(id)sender;
 - (IBAction)removeProfile:(id)sender;
-- (IBAction)profileAdvanceAction:(id)sender;
 
 
 @property (strong) NSMutableArray *profiles;

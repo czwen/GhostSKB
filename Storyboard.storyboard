@@ -328,16 +328,13 @@
                                                             <action selector="removeProfile:" target="v4h-vN-eCv" id="Sjg-zT-rBQ"/>
                                                         </connections>
                                                     </button>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXE-3k-V9S">
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXE-3k-V9S" customClass="SyncButton">
                                                         <rect key="frame" x="125" y="0.0" width="30" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSActionTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W2x-Z2-82I">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
-                                                        <connections>
-                                                            <action selector="profileAdvanceAction:" target="v4h-vN-eCv" id="mDq-Kr-TDO"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </view>

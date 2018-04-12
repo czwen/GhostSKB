@@ -16,4 +16,8 @@
     // Drawing code here.
 }
 
+- (void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle {
+    [super setBackgroundStyle:NSBackgroundStyleLight];
+}
+
 @end

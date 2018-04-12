@@ -90,15 +90,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="382" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oWB-VM-HAS">
-                                <rect key="frame" x="185" y="154" width="13" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3mC-2e-nIl">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZOU-5y-dbN">
+                                <rect key="frame" x="127" y="120" width="129" height="129"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ghostkbd-128" id="pyN-cg-XJs"/>
+                            </imageView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ZOU-5y-dbN" secondAttribute="bottom" constant="120" id="7VH-wk-RKD"/>
+                            <constraint firstItem="ZOU-5y-dbN" firstAttribute="leading" secondItem="MNm-EX-wVV" secondAttribute="leading" constant="127" id="Gxp-Ty-CE7"/>
+                            <constraint firstAttribute="trailing" secondItem="ZOU-5y-dbN" secondAttribute="trailing" constant="126" id="hW0-sF-nPi"/>
+                            <constraint firstItem="ZOU-5y-dbN" firstAttribute="top" secondItem="MNm-EX-wVV" secondAttribute="top" constant="51" id="pKD-38-vsF"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="UUW-KV-1hH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -265,10 +267,10 @@
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="24" id="EZc-kN-kBb"/>
                                                                                 </constraints>
-                                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="Qjm-k4-9a9">
+                                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="Qjm-k4-9a9">
                                                                                     <font key="font" metaFont="system"/>
                                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                 </textFieldCell>
                                                                             </textField>
                                                                         </subviews>
@@ -380,5 +382,6 @@
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="ghostkbd-128" width="128" height="128"/>
     </resources>
 </document>

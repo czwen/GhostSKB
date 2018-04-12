@@ -23,4 +23,9 @@
     // Do view setup here.
 }
 
+- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
+    NSLog(@"didselect----%@", tabViewItem.label);
+}
+
+
 @end

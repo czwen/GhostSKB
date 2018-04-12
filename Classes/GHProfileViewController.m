@@ -103,7 +103,6 @@
         rowCount = [configs count];
     }
     
-    NSLog(@"numberOfRowsInTableView identifiler:%@ %ld", tableView.identifier, rowCount);
     return rowCount;
 }
 
@@ -166,14 +165,27 @@
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    NSInteger selectedRow = self.profilesTableView.selectedRow;
-    NSString *profileName = [self.profiles objectAtIndex:selectedRow];
-    self.currentProfile = profileName;
-    [self.profileDetailTableView reloadData];
+    NSTableView *tableView = (NSTableView *)[notification object];
+    if([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_LIST]) {
+        NSInteger selectedRow = tableView.selectedRow;
+        for (int i = 0; i< tableView.numberOfRows; i++) {
+            GHProfileCellView *cellView = [tableView viewAtColumn:0 row:i makeIfNecessary:YES];
+            if (i == selectedRow) {
+                cellView.profileName.textColor = [NSColor whiteColor];
+            }
+            else {
+                cellView.profileName.textColor = [NSColor blackColor];
+            }
+            
+        }
+        NSString *profileName = [self.profiles objectAtIndex:selectedRow];
+        self.currentProfile = profileName;
+        [self.profileDetailTableView reloadData];
+    }
+   
 }
 
 - (IBAction)addNewProfile:(id)sender {
-    NSLog(@"addNewProfile");
     NSInteger count = [self.profiles count];
     NSString *newProfileName = [NSString stringWithFormat:@"profile%ld", count+1];
     BOOL ok = [[GHDefaultManager getInstance] addProfile:newProfileName];

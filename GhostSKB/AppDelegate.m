@@ -254,7 +254,7 @@
 }
 
 - (void)changeInputSourceForApp:(NSString *)bundleId {
-    NSDictionary *targetInputId = [[GHDefaultManager getInstance] getInputId:bundleId withProfile:NULL];
+    NSString *targetInputId = [[GHDefaultManager getInstance] getInputId:bundleId withProfile:NULL];
     
     if (targetInputId != NULL) {
         [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.018];

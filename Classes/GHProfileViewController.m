@@ -22,6 +22,7 @@
 @property (strong) NSString *currentProfile;
 @property (strong) NSMutableArray *availableInputMethods;
 @property (strong) NSMutableDictionary *inputIdInfo;
+@property (strong) NSTextField *detailHeaderText;
 @end
 
 @implementation GHProfileViewController
@@ -107,6 +108,7 @@
     text1.alignment = NSTextAlignmentCenter;
     [text1 setStringValue:[NSString stringWithFormat:@"config list of profile: %@", self.currentProfile]];
     [detailHeaderView addSubview:text1];
+    self.detailHeaderText = text1;
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
@@ -202,6 +204,7 @@
             NSString *profileName = [self.profiles objectAtIndex:selectedRow];
             self.currentProfile = profileName;
             [self.profileDetailTableView reloadData];
+            [self.detailHeaderText setStringValue:[NSString stringWithFormat:@"config list of profile: %@", self.currentProfile]];
         }
     }
 }

@@ -22,7 +22,7 @@
     __weak IBOutlet NSMenu *imenu;
 }
 
-@property(strong) GHSettingWindowControler *settingWinCon;
+@property(strong) GHSettingWindowControler *preferenceController;
 @property BOOL isBecomeActiveTheFirstTime;
 
 + (BOOL)isSystemCurrentDarkMode;

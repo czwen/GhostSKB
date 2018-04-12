@@ -22,7 +22,7 @@
 
 
 @implementation AppDelegate
-@synthesize settingWinCon;
+@synthesize preferenceController;
 @synthesize isBecomeActiveTheFirstTime;
 #pragma mark - App Life Cycle
 
@@ -158,8 +158,12 @@
 
 - (void)showPreference {
     NSStoryboard *board = [NSStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-    NSWindowController *controller = [board instantiateInitialController];
-    [controller showWindow:nil];
+    
+    if (preferenceController == NULL) {
+        preferenceController = [board instantiateInitialController];
+    }
+    [preferenceController showWindow:nil];
+    [NSApp activateIgnoringOtherApps:YES];
 }
 
 -(void)darkModeChanged:(NSNotification *)notif

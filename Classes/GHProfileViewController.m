@@ -16,6 +16,8 @@
 @interface GHProfileViewController ()
 
 - (void)sortProfileNames;
+- (void)duplicatedProfile;
+- (void)tryAddNewProfile;
 
 @property (strong) NSString *currentProfile;
 @property (strong) NSMutableArray *availableInputMethods;
@@ -71,6 +73,7 @@
 - (void)viewWillAppear {
     [super viewWillAppear];
     [self getAlivibleInputMethods];
+ 
 }
 
 - (void)viewDidLoad {
@@ -90,6 +93,20 @@
     // Do view setup here.
     //hide header view of tables
     //these two tables have the same delegate and datasource : self
+    
+    NSTableHeaderView *profilesHeaderView = self.profilesTableView.headerView;
+    NSTextField *text = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.profilesTableView.bounds.size.width, profilesHeaderView.bounds.size.height)];
+    text.editable = FALSE;
+    text.alignment = NSTextAlignmentCenter;
+    [text setStringValue:@"profiles"];
+    [profilesHeaderView addSubview:text];
+    
+    NSTableHeaderView *detailHeaderView = self.profileDetailTableView.headerView;
+    NSTextField *text1 = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.profileDetailTableView.bounds.size.width, detailHeaderView.bounds.size.height)];
+    text1.editable = FALSE;
+    text1.alignment = NSTextAlignmentCenter;
+    [text1 setStringValue:[NSString stringWithFormat:@"config list of profile: %@", self.currentProfile]];
+    [detailHeaderView addSubview:text1];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
@@ -168,24 +185,32 @@
     NSTableView *tableView = (NSTableView *)[notification object];
     if([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_LIST]) {
         NSInteger selectedRow = tableView.selectedRow;
+        BOOL profileSelected = selectedRow >=0 && selectedRow < [self.profiles count];
+        self.btnDeleteProfile.enabled = profileSelected;
         for (int i = 0; i< tableView.numberOfRows; i++) {
-            GHProfileCellView *cellView = [tableView viewAtColumn:0 row:i makeIfNecessary:YES];
-            if (i == selectedRow) {
-                cellView.profileName.textColor = [NSColor whiteColor];
+            if(i < [self.profiles count]) {
+                GHProfileCellView *cellView = [tableView viewAtColumn:0 row:i makeIfNecessary:YES];
+                if (i == selectedRow) {
+                    cellView.profileName.textColor = [NSColor whiteColor];
+                }
+                else {
+                    cellView.profileName.textColor = [NSColor blackColor];
+                }
             }
-            else {
-                cellView.profileName.textColor = [NSColor blackColor];
-            }
-            
         }
-        NSString *profileName = [self.profiles objectAtIndex:selectedRow];
-        self.currentProfile = profileName;
-        [self.profileDetailTableView reloadData];
+        if (profileSelected) {
+            NSString *profileName = [self.profiles objectAtIndex:selectedRow];
+            self.currentProfile = profileName;
+            [self.profileDetailTableView reloadData];
+        }
     }
-   
 }
 
-- (IBAction)addNewProfile:(id)sender {
+- (void)duplicatedProfile {
+    
+}
+
+- (void)tryAddNewProfile {
     NSInteger count = [self.profiles count];
     NSString *newProfileName = [NSString stringWithFormat:@"profile%ld", count+1];
     BOOL ok = [[GHDefaultManager getInstance] addProfile:newProfileName];
@@ -197,19 +222,25 @@
     }
 }
 
+- (IBAction)addNewProfile:(id)sender {
+    NSInteger selectedRow = self.profilesTableView.selectedRow;
+    NSMenu *menu = [[NSMenu alloc] init];
+    if (selectedRow > 0) {
+        [menu addItemWithTitle:[NSString stringWithFormat:@"duplicate %@", [self.profiles objectAtIndex:selectedRow]] action:@selector(duplicatedProfile) keyEquivalent:@""];
+        [menu addItem:[NSMenuItem separatorItem]];
+    }
+    [menu addItemWithTitle:@"add new profile" action:@selector(tryAddNewProfile) keyEquivalent:@""];
+    [NSMenu popUpContextMenu:menu withEvent:[[NSApplication sharedApplication] currentEvent] forView:sender];
+}
+
 - (IBAction)removeProfile:(id)sender {
     NSInteger selectedRow = self.profilesTableView.selectedRow;
-    if(selectedRow < 0) {
-        //TODO alert
-    }
-    else {
-        NSString *pname = (NSString *)[self.profiles objectAtIndex:selectedRow];
-        BOOL ok = [[GHDefaultManager getInstance] removeProfile:pname];
-        if (ok) {
-            [self.profiles removeObjectAtIndex:selectedRow];
-            [self.profilesTableView reloadData];
-            [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
-        }
+    NSString *pname = (NSString *)[self.profiles objectAtIndex:selectedRow];
+    BOOL ok = [[GHDefaultManager getInstance] removeProfile:pname];
+    if (ok) {
+        [self.profiles removeObjectAtIndex:selectedRow];
+        [self.profilesTableView reloadData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
     }
 }
 

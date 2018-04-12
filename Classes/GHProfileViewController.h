@@ -20,7 +20,10 @@
 @property (weak) IBOutlet NSTableView *profileDetailTableView;
 - (IBAction)addNewProfile:(id)sender;
 - (IBAction)removeProfile:(id)sender;
+@property (weak) IBOutlet NSButton *addDefaultInputConfig;
+@property (weak) IBOutlet NSButton *removeInputConfig;
 
+@property (weak) IBOutlet NSButton *btnDeleteProfile;
 
 @property (strong) NSMutableArray *profiles;
 @property (strong) NSMutableDictionary *profileConfigs;

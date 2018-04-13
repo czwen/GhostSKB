@@ -24,6 +24,7 @@
 		DE39697B207B020C00376496 /* GHSettingTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE39697A207B020C00376496 /* GHSettingTabViewController.m */; };
 		DE396981207B061C00376496 /* GHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE396980207B061C00376496 /* GHInfoViewController.m */; };
 		DE396984207B064500376496 /* GHProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE396983207B064400376496 /* GHProfileViewController.m */; };
+		DE40A1D72080D4FA00C1DEE0 /* GHProfileTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40A1D62080D4FA00C1DEE0 /* GHProfileTextField.m */; };
 		DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */; };
 		DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */; };
 		DE6634851CB21552009EE247 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6634841CB21552009EE247 /* AppDelegate.m */; };
@@ -91,6 +92,8 @@
 		DE396980207B061C00376496 /* GHInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHInfoViewController.m; path = Classes/GHInfoViewController.m; sourceTree = "<group>"; };
 		DE396982207B064400376496 /* GHProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHProfileViewController.h; path = Classes/GHProfileViewController.h; sourceTree = "<group>"; };
 		DE396983207B064400376496 /* GHProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHProfileViewController.m; path = Classes/GHProfileViewController.m; sourceTree = "<group>"; };
+		DE40A1D52080D4FA00C1DEE0 /* GHProfileTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileTextField.h; path = Classes/GHProfileTextField.h; sourceTree = "<group>"; };
+		DE40A1D62080D4FA00C1DEE0 /* GHProfileTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileTextField.m; path = Classes/GHProfileTextField.m; sourceTree = "<group>"; };
 		DE53E5181D375BC2003D6E72 /* GhostSKB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GhostSKB.entitlements; sourceTree = "<group>"; };
 		DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-64.png"; path = "Resources/ghostkbd-64.png"; sourceTree = "<group>"; };
 		DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-1024.png"; path = "Resources/ghostkbd-1024.png"; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 		DE6634771CB21551009EE247 = {
 			isa = PBXGroup;
 			children = (
+				DE40A1D52080D4FA00C1DEE0 /* GHProfileTextField.h */,
+				DE40A1D62080D4FA00C1DEE0 /* GHProfileTextField.m */,
 				DE166F7D207E55C200E3FA71 /* SyncButton.h */,
 				DE166F7E207E55C200E3FA71 /* SyncButton.m */,
 				DEA777B3207C561200D682D8 /* TableCellViews */,
@@ -431,6 +436,7 @@
 				DE7CE1251D3A906A0054EC41 /* GHSettingWindowControler.m in Sources */,
 				DEE204FF207B42E6009627BB /* NSColor+Extensions.m in Sources */,
 				DE396984207B064500376496 /* GHProfileViewController.m in Sources */,
+				DE40A1D72080D4FA00C1DEE0 /* GHProfileTextField.m in Sources */,
 				DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */,
 				DE1B71C81D2C082F00A85EE0 /* GHInputAddDefaultCellView.m in Sources */,
 				DE6634851CB21552009EE247 /* AppDelegate.m in Sources */,

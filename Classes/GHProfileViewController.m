@@ -197,12 +197,7 @@
         for (int i = 0; i< tableView.numberOfRows; i++) {
             if(i < [self.profiles count]) {
                 GHProfileCellView *cellView = [tableView viewAtColumn:0 row:i makeIfNecessary:YES];
-                if (i == selectedRow) {
-                    cellView.profileName.textColor = [NSColor whiteColor];
-                }
-                else {
-                    cellView.profileName.textColor = [NSColor blackColor];
-                }
+                [cellView markSelected:(i==selectedRow)];
             }
         }
         if (profileSelected) {
@@ -214,6 +209,7 @@
     }
 }
 
+//复制配置文件内容
 - (void)duplicatedProfile {
     
 }

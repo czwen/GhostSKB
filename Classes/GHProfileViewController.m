@@ -18,6 +18,7 @@
 - (void)sortProfileNames;
 - (void)duplicatedProfile;
 - (void)tryAddNewProfile;
+- (void)setupHeaderTitle;
 
 @property (strong) NSString *currentProfile;
 @property (strong) NSMutableArray *availableInputMethods;
@@ -94,7 +95,10 @@
     // Do view setup here.
     //hide header view of tables
     //these two tables have the same delegate and datasource : self
-    
+    [self setupHeaderTitle];
+}
+
+- (void)setupHeaderTitle {
     NSTableHeaderView *profilesHeaderView = self.profilesTableView.headerView;
     NSTextField *text = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.profilesTableView.bounds.size.width, profilesHeaderView.bounds.size.height)];
     text.editable = FALSE;
@@ -109,6 +113,7 @@
     [text1 setStringValue:[NSString stringWithFormat:@"config list of profile: %@", self.currentProfile]];
     [detailHeaderView addSubview:text1];
     self.detailHeaderText = text1;
+
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {

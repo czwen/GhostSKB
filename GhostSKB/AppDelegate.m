@@ -18,6 +18,7 @@
 
 - (void)toggleDarkModeTheme;
 - (void)updateProfilesMenu:(NSMenu *)menu;
+- (NSArray *)sortProfileNames:(NSArray *)profiles;
 @end
 
 
@@ -82,6 +83,15 @@
     popover.contentViewController = [[PopoverViewController alloc] init];
 }
 
+- (NSArray *)sortProfileNames:(NSArray *)profiles {
+    NSArray *newProfiles = [profiles sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSString *str1 = (NSString *)obj1;
+        NSString *str2 = (NSString *)obj2;
+        return [str1 compare:str2];
+    }];
+    return newProfiles;
+}
+
 - (void)initStatusItem {
     statusItemSelected = false;
     NSString *imageName = @"ghost_dark_small";
@@ -105,14 +115,9 @@
     [statusItem.button setAction:@selector(onStatusItemSelected:)];
 }
 
-//TODO sort
 - (void)updateProfilesMenu:(NSMenu *)menu {
     NSArray *profiles = [[GHDefaultManager getInstance] getProfileList];
-    profiles = [profiles sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        NSString *str1 = (NSString *)obj1;
-        NSString *str2 = (NSString *)obj2;
-        return [str1 compare:str2];
-    }];
+    profiles = [self sortProfileNames:profiles];
     NSString *defaultProfile = [[GHDefaultManager getInstance] getDefaultProfileName];
     for (NSInteger i=0; i<[profiles count]; i++) {
         NSString *profileName = (NSString *)[profiles objectAtIndex:i];
@@ -130,7 +135,14 @@
 - (void)chooseProfile:(id)sender {
     NSMenuItem *item = (NSMenuItem *)sender;
     NSLog(@"chooseProfile: %@", item.title);
-    
+    BOOL ok = [[GHDefaultManager getInstance] changeDefaultProfile:item.title];
+    if(!ok) {
+        //TODO alert
+        NSLog(@"-----chooseProfile failed");
+    }
+    else {
+        [self profileListChanged];
+    }
 }
 
 - (void)profileListChanged {

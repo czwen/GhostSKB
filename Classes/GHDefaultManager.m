@@ -215,4 +215,30 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     return TRUE;
 }
 
+- (BOOL)duplicateProfile:(NSString *)profileName {
+    NSArray *profiles = [self getProfileList];
+    NSString *newProfileName = [NSString stringWithFormat:@"%@_dup", profileName];
+    
+    int count = 1;
+    for (NSString *pname in profiles) {
+        if ([pname containsString:[NSString stringWithFormat:@"%@_%d", newProfileName, count]]) {
+            count += 1;
+        }
+        else if ([pname containsString:newProfileName]) {
+            count += 1;
+        }
+    }
+    newProfileName = [NSString stringWithFormat:@"%@_%d", newProfileName, count];
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
+    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
+    NSDictionary *newProfileDict = [NSDictionary dictionaryWithDictionary:[profilesDict objectForKey:profileName]];
+    [profilesDict setObject:newProfileDict forKey:newProfileName];
+    [dict setObject:profilesDict forKey:@"profiles"];
+    [[NSUserDefaults standardUserDefaults] setObject:dict forKey:[self getPreferenceConfigKey]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    return TRUE;
+}
+
 @end

@@ -25,7 +25,6 @@
 
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
     [super tabView:tabView didSelectTabViewItem:tabViewItem];
-    NSLog(@"didselect----%@", tabViewItem.label);
 }
 
 

@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "GHProfileTextField.h"
 
-@interface GHProfileCellView : NSTableCellView
+@interface GHProfileCellView : NSTableCellView<NSTextFieldDelegate>
 @property (weak) IBOutlet GHProfileTextField *profileName;
 
 - (void)markSelected:(BOOL) isSelected;

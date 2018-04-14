@@ -22,6 +22,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.profileName.delegate = self;
 }
 
 - (void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle {
@@ -35,6 +36,10 @@
     else {
         self.profileName.textColor = [NSColor blackColor];
     }
+}
+
+- (void)controlTextDidChange:(NSNotification *)obj {
+    NSLog(@"control text did change");
 }
 
 @end

@@ -17,16 +17,39 @@
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.delegate = self;
+//    self.delegate = self;
 }
 
-- (BOOL)becomeFirstResponder {
-    self.textColor = [NSColor blackColor];
-    return [super becomeFirstResponder];
+//- (BOOL)becomeFirstResponder {
+//    self.textColor = [NSColor blackColor];
+//    NSLog(@"becomeFirstResponder");
+//    
+//    return [super becomeFirstResponder];
+//}
+
+//- (BOOL)resignFirstResponder {
+//    self.textColor = [NSColor whiteColor];
+//    NSLog(@"resignFirstResponder");
+//    return [super resignFirstResponder];
+//}
+
+- (BOOL)textShouldBeginEditing:(NSText *)textObject {
+    NSLog(@"textShouldBeginEditing----");
+    return [super textShouldBeginEditing:textObject];
 }
 
-- (void)textDidChange:(NSNotification *)notification {
-    NSLog(@"new value:%@", self.stringValue);
+- (void)textDidBeginEditing:(NSNotification *)notification {
+    NSLog(@"textDidBeginEditing");
+}
+
+- (void)textDidChange:(NSNotification *)notification
+{
+    [super textDidChange:notification];
+}
+
+- (void)textDidEndEditing:(NSNotification *)notification {
+    NSLog(@"textDidEndEditing");
+    self.textColor = [NSColor whiteColor];
 }
 
 @end

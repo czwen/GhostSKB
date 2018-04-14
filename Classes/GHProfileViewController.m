@@ -20,6 +20,9 @@
 - (void)tryAddNewProfile;
 - (void)setupHeaderTitle;
 
+- (void)updateProfileList;
+- (void)updateProfileConfigDicts;
+
 @property (strong) NSString *currentProfile;
 @property (strong) NSMutableArray *availableInputMethods;
 @property (strong) NSMutableDictionary *inputIdInfo;
@@ -75,20 +78,27 @@
 - (void)viewWillAppear {
     [super viewWillAppear];
     [self getAlivibleInputMethods];
- 
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.profiles = [NSMutableArray arrayWithArray:[[GHDefaultManager getInstance] getProfileList]];
-    [self sortProfileNames];
-
-    self.currentProfile = [self.profiles objectAtIndex:0];
+- (void)updateProfileConfigDicts {
     self.profileConfigs = [[NSMutableDictionary alloc] initWithCapacity:1];
     for (NSString *profileName in self.profiles) {
         NSArray *config = [[GHDefaultManager getInstance] getProfileInputConfig:profileName];
         [self.profileConfigs setObject:config forKey:profileName];
     }
+
+}
+- (void)updateProfileList {
+    self.profiles = [NSMutableArray arrayWithArray:[[GHDefaultManager getInstance] getProfileList]];
+    [self sortProfileNames];
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self updateProfileList];
+    self.currentProfile = [self.profiles objectAtIndex:0];
+    
+    [self updateProfileConfigDicts];
     
     self.availableInputMethods = [[NSMutableArray alloc] initWithCapacity:1];
     [self getAlivibleInputMethods];
@@ -137,6 +147,7 @@
         GHProfileCellView *view = [tableView makeViewWithIdentifier:TBL_CELL_IDENTIFIER_PROFILE_CELL owner:self];
         NSString *pname = (NSString *)[self.profiles objectAtIndex:row];
         [view.profileName setStringValue:pname];
+        [view markSelected:(row == tableView.selectedRow)];
         return view;
     }
     else if([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_CONFIG_LIST]) {
@@ -211,7 +222,14 @@
 
 //复制配置文件内容
 - (void)duplicatedProfile {
-    
+    NSInteger selectedRow = self.profilesTableView.selectedRow;
+    NSString *profileName = (NSString *)[self.profiles objectAtIndex:selectedRow];
+    BOOL ok = [[GHDefaultManager getInstance] duplicateProfile:profileName];
+    if (ok) {
+        [self updateProfileList];
+        [self.profilesTableView reloadData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+    }
 }
 
 - (void)tryAddNewProfile {
@@ -229,7 +247,7 @@
 - (IBAction)addNewProfile:(id)sender {
     NSInteger selectedRow = self.profilesTableView.selectedRow;
     NSMenu *menu = [[NSMenu alloc] init];
-    if (selectedRow > 0) {
+    if (selectedRow >= 0) {
         [menu addItemWithTitle:[NSString stringWithFormat:@"duplicate %@", [self.profiles objectAtIndex:selectedRow]] action:@selector(duplicatedProfile) keyEquivalent:@""];
         [menu addItem:[NSMenuItem separatorItem]];
     }

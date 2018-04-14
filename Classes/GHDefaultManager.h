@@ -33,6 +33,7 @@
 
 - (BOOL)addProfile:(NSString *)profileName;
 - (BOOL)removeProfile:(NSString *)profileName;
+- (BOOL)duplicateProfile:(NSString *)profileName;
 - (BOOL)changeDefaultProfile:(NSString *)profileName;
 
 @end

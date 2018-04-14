@@ -20,12 +20,12 @@
 //    self.delegate = self;
 }
 
-//- (BOOL)becomeFirstResponder {
-//    self.textColor = [NSColor blackColor];
-//    NSLog(@"becomeFirstResponder");
-//    
-//    return [super becomeFirstResponder];
-//}
+- (BOOL)becomeFirstResponder {
+    self.textColor = [NSColor blackColor];
+    NSLog(@"becomeFirstResponder");
+    
+    return [super becomeFirstResponder];
+}
 
 //- (BOOL)resignFirstResponder {
 //    self.textColor = [NSColor whiteColor];
@@ -36,6 +36,9 @@
 - (BOOL)textShouldBeginEditing:(NSText *)textObject {
     NSLog(@"textShouldBeginEditing----");
     return [super textShouldBeginEditing:textObject];
+}
+- (BOOL)validateProposedFirstResponder:(NSResponder *)responder forEvent:(NSEvent *)event {
+    return true;
 }
 
 - (void)textDidBeginEditing:(NSNotification *)notification {
@@ -50,6 +53,8 @@
 - (void)textDidEndEditing:(NSNotification *)notification {
     NSLog(@"textDidEndEditing");
     self.textColor = [NSColor whiteColor];
+    [self resignFirstResponder];
+    self.backgroundColor = [NSColor whiteColor];
 }
 
 @end

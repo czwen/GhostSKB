@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface GHSettingWindowControler : NSWindowController
+@interface GHSettingWindowControler : NSWindowController<NSToolbarDelegate>
+
 
 @end

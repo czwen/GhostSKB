@@ -13,5 +13,6 @@
 @property (weak) IBOutlet GHProfileTextField *profileName;
 
 - (void)markSelected:(BOOL) isSelected;
+- (void)textFinishEditing:(NSString *)originStr withNew:(NSString *)str;
 
 @end

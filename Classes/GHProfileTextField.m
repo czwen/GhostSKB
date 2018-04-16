@@ -7,6 +7,7 @@
 //
 
 #import "GHProfileTextField.h"
+#import "GHProfileCellView.h"
 
 @interface GHProfileTextField ()
 - (void)beginEdit;
@@ -14,6 +15,7 @@
 @end
 
 @implementation GHProfileTextField
+@synthesize cellView, originStr;
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -35,6 +37,7 @@
 }
 
 - (void)beginEdit {
+    self.originStr = [NSString stringWithString:self.stringValue];
     self.editable = YES;
     self.textColor = [NSColor blackColor];
     [self selectText:self.stringValue];
@@ -47,16 +50,13 @@
     [self selectText:nil];
 }
 
-- (void)textDidChange:(NSNotification *)notification
-{
-    [super textDidChange:notification];
-}
-
 - (void)controlTextDidEndEditing:(NSNotification *)obj {
     if(!self.isEditable) {
         return;
     }
     [self endEdit];
+    [self.cellView textFinishEditing:self.originStr withNew: self.stringValue];
+//    [self.cellView te]
 }
 
 @end

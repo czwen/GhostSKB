@@ -7,7 +7,8 @@
 //
 
 #import "GHProfileCellView.h"
-
+#import "GHDefaultManager.h"
+#import "Constant.h"
 @interface GHProfileCellView ()
 
 @end
@@ -22,7 +23,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-//    self.profileName.delegate = self;
+    self.profileName.cellView = self;
 }
 
 - (void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle {
@@ -38,8 +39,15 @@
     }
 }
 
-- (void)controlTextDidChange:(NSNotification *)obj {
-    NSLog(@"control text did change");
+- (void)textFinishEditing:(NSString *)originStr withNew:(NSString *)str {
+    NSLog(@"textFinishEditing %@ -- %@", originStr, str);
+    BOOL ok = [[GHDefaultManager getInstance] renameProfile:originStr to:str];
+    if(!ok) {
+        NSLog(@"rename failed");
+    }
+    else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:nil];
+    }
 }
 
 @end

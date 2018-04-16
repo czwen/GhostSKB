@@ -7,7 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class GHProfileCellView;
 
 @interface GHProfileTextField : NSTextField<NSTextFieldDelegate>
-
+@property (assign) GHProfileCellView *cellView;
+@property (strong) NSString *originStr;
 @end

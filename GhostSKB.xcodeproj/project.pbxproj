@@ -26,8 +26,8 @@
 		DE396984207B064500376496 /* GHProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE396983207B064400376496 /* GHProfileViewController.m */; };
 		DE40A1D72080D4FA00C1DEE0 /* GHProfileTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40A1D62080D4FA00C1DEE0 /* GHProfileTextField.m */; };
 		DE40A1FA2084443600C1DEE0 /* GHProfilesTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40A1F92084443600C1DEE0 /* GHProfilesTableView.m */; };
-		DE40A1FE2084888000C1DEE0 /* ToolBarIconAboutDisplay.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE40A1FB2084887F00C1DEE0 /* ToolBarIconAboutDisplay.tif */; };
-		DE40A1FF2084888000C1DEE0 /* ToolBarIconGeneral.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE40A1FC2084887F00C1DEE0 /* ToolBarIconGeneral.tif */; };
+		DE40A1FE2084888000C1DEE0 /* ToolBarIconAbout.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE40A1FB2084887F00C1DEE0 /* ToolBarIconAbout.tif */; };
+		DE40A1FF2084888000C1DEE0 /* ToolBarIconProfiles.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE40A1FC2084887F00C1DEE0 /* ToolBarIconProfiles.tif */; };
 		DE40A2002084888000C1DEE0 /* ToolBarIconSync.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE40A1FD2084888000C1DEE0 /* ToolBarIconSync.tif */; };
 		DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */; };
 		DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */; };
@@ -100,8 +100,8 @@
 		DE40A1D62080D4FA00C1DEE0 /* GHProfileTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileTextField.m; path = Classes/GHProfileTextField.m; sourceTree = "<group>"; };
 		DE40A1F82084443600C1DEE0 /* GHProfilesTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfilesTableView.h; path = Classes/GHProfilesTableView.h; sourceTree = "<group>"; };
 		DE40A1F92084443600C1DEE0 /* GHProfilesTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfilesTableView.m; path = Classes/GHProfilesTableView.m; sourceTree = "<group>"; };
-		DE40A1FB2084887F00C1DEE0 /* ToolBarIconAboutDisplay.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = ToolBarIconAboutDisplay.tif; path = Resources/ToolBarIconAboutDisplay.tif; sourceTree = "<group>"; };
-		DE40A1FC2084887F00C1DEE0 /* ToolBarIconGeneral.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = ToolBarIconGeneral.tif; path = Resources/ToolBarIconGeneral.tif; sourceTree = "<group>"; };
+		DE40A1FB2084887F00C1DEE0 /* ToolBarIconAbout.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = ToolBarIconAbout.tif; path = Resources/ToolBarIconAbout.tif; sourceTree = "<group>"; };
+		DE40A1FC2084887F00C1DEE0 /* ToolBarIconProfiles.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = ToolBarIconProfiles.tif; path = Resources/ToolBarIconProfiles.tif; sourceTree = "<group>"; };
 		DE40A1FD2084888000C1DEE0 /* ToolBarIconSync.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = ToolBarIconSync.tif; path = Resources/ToolBarIconSync.tif; sourceTree = "<group>"; };
 		DE53E5181D375BC2003D6E72 /* GhostSKB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GhostSKB.entitlements; sourceTree = "<group>"; };
 		DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-64.png"; path = "Resources/ghostkbd-64.png"; sourceTree = "<group>"; };
@@ -168,8 +168,8 @@
 		DE1B71BA1D2C082300A85EE0 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
-				DE40A1FB2084887F00C1DEE0 /* ToolBarIconAboutDisplay.tif */,
-				DE40A1FC2084887F00C1DEE0 /* ToolBarIconGeneral.tif */,
+				DE40A1FB2084887F00C1DEE0 /* ToolBarIconAbout.tif */,
+				DE40A1FC2084887F00C1DEE0 /* ToolBarIconProfiles.tif */,
 				DE40A1FD2084888000C1DEE0 /* ToolBarIconSync.tif */,
 				DE8D10471F72862F00718AD0 /* ghost_dark_small.png */,
 				DE8D10481F72862F00718AD0 /* ghost_dark_small@2x.png */,
@@ -399,10 +399,10 @@
 				DE1B71B21D2C081B00A85EE0 /* ghostkbd-16.png in Resources */,
 				DE7CE1211D3A88780054EC41 /* quit.png in Resources */,
 				DE40A2002084888000C1DEE0 /* ToolBarIconSync.tif in Resources */,
-				DE40A1FF2084888000C1DEE0 /* ToolBarIconGeneral.tif in Resources */,
+				DE40A1FF2084888000C1DEE0 /* ToolBarIconProfiles.tif in Resources */,
 				DE1B71B41D2C081B00A85EE0 /* ghostkbd-128.png in Resources */,
 				DE204265207A12E800DB3661 /* Storyboard.storyboard in Resources */,
-				DE40A1FE2084888000C1DEE0 /* ToolBarIconAboutDisplay.tif in Resources */,
+				DE40A1FE2084888000C1DEE0 /* ToolBarIconAbout.tif in Resources */,
 				DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */,
 				DE8D104A1F72862F00718AD0 /* ghost_dark_small@2x.png in Resources */,
 				DE1B71B11D2C081B00A85EE0 /* info.png in Resources */,

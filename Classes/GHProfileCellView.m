@@ -22,7 +22,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.profileName.delegate = self;
+//    self.profileName.delegate = self;
 }
 
 - (void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle {

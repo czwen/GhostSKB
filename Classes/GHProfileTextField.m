@@ -8,6 +8,11 @@
 
 #import "GHProfileTextField.h"
 
+@interface GHProfileTextField ()
+- (void)beginEdit;
+- (void)endEdit;
+@end
+
 @implementation GHProfileTextField
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -17,28 +22,32 @@
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
-//    self.delegate = self;
+    self.delegate = self;
 }
 
-- (BOOL)becomeFirstResponder {
+- (void)mouseDown:(NSEvent *)event {
+    if(event.clickCount == 2 && !self.isEditable) {
+        [self beginEdit];
+    }
+    else {
+        [super mouseDown:event];
+    }
+}
+
+- (void)beginEdit {
+    self.editable = YES;
     self.textColor = [NSColor blackColor];
-    NSLog(@"becomeFirstResponder");
-    
-    return [super becomeFirstResponder];
+    [self selectText:self.stringValue];
 }
 
-//- (BOOL)resignFirstResponder {
-//    self.textColor = [NSColor whiteColor];
-//    NSLog(@"resignFirstResponder");
-//    return [super resignFirstResponder];
-//}
-
-- (BOOL)textShouldBeginEditing:(NSText *)textObject {
-    NSLog(@"textShouldBeginEditing----");
-    return [super textShouldBeginEditing:textObject];
+- (void)endEdit {
+    self.editable = NO;
+    self.textColor = [NSColor whiteColor];
+    self.backgroundColor = [NSColor clearColor];
 }
-- (BOOL)validateProposedFirstResponder:(NSResponder *)responder forEvent:(NSEvent *)event {
-    return true;
+
+- (BOOL)textShouldEndEditing:(NSText *)textObject {
+    return YES;
 }
 
 - (void)textDidBeginEditing:(NSNotification *)notification {
@@ -50,11 +59,11 @@
     [super textDidChange:notification];
 }
 
-- (void)textDidEndEditing:(NSNotification *)notification {
-    NSLog(@"textDidEndEditing");
-    self.textColor = [NSColor whiteColor];
-    [self resignFirstResponder];
-    self.backgroundColor = [NSColor whiteColor];
+- (void)controlTextDidEndEditing:(NSNotification *)obj {
+    if(!self.isEditable) {
+        return;
+    }
+    [self endEdit];
 }
 
 @end

@@ -200,6 +200,7 @@
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    NSLog(@"tableViewSelectionDidChange");
     NSTableView *tableView = (NSTableView *)[notification object];
     if([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_LIST]) {
         NSInteger selectedRow = tableView.selectedRow;
@@ -219,6 +220,10 @@
         }
     }
 }
+
+//- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
+//    return YES;
+//}
 
 //复制配置文件内容
 - (void)duplicatedProfile {

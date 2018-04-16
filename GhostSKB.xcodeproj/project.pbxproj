@@ -29,6 +29,7 @@
 		DE40A1FE2084888000C1DEE0 /* ToolBarIconAbout.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE40A1FB2084887F00C1DEE0 /* ToolBarIconAbout.tif */; };
 		DE40A1FF2084888000C1DEE0 /* ToolBarIconProfiles.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE40A1FC2084887F00C1DEE0 /* ToolBarIconProfiles.tif */; };
 		DE40A2002084888000C1DEE0 /* ToolBarIconSync.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE40A1FD2084888000C1DEE0 /* ToolBarIconSync.tif */; };
+		DE40A20620849EC800C1DEE0 /* GHSyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40A20520849EC800C1DEE0 /* GHSyncViewController.m */; };
 		DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */; };
 		DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */; };
 		DE6634851CB21552009EE247 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6634841CB21552009EE247 /* AppDelegate.m */; };
@@ -103,6 +104,8 @@
 		DE40A1FB2084887F00C1DEE0 /* ToolBarIconAbout.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = ToolBarIconAbout.tif; path = Resources/ToolBarIconAbout.tif; sourceTree = "<group>"; };
 		DE40A1FC2084887F00C1DEE0 /* ToolBarIconProfiles.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = ToolBarIconProfiles.tif; path = Resources/ToolBarIconProfiles.tif; sourceTree = "<group>"; };
 		DE40A1FD2084888000C1DEE0 /* ToolBarIconSync.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = ToolBarIconSync.tif; path = Resources/ToolBarIconSync.tif; sourceTree = "<group>"; };
+		DE40A20420849EC800C1DEE0 /* GHSyncViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHSyncViewController.h; path = Classes/GHSyncViewController.h; sourceTree = "<group>"; };
+		DE40A20520849EC800C1DEE0 /* GHSyncViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHSyncViewController.m; path = Classes/GHSyncViewController.m; sourceTree = "<group>"; };
 		DE53E5181D375BC2003D6E72 /* GhostSKB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GhostSKB.entitlements; sourceTree = "<group>"; };
 		DE5EC3741D31DCAF00B51843 /* ghostkbd-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-64.png"; path = "Resources/ghostkbd-64.png"; sourceTree = "<group>"; };
 		DE5EC3761D31DDC200B51843 /* ghostkbd-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-1024.png"; path = "Resources/ghostkbd-1024.png"; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				DE39697A207B020C00376496 /* GHSettingTabViewController.m */,
 				DE396982207B064400376496 /* GHProfileViewController.h */,
 				DE396983207B064400376496 /* GHProfileViewController.m */,
+				DE40A20420849EC800C1DEE0 /* GHSyncViewController.h */,
+				DE40A20520849EC800C1DEE0 /* GHSyncViewController.m */,
 				DE39697F207B061C00376496 /* GHInfoViewController.h */,
 				DE396980207B061C00376496 /* GHInfoViewController.m */,
 				DEEAE12F1D3363D6005893F5 /* Constant.h */,
@@ -457,6 +462,7 @@
 				DE40A1D72080D4FA00C1DEE0 /* GHProfileTextField.m in Sources */,
 				DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */,
 				DE1B71C81D2C082F00A85EE0 /* GHInputAddDefaultCellView.m in Sources */,
+				DE40A20620849EC800C1DEE0 /* GHSyncViewController.m in Sources */,
 				DE6634851CB21552009EE247 /* AppDelegate.m in Sources */,
 				DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */,
 				DE396981207B061C00376496 /* GHInfoViewController.m in Sources */,

@@ -23,4 +23,5 @@
     }
     return [super validateProposedFirstResponder:responder forEvent:event];
 }
+
 @end

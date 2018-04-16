@@ -251,7 +251,7 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     NSDictionary *copyedDict = [NSDictionary dictionaryWithDictionary:targetDict];
     [profilesDict removeObjectForKey:from];
     [profilesDict setObject:copyedDict forKey:profileName];
-    [dict setObject:@"profiles" forKey:profilesDict];
+    [dict setObject:profilesDict forKey:@"profiles"];
     
     if([from isEqualToString:[self getDefaultProfileName]]) {
         [dict setObject:profileName forKey:@"currentProfile"];

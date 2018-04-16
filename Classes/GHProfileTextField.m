@@ -44,14 +44,7 @@
     self.editable = NO;
     self.textColor = [NSColor whiteColor];
     self.backgroundColor = [NSColor clearColor];
-}
-
-- (BOOL)textShouldEndEditing:(NSText *)textObject {
-    return YES;
-}
-
-- (void)textDidBeginEditing:(NSNotification *)notification {
-    NSLog(@"textDidBeginEditing");
+    [self selectText:nil];
 }
 
 - (void)textDidChange:(NSNotification *)notification

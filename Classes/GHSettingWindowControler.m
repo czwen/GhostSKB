@@ -36,12 +36,18 @@
 - (void)initToolbar {
     NSMutableDictionary *items = [[NSMutableDictionary alloc] initWithCapacity:1];
     NSArray *identifiers = @[ID_PROFILES, ID_SYNC, ID_ABOUT];
-    
+    NSArray *icons = @[
+                       [NSString stringWithFormat:@"ToolBarIcon%@", ID_PROFILES],
+                       [NSString stringWithFormat:@"ToolBarIcon%@", ID_SYNC],
+//                       NSImageNameAdvanced,
+                       NSImageNameInfo,
+                       ];
     NSInteger tag = 0;
-    for (NSString *identifier in identifiers) {
+    for (int i=0; i< [identifiers count]; i++) {
+        NSString *identifier = [identifiers objectAtIndex:i];
         NSToolbarItem* item = [[NSToolbarItem alloc] initWithItemIdentifier:identifier];
         [item setLabel:identifier];
-        [item setImage:[NSImage imageNamed:[NSString stringWithFormat:@"ToolBarIcon%@", identifier]]];
+        [item setImage:[NSImage imageNamed:[icons objectAtIndex:i]]];
         [item setTarget:self];
         [item setAction:@selector(toolbarItemSelected:)];
         [item setTag:tag];
@@ -80,15 +86,8 @@
 
 - (void)toolbarItemSelected:(id)sender {
     NSToolbarItem* item = sender;
-    
-    NSInteger tag = [item tag];
-//    if (tag == self.selectedPaneTag) {
-//        return;
-//    }
-//    self.selectedPaneTag = tag;
     NSString *identifier = item.itemIdentifier;
     [self showView:identifier];
-    NSLog(@"selected Tab:%@", identifier);
 }
 
 - (void)showView:(NSString *)identifier {

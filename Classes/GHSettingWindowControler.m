@@ -106,10 +106,10 @@
     [newView setAutoresizingMask:NSViewMaxYMargin | NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin];
 
     [self.window setTitle:identifier];
-    [self.window center];
     [self.window setContentView:newView];
     self.window.contentViewController = controller;
     [self.window setFrame:newFrame display:YES animate:YES];
+
     [self.controllers setObject:controller forKey:identifier];
 }
 

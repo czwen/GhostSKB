@@ -168,6 +168,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE166F802087A1FF00E3FA71 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				DE1B71BC1D2C082F00A85EE0 /* GHInputAddDefaultCellView.h */,
+				DE1B71BE1D2C082F00A85EE0 /* GHInputDefaultCellView.h */,
+				DEA777B4207C564A00D682D8 /* GHProfileCellView.h */,
+				DEA777B7207C566F00D682D8 /* GHProfileContentCellView.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		DE166F812087A23100E3FA71 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				DE40A1F82084443600C1DEE0 /* GHProfilesTableView.h */,
+				DE40A1D52080D4FA00C1DEE0 /* GHProfileTextField.h */,
+				DE166F7D207E55C200E3FA71 /* SyncButton.h */,
+				DEE204F8207B3DFB009627BB /* GHSettingTabView.h */,
+				DE7CE1221D3A906A0054EC41 /* GHSettingWindowControler.h */,
+				DE396979207B020C00376496 /* GHSettingTabViewController.h */,
+				DE396982207B064400376496 /* GHProfileViewController.h */,
+				DEEAE12F1D3363D6005893F5 /* Constant.h */,
+				DE40A20420849EC800C1DEE0 /* GHSyncViewController.h */,
+				DE39697F207B061C00376496 /* GHInfoViewController.h */,
+				DE1B71C01D2C082F00A85EE0 /* PopoverViewController.h */,
+				DE1B71C41D2C082F00A85EE0 /* GHDefaultInfo.h */,
+				DE1B71C61D2C082F00A85EE0 /* GHDefaultManager.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
 		DE1B71BA1D2C082300A85EE0 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,34 +226,22 @@
 		DE6634771CB21551009EE247 = {
 			isa = PBXGroup;
 			children = (
-				DE40A1F82084443600C1DEE0 /* GHProfilesTableView.h */,
-				DE40A1F92084443600C1DEE0 /* GHProfilesTableView.m */,
-				DE40A1D52080D4FA00C1DEE0 /* GHProfileTextField.h */,
-				DE40A1D62080D4FA00C1DEE0 /* GHProfileTextField.m */,
-				DE166F7D207E55C200E3FA71 /* SyncButton.h */,
-				DE166F7E207E55C200E3FA71 /* SyncButton.m */,
+				DE166F812087A23100E3FA71 /* Headers */,
 				DEA777B3207C561200D682D8 /* TableCellViews */,
 				DEE20504207B85F3009627BB /* Categories */,
-				DEE204F8207B3DFB009627BB /* GHSettingTabView.h */,
-				DEE204F9207B3DFB009627BB /* GHSettingTabView.m */,
 				DE204264207A12E800DB3661 /* Storyboard.storyboard */,
 				DE25403D1F141DA50093EEB2 /* Localizable.strings */,
-				DE7CE1221D3A906A0054EC41 /* GHSettingWindowControler.h */,
+				DE40A1F92084443600C1DEE0 /* GHProfilesTableView.m */,
+				DE40A1D62080D4FA00C1DEE0 /* GHProfileTextField.m */,
+				DE166F7E207E55C200E3FA71 /* SyncButton.m */,
+				DEE204F9207B3DFB009627BB /* GHSettingTabView.m */,
 				DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */,
-				DE396979207B020C00376496 /* GHSettingTabViewController.h */,
 				DE39697A207B020C00376496 /* GHSettingTabViewController.m */,
-				DE396982207B064400376496 /* GHProfileViewController.h */,
 				DE396983207B064400376496 /* GHProfileViewController.m */,
-				DE40A20420849EC800C1DEE0 /* GHSyncViewController.h */,
 				DE40A20520849EC800C1DEE0 /* GHSyncViewController.m */,
-				DE39697F207B061C00376496 /* GHInfoViewController.h */,
 				DE396980207B061C00376496 /* GHInfoViewController.m */,
-				DEEAE12F1D3363D6005893F5 /* Constant.h */,
-				DE1B71C01D2C082F00A85EE0 /* PopoverViewController.h */,
 				DE1B71C11D2C082F00A85EE0 /* PopoverViewController.m */,
-				DE1B71C41D2C082F00A85EE0 /* GHDefaultInfo.h */,
 				DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */,
-				DE1B71C61D2C082F00A85EE0 /* GHDefaultManager.h */,
 				DE1B71BB1D2C082F00A85EE0 /* GHDefaultManager.m */,
 				DE1B71BA1D2C082300A85EE0 /* Resouces */,
 				DE6634B21CB21890009EE247 /* AppKit.framework */,
@@ -267,13 +286,10 @@
 		DEA777B3207C561200D682D8 /* TableCellViews */ = {
 			isa = PBXGroup;
 			children = (
-				DE1B71BC1D2C082F00A85EE0 /* GHInputAddDefaultCellView.h */,
+				DE166F802087A1FF00E3FA71 /* Headers */,
 				DE1B71BD1D2C082F00A85EE0 /* GHInputAddDefaultCellView.m */,
-				DE1B71BE1D2C082F00A85EE0 /* GHInputDefaultCellView.h */,
 				DE1B71BF1D2C082F00A85EE0 /* GHInputDefaultCellView.m */,
-				DEA777B4207C564A00D682D8 /* GHProfileCellView.h */,
 				DEA777B5207C564A00D682D8 /* GHProfileCellView.m */,
-				DEA777B7207C566F00D682D8 /* GHProfileContentCellView.h */,
 				DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */,
 			);
 			name = TableCellViews;

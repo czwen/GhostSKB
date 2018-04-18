@@ -14,6 +14,7 @@
 		DE166F8D2087B58700E3FA71 /* PTHotKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE166F842087AF6900E3FA71 /* PTHotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE166F8F2087B58A00E3FA71 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE166F832087AF6900E3FA71 /* ShortcutRecorder.framework */; };
 		DE166F902087B58A00E3FA71 /* ShortcutRecorder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE166F832087AF6900E3FA71 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DE166F932087B8A200E3FA71 /* GHAdvanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE166F922087B8A200E3FA71 /* GHAdvanceViewController.m */; };
 		DE1B71B11D2C081B00A85EE0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A61D2C081B00A85EE0 /* info.png */; };
 		DE1B71B21D2C081B00A85EE0 /* ghostkbd-16.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */; };
 		DE1B71B31D2C081B00A85EE0 /* ghostkbd-32.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */; };
@@ -96,6 +97,8 @@
 		DE166F832087AF6900E3FA71 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
 		DE166F842087AF6900E3FA71 /* PTHotKey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PTHotKey.framework; path = Frameworks/PTHotKey.framework; sourceTree = "<group>"; };
 		DE166F8B2087B3D800E3FA71 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		DE166F912087B8A200E3FA71 /* GHAdvanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHAdvanceViewController.h; path = Classes/GHAdvanceViewController.h; sourceTree = "<group>"; };
+		DE166F922087B8A200E3FA71 /* GHAdvanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHAdvanceViewController.m; path = Classes/GHAdvanceViewController.m; sourceTree = "<group>"; };
 		DE1B71A61D2C081B00A85EE0 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = Resources/info.png; sourceTree = "<group>"; };
 		DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-16.png"; path = "Resources/ghostkbd-16.png"; sourceTree = "<group>"; };
 		DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-32.png"; path = "Resources/ghostkbd-32.png"; sourceTree = "<group>"; };
@@ -210,6 +213,7 @@
 		DE166F812087A23100E3FA71 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				DE166F912087B8A200E3FA71 /* GHAdvanceViewController.h */,
 				DE40A1F82084443600C1DEE0 /* GHProfilesTableView.h */,
 				DE40A1D52080D4FA00C1DEE0 /* GHProfileTextField.h */,
 				DE166F7D207E55C200E3FA71 /* SyncButton.h */,
@@ -276,6 +280,7 @@
 				DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */,
 				DE39697A207B020C00376496 /* GHSettingTabViewController.m */,
 				DE396983207B064400376496 /* GHProfileViewController.m */,
+				DE166F922087B8A200E3FA71 /* GHAdvanceViewController.m */,
 				DE40A20520849EC800C1DEE0 /* GHSyncViewController.m */,
 				DE396980207B061C00376496 /* GHInfoViewController.m */,
 				DE1B71C11D2C082F00A85EE0 /* PopoverViewController.m */,
@@ -516,6 +521,7 @@
 				DEE204FF207B42E6009627BB /* NSColor+Extensions.m in Sources */,
 				DE396984207B064500376496 /* GHProfileViewController.m in Sources */,
 				DE40A1D72080D4FA00C1DEE0 /* GHProfileTextField.m in Sources */,
+				DE166F932087B8A200E3FA71 /* GHAdvanceViewController.m in Sources */,
 				DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */,
 				DE1B71C81D2C082F00A85EE0 /* GHInputAddDefaultCellView.m in Sources */,
 				DE40A20620849EC800C1DEE0 /* GHSyncViewController.m in Sources */,

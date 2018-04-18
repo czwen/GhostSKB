@@ -13,6 +13,7 @@
 
 #define ID_PROFILES @"Profiles"
 #define ID_SYNC @"Sync"
+#define ID_ADVANCE @"Advance"
 #define ID_ABOUT @"About"
 
 @interface GHSettingWindowControler ()
@@ -35,11 +36,11 @@
 
 - (void)initToolbar {
     NSMutableDictionary *items = [[NSMutableDictionary alloc] initWithCapacity:1];
-    NSArray *identifiers = @[ID_PROFILES, ID_SYNC, ID_ABOUT];
+    NSArray *identifiers = @[ID_PROFILES, ID_ADVANCE, ID_SYNC, ID_ABOUT];
     NSArray *icons = @[
                        [NSString stringWithFormat:@"ToolBarIcon%@", ID_PROFILES],
+                       NSImageNameAdvanced,
                        [NSString stringWithFormat:@"ToolBarIcon%@", ID_SYNC],
-//                       NSImageNameAdvanced,
                        NSImageNameInfo,
                        ];
     NSInteger tag = 0;
@@ -80,6 +81,7 @@
                             @"ProfileViewController", ID_PROFILES,
                             @"InfoViewController", ID_ABOUT,
                             @"SyncViewController", ID_SYNC,
+                            @"AdvanceViewController", ID_ADVANCE,
                             nil];
     [self initToolbar];
 }

@@ -62,7 +62,7 @@
 }
 
 
-#pragma mark - nstableview datasource
+#pragma mark - NSTableView DataSource
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return [self.inputMethods count];
 }
@@ -82,7 +82,30 @@
     }
     else {
         GHAdvanceInputShortcutCellView *view = [tableView makeViewWithIdentifier:TBL_CELL_INPUT_SHORTCUT_ID owner:self];
+        view.recorderControl.delegate = self;
         return view;
     }
 }
+
+#pragma mark - SRRecorderControlDelegate
+
+- (BOOL)shortcutRecorder:(SRRecorderControl *)aRecorder canRecordShortcut:(NSDictionary *)aShortcut {
+    return YES;
+}
+
+//结束录制
+- (void)shortcutRecorderDidEndRecording:(SRRecorderControl *)aRecorder {
+    NSLog(@"shortcutRecorderDidEndRecording %@", aRecorder.objectValue);
+}
+
+- (BOOL)shortcutRecorderShouldBeginRecording:(SRRecorderControl *)aRecorder {
+    return TRUE;
+}
+
+- (BOOL)shortcutRecorder:(SRRecorderControl *)aRecorder shouldUnconditionallyAllowModifierFlags:(NSEventModifierFlags)aModifierFlags forKeyCode:(unsigned short)aKeyCode {
+    return TRUE;
+}
+
+
+
 @end

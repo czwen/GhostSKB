@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <ShortcutRecorder/ShortcutRecorder.h>
 
-@interface GHAdvanceViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource>
+@interface GHAdvanceViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate>
 
 @property (weak) IBOutlet NSTableView *inputSwitchTableView;
 @end

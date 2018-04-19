@@ -134,7 +134,6 @@
 
 - (void)chooseProfile:(id)sender {
     NSMenuItem *item = (NSMenuItem *)sender;
-    NSLog(@"chooseProfile: %@", item.title);
     BOOL ok = [[GHDefaultManager getInstance] changeDefaultProfile:item.title];
     if(!ok) {
         //TODO alert
@@ -142,6 +141,7 @@
     }
     else {
         [self profileListChanged];
+        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
     }
 }
 

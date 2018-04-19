@@ -67,7 +67,6 @@
     }
 }
 
-
 - (void) getAlivibleInputMethods {
     [self.availableInputMethods removeAllObjects];
     
@@ -106,7 +105,6 @@
         NSArray *config = [[GHDefaultManager getInstance] getProfileInputConfig:profileName];
         [self.profileConfigs setObject:config forKey:profileName];
     }
-    
 }
 - (void)updateProfileList {
     self.profiles = [NSMutableArray arrayWithArray:[[GHDefaultManager getInstance] getProfileList]];
@@ -130,6 +128,18 @@
     self.detailHeaderText = text1;
 }
 
+- (void)selectDefaultProfile {
+    NSString *defaultProfile = [[GHDefaultManager getInstance] getDefaultProfileName];
+    if ([self.profiles containsObject:defaultProfile]) {
+        NSUInteger row = [self.profiles indexOfObject: defaultProfile];
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:row];
+        [self.profilesTableView selectRowIndexes:indexSet byExtendingSelection:NO];
+    }
+}
+
+- (void)defaultProfileChanged {
+    [self selectDefaultProfile];
+}
 
 #pragma mark - View methos
 - (void)viewWillAppear {
@@ -155,6 +165,9 @@
     //hide header view of tables
     //these two tables have the same delegate and datasource : self
     [self setupHeaderTitle];
+    [self selectDefaultProfile];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultProfileChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
 }
 
 #pragma mark - NSTableView DataSource and Delegate

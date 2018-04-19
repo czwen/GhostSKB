@@ -30,4 +30,8 @@
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return 1;
 }
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+    return 40.0;
+}
 @end

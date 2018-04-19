@@ -8,12 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define TBL_IDENTIFIER_PROFILE_LIST @"profileList"
-#define TBL_IDENTIFIER_PROFILE_CONFIG_LIST @"profileDetailTable"
-
-#define TBL_CELL_IDENTIFIER_PROFILE_CELL @"profileCell"
-#define TBL_CELL_IDENTIFIER_PROFILE_CONTENT_CELL @"profileItemCell"
-
 @interface GHProfileViewController : NSViewController<NSTableViewDelegate,NSTableViewDataSource>
 
 @property (weak) IBOutlet NSTableView *profilesTableView;

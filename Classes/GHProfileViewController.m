@@ -33,7 +33,7 @@
 @synthesize profilesTableView, profiles, profileConfigs;
 @synthesize availableInputMethods;
 
-
+#pragma mark - innder util methods
 - (void)sortProfileNames {
     NSArray *arr = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         NSString *str1 = (NSString *)obj1;
@@ -42,6 +42,31 @@
     }];
     self.profiles = [NSMutableArray arrayWithArray:arr];
 }
+
+//复制配置文件内容
+- (void)duplicatedProfile {
+    NSInteger selectedRow = self.profilesTableView.selectedRow;
+    NSString *profileName = (NSString *)[self.profiles objectAtIndex:selectedRow];
+    BOOL ok = [[GHDefaultManager getInstance] duplicateProfile:profileName];
+    if (ok) {
+        [self updateProfileList];
+        [self.profilesTableView reloadData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+    }
+}
+
+- (void)tryAddNewProfile {
+    NSInteger count = [self.profiles count];
+    NSString *newProfileName = [NSString stringWithFormat:@"profile%ld", count+1];
+    BOOL ok = [[GHDefaultManager getInstance] addProfile:newProfileName];
+    if(ok) {
+        [self.profiles addObject:newProfileName];
+        [self sortProfileNames];
+        [self.profilesTableView reloadData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+    }
+}
+
 
 - (void) getAlivibleInputMethods {
     [self.availableInputMethods removeAllObjects];
@@ -75,37 +100,17 @@
     }
 }
 
-- (void)viewWillAppear {
-    [super viewWillAppear];
-    [self getAlivibleInputMethods];
-}
-
 - (void)updateProfileConfigDicts {
     self.profileConfigs = [[NSMutableDictionary alloc] initWithCapacity:1];
     for (NSString *profileName in self.profiles) {
         NSArray *config = [[GHDefaultManager getInstance] getProfileInputConfig:profileName];
         [self.profileConfigs setObject:config forKey:profileName];
     }
-
+    
 }
 - (void)updateProfileList {
     self.profiles = [NSMutableArray arrayWithArray:[[GHDefaultManager getInstance] getProfileList]];
     [self sortProfileNames];
-}
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self updateProfileList];
-    self.currentProfile = [self.profiles objectAtIndex:0];
-    
-    [self updateProfileConfigDicts];
-    
-    self.availableInputMethods = [[NSMutableArray alloc] initWithCapacity:1];
-    [self getAlivibleInputMethods];
-    // Do view setup here.
-    //hide header view of tables
-    //these two tables have the same delegate and datasource : self
-    [self setupHeaderTitle];
 }
 
 - (void)setupHeaderTitle {
@@ -123,8 +128,36 @@
     [text1 setStringValue:[NSString stringWithFormat:@"config list of profile: %@", self.currentProfile]];
     [detailHeaderView addSubview:text1];
     self.detailHeaderText = text1;
-
 }
+
+
+#pragma mark - View methos
+- (void)viewWillAppear {
+    [super viewWillAppear];
+    [self getAlivibleInputMethods];
+}
+
+- (void)awakeFromNib {
+    [self.profileDetailTableView sizeLastColumnToFit];
+    [self.profileDetailTableView setColumnAutoresizingStyle:NSTableViewUniformColumnAutoresizingStyle];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self updateProfileList];
+    self.currentProfile = [self.profiles objectAtIndex:0];
+    
+    [self updateProfileConfigDicts];
+    self.availableInputMethods = [[NSMutableArray alloc] initWithCapacity:1];
+    [self getAlivibleInputMethods];
+    // Do view setup here.
+    //hide header view of tables
+    //these two tables have the same delegate and datasource : self
+    [self setupHeaderTitle];
+}
+
+#pragma mark - NSTableView DataSource and Delegate
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     
@@ -151,6 +184,7 @@
         return view;
     }
     else if([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_CONFIG_LIST]) {
+        [tableColumn setResizingMask:NSTableColumnAutoresizingMask];
         GHProfileContentCellView *view = (GHProfileContentCellView *)[tableView makeViewWithIdentifier:TBL_CELL_IDENTIFIER_PROFILE_CONTENT_CELL owner:self];
         NSArray *defaultConfigs = (NSArray *)[self.profileConfigs objectForKey:self.currentProfile];
         GHDefaultInfo *defaultInfo = [defaultConfigs objectAtIndex:row];
@@ -221,33 +255,16 @@
     }
 }
 
-//- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
-//    return YES;
-//}
-
-//复制配置文件内容
-- (void)duplicatedProfile {
-    NSInteger selectedRow = self.profilesTableView.selectedRow;
-    NSString *profileName = (NSString *)[self.profiles objectAtIndex:selectedRow];
-    BOOL ok = [[GHDefaultManager getInstance] duplicateProfile:profileName];
-    if (ok) {
-        [self updateProfileList];
-        [self.profilesTableView reloadData];
-        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+- (void)tableViewColumnDidResize:(NSNotification *)notification {
+    NSTableView *tableView = (NSTableView *)[notification object];
+    if ([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_CONFIG_LIST]) {
+        NSRect frame = self.detailHeaderText.frame;
+        NSRect newFrame = NSMakeRect(frame.origin.x, frame.origin.y, tableView.bounds.size.width, frame.size.height);
+        self.detailHeaderText.frame = newFrame;
     }
 }
 
-- (void)tryAddNewProfile {
-    NSInteger count = [self.profiles count];
-    NSString *newProfileName = [NSString stringWithFormat:@"profile%ld", count+1];
-    BOOL ok = [[GHDefaultManager getInstance] addProfile:newProfileName];
-    if(ok) {
-        [self.profiles addObject:newProfileName];
-        [self sortProfileNames];
-        [self.profilesTableView reloadData];
-        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
-    }
-}
+#pragma mark IB actions
 
 - (IBAction)addNewProfile:(id)sender {
     NSInteger selectedRow = self.profilesTableView.selectedRow;

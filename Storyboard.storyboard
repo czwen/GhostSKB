@@ -75,7 +75,7 @@
                                 <rect key="frame" x="20" y="77" width="410" height="263"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="1gc-eO-X0b">
-                                    <rect key="frame" x="1" y="23" width="408" height="239"/>
+                                    <rect key="frame" x="1" y="0.0" width="408" height="262"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="IqT-lD-i8G" viewBased="YES" id="ghJ-1C-BpW">
@@ -152,7 +152,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="R6H-og-c2o">
-                                    <rect key="frame" x="1" y="117.10683155059814" width="236.02886962890625" height="16"/>
+                                    <rect key="frame" x="1" y="7" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="1FT-kx-Bz8">
@@ -188,11 +188,12 @@
                                     <rect key="frame" x="1" y="0.0" width="530" height="408"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView identifier="profileDetailTable" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" headerView="0mU-e1-qYY" viewBased="YES" id="3De-TF-vt9">
+                                        <tableView identifier="profileDetailTable" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" headerView="0mU-e1-qYY" viewBased="YES" id="3De-TF-vt9">
                                             <rect key="frame" x="0.0" y="0.0" width="530" height="385"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <tableViewGridLines key="gridStyleMask" vertical="YES"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn identifier="" width="527" minWidth="40" maxWidth="1000" id="bHP-tE-Met">

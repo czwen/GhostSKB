@@ -118,7 +118,7 @@
     NSString *inputId = [info objectForKey:@"id"];
     if (columnIndex == 0) {
         GHAdvanceInputIdCellView *view = [tableView makeViewWithIdentifier:TBL_CELL_INPUT_ID owner:tableView];
-        [view.inputIdLabel setStringValue:inputId];
+        [view.inputIdLabel setStringValue:[info objectForKey:@"inputName"]];
         return view;
     }
     else {

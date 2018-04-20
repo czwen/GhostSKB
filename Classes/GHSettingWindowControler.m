@@ -105,17 +105,18 @@
     NSRect newFrame = [self frameRectWithPin:NSZeroPoint andContentSize:newSize];
     
     [newView setFrameOrigin:NSZeroPoint];
-    [newView setAutoresizingMask:NSViewMaxYMargin | NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin];
+//    [newView setAutoresizingMask:NSViewMaxYMargin | NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin];
 
     [self.window setTitle:identifier];
     [self.window setContentView:newView];
-    self.window.contentViewController = controller;
     [self.window setFrame:newFrame display:YES animate:YES];
-
+    self.window.contentViewController = controller;
+    
     [self.controllers setObject:controller forKey:identifier];
 }
 
 
+//TODO 这里计算又问题
 - (NSRect)frameRectWithPin:(NSPoint)point andContentSize:(NSSize)size
 {
     NSRect oldFrame = [self.window frame];

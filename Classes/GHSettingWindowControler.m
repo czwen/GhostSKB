@@ -23,7 +23,7 @@
 //@property NSInteger selectedPaneTag;
 @property NSMutableDictionary *controllers;
 @property NSDictionary *controllerIdMap;
-
+@property (nonatomic) NSString *selectedIdentifier;
 - (void)toolbarItemSelected:(id)sender;
 - (void)initToolbar;
 - (void)showView:(NSString *)identifier;
@@ -71,7 +71,7 @@
     [toolbar setDelegate:self];
     [toolbar setSelectedItemIdentifier:[self.toolbarIdentifiers objectAtIndex:1]];
     [self.window setToolbar:toolbar];
-    
+    self.selectedIdentifier = [self.toolbarIdentifiers objectAtIndex:1];
     //initial viewcontroller
     [self showView:ID_PROFILES];
 }
@@ -89,6 +89,10 @@
 - (void)toolbarItemSelected:(id)sender {
     NSToolbarItem* item = sender;
     NSString *identifier = item.itemIdentifier;
+    if ([self.selectedIdentifier isEqualToString:identifier]) {
+        return;
+    }
+    self.selectedIdentifier = identifier;
     [self showView:identifier];
 }
 
@@ -105,12 +109,13 @@
     NSRect newFrame = [self frameRectWithPin:NSZeroPoint andContentSize:newSize];
     
     [newView setFrameOrigin:NSZeroPoint];
-//    [newView setAutoresizingMask:NSViewMaxYMargin | NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin];
+    [newView setAutoresizingMask:NSViewMaxYMargin | NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin];
 
     [self.window setTitle:identifier];
     [self.window setContentView:newView];
-    [self.window setFrame:newFrame display:YES animate:YES];
     self.window.contentViewController = controller;
+    [self.window setFrame:newFrame display:YES animate:YES];
+    
     
     [self.controllers setObject:controller forKey:identifier];
 }

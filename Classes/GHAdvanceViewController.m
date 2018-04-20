@@ -69,14 +69,14 @@
             
             self.inputMethods = [[NSMutableArray alloc] initWithCapacity:2];
             [self getAlivibleInputMethods];
-            
+
             GHDefaultManager *manager = [GHDefaultManager getInstance];
-            
+
             self.profile = [manager getDefaultProfileName];
             self.profiles = [NSMutableArray arrayWithArray:[manager getProfileList]];
-            
+
             self.shortcut = [[NSMutableDictionary alloc] initWithDictionary:[manager getKeyBindings:self.profile]];
-            
+
             //kvo
             for (NSDictionary *info in self.inputMethods) {
                 NSString *inputId = [info objectForKey:@"id"];
@@ -84,7 +84,7 @@
                 NSString *keyPath = [NSString stringWithFormat:@"%@.%@",kSHORTCUT,inputIdRep];
                 [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:NULL];
             }
-            
+
             [self addObserver:self forKeyPath:kPROFILE options:NSKeyValueObservingOptionNew context:NULL];
         }
     }

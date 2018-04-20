@@ -253,7 +253,6 @@
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    NSLog(@"tableViewSelectionDidChange");
     NSTableView *tableView = (NSTableView *)[notification object];
     if([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_LIST]) {
         NSInteger selectedRow = tableView.selectedRow;

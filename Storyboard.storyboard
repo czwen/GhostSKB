@@ -181,8 +181,9 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ZkO-er-MEa">
                                 <rect key="frame" x="30" y="296" width="480" height="57"/>
                                 <subviews>
-                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WbP-aS-LPC">
+                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WbP-aS-LPC">
                                         <rect key="frame" x="194" y="15" width="173" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="CP5-aU-PHY">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
@@ -204,12 +205,6 @@
                                         </textFieldCell>
                                     </textField>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="WbP-aS-LPC" secondAttribute="bottom" constant="18" id="9ag-v2-lU2"/>
-                                    <constraint firstAttribute="trailing" secondItem="WbP-aS-LPC" secondAttribute="trailing" constant="116" id="Bal-RB-z7I"/>
-                                    <constraint firstItem="WbP-aS-LPC" firstAttribute="top" secondItem="ZkO-er-MEa" secondAttribute="top" constant="18" id="KJp-xm-oPr"/>
-                                    <constraint firstItem="WbP-aS-LPC" firstAttribute="leading" secondItem="ZkO-er-MEa" secondAttribute="leading" constant="196" id="asM-s4-SLG"/>
-                                </constraints>
                             </customView>
                         </subviews>
                         <constraints>

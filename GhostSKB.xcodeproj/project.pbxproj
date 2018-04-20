@@ -101,6 +101,7 @@
 		DE166F8B2087B3D800E3FA71 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		DE166F912087B8A200E3FA71 /* GHAdvanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHAdvanceViewController.h; path = Classes/GHAdvanceViewController.h; sourceTree = "<group>"; };
 		DE166F922087B8A200E3FA71 /* GHAdvanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHAdvanceViewController.m; path = Classes/GHAdvanceViewController.m; sourceTree = "<group>"; };
+		DE166F94208A3CD700E3FA71 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		DE1B71A61D2C081B00A85EE0 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = Resources/info.png; sourceTree = "<group>"; };
 		DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-16.png"; path = "Resources/ghostkbd-16.png"; sourceTree = "<group>"; };
 		DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-32.png"; path = "Resources/ghostkbd-32.png"; sourceTree = "<group>"; };
@@ -243,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				DE166F8B2087B3D800E3FA71 /* AppKit.framework */,
+				DE166F94208A3CD700E3FA71 /* AppKit.framework */,
 				DE166F842087AF6900E3FA71 /* PTHotKey.framework */,
 				DE166F832087AF6900E3FA71 /* ShortcutRecorder.framework */,
 			);

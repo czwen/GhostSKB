@@ -10,6 +10,11 @@
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
 @interface GHAdvanceViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate>
+@property (weak) IBOutlet NSPopUpButton *profileSelector;
 
 @property (weak) IBOutlet NSTableView *inputSwitchTableView;
+
+@property (nonatomic, strong)NSString *profile;
+@property (nonatomic, strong)NSMutableArray *profiles;
+
 @end

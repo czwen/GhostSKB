@@ -72,13 +72,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uN8-Gm-WfB">
-                                <rect key="frame" x="20" y="22" width="495" height="318"/>
+                                <rect key="frame" x="20" y="22" width="495" height="266"/>
                                 <clipView key="contentView" id="1gc-eO-X0b">
-                                    <rect key="frame" x="1" y="0.0" width="493" height="317"/>
+                                    <rect key="frame" x="1" y="0.0" width="493" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" rowSizeStyle="automatic" headerView="IqT-lD-i8G" viewBased="YES" id="ghJ-1C-BpW">
-                                            <rect key="frame" x="0.0" y="0.0" width="493" height="294"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="493" height="242"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -178,19 +178,49 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dk1-cV-vu9">
+                                <rect key="frame" x="154" y="320" width="83" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="select profile" id="vgc-S3-m1M">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WbP-aS-LPC">
+                                <rect key="frame" x="294" y="313" width="76" height="26"/>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="CP5-aU-PHY">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="PFZ-1Y-pRg"/>
+                                </popUpButtonCell>
+                                <connections>
+                                    <binding destination="BNT-Zb-51R" name="content" keyPath="profiles" id="M9K-mM-H89"/>
+                                    <binding destination="BNT-Zb-51R" name="contentValues" keyPath="profiles" previousBinding="M9K-mM-H89" id="tpI-zT-gWY"/>
+                                    <binding destination="BNT-Zb-51R" name="selectedObject" keyPath="profile" previousBinding="tpI-zT-gWY" id="ajL-b2-7Wk"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="WbP-aS-LPC" firstAttribute="top" secondItem="waW-Je-QeV" secondAttribute="top" constant="23" id="04h-aa-BIO"/>
+                            <constraint firstAttribute="trailing" secondItem="WbP-aS-LPC" secondAttribute="trailing" constant="168" id="3ju-fw-pOS"/>
+                            <constraint firstItem="uN8-Gm-WfB" firstAttribute="top" secondItem="WbP-aS-LPC" secondAttribute="bottom" constant="28" id="4J3-kj-tOT"/>
                             <constraint firstItem="uN8-Gm-WfB" firstAttribute="leading" secondItem="waW-Je-QeV" secondAttribute="leading" constant="20" id="6J6-mh-rhK"/>
-                            <constraint firstItem="uN8-Gm-WfB" firstAttribute="top" secondItem="waW-Je-QeV" secondAttribute="top" constant="20" id="C9P-Mq-k1L"/>
+                            <constraint firstItem="uN8-Gm-WfB" firstAttribute="top" secondItem="waW-Je-QeV" secondAttribute="top" constant="72" id="C9P-Mq-k1L"/>
+                            <constraint firstItem="WbP-aS-LPC" firstAttribute="leading" secondItem="Dk1-cV-vu9" secondAttribute="trailing" constant="61" id="JzB-xI-NNy"/>
+                            <constraint firstItem="Dk1-cV-vu9" firstAttribute="leading" secondItem="waW-Je-QeV" secondAttribute="leading" constant="156" id="MK6-Xg-0ZF"/>
                             <constraint firstAttribute="bottom" secondItem="uN8-Gm-WfB" secondAttribute="bottom" constant="22" id="OB0-l7-RIX"/>
+                            <constraint firstItem="Dk1-cV-vu9" firstAttribute="top" secondItem="waW-Je-QeV" secondAttribute="top" constant="23" id="TsY-Um-lld"/>
                             <constraint firstAttribute="trailing" secondItem="uN8-Gm-WfB" secondAttribute="trailing" constant="20" id="VDN-Iy-3CN"/>
+                            <constraint firstItem="uN8-Gm-WfB" firstAttribute="top" secondItem="Dk1-cV-vu9" secondAttribute="bottom" constant="32" id="eKI-fY-fNe"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="inputSwitchTableView" destination="ghJ-1C-BpW" id="RMb-b3-8Gn"/>
+                        <outlet property="profileSelector" destination="WbP-aS-LPC" id="Wq8-dy-iIA"/>
                     </connections>
                 </viewController>
                 <customObject id="Km1-li-Ho6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="TZz-Ru-hzn"/>
             </objects>
             <point key="canvasLocation" x="2.5" y="560"/>
         </scene>

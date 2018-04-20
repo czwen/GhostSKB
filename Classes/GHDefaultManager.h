@@ -37,4 +37,7 @@
 - (BOOL)duplicateProfile:(NSString *)profileName;
 - (BOOL)changeDefaultProfile:(NSString *)profileName;
 
+- (BOOL)updateKeyBindings:(NSDictionary *)bindingInfo for:(NSString *)profile;
+- (NSDictionary *)getKeyBindings:(NSString *)profile;
+
 @end

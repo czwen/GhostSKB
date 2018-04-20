@@ -262,4 +262,29 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     return TRUE;
 }
 
+- (BOOL)updateKeyBindings:(NSDictionary *)bindingInfo for:(NSString *)profile {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
+    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
+    NSMutableDictionary *profileDict = [NSMutableDictionary dictionaryWithDictionary:[profilesDict objectForKey:profile]];
+    [profileDict setObject:bindingInfo forKey:@"keyboard_shortcut"];
+    
+    [profilesDict setObject:profileDict forKey:profile];
+    [dict setObject:profilesDict forKey:@"profiles"];
+    [defaults setObject:dict forKey:[self getPreferenceConfigKey]];
+    [defaults synchronize];
+    
+    return TRUE;
+}
+
+- (NSDictionary *)getKeyBindings:(NSString *)profile {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
+    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
+    NSMutableDictionary *profileDict = [NSMutableDictionary dictionaryWithDictionary:[profilesDict objectForKey:profile]];
+    
+    NSDictionary *d = [NSDictionary dictionaryWithDictionary:[profileDict objectForKey:@"keyboard_shortcut"]];
+    return d;
+}
+
 @end

@@ -16,10 +16,13 @@
 #define TBL_CELL_INPUT_ID @"inputIdCell"
 #define TBL_CELL_INPUT_SHORTCUT_ID @"inputShortcutCell"
 
+#define kSHORTCUT @"shortcut"
+
+#define kPROFILE @"profile"
+
 @interface GHAdvanceViewController ()
 
-@property NSMutableArray *inputMethods;
-@property NSString *defaultProfile;
+@property (nonatomic, strong)NSMutableArray *inputMethods;
 @property (assign) BOOL initialized;
 
 @property (nonatomic, strong)NSMutableDictionary *shortcut;
@@ -62,22 +65,27 @@
     //保证执行一次
     @synchronized(self) {
         if (!self.initialized) {
-            NSLog(@"awkeFromNib");
             self.initialized = TRUE;
             
             self.inputMethods = [[NSMutableArray alloc] initWithCapacity:2];
             [self getAlivibleInputMethods];
             
-            self.defaultProfile = [[GHDefaultManager getInstance] getDefaultProfileName];
+            GHDefaultManager *manager = [GHDefaultManager getInstance];
             
-            self.shortcut = [[NSMutableDictionary alloc] initWithCapacity:2];
+            self.profile = [manager getDefaultProfileName];
+            self.profiles = [NSMutableArray arrayWithArray:[manager getProfileList]];
             
+            self.shortcut = [[NSMutableDictionary alloc] initWithDictionary:[manager getKeyBindings:self.profile]];
+            
+            //kvo
             for (NSDictionary *info in self.inputMethods) {
                 NSString *inputId = [info objectForKey:@"id"];
                 NSString *inputIdRep = [inputId stringByReplacingOccurrencesOfString:@"." withString:@"_"];
-                NSString *keyPath = [NSString stringWithFormat:@"shortcut.%@", inputIdRep];
+                NSString *keyPath = [NSString stringWithFormat:@"%@.%@",kSHORTCUT,inputIdRep];
                 [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:NULL];
             }
+            
+            [self addObserver:self forKeyPath:kPROFILE options:NSKeyValueObservingOptionNew context:NULL];
         }
     }
 }
@@ -117,7 +125,7 @@
         GHAdvanceInputShortcutCellView *view = [tableView makeViewWithIdentifier:TBL_CELL_INPUT_SHORTCUT_ID owner:tableView];
         view.recorderControl.delegate = self;
         NSString *inputIdRep = [inputId stringByReplacingOccurrencesOfString:@"." withString:@"_"];
-        NSString *keyPath = [NSString stringWithFormat:@"%@.%@", @"shortcut", inputIdRep];
+        NSString *keyPath = [NSString stringWithFormat:@"%@.%@", kSHORTCUT, inputIdRep];
         [view.recorderControl bind:NSValueBinding toObject:self withKeyPath:keyPath options:nil];
         return view;
     }
@@ -143,8 +151,15 @@
 }
 
 #pragma mark - kvo observer
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath containsString:@"shortcut."]) {
+    GHDefaultManager *manager = [GHDefaultManager getInstance];
+    if ([keyPath containsString:kSHORTCUT]) {
+        [manager updateKeyBindings:self.shortcut for:self.profile];
+    }
+    else if ([keyPath isEqualToString:kPROFILE]) {
+        self.shortcut = [NSMutableDictionary dictionaryWithDictionary:[manager getKeyBindings:self.profile]];
+        [self.inputSwitchTableView reloadData];
     }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];

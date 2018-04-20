@@ -9,6 +9,7 @@
 #import "GHAdvanceViewController.h"
 #import "GHAdvanceInputIdCellView.h"
 #import "GHAdvanceInputShortcutCellView.h"
+#import "GHDefaultManager.h"
 
 #import <Carbon/Carbon.h>
 
@@ -16,10 +17,18 @@
 #define TBL_CELL_INPUT_SHORTCUT_ID @"inputShortcutCell"
 
 @interface GHAdvanceViewController ()
+
 @property NSMutableArray *inputMethods;
+@property NSString *defaultProfile;
+@property (assign) BOOL initialized;
+
+@property (nonatomic, strong)NSMutableDictionary *shortcut;
+
 @end
 
 @implementation GHAdvanceViewController
+
+@synthesize shortcut;
 
 
 - (void) getAlivibleInputMethods {
@@ -50,11 +59,35 @@
 #pragma mark - View methods
 
 - (void)awakeFromNib {
-    self.inputSwitchTableView.delegate = self;
-    self.inputSwitchTableView.dataSource = self;
-    
-    self.inputMethods = [[NSMutableArray alloc] initWithCapacity:2];
-    [self getAlivibleInputMethods];
+    //保证执行一次
+    @synchronized(self) {
+        if (!self.initialized) {
+            NSLog(@"awkeFromNib");
+            self.initialized = TRUE;
+            
+            self.inputMethods = [[NSMutableArray alloc] initWithCapacity:2];
+            [self getAlivibleInputMethods];
+            
+            self.defaultProfile = [[GHDefaultManager getInstance] getDefaultProfileName];
+            
+            self.shortcut = [[NSMutableDictionary alloc] initWithCapacity:2];
+            
+            for (NSDictionary *info in self.inputMethods) {
+                NSString *inputId = [info objectForKey:@"id"];
+                NSString *inputIdRep = [inputId stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+                NSString *keyPath = [NSString stringWithFormat:@"shortcut.%@", inputIdRep];
+                [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:NULL];
+            }
+        }
+    }
+}
+
+- (void)viewWillAppear {
+    [super viewWillAppear];
+}
+
+- (void)viewDidAppear {
+    [super viewDidAppear];
 }
 
 - (void)viewDidLoad {
@@ -74,15 +107,18 @@
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSUInteger columnIndex = [tableView.tableColumns indexOfObject:tableColumn];
     NSDictionary *info = (NSDictionary *)[self.inputMethods objectAtIndex:row];
+    NSString *inputId = [info objectForKey:@"id"];
     if (columnIndex == 0) {
-        GHAdvanceInputIdCellView *view = [tableView makeViewWithIdentifier:TBL_CELL_INPUT_ID owner:self];
-        NSString *inputId = [info objectForKey:@"id"];
+        GHAdvanceInputIdCellView *view = [tableView makeViewWithIdentifier:TBL_CELL_INPUT_ID owner:tableView];
         [view.inputIdLabel setStringValue:inputId];
         return view;
     }
     else {
-        GHAdvanceInputShortcutCellView *view = [tableView makeViewWithIdentifier:TBL_CELL_INPUT_SHORTCUT_ID owner:self];
+        GHAdvanceInputShortcutCellView *view = [tableView makeViewWithIdentifier:TBL_CELL_INPUT_SHORTCUT_ID owner:tableView];
         view.recorderControl.delegate = self;
+        NSString *inputIdRep = [inputId stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+        NSString *keyPath = [NSString stringWithFormat:@"%@.%@", @"shortcut", inputIdRep];
+        [view.recorderControl bind:NSValueBinding toObject:self withKeyPath:keyPath options:nil];
         return view;
     }
 }
@@ -95,7 +131,7 @@
 
 //结束录制
 - (void)shortcutRecorderDidEndRecording:(SRRecorderControl *)aRecorder {
-    NSLog(@"shortcutRecorderDidEndRecording %@", aRecorder.objectValue);
+//    NSLog(@"shortcutRecorderDidEndRecording %@", aRecorder.objectValue);
 }
 
 - (BOOL)shortcutRecorderShouldBeginRecording:(SRRecorderControl *)aRecorder {
@@ -106,6 +142,13 @@
     return TRUE;
 }
 
-
+#pragma mark - kvo observer
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath containsString:@"shortcut."]) {
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
 
 @end

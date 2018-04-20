@@ -158,6 +158,10 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="BNT-Zb-51R" id="mLj-yQ-3V1"/>
+                                                <outlet property="delegate" destination="BNT-Zb-51R" id="Uzd-7j-gBP"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>

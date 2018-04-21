@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "PopoverViewController.h"
 #import "GHDefaultManager.h"
 #import "Constant.h"
 
@@ -16,7 +15,6 @@
 #import <ApplicationServices/ApplicationServices.h>
 @interface AppDelegate ()
 
-- (void)toggleDarkModeTheme;
 - (void)updateProfilesMenu:(NSMenu *)menu;
 - (NSArray *)sortProfileNames:(NSArray *)profiles;
 @end
@@ -41,8 +39,6 @@
     [GHDefaultManager getInstance];
     
     [self initStatusItem];
-    [self initPopover];
-    [self toggleDarkModeTheme];
     isBecomeActiveTheFirstTime = true;
 }
 
@@ -75,12 +71,6 @@
     @catch (NSException *exception) {
         return NO;
     }
-}
-
-- (void)initPopover {
-    popover = [[NSPopover alloc] init];
-    popover.behavior = NSPopoverBehaviorTransient;
-    popover.contentViewController = [[PopoverViewController alloc] init];
 }
 
 - (NSArray *)sortProfileNames:(NSArray *)profiles {
@@ -180,20 +170,12 @@
 
 -(void)darkModeChanged:(NSNotification *)notif
 {
-    [self toggleDarkModeTheme];
+    
 }
 
--(void)toggleDarkModeTheme
-{
-    popover.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
-    PopoverViewController *controller = (PopoverViewController *)popover.contentViewController;
-    [controller toggleDarkMode];
-
-}
 
 - (void) onStatusItemSelected:(id) sender {
     statusItemSelected = !statusItemSelected;
-//    [self showPopover:sender];
 }
 
 - (void)showPopover:(id)sender {

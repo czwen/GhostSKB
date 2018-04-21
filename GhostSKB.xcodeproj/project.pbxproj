@@ -24,7 +24,6 @@
 		DE1B71C71D2C082F00A85EE0 /* GHDefaultManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71BB1D2C082F00A85EE0 /* GHDefaultManager.m */; };
 		DE1B71C81D2C082F00A85EE0 /* GHInputAddDefaultCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71BD1D2C082F00A85EE0 /* GHInputAddDefaultCellView.m */; };
 		DE1B71C91D2C082F00A85EE0 /* GHInputDefaultCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71BF1D2C082F00A85EE0 /* GHInputDefaultCellView.m */; };
-		DE1B71CA1D2C082F00A85EE0 /* PopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71C11D2C082F00A85EE0 /* PopoverViewController.m */; };
 		DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */; };
 		DE204265207A12E800DB3661 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE204264207A12E800DB3661 /* Storyboard.storyboard */; };
 		DE25403F1F141DA50093EEB2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE25403D1F141DA50093EEB2 /* Localizable.strings */; };
@@ -113,8 +112,6 @@
 		DE1B71BD1D2C082F00A85EE0 /* GHInputAddDefaultCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHInputAddDefaultCellView.m; path = Classes/GHInputAddDefaultCellView.m; sourceTree = "<group>"; };
 		DE1B71BE1D2C082F00A85EE0 /* GHInputDefaultCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHInputDefaultCellView.h; path = Classes/GHInputDefaultCellView.h; sourceTree = "<group>"; };
 		DE1B71BF1D2C082F00A85EE0 /* GHInputDefaultCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHInputDefaultCellView.m; path = Classes/GHInputDefaultCellView.m; sourceTree = "<group>"; };
-		DE1B71C01D2C082F00A85EE0 /* PopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverViewController.h; path = Classes/PopoverViewController.h; sourceTree = "<group>"; };
-		DE1B71C11D2C082F00A85EE0 /* PopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverViewController.m; path = Classes/PopoverViewController.m; sourceTree = "<group>"; };
 		DE1B71C41D2C082F00A85EE0 /* GHDefaultInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHDefaultInfo.h; path = Classes/GHDefaultInfo.h; sourceTree = "<group>"; };
 		DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHDefaultInfo.m; path = Classes/GHDefaultInfo.m; sourceTree = "<group>"; };
 		DE1B71C61D2C082F00A85EE0 /* GHDefaultManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHDefaultManager.h; path = Classes/GHDefaultManager.h; sourceTree = "<group>"; };
@@ -233,7 +230,6 @@
 				DEEAE12F1D3363D6005893F5 /* Constant.h */,
 				DE40A20420849EC800C1DEE0 /* GHSyncViewController.h */,
 				DE39697F207B061C00376496 /* GHInfoViewController.h */,
-				DE1B71C01D2C082F00A85EE0 /* PopoverViewController.h */,
 				DE1B71C41D2C082F00A85EE0 /* GHDefaultInfo.h */,
 				DE1B71C61D2C082F00A85EE0 /* GHDefaultManager.h */,
 			);
@@ -293,7 +289,6 @@
 				DE166F922087B8A200E3FA71 /* GHAdvanceViewController.m */,
 				DE40A20520849EC800C1DEE0 /* GHSyncViewController.m */,
 				DE396980207B061C00376496 /* GHInfoViewController.m */,
-				DE1B71C11D2C082F00A85EE0 /* PopoverViewController.m */,
 				DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */,
 				DE1B71BB1D2C082F00A85EE0 /* GHDefaultManager.m */,
 				DE1B71BA1D2C082300A85EE0 /* Resouces */,
@@ -520,7 +515,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEE204FA207B3DFB009627BB /* GHSettingTabView.m in Sources */,
-				DE1B71CA1D2C082F00A85EE0 /* PopoverViewController.m in Sources */,
 				DE166F7F207E55C200E3FA71 /* SyncButton.m in Sources */,
 				DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */,
 				DEE20500207B42E6009627BB /* NSView+MyCategory.m in Sources */,

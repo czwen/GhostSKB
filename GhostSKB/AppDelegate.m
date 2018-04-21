@@ -36,6 +36,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleGHAppSelectedNoti:) name:GH_NK_APP_SELECTED object:NULL];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profileListChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profileRenamed:) name:GH_NK_PROFILE_RENAME object:NULL];
     [GHDefaultManager getInstance];
     
     [self initStatusItem];
@@ -122,19 +123,8 @@
     }
 }
 
-- (void)chooseProfile:(id)sender {
-    NSMenuItem *item = (NSMenuItem *)sender;
-    BOOL ok = [[GHDefaultManager getInstance] changeDefaultProfile:item.title];
-    if(!ok) {
-        //TODO alert
-        NSLog(@"-----chooseProfile failed");
-    }
-    else {
-        [self profileListChanged];
-        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
-    }
-}
 
+#pragma mark - Notifications
 - (void)profileListChanged {
     NSMenu *menu = statusItem.menu;
     for (NSMenuItem *item in menu.itemArray) {
@@ -145,6 +135,59 @@
     }
     
     [self updateProfilesMenu:menu];
+}
+
+- (void)profileRenamed:(NSNotification *)notification {
+    NSDictionary *info = [notification object];
+    NSString *origin = [info objectForKey:@"origin"];
+    NSString *new = [info objectForKey:@"new"];
+    NSMenu *menu = statusItem.menu;
+    for (NSMenuItem *item in menu.itemArray) {
+        if ([item.title isEqualToString:origin]) {
+            item.title = new;
+            break;
+        }
+    }
+}
+
+-(void)darkModeChanged:(NSNotification *)notif
+{
+    
+}
+
+- (void) handleGHAppSelectedNoti:(NSNotification *)noti {
+    //get forcus
+    [[NSRunningApplication currentApplication] activateWithOptions:NSApplicationActivateIgnoringOtherApps];
+}
+
+- (void) handleAppUnhideNoti:(NSNotification *)noti {
+    NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
+    NSString *identifier = runningApp.bundleIdentifier;
+    [self changeInputSourceForApp:identifier];
+}
+
+- (void) handleAppActivateNoti:(NSNotification *)noti {
+    
+    _lastAppInputSourceId = [self getCurrentInputSourceId];
+    NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
+    NSString *identifier = runningApp.bundleIdentifier;
+    [self changeInputSourceForApp:identifier];
+}
+
+
+#pragma mark - MenuItem Actions
+
+- (void)chooseProfile:(id)sender {
+    NSMenuItem *item = (NSMenuItem *)sender;
+    BOOL ok = [[GHDefaultManager getInstance] changeDefaultProfile:item.title];
+    if(!ok) {
+        //TODO alert
+        NSLog(@"-----chooseProfile failed");
+    }
+    else {
+        [self profileListChanged];
+        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
+    }
 }
 
 - (void)toggleGhostSKB:(id)sender {
@@ -168,30 +211,22 @@
     [NSApp activateIgnoringOtherApps:YES];
 }
 
--(void)darkModeChanged:(NSNotification *)notif
-{
-    
-}
-
 
 - (void) onStatusItemSelected:(id) sender {
     statusItemSelected = !statusItemSelected;
 }
 
-- (void)showPopover:(id)sender {
-    NSStatusBarButton* button = statusItem.button;
-    _statusBarButton = button;
-    if (popover.isShown) {
-        [popover performClose:button];
+- (void) changeStatusItemImage:(BOOL)isLight {
+    if (isLight) {
+        statusItem.image = [NSImage imageNamed:@"ghost_white_small"];
     }
     else {
-        //get forcus
-        [[NSRunningApplication currentApplication] activateWithOptions:NSApplicationActivateIgnoringOtherApps];
-        //show popover
-        [popover showRelativeToRect:button.bounds ofView:button preferredEdge:NSRectEdgeMaxY];
+        statusItem.image =[NSImage imageNamed:@"ghost_dark_small"];
     }
 }
 
+
+#pragma mark - Core Methods
 - (NSMutableString *)getCurrentInputSourceId
 {
     TISInputSourceRef inputSource = TISCopyCurrentKeyboardInputSource();
@@ -237,19 +272,6 @@
     }
 }
 
-- (void) handleAppUnhideNoti:(NSNotification *)noti {
-    NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
-    NSString *identifier = runningApp.bundleIdentifier;
-    [self changeInputSourceForApp:identifier];
-}
-
-- (void) handleAppActivateNoti:(NSNotification *)noti {
-    
-    _lastAppInputSourceId = [self getCurrentInputSourceId];
-    NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
-    NSString *identifier = runningApp.bundleIdentifier;
-    [self changeInputSourceForApp:identifier];
-}
 
 - (void)changeInputSourceForApp:(NSString *)bundleId {
     NSString *targetInputId = [[GHDefaultManager getInstance] getInputId:bundleId withProfile:NULL];
@@ -257,21 +279,6 @@
     if (targetInputId != NULL) {
         [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.018];
     }
-}
-
-- (void) changeStatusItemImage:(BOOL)isLight {
-    if (isLight) {
-        statusItem.image = [NSImage imageNamed:@"ghost_white_small"];
-    }
-    else {
-        statusItem.image =[NSImage imageNamed:@"ghost_dark_small"];
-    }
-}
-- (void) handleGHAppSelectedNoti:(NSNotification *)noti {
-    //get forcus
-    [[NSRunningApplication currentApplication] activateWithOptions:NSApplicationActivateIgnoringOtherApps];
-    //show popover
-    [popover showRelativeToRect:_statusBarButton.bounds ofView:_statusBarButton preferredEdge:NSRectEdgeMaxY];
 }
 
 @end

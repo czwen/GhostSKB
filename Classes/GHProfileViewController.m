@@ -19,6 +19,8 @@
 #define TBL_CELL_IDENTIFIER_PROFILE_CELL @"profileCell"
 #define TBL_CELL_IDENTIFIER_PROFILE_CONTENT_CELL @"profileItemCell"
 
+#define TBL_DETAIL_HEADER_FORMAT @"config list of profile: %@"
+
 @interface GHProfileViewController ()
 
 - (void)sortProfileNames;
@@ -29,10 +31,13 @@
 - (void)updateProfileList;
 - (void)updateProfileConfigDicts;
 
+- (void)updateDetailTableHeader;
+
 @property (strong) NSString *currentProfile;
 @property (strong) NSMutableArray *availableInputMethods;
 @property (strong) NSMutableDictionary *inputIdInfo;
 @property (strong) NSTextField *detailHeaderText;
+@property (strong, nonatomic) NSString *detailHeaderStr;
 @end
 
 @implementation GHProfileViewController
@@ -71,6 +76,10 @@
         [self.profilesTableView reloadData];
         [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
     }
+}
+
+- (void)updateDetailTableHeader {
+    self.detailHeaderStr = [NSString stringWithFormat:TBL_DETAIL_HEADER_FORMAT, self.currentProfile];
 }
 
 - (void) getAlivibleInputMethods {
@@ -129,9 +138,9 @@
     NSTextField *text1 = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.profileDetailTableView.bounds.size.width, detailHeaderView.bounds.size.height)];
     text1.editable = FALSE;
     text1.alignment = NSTextAlignmentCenter;
-    [text1 setStringValue:[NSString stringWithFormat:@"config list of profile: %@", self.currentProfile]];
     [detailHeaderView addSubview:text1];
     self.detailHeaderText = text1;
+    [self.detailHeaderText bind:NSValueBinding toObject:self withKeyPath:@"detailHeaderStr" options:nil];
 }
 
 - (void)selectDefaultProfile {
@@ -143,9 +152,30 @@
     }
 }
 
-- (void)defaultProfileChanged {
+- (void)profileRenamed:(NSNotification *)notification {
+    NSDictionary *info = [notification object];
+    NSString *origin = [info objectForKey:@"origin"];
+    NSString *new = [info objectForKey:@"new"];
+    if ([self.profiles containsObject:origin]) {
+        NSUInteger row = [self.profiles indexOfObject: origin];
+        if ([self.currentProfile isEqualToString:origin]) {
+            self.currentProfile = new;
+        }
+        if (self.profilesTableView.selectedRow == row) {
+            [self updateDetailTableHeader];
+        }
+        [self.profiles replaceObjectAtIndex:row withObject:new];
+    }
+}
+
+- (void)profilelistChanged {
+    
+}
+
+- (void)defaultProfileChanged:(NSNotification *)notification {
     [self selectDefaultProfile];
 }
+//GH_NK_DEFAULT_PROFILE_CHANGED
 
 #pragma mark - View methos
 - (void)viewWillAppear {
@@ -167,13 +197,18 @@
     [self updateProfileConfigDicts];
     self.availableInputMethods = [[NSMutableArray alloc] initWithCapacity:1];
     [self getAlivibleInputMethods];
+    
     // Do view setup here.
     //hide header view of tables
     //these two tables have the same delegate and datasource : self
+    
     [self setupHeaderTitle];
     [self selectDefaultProfile];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultProfileChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+    NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
+    [notiCenter addObserver:self selector:@selector(profilelistChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+    [notiCenter addObserver:self selector:@selector(defaultProfileChanged:) name:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
+    [notiCenter addObserver:self selector:@selector(profileRenamed:) name:GH_NK_PROFILE_RENAME object:NULL];
 }
 
 #pragma mark - NSTableView DataSource and Delegate
@@ -268,7 +303,7 @@
             NSString *profileName = [self.profiles objectAtIndex:selectedRow];
             self.currentProfile = profileName;
             [self.profileDetailTableView reloadData];
-            [self.detailHeaderText setStringValue:[NSString stringWithFormat:@"config list of profile: %@", self.currentProfile]];
+            [self updateDetailTableHeader];
         }
     }
 }

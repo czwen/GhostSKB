@@ -54,7 +54,6 @@
 		DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B5207C564A00D682D8 /* GHProfileCellView.m */; };
 		DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */; };
 		DEDE04091F1B1D2D005F9D70 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEDE040B1F1B1D2D005F9D70 /* InfoPlist.strings */; };
-		DEE204FA207B3DFB009627BB /* GHSettingTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE204F9207B3DFB009627BB /* GHSettingTabView.m */; };
 		DEE204FF207B42E6009627BB /* NSColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE204FC207B42E6009627BB /* NSColor+Extensions.m */; };
 		DEE20500207B42E6009627BB /* NSView+MyCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE204FE207B42E6009627BB /* NSView+MyCategory.m */; };
 		DEEAE1331D3364B6005893F5 /* ghost_white_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DEEAE1311D3364B6005893F5 /* ghost_white_small.png */; };
@@ -163,8 +162,6 @@
 		DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileContentCellView.m; path = Classes/GHProfileContentCellView.m; sourceTree = "<group>"; };
 		DEDE040A1F1B1D2D005F9D70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DEDE040C1F1B1D2D005F9D70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
-		DEE204F8207B3DFB009627BB /* GHSettingTabView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHSettingTabView.h; path = Classes/GHSettingTabView.h; sourceTree = "<group>"; };
-		DEE204F9207B3DFB009627BB /* GHSettingTabView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHSettingTabView.m; path = Classes/GHSettingTabView.m; sourceTree = "<group>"; };
 		DEE204FB207B42E6009627BB /* NSView+MyCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+MyCategory.h"; path = "Classes/NSView+MyCategory.h"; sourceTree = "<group>"; };
 		DEE204FC207B42E6009627BB /* NSColor+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSColor+Extensions.m"; path = "Classes/NSColor+Extensions.m"; sourceTree = "<group>"; };
 		DEE204FD207B42E6009627BB /* NSColor+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSColor+Extensions.h"; path = "Classes/NSColor+Extensions.h"; sourceTree = "<group>"; };
@@ -223,7 +220,6 @@
 				DE40A1F82084443600C1DEE0 /* GHProfilesTableView.h */,
 				DE40A1D52080D4FA00C1DEE0 /* GHProfileTextField.h */,
 				DE166F7D207E55C200E3FA71 /* SyncButton.h */,
-				DEE204F8207B3DFB009627BB /* GHSettingTabView.h */,
 				DE7CE1221D3A906A0054EC41 /* GHSettingWindowControler.h */,
 				DE396979207B020C00376496 /* GHSettingTabViewController.h */,
 				DE396982207B064400376496 /* GHProfileViewController.h */,
@@ -282,7 +278,6 @@
 				DE40A1F92084443600C1DEE0 /* GHProfilesTableView.m */,
 				DE40A1D62080D4FA00C1DEE0 /* GHProfileTextField.m */,
 				DE166F7E207E55C200E3FA71 /* SyncButton.m */,
-				DEE204F9207B3DFB009627BB /* GHSettingTabView.m */,
 				DE7CE1231D3A906A0054EC41 /* GHSettingWindowControler.m */,
 				DE39697A207B020C00376496 /* GHSettingTabViewController.m */,
 				DE396983207B064400376496 /* GHProfileViewController.m */,
@@ -514,7 +509,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEE204FA207B3DFB009627BB /* GHSettingTabView.m in Sources */,
 				DE166F7F207E55C200E3FA71 /* SyncButton.m in Sources */,
 				DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */,
 				DEE20500207B42E6009627BB /* NSView+MyCategory.m in Sources */,

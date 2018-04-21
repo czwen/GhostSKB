@@ -40,13 +40,13 @@
 }
 
 - (void)textFinishEditing:(NSString *)originStr withNew:(NSString *)str {
-    NSLog(@"textFinishEditing %@ -- %@", originStr, str);
     BOOL ok = [[GHDefaultManager getInstance] renameProfile:originStr to:str];
     if(!ok) {
         NSLog(@"rename failed");
     }
     else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:nil];
+        NSDictionary *dict = @{@"origin": originStr, @"new": str};
+        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_RENAME object:dict];
     }
 }
 

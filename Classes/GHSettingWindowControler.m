@@ -115,8 +115,8 @@
     [self.window setContentView:newView];
     self.window.contentViewController = controller;
     [self.window setFrame:newFrame display:YES animate:YES];
-    
-    
+    //不允许用户手动缩放窗口大小
+    self.window.styleMask &= ~NSWindowStyleMaskResizable;
     [self.controllers setObject:controller forKey:identifier];
 }
 

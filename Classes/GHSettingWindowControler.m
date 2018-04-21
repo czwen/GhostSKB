@@ -20,10 +20,10 @@
 
 @property NSMutableDictionary *toolBarItems;
 @property NSMutableArray *toolbarIdentifiers;
-//@property NSInteger selectedPaneTag;
 @property NSMutableDictionary *controllers;
 @property NSDictionary *controllerIdMap;
 @property (nonatomic) NSString *selectedIdentifier;
+
 - (void)toolbarItemSelected:(id)sender;
 - (void)initToolbar;
 - (void)showView:(NSString *)identifier;

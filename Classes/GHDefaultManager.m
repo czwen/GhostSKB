@@ -37,16 +37,9 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
         sharedGHDefaultManager = [[self alloc] init];
     });
     
-//    //这是不采用GCD的单例初始化方法
-//    @synchronized(self)
-//    {
-//        if (sharedGHDefaultManager == nil)
-//        {
-//            sharedGHDefaultManager = [[self alloc] init];
-//        }
-//    }
     return sharedGHDefaultManager;
 }
+
 - (NSDictionary *)getProfileInputConfigDict:(NSString *)profileName {
     NSDictionary *dict = [self getPreferenceConfigDict];
     NSDictionary *profilesDict = (NSDictionary *)[dict objectForKey:@"profiles"];
@@ -134,8 +127,6 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
         currentMinVersion = i+1;
         NSString *key = [self getPrefrenceKeyByVersion:[@(currentMinVersion) stringValue]];
         NSDictionary *dict = [defaults dictionaryForKey:key];
-//        [defaults removeObjectForKey:key];
-//        [defaults synchronize];
         if (dict == NULL) {
             SEL selector = NSSelectorFromString([NSString stringWithFormat:@"convert_%ld_to_%ld", i, currentMinVersion]);
             if (selector != NULL && [self respondsToSelector:selector]) {
@@ -278,7 +269,6 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 - (NSDictionary *)getKeyBindings:(NSString *)profile {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
     NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
     NSMutableDictionary *profileDict = [NSMutableDictionary dictionaryWithDictionary:[profilesDict objectForKey:profile]];

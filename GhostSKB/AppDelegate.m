@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "GHDefaultManager.h"
+#import "GHKeybindingManager.h"
 #import "Constant.h"
 
 #import <AppKit/AppKit.h>
@@ -34,10 +35,14 @@
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(darkModeChanged:) name:@"AppleInterfaceThemeChangedNotification" object:nil];
     
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleGHAppSelectedNoti:) name:GH_NK_APP_SELECTED object:NULL];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profileListChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profileRenamed:) name:GH_NK_PROFILE_RENAME object:NULL];
+    NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
+    [notiCenter addObserver:self selector:@selector(handleGHAppSelectedNoti:) name:GH_NK_APP_SELECTED object:NULL];
+    [notiCenter addObserver:self selector:@selector(profileListChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+    [notiCenter addObserver:self selector:@selector(profileRenamed:) name:GH_NK_PROFILE_RENAME object:NULL];
+    [notiCenter addObserver:self selector:@selector(defaultProfileChanged:) name:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
+    
     [GHDefaultManager getInstance];
+    [GHKeybindingManager getInstance];
     
     [self initStatusItem];
     isBecomeActiveTheFirstTime = true;
@@ -150,8 +155,20 @@
     }
 }
 
--(void)darkModeChanged:(NSNotification *)notif
-{
+- (void)defaultProfileChanged:(NSNotification *)notification {
+    NSString *profileName = [notification object];
+    NSMenu *menu = statusItem.menu;
+    for (NSMenuItem *item in menu.itemArray) {
+        if (item.title == NULL || [item.title length] == 0) {
+            break;
+        }
+        NSControlStateValue value = [profileName isEqualToString:item.title] ? NSOnState : NSOffState;
+        item.state = value;
+    }
+    
+}
+
+-(void)darkModeChanged:(NSNotification *)notification {
     
 }
 
@@ -179,14 +196,14 @@
 
 - (void)chooseProfile:(id)sender {
     NSMenuItem *item = (NSMenuItem *)sender;
+    
     BOOL ok = [[GHDefaultManager getInstance] changeDefaultProfile:item.title];
     if(!ok) {
         //TODO alert
         NSLog(@"-----chooseProfile failed");
     }
     else {
-        [self profileListChanged];
-        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
+        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_DEFAULT_PROFILE_CHANGED object:item.title];
     }
 }
 
@@ -195,10 +212,12 @@
     if ([sender respondsToSelector:@selector(setState:)]) {
         [item setState:NSOnState];
     }
+    
+    //TODO handle enable or disable status
 }
 
 - (void)quitGhostSKB {
-    
+    //TODO quit
 }
 
 - (void)showPreference {
@@ -280,5 +299,6 @@
         [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.018];
     }
 }
+
 
 @end

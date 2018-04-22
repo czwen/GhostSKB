@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "GHDefaultInfo.h"
 
 @interface GHProfileContentCellView : NSTableCellView
 @property(nonatomic, assign) NSInteger row;
@@ -15,4 +16,6 @@
 @property (retain) IBOutlet NSTextField *appName;
 @property (retain) IBOutlet NSPopUpButton *inputMethodsPopButton;
 
+
+- (void)initContent:(NSArray *)inputMethodsInfoArray with:(GHDefaultInfo *)defaultInfo;
 @end

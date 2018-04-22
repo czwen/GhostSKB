@@ -35,7 +35,6 @@
 
 @property (strong) NSString *currentProfile;
 @property (strong) NSMutableArray *availableInputMethods;
-@property (strong) NSMutableDictionary *inputIdInfo;
 @property (strong) NSTextField *detailHeaderText;
 @property (strong, nonatomic) NSString *detailHeaderStr;
 @end
@@ -84,34 +83,7 @@
 
 - (void) getAlivibleInputMethods {
     [self.availableInputMethods removeAllObjects];
-    
-    NSMutableString *thisID;
-    CFArrayRef availableInputs = TISCreateInputSourceList(NULL, false);
-    NSUInteger count = CFArrayGetCount(availableInputs);
-    if (_inputIdInfo == NULL) {
-        _inputIdInfo = [[NSMutableDictionary alloc] initWithCapacity:3];
-    }
-    int inputMethodCount = 0;
-    for (int i = 0; i < count; i++) {
-        TISInputSourceRef inputSource = (TISInputSourceRef)CFArrayGetValueAtIndex(availableInputs, i);
-        CFStringRef type = TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceCategory);
-        if (!CFStringCompare(type, kTISCategoryKeyboardInputSource, 0)) {
-            thisID = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
-            NSString *canSelectStr = (__bridge NSString *)TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceIsSelectCapable);
-            Boolean canSelect = [canSelectStr boolValue];
-            if (!canSelect) {
-                continue;
-            }
-            
-            NSMutableString *inputName = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyLocalizedName));
-            
-            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[thisID description],@"id", [inputName description], @"inputName", nil];
-            
-            [self.availableInputMethods addObject:dict];
-            [_inputIdInfo setObject:[NSString stringWithFormat:@"%d", inputMethodCount] forKey:[thisID description]];
-            inputMethodCount++;
-        }
-    }
+    self.availableInputMethods = [GHDefaultManager getAlivibleInputMethods];
 }
 
 - (void)updateProfileConfigDicts {
@@ -243,45 +215,8 @@
         NSArray *defaultConfigs = (NSArray *)[self.profileConfigs objectForKey:self.currentProfile];
         GHDefaultInfo *defaultInfo = [defaultConfigs objectAtIndex:row];
         
-        if (defaultInfo.defaultInput == NULL) {
-            NSString *defaultInputId = (NSString *)[[self.availableInputMethods objectAtIndex:0] objectForKey:@"id"];
-            defaultInfo.defaultInput = defaultInputId;
-        }
-        
-        
-        if (defaultInfo.appUrl != NULL && defaultInfo.appBundleId != NULL){
-            NSURL *appUrl = [NSURL fileURLWithPath:defaultInfo.appUrl];
-            NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:[appUrl path]];
-            NSBundle *appBundle =[NSBundle bundleWithPath:[appUrl path]];
-            NSString *appName = [[NSFileManager defaultManager] displayNameAtPath: [appBundle bundlePath]];
-            //防止app被删除导致的错误
-            if (appName != NULL) {
-                view.appName.stringValue = appName;
-                view.appButton.image = icon;
-            }
-        }
-        else {
-            view.appButton.image = NULL;
-            view.appName.stringValue = @"";
-        }
-        
-        
         view.row = row;
-        if ([view.inputMethodsPopButton.menu numberOfItems] <= 0) {
-            for (int i=0; i<[self.availableInputMethods count]; i++) {
-                NSDictionary *inputInfo = self.availableInputMethods[i];
-                NSString *inputName = [inputInfo objectForKey:@"inputName"];
-                NSMenuItem *item = [view.inputMethodsPopButton.menu
-                                    addItemWithTitle:inputName
-                                    action:NULL
-                                    keyEquivalent:@""];
-                item.representedObject = view;
-            }
-        }
-        int inputIndex = [[_inputIdInfo objectForKey:defaultInfo.defaultInput] intValue];
-        [view.inputMethodsPopButton selectItemAtIndex:inputIndex];
-        
-        
+        [view initContent:self.availableInputMethods with:defaultInfo];
         return view;
     }
     return NULL;

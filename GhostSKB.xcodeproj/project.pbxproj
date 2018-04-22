@@ -53,6 +53,7 @@
 		DE8D104A1F72862F00718AD0 /* ghost_dark_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8D10481F72862F00718AD0 /* ghost_dark_small@2x.png */; };
 		DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B5207C564A00D682D8 /* GHProfileCellView.m */; };
 		DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */; };
+		DEBF9F3F208B7ADA00B836DC /* GHKeybindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */; };
 		DEDE04091F1B1D2D005F9D70 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEDE040B1F1B1D2D005F9D70 /* InfoPlist.strings */; };
 		DEE204FF207B42E6009627BB /* NSColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE204FC207B42E6009627BB /* NSColor+Extensions.m */; };
 		DEE20500207B42E6009627BB /* NSView+MyCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE204FE207B42E6009627BB /* NSView+MyCategory.m */; };
@@ -160,6 +161,8 @@
 		DEA777B5207C564A00D682D8 /* GHProfileCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileCellView.m; path = Classes/GHProfileCellView.m; sourceTree = "<group>"; };
 		DEA777B7207C566F00D682D8 /* GHProfileContentCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileContentCellView.h; path = Classes/GHProfileContentCellView.h; sourceTree = "<group>"; };
 		DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileContentCellView.m; path = Classes/GHProfileContentCellView.m; sourceTree = "<group>"; };
+		DEBF9F3D208B7ADA00B836DC /* GHKeybindingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHKeybindingManager.h; path = Classes/GHKeybindingManager.h; sourceTree = "<group>"; };
+		DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHKeybindingManager.m; path = Classes/GHKeybindingManager.m; sourceTree = "<group>"; };
 		DEDE040A1F1B1D2D005F9D70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DEDE040C1F1B1D2D005F9D70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		DEE204FB207B42E6009627BB /* NSView+MyCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+MyCategory.h"; path = "Classes/NSView+MyCategory.h"; sourceTree = "<group>"; };
@@ -286,6 +289,8 @@
 				DE396980207B061C00376496 /* GHInfoViewController.m */,
 				DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */,
 				DE1B71BB1D2C082F00A85EE0 /* GHDefaultManager.m */,
+				DEBF9F3D208B7ADA00B836DC /* GHKeybindingManager.h */,
+				DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */,
 				DE1B71BA1D2C082300A85EE0 /* Resouces */,
 				DE6634B21CB21890009EE247 /* AppKit.framework */,
 				DE6634821CB21552009EE247 /* GhostSKB */,
@@ -525,6 +530,7 @@
 				DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */,
 				DE1B71C81D2C082F00A85EE0 /* GHInputAddDefaultCellView.m in Sources */,
 				DE40A20620849EC800C1DEE0 /* GHSyncViewController.m in Sources */,
+				DEBF9F3F208B7ADA00B836DC /* GHKeybindingManager.m in Sources */,
 				DE6634851CB21552009EE247 /* AppDelegate.m in Sources */,
 				DE5951F7208880550004D663 /* GHAdvanceInputShortcutCellView.m in Sources */,
 				DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */,

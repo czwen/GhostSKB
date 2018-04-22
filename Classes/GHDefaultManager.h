@@ -16,6 +16,7 @@
 @property(assign) NSInteger rememberAppInputExpireTime;
 
 + (GHDefaultManager *)getInstance;
++ (NSMutableArray *) getAlivibleInputMethods;
 
 - (void)removeAppInputDefault:(NSString *)appBundleId;
 - (NSString *)getInputId:(NSString *)appBundleId withProfile:(nullable NSString *)profileName;

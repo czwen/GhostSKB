@@ -9,6 +9,7 @@
 #import "GHDefaultManager.h"
 #import "GHDefaultInfo.h"
 #import "Constant.h"
+#import <Carbon/Carbon.h>
 static GHDefaultManager *sharedGHDefaultManager = nil;
 
 @interface GHDefaultManager ()
@@ -39,6 +40,33 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     
     return sharedGHDefaultManager;
 }
+
++ (NSMutableArray *) getAlivibleInputMethods {
+    
+    NSMutableString *thisID;
+    CFArrayRef availableInputs = TISCreateInputSourceList(NULL, false);
+    NSUInteger count = CFArrayGetCount(availableInputs);
+    NSMutableArray *inputMethods = [NSMutableArray arrayWithCapacity:2];
+    for (int i = 0; i < count; i++) {
+        TISInputSourceRef inputSource = (TISInputSourceRef)CFArrayGetValueAtIndex(availableInputs, i);
+        CFStringRef type = TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceCategory);
+        if (!CFStringCompare(type, kTISCategoryKeyboardInputSource, 0)) {
+            thisID = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
+            NSString *canSelectStr = (__bridge NSString *)TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceIsSelectCapable);
+            Boolean canSelect = [canSelectStr boolValue];
+            if (!canSelect) {
+                continue;
+            }
+            
+            NSMutableString *inputName = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyLocalizedName));
+            
+            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[thisID description],@"id", [inputName description], @"inputName", nil];
+            [inputMethods addObject:dict];
+        }
+    }
+    return inputMethods;
+}
+
 
 - (NSDictionary *)getProfileInputConfigDict:(NSString *)profileName {
     NSDictionary *dict = [self getPreferenceConfigDict];

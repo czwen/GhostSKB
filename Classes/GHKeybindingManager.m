@@ -61,14 +61,15 @@ static GHKeybindingManager *sharedManager;
     
     for (NSDictionary *inputMethodInfo in inputMethods) {
         NSString *inputId = [inputMethodInfo objectForKey:@"id"];
+        //先解绑旧的快捷键
         PTHotKey *oldHotKey = [hcenter hotKeyWithIdentifier:inputId];
         if (oldHotKey) {
             [hcenter unregisterHotKey:oldHotKey];
         }
         
+        //如果有新的快捷键，那么就绑定切换特定输入法
         NSString *inputIdRep = [inputId stringByReplacingOccurrencesOfString:@"." withString:@"_"];
         NSDictionary *newShortcut = [dict objectForKey:inputIdRep];
-        
         if (newShortcut && (NSNull *)newShortcut != [NSNull null])
         {
             PTHotKey *newHotKey = [PTHotKey hotKeyWithIdentifier:inputId

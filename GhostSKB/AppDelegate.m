@@ -42,7 +42,7 @@
     [notiCenter addObserver:self selector:@selector(defaultProfileChanged:) name:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
     
     [GHDefaultManager getInstance];
-    [GHKeybindingManager getInstance];
+    [[GHKeybindingManager getInstance] setProfileHotKeys:[[GHDefaultManager getInstance] getDefaultProfileName]];
     
     [self initStatusItem];
     isBecomeActiveTheFirstTime = true;
@@ -251,6 +251,10 @@
     TISInputSourceRef inputSource = TISCopyCurrentKeyboardInputSource();
     NSMutableString *inputId = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
     return inputId;
+}
+
+- (void)changeInputSource:(NSString *)inputId {
+    [self doChangeInputSource:inputId];
 }
 
 - (void)doChangeInputSource:(NSString *)targetInputId

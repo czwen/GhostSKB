@@ -219,6 +219,7 @@
 		DE166F812087A23100E3FA71 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				DEBF9F3D208B7ADA00B836DC /* GHKeybindingManager.h */,
 				DE166F912087B8A200E3FA71 /* GHAdvanceViewController.h */,
 				DE40A1F82084443600C1DEE0 /* GHProfilesTableView.h */,
 				DE40A1D52080D4FA00C1DEE0 /* GHProfileTextField.h */,
@@ -289,7 +290,6 @@
 				DE396980207B061C00376496 /* GHInfoViewController.m */,
 				DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */,
 				DE1B71BB1D2C082F00A85EE0 /* GHDefaultManager.m */,
-				DEBF9F3D208B7ADA00B836DC /* GHKeybindingManager.h */,
 				DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */,
 				DE1B71BA1D2C082300A85EE0 /* Resouces */,
 				DE6634B21CB21890009EE247 /* AppKit.framework */,

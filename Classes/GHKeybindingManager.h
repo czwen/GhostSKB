@@ -11,4 +11,6 @@
 @interface GHKeybindingManager : NSObject
 
 + (GHKeybindingManager *)getInstance;
+
+- (void)setProfileHotKeys:(NSString *)profile;
 @end

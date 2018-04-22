@@ -25,5 +25,7 @@
 @property BOOL isBecomeActiveTheFirstTime;
 
 + (BOOL)isSystemCurrentDarkMode;
+
+- (void)changeInputSource:(NSString *)inputId;
 @end
 

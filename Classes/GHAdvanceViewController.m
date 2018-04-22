@@ -12,6 +12,8 @@
 #import "GHDefaultManager.h"
 
 #import <Carbon/Carbon.h>
+#import <PTHotKey/PTHotKey.h>
+#import <pthotkey/PTHotKeyCenter.h>
 
 #define TBL_CELL_INPUT_ID @"inputIdCell"
 #define TBL_CELL_INPUT_SHORTCUT_ID @"inputShortcutCell"
@@ -119,9 +121,11 @@
 //结束录制
 - (void)shortcutRecorderDidEndRecording:(SRRecorderControl *)aRecorder {
 //    NSLog(@"shortcutRecorderDidEndRecording %@", aRecorder.objectValue);
+    [[PTHotKeyCenter sharedCenter] resume];
 }
 
 - (BOOL)shortcutRecorderShouldBeginRecording:(SRRecorderControl *)aRecorder {
+    [[PTHotKeyCenter sharedCenter] pause];
     return TRUE;
 }
 

@@ -9,7 +9,9 @@
 #import "GHKeybindingManager.h"
 #import "Constant.h"
 #import "GHDefaultManager.h"
+#import "AppDelegate.h"
 
+#import <Carbon/Carbon.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import <PTHotKey/PTHotKeyCenter.h>
 #import <PTHotKey/PTHotKey+ShortcutRecorder.h>
@@ -19,6 +21,9 @@ static GHKeybindingManager *sharedManager;
 
 @interface GHKeybindingManager ()
 - (void)defaultProfileChanged:(NSNotification *)notification;
+- (void)doSetupHotKeys:(NSString *)profile;
+- (void)inputHotKeyAction:(id)sender;
+- (void)selectInputMethod:(NSString *)inputId;
 @end
 
 @implementation GHKeybindingManager
@@ -44,24 +49,51 @@ static GHKeybindingManager *sharedManager;
 
 - (void)defaultProfileChanged:(NSNotification *)notification {
     NSString *profile = [notification object];
-    
+    [self doSetupHotKeys:profile];
+}
+
+- (void)doSetupHotKeys:(NSString *)profile {
     GHDefaultManager *manager = [GHDefaultManager getInstance];
+    PTHotKeyCenter *hcenter = [PTHotKeyCenter sharedCenter];
+    
+    NSMutableArray *inputMethods = [GHDefaultManager getAlivibleInputMethods];
     NSDictionary *dict = [manager getKeyBindings:profile];
     
-    PTHotKeyCenter *center = [PTHotKeyCenter sharedCenter];
-    PTHotKey *oldHotKey = [center hotKeyWithIdentifier:profile];
-    if (oldHotKey) {
-        [center unregisterHotKey:oldHotKey];
+    for (NSDictionary *inputMethodInfo in inputMethods) {
+        NSString *inputId = [inputMethodInfo objectForKey:@"id"];
+        PTHotKey *oldHotKey = [hcenter hotKeyWithIdentifier:inputId];
+        if (oldHotKey) {
+            [hcenter unregisterHotKey:oldHotKey];
+        }
+        
+        NSString *inputIdRep = [inputId stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+        NSDictionary *newShortcut = [dict objectForKey:inputIdRep];
+        
+        if (newShortcut && (NSNull *)newShortcut != [NSNull null])
+        {
+            PTHotKey *newHotKey = [PTHotKey hotKeyWithIdentifier:inputId
+                                                        keyCombo:newShortcut
+                                                          target:self
+                                                          action:@selector(inputHotKeyAction:)];
+            [hcenter registerHotKey:newHotKey];
+        }
     }
-    
-//    if (newShortcut && (NSNull *)newShortcut != [NSNull null])
-//    {
-//        PTHotKey *newHotKey = [PTHotKey hotKeyWithIdentifier:aKeyPath
-//                                                    keyCombo:newShortcut
-//                                                      target:self
-//                                                      action:@selector(ping:)];
-//        [hotKeyCenter registerHotKey:newHotKey];
-//    }
 }
+
+- (void)setProfileHotKeys:(NSString *)profile {
+    [self doSetupHotKeys:profile];
+}
+
+- (void)inputHotKeyAction:(id)sender {
+    PTHotKey *hotKey = (PTHotKey *)sender;
+    NSString *identifier = hotKey.identifier;
+    [self selectInputMethod:identifier];
+}
+
+- (void)selectInputMethod:(NSString *)inputId {
+    AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
+    [delegate changeInputSource:inputId];
+}
+
 
 @end

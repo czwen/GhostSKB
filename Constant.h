@@ -19,4 +19,8 @@
 #define GH_NK_PROFILE_RENAME @"GH_PROFILE_RENAME"
 #define GH_NK_DEFAULT_PROFILE_CHANGED @"GH_DEFAULT_PROFILE_CHANGED"
 
+#define KVO_K_SHORTCUT @"shortcut"
+#define KVO_K_PROFILE @"profile"
+
+
 #endif /* Constant_h */

@@ -96,5 +96,4 @@ static GHKeybindingManager *sharedManager;
     [delegate changeInputSource:inputId];
 }
 
-
 @end

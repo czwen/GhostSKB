@@ -196,15 +196,8 @@
 
 - (void)chooseProfile:(id)sender {
     NSMenuItem *item = (NSMenuItem *)sender;
-    
-    BOOL ok = [[GHDefaultManager getInstance] changeDefaultProfile:item.title];
-    if(!ok) {
-        //TODO alert
-        NSLog(@"-----chooseProfile failed");
-    }
-    else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_DEFAULT_PROFILE_CHANGED object:item.title];
-    }
+    [[GHDefaultManager getInstance] changeDefaultProfile:item.title];
+    [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_DEFAULT_PROFILE_CHANGED object:item.title];
 }
 
 - (void)toggleGhostSKB:(id)sender {
@@ -212,7 +205,7 @@
     if ([sender respondsToSelector:@selector(setState:)]) {
         [item setState:NSOnState];
     }
-    
+
     //TODO handle enable or disable status
 }
 

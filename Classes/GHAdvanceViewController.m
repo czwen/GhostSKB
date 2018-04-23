@@ -18,6 +18,8 @@
 #import <PTHotKey/PTKeyCombo.h>
 #import <pthotkey/PTHotKeyCenter.h>
 
+#import "MBProgressHUD.h"
+
 #define TBL_CELL_INPUT_ID @"inputIdCell"
 #define TBL_CELL_INPUT_SHORTCUT_ID @"inputShortcutCell"
 
@@ -126,7 +128,10 @@
                                                   modifiers: aModifiers];
         
         if ([newComb isEqual:aComb]) {
-            //TODO 提示duplicated keycode
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"duplicated hotkey";
+            [hud hide:YES afterDelay:0.5];
             return NO;
         }
     }

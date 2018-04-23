@@ -121,7 +121,6 @@
 }
 
 
-//TODO 这里计算又问题
 - (NSRect)frameRectWithPin:(NSPoint)point andContentSize:(NSSize)size
 {
     NSRect oldFrame = [self.window frame];

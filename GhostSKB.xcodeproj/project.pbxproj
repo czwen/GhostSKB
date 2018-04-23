@@ -15,6 +15,7 @@
 		DE166F8F2087B58A00E3FA71 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE166F832087AF6900E3FA71 /* ShortcutRecorder.framework */; };
 		DE166F902087B58A00E3FA71 /* ShortcutRecorder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE166F832087AF6900E3FA71 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE166F932087B8A200E3FA71 /* GHAdvanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE166F922087B8A200E3FA71 /* GHAdvanceViewController.m */; };
+		DE18E27D208DD4A7002E1E08 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DE18E27C208DD4A7002E1E08 /* MBProgressHUD.m */; };
 		DE1B71B11D2C081B00A85EE0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A61D2C081B00A85EE0 /* info.png */; };
 		DE1B71B21D2C081B00A85EE0 /* ghostkbd-16.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */; };
 		DE1B71B31D2C081B00A85EE0 /* ghostkbd-32.png in Resources */ = {isa = PBXBuildFile; fileRef = DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */; };
@@ -101,6 +102,8 @@
 		DE166F912087B8A200E3FA71 /* GHAdvanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHAdvanceViewController.h; path = Classes/GHAdvanceViewController.h; sourceTree = "<group>"; };
 		DE166F922087B8A200E3FA71 /* GHAdvanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHAdvanceViewController.m; path = Classes/GHAdvanceViewController.m; sourceTree = "<group>"; };
 		DE166F94208A3CD700E3FA71 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		DE18E27B208DD4A6002E1E08 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		DE18E27C208DD4A7002E1E08 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		DE1B71A61D2C081B00A85EE0 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = Resources/info.png; sourceTree = "<group>"; };
 		DE1B71A71D2C081B00A85EE0 /* ghostkbd-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-16.png"; path = "Resources/ghostkbd-16.png"; sourceTree = "<group>"; };
 		DE1B71A81D2C081B00A85EE0 /* ghostkbd-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghostkbd-32.png"; path = "Resources/ghostkbd-32.png"; sourceTree = "<group>"; };
@@ -247,6 +250,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DE18E27E208DD4B0002E1E08 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				DE18E27B208DD4A6002E1E08 /* MBProgressHUD.h */,
+				DE18E27C208DD4A7002E1E08 /* MBProgressHUD.m */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
 		DE1B71BA1D2C082300A85EE0 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +286,7 @@
 		DE6634771CB21551009EE247 = {
 			isa = PBXGroup;
 			children = (
+				DE18E27E208DD4B0002E1E08 /* Libs */,
 				DE166F812087A23100E3FA71 /* Headers */,
 				DEA777B3207C561200D682D8 /* TableCellViews */,
 				DEE20504207B85F3009627BB /* Categories */,
@@ -516,6 +529,7 @@
 			files = (
 				DE166F7F207E55C200E3FA71 /* SyncButton.m in Sources */,
 				DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */,
+				DE18E27D208DD4A7002E1E08 /* MBProgressHUD.m in Sources */,
 				DEE20500207B42E6009627BB /* NSView+MyCategory.m in Sources */,
 				DE39697B207B020C00376496 /* GHSettingTabViewController.m in Sources */,
 				DE6634881CB21552009EE247 /* main.m in Sources */,

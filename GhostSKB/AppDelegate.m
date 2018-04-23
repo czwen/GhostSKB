@@ -203,14 +203,18 @@
 - (void)toggleGhostSKB:(id)sender {
     NSMenuItem *item = (NSMenuItem *)sender;
     if ([sender respondsToSelector:@selector(setState:)]) {
-        [item setState:NSOnState];
+        NSControlStateValue state = NSOnState;
+        if (item.state == NSOnState) {
+            state = NSOffState;
+        }
+        [item setState:state];
     }
 
     //TODO handle enable or disable status
 }
 
 - (void)quitGhostSKB {
-    //TODO quit
+    [NSApp terminate:self];
 }
 
 - (void)showPreference {

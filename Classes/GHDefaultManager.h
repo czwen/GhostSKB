@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "Constant.h"
+@class GHDefaultInfo;
 
 @interface GHDefaultManager : NSObject
 
@@ -18,7 +19,6 @@
 + (GHDefaultManager *)getInstance;
 + (NSMutableArray *) getAlivibleInputMethods;
 
-- (void)removeAppInputDefault:(NSString *)appBundleId;
 - (NSString *)getInputId:(NSString *)appBundleId withProfile:(nullable NSString *)profileName;
 //获取键盘切换配置的key
 - (NSString *)getPreferenceConfigKey;
@@ -31,6 +31,8 @@
 - (NSMutableArray *)getProfileInputConfig:(NSString *)profileName;
 //默认配置的名字
 - (NSString *)getDefaultProfileName;
+- (void)addNewAppInput:(GHDefaultInfo *)info forProfile:(NSString *)profile;
+- (void)removeAppInput:(NSString *)appBundleId forProfile:(NSString *)profile;
 
 - (BOOL)addProfile:(NSString *)profileName;
 - (BOOL)renameProfile:(NSString*)from to:(NSString *)profileName;

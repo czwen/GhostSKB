@@ -104,22 +104,6 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     return dict;
 }
 
--(void)removeAppInputDefault:(NSString *)appBundleId {
-    NSDictionary *defaultInputs = [self getPreferenceConfigDict];
-    if(defaultInputs == NULL) {
-        return;
-    }
-    NSMutableDictionary *settings = [NSMutableDictionary dictionaryWithDictionary:defaultInputs];
-    NSString *keyBoardDefaultInputKey = [[GHDefaultManager getInstance] getPreferenceConfigKey];
-    
-    if ([settings objectForKey:appBundleId] != NULL) {
-        [settings removeObjectForKey:appBundleId];
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:settings forKey:keyBoardDefaultInputKey];
-        [userDefaults synchronize];
-    }
-}
-
 - (NSString *)getPreferenceConfigKey {
     return [self getPrefrenceKeyByVersion:GH_DATA_VERSION];
 }
@@ -303,6 +287,37 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     
     NSDictionary *d = [NSDictionary dictionaryWithDictionary:[profileDict objectForKey:@"keyboard_shortcut"]];
     return d;
+}
+
+- (void)addNewAppInput:(GHDefaultInfo *)info forProfile:(NSString *)profile {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
+    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
+    NSMutableDictionary *profileDict = [NSMutableDictionary dictionaryWithDictionary:[profilesDict objectForKey:profile]];
+    NSMutableDictionary *configDict = [[profileDict objectForKey:@"config"] mutableCopy];
+    NSDictionary *infoDict = [NSDictionary dictionaryWithObjectsAndKeys:info.appUrl, @"appUrl", info.defaultInput, @"defaultInput", info.appBundleId, @"appBundleId", nil];
+    [configDict setObject:infoDict forKey:info.appBundleId];
+    [profileDict setObject:configDict forKey:@"config"];
+    [profilesDict setObject:profileDict forKey:profile];
+    [dict setObject:profilesDict forKey:@"profiles"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:dict forKey:[self getPreferenceConfigKey]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)removeAppInput:(NSString *)appBundleId forProfile:(NSString *)profile {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
+    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
+    NSMutableDictionary *profileDict = [NSMutableDictionary dictionaryWithDictionary:[profilesDict objectForKey:profile]];
+    NSMutableDictionary *configDict = [[profileDict objectForKey:@"config"] mutableCopy];
+    if ([configDict objectForKey:appBundleId] != NULL) {
+        [configDict removeObjectForKey:appBundleId];
+        [profileDict setObject:configDict forKey:@"config"];
+        [profilesDict setObject:profileDict forKey:profile];
+        [dict setObject:profilesDict forKey:@"profiles"];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:[self getPreferenceConfigKey]];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 @end

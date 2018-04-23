@@ -30,8 +30,11 @@
 
 - (void)updateProfileList;
 - (void)updateProfileConfigDicts;
+- (BOOL)profileContainAppInput:(NSString *)bundleId;
 
 - (void)updateDetailTableHeader;
+
+- (void)showAppSelectPanel:(BOOL)newInput;
 
 @property (strong, nonatomic) NSString *currentProfile;
 @property (strong, nonatomic) NSMutableArray *availableInputMethods;
@@ -66,6 +69,16 @@
     }
 }
 
+- (BOOL)profileContainAppInput:(NSString *)bundleId {
+    NSArray *defaultConfigs = (NSArray *)[self.profileConfigs objectForKey:self.currentProfile];
+    for (GHDefaultInfo *info in defaultConfigs) {
+        if ([info.appBundleId isEqualToString:bundleId]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (void)tryAddNewProfile {
     NSInteger count = [self.profiles count];
     NSString *newProfileName = [NSString stringWithFormat:@"profile%ld", count+1];
@@ -90,9 +103,26 @@
 - (void)updateProfileConfigDicts {
     self.profileConfigs = [[NSMutableDictionary alloc] initWithCapacity:1];
     for (NSString *profileName in self.profiles) {
-        NSArray *config = [[GHDefaultManager getInstance] getProfileInputConfig:profileName];
+        NSMutableArray *config = [NSMutableArray arrayWithArray:[[GHDefaultManager getInstance] getProfileInputConfig:profileName]];
+        [self sortDefaultInputArray:config];
         [self.profileConfigs setObject:config forKey:profileName];
     }
+}
+
+- (void)addNewDefaultInput:(NSString *)profile with:(GHDefaultInfo *)info {
+    NSMutableArray *infoArr = [self.profileConfigs objectForKey:profile];
+    [infoArr addObject:info];
+    [self sortDefaultInputArray:infoArr];
+    [self.profileConfigs setObject:infoArr forKey:profile];
+    [[GHDefaultManager getInstance] addNewAppInput:info forProfile:profile];
+}
+
+- (void)sortDefaultInputArray:(NSMutableArray<GHDefaultInfo *> *)arr {
+    [arr sortUsingComparator:^NSComparisonResult(id  _Nonnull a, id  _Nonnull b) {
+        GHDefaultInfo *aInfo = (GHDefaultInfo *)a;
+        GHDefaultInfo *bInfo = (GHDefaultInfo *)b;
+        return [aInfo.appBundleId compare:bInfo.appBundleId];
+    }];
 }
 - (void)updateProfileList {
     self.profiles = [NSMutableArray arrayWithArray:[[GHDefaultManager getInstance] getProfileList]];
@@ -258,6 +288,56 @@
     }
 }
 
+- (void)showAppSelectPanel:(BOOL)newInput {
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    NSArray *appDirs = NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSLocalDomainMask, YES);
+    NSString *appDir = [appDirs objectAtIndex:0];
+    [panel setDirectoryURL:[NSURL URLWithString:appDir]];
+    [panel setCanChooseFiles:YES];
+    [panel setCanChooseDirectories:NO];
+    [panel setAllowsMultipleSelection:NO]; // yes if more than one dir is allowed
+
+    NSWindow *window = self.view.window;
+    [panel beginSheetModalForWindow:window completionHandler:^(NSModalResponse result) {
+        NSLog(@"select finished");
+        if(result != NSFileHandlingPanelOKButton) {
+            return;
+        }
+        for (NSURL *url in [panel URLs]) {
+            NSBundle *selectedAppBundle =[NSBundle bundleWithURL:url];
+            NSString *bundleIdentifier = [selectedAppBundle bundleIdentifier];
+            if([self profileContainAppInput:bundleIdentifier]) {
+                if (newInput) {
+                    NSAlert *alert = [[NSAlert alloc] init];
+                    [alert addButtonWithTitle:@"OK"];
+                    [alert setMessageText:NSLocalizedString(@"duplicated_app", @"")];
+                    [alert setInformativeText:NSLocalizedString(@"already_have_same_app", @"")];
+                    [alert setAlertStyle:NSWarningAlertStyle];
+                    [alert runModal];
+                }
+
+                break;
+            }
+            
+            NSString *inputId = [[self.availableInputMethods objectAtIndex:0] objectForKey:@"id"];
+            GHDefaultInfo *info = [[GHDefaultInfo alloc] initWithAppBundle:bundleIdentifier appUrl:[url path] input:inputId];
+            if(newInput) {
+                [self addNewDefaultInput:self.currentProfile with:info];
+                [self.profileDetailTableView reloadData];
+            }
+            else {
+                //TODO update app info
+            }
+
+            // post application
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:url, @"appUrl", nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"GH_APP_SELECTED" object:NULL userInfo:userInfo];
+
+            break;
+        }
+    }];
+}
+
 #pragma mark IB actions
 
 - (IBAction)addNewProfile:(id)sender {
@@ -283,8 +363,15 @@
 }
 
 - (IBAction)removeAppInput:(id)sender {
+    NSMutableArray *inputs = [self.profileConfigs objectForKey:self.currentProfile];
+    NSInteger row = self.profileDetailTableView.selectedRow;
+    GHDefaultInfo *info = [inputs objectAtIndex:row];
+    [[GHDefaultManager getInstance] removeAppInput:info.appBundleId forProfile:self.currentProfile];
+    [inputs removeObjectAtIndex:row];
+    [self.profileDetailTableView reloadData];
 }
 
 - (IBAction)addAppInput:(id)sender {
+    [self showAppSelectPanel:YES];
 }
 @end

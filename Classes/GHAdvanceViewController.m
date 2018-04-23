@@ -56,6 +56,11 @@
 
             self.profile = [manager getDefaultProfileName];
             self.profiles = [[manager getProfileList] mutableCopy];
+            [self.profiles sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                NSString *str1 = (NSString *)obj1;
+                NSString *str2 = (NSString *)obj2;
+                return [str1 compare:str2];
+            }];
 
             self.shortcut = [[manager getKeyBindings:self.profile] mutableCopy];
 
@@ -82,8 +87,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
+    [ncenter addObserver:self selector:@selector(inputSourceListChanged:) name:GH_NK_INPUT_SOURCE_LIST_CHANGED object:NULL];
 }
 
+#pragma mark - Notifications
+
+- (void)inputSourceListChanged:(NSNotification *)notification {
+    [self getAlivibleInputMethods];
+    [self.inputSwitchTableView reloadData];
+}
 
 #pragma mark - NSTableView DataSource
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {

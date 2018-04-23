@@ -24,8 +24,16 @@
 @implementation AppDelegate
 @synthesize preferenceController;
 @synthesize isBecomeActiveTheFirstTime;
+
 #pragma mark - App Life Cycle
 
+static void notificationCallback (CFNotificationCenterRef center,
+                           void * observer,
+                           CFStringRef name,
+                           const void * object,
+                           CFDictionaryRef userInfo) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_INPUT_SOURCE_LIST_CHANGED object:NULL];
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     NSNotificationCenter *nc = [[NSWorkspace sharedWorkspace] notificationCenter];
@@ -43,6 +51,10 @@
     
     [GHDefaultManager getInstance];
     [[GHKeybindingManager getInstance] setProfileHotKeys:[[GHDefaultManager getInstance] getDefaultProfileName]];
+    
+    //observing change of input source list
+    CFNotificationCenterRef cfnCenter = CFNotificationCenterGetDistributedCenter();
+    CFNotificationCenterAddObserver(cfnCenter, NULL, notificationCallback, kTISNotifyEnabledKeyboardInputSourcesChanged, NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
     
     [self initStatusItem];
     isBecomeActiveTheFirstTime = true;

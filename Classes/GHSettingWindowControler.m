@@ -59,7 +59,7 @@
     self.toolBarItems = items;
     
     //identifiers
-    self.toolbarIdentifiers = [NSMutableArray arrayWithArray:identifiers];
+    self.toolbarIdentifiers = [identifiers mutableCopy];
     [self.toolbarIdentifiers insertObject:NSToolbarFlexibleSpaceItemIdentifier atIndex:0];
     [self.toolbarIdentifiers insertObject:NSToolbarFlexibleSpaceItemIdentifier atIndex:[self.toolbarIdentifiers count]];
     

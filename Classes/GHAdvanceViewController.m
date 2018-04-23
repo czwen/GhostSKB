@@ -54,7 +54,7 @@
             GHDefaultManager *manager = [GHDefaultManager getInstance];
 
             self.profile = [manager getDefaultProfileName];
-            self.profiles = [NSMutableArray arrayWithArray:[manager getProfileList]];
+            self.profiles = [[manager getProfileList] mutableCopy];
 
             self.shortcut = [[NSMutableDictionary alloc] initWithDictionary:[manager getKeyBindings:self.profile]];
 
@@ -141,7 +141,7 @@
         [manager updateKeyBindings:self.shortcut for:self.profile];
     }
     else if ([keyPath isEqualToString:kPROFILE]) {
-        self.shortcut = [NSMutableDictionary dictionaryWithDictionary:[manager getKeyBindings:self.profile]];
+        self.shortcut = [[manager getKeyBindings:self.profile] mutableCopy];
         [self.inputSwitchTableView reloadData];
     }
     else {

@@ -181,8 +181,8 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 - (BOOL)addProfile:(NSString *)profileName {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
-    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
+    NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
     if([profilesDict objectForKey:profileName] != NULL) {
         return FALSE;
     }
@@ -194,8 +194,8 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 - (BOOL)removeProfile:(NSString *)profileName {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
-    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
+    NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
     if([profilesDict objectForKey:profileName] == NULL) {
         return TRUE;
     }
@@ -207,8 +207,8 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 - (BOOL)changeDefaultProfile:(NSString *)profileName {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
-    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
+    NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
     if([profilesDict objectForKey:profileName] == NULL) {
         return FALSE;
     }
@@ -233,9 +233,9 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     }
     newProfileName = [NSString stringWithFormat:@"%@_%d", newProfileName, count];
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
-    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
-    NSDictionary *newProfileDict = [NSDictionary dictionaryWithDictionary:[profilesDict objectForKey:profileName]];
+    NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
+    NSDictionary *newProfileDict = [[profilesDict objectForKey:profileName] mutableCopy];
     [profilesDict setObject:newProfileDict forKey:newProfileName];
     [dict setObject:profilesDict forKey:@"profiles"];
     [[NSUserDefaults standardUserDefaults] setObject:dict forKey:[self getPreferenceConfigKey]];
@@ -245,8 +245,8 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 - (BOOL)renameProfile:(NSString *)from to:(NSString *) profileName {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
-    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
+    NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
     NSDictionary *targetDict = [profilesDict objectForKey:from];
     if(targetDict == NULL) {
         return FALSE;
@@ -267,9 +267,9 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 
 - (BOOL)updateKeyBindings:(NSDictionary *)bindingInfo for:(NSString *)profile {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
-    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
-    NSMutableDictionary *profileDict = [NSMutableDictionary dictionaryWithDictionary:[profilesDict objectForKey:profile]];
+    NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
+    NSMutableDictionary *profileDict = [[profilesDict objectForKey:profile] mutableCopy];
     [profileDict setObject:bindingInfo forKey:@"keyboard_shortcut"];
     
     [profilesDict setObject:profileDict forKey:profile];
@@ -281,18 +281,18 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 - (NSDictionary *)getKeyBindings:(NSString *)profile {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
-    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
-    NSMutableDictionary *profileDict = [NSMutableDictionary dictionaryWithDictionary:[profilesDict objectForKey:profile]];
+    NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
+    NSMutableDictionary *profileDict = [[profilesDict objectForKey:profile] mutableCopy];
     
     NSDictionary *d = [NSDictionary dictionaryWithDictionary:[profileDict objectForKey:@"keyboard_shortcut"]];
     return d;
 }
 
 - (void)addNewAppInput:(GHDefaultInfo *)info forProfile:(NSString *)profile {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
-    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
-    NSMutableDictionary *profileDict = [NSMutableDictionary dictionaryWithDictionary:[profilesDict objectForKey:profile]];
+    NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
+    NSMutableDictionary *profileDict = [[profilesDict objectForKey:profile] mutableCopy];
     NSMutableDictionary *configDict = [[profileDict objectForKey:@"config"] mutableCopy];
     NSDictionary *infoDict = [NSDictionary dictionaryWithObjectsAndKeys:info.appUrl, @"appUrl", info.defaultInput, @"defaultInput", info.appBundleId, @"appBundleId", nil];
     [configDict setObject:infoDict forKey:info.appBundleId];
@@ -305,9 +305,9 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 - (void)removeAppInput:(NSString *)appBundleId forProfile:(NSString *)profile {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self getPreferenceConfigDict]];
-    NSMutableDictionary *profilesDict = [NSMutableDictionary dictionaryWithDictionary:[dict objectForKey:@"profiles"]];
-    NSMutableDictionary *profileDict = [NSMutableDictionary dictionaryWithDictionary:[profilesDict objectForKey:profile]];
+    NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
+    NSMutableDictionary *profileDict = [[profilesDict objectForKey:profile] mutableCopy];
     NSMutableDictionary *configDict = [[profileDict objectForKey:@"config"] mutableCopy];
     if ([configDict objectForKey:appBundleId] != NULL) {
         [configDict removeObjectForKey:appBundleId];

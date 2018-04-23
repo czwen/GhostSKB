@@ -49,12 +49,11 @@
 
 #pragma mark - Inner util methods
 - (void)sortProfileNames {
-    NSArray *arr = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+    [self.profiles sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         NSString *str1 = (NSString *)obj1;
         NSString *str2 = (NSString *)obj2;
         return [str1 compare:str2];
     }];
-    self.profiles = [NSMutableArray arrayWithArray:arr];
 }
 
 //复制配置文件内容
@@ -103,7 +102,7 @@
 - (void)updateProfileConfigDicts {
     self.profileConfigs = [[NSMutableDictionary alloc] initWithCapacity:1];
     for (NSString *profileName in self.profiles) {
-        NSMutableArray *config = [NSMutableArray arrayWithArray:[[GHDefaultManager getInstance] getProfileInputConfig:profileName]];
+        NSMutableArray *config = [[[GHDefaultManager getInstance] getProfileInputConfig:profileName] mutableCopy];
         [self sortDefaultInputArray:config];
         [self.profileConfigs setObject:config forKey:profileName];
     }
@@ -125,7 +124,7 @@
     }];
 }
 - (void)updateProfileList {
-    self.profiles = [NSMutableArray arrayWithArray:[[GHDefaultManager getInstance] getProfileList]];
+    self.profiles = [[[GHDefaultManager getInstance] getProfileList] mutableCopy];
     [self sortProfileNames];
 }
 

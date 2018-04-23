@@ -21,5 +21,7 @@
 
 @property (strong) NSMutableArray *profiles;
 @property (strong) NSMutableDictionary *profileConfigs;
+- (IBAction)removeAppInput:(id)sender;
+- (IBAction)addAppInput:(id)sender;
 
 @end

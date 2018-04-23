@@ -33,17 +33,18 @@
 
 - (void)updateDetailTableHeader;
 
-@property (strong) NSString *currentProfile;
-@property (strong) NSMutableArray *availableInputMethods;
-@property (strong) NSTextField *detailHeaderText;
+@property (strong, nonatomic) NSString *currentProfile;
+@property (strong, nonatomic) NSMutableArray *availableInputMethods;
+@property (strong, nonatomic) NSTextField *detailHeaderText;
 @property (strong, nonatomic) NSString *detailHeaderStr;
+@property (assign, nonatomic) BOOL removeAppInputBtnEnabled;
 @end
 
 @implementation GHProfileViewController
 @synthesize profilesTableView, profiles, profileConfigs;
 @synthesize availableInputMethods;
 
-#pragma mark - innder util methods
+#pragma mark - Inner util methods
 - (void)sortProfileNames {
     NSArray *arr = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         NSString *str1 = (NSString *)obj1;
@@ -147,7 +148,6 @@
 - (void)defaultProfileChanged:(NSNotification *)notification {
     [self selectDefaultProfile];
 }
-//GH_NK_DEFAULT_PROFILE_CHANGED
 
 #pragma mark - View methos
 - (void)viewWillAppear {
@@ -165,7 +165,7 @@
     
     [self updateProfileList];
     self.currentProfile = [self.profiles objectAtIndex:0];
-    
+    self.removeAppInputBtnEnabled = FALSE;
     [self updateProfileConfigDicts];
     self.availableInputMethods = [[NSMutableArray alloc] initWithCapacity:1];
     [self getAlivibleInputMethods];
@@ -181,6 +181,8 @@
     [notiCenter addObserver:self selector:@selector(profilelistChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
     [notiCenter addObserver:self selector:@selector(defaultProfileChanged:) name:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
     [notiCenter addObserver:self selector:@selector(profileRenamed:) name:GH_NK_PROFILE_RENAME object:NULL];
+    
+    [self.removeInputConfig bind:NSEnabledBinding toObject:self withKeyPath:@"removeAppInputBtnEnabled" options:nil];
 }
 
 #pragma mark - NSTableView DataSource and Delegate
@@ -240,6 +242,10 @@
             [self.profileDetailTableView reloadData];
             [self updateDetailTableHeader];
         }
+        self.removeAppInputBtnEnabled = FALSE;
+    }
+    else if ([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_CONFIG_LIST]) {
+        self.removeAppInputBtnEnabled = TRUE;
     }
 }
 
@@ -276,4 +282,9 @@
     }
 }
 
+- (IBAction)removeAppInput:(id)sender {
+}
+
+- (IBAction)addAppInput:(id)sender {
+}
 @end

@@ -449,25 +449,14 @@
                                                             <action selector="removeProfile:" target="v4h-vN-eCv" id="Sjg-zT-rBQ"/>
                                                         </connections>
                                                     </button>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rXE-3k-V9S" customClass="SyncButton">
-                                                        <rect key="frame" x="124" y="0.0" width="30" height="30"/>
-                                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSActionTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="W2x-Z2-82I">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                    </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="rXE-3k-V9S" firstAttribute="leading" secondItem="X7D-b6-1hM" secondAttribute="trailing" constant="64" id="1Sp-LG-bn4"/>
                                                     <constraint firstItem="lJZ-i1-3YV" firstAttribute="leading" secondItem="y34-ZM-x0p" secondAttribute="leading" id="2eY-YD-eGr"/>
                                                     <constraint firstItem="lJZ-i1-3YV" firstAttribute="top" secondItem="y34-ZM-x0p" secondAttribute="top" id="7Cb-NA-WM0"/>
                                                     <constraint firstItem="X7D-b6-1hM" firstAttribute="leading" secondItem="lJZ-i1-3YV" secondAttribute="trailing" id="NKS-9V-pFE"/>
-                                                    <constraint firstItem="rXE-3k-V9S" firstAttribute="centerY" secondItem="y34-ZM-x0p" secondAttribute="centerY" id="QuS-EM-9GK"/>
                                                     <constraint firstItem="lJZ-i1-3YV" firstAttribute="bottom" secondItem="X7D-b6-1hM" secondAttribute="bottom" id="e8l-Ev-U9T"/>
                                                     <constraint firstItem="lJZ-i1-3YV" firstAttribute="top" secondItem="X7D-b6-1hM" secondAttribute="top" id="fWG-OA-ifE"/>
-                                                    <constraint firstAttribute="trailing" secondItem="rXE-3k-V9S" secondAttribute="trailing" constant="1" id="nen-cZ-1IE"/>
                                                     <constraint firstItem="lJZ-i1-3YV" firstAttribute="centerY" secondItem="y34-ZM-x0p" secondAttribute="centerY" id="oh0-8u-feQ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="rXE-3k-V9S" secondAttribute="bottom" id="vPx-G7-1qX"/>
                                                 </constraints>
                                             </view>
                                         </box>
@@ -491,6 +480,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="removeAppInput:" target="v4h-vN-eCv" id="tLN-Uf-KDa"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nvh-sz-ibo">
                                 <rect key="frame" x="631" y="40" width="40" height="25"/>
@@ -501,6 +493,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addAppInput:" target="v4h-vN-eCv" id="d87-gt-x5a"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -535,7 +530,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="ghostkbd-128" width="128" height="128"/>

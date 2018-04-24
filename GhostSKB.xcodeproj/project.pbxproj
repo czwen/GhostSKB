@@ -55,6 +55,7 @@
 		DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B5207C564A00D682D8 /* GHProfileCellView.m */; };
 		DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */; };
 		DEBF9F3F208B7ADA00B836DC /* GHKeybindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */; };
+		DEBF9F43208F972300B836DC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBF9F42208F972300B836DC /* CloudKit.framework */; };
 		DEDE04091F1B1D2D005F9D70 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEDE040B1F1B1D2D005F9D70 /* InfoPlist.strings */; };
 		DEE204FF207B42E6009627BB /* NSColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE204FC207B42E6009627BB /* NSColor+Extensions.m */; };
 		DEE20500207B42E6009627BB /* NSView+MyCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE204FE207B42E6009627BB /* NSView+MyCategory.m */; };
@@ -166,6 +167,7 @@
 		DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileContentCellView.m; path = Classes/GHProfileContentCellView.m; sourceTree = "<group>"; };
 		DEBF9F3D208B7ADA00B836DC /* GHKeybindingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHKeybindingManager.h; path = Classes/GHKeybindingManager.h; sourceTree = "<group>"; };
 		DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHKeybindingManager.m; path = Classes/GHKeybindingManager.m; sourceTree = "<group>"; };
+		DEBF9F42208F972300B836DC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DEDE040A1F1B1D2D005F9D70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DEDE040C1F1B1D2D005F9D70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		DEE204FB207B42E6009627BB /* NSView+MyCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+MyCategory.h"; path = "Classes/NSView+MyCategory.h"; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				DE166F852087AF6900E3FA71 /* ShortcutRecorder.framework in Frameworks */,
 				DE166F8F2087B58A00E3FA71 /* ShortcutRecorder.framework in Frameworks */,
 				DE166F862087AF6900E3FA71 /* PTHotKey.framework in Frameworks */,
+				DEBF9F43208F972300B836DC /* CloudKit.framework in Frameworks */,
 				DE166F8C2087B58700E3FA71 /* PTHotKey.framework in Frameworks */,
 				DE6634B31CB21890009EE247 /* AppKit.framework in Frameworks */,
 			);
@@ -242,6 +245,7 @@
 		DE166F822087AF6900E3FA71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DEBF9F42208F972300B836DC /* CloudKit.framework */,
 				DE166F8B2087B3D800E3FA71 /* AppKit.framework */,
 				DE166F94208A3CD700E3FA71 /* AppKit.framework */,
 				DE166F842087AF6900E3FA71 /* PTHotKey.framework */,
@@ -440,7 +444,13 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = V6P6ZB26T6;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.Sandbox = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};

@@ -20,7 +20,12 @@ Mac OS X 10.8 or above
 
 # 截图
 
-![screenshot 1 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot-1.png)
+![screenshot 1 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/v2.0_toolbar/Resources/screenshot-1.png)
+
+![screenshot 2 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/v2.0_toolbar/Resources/screenshot-2.png)
+
+![screenshot 3 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/v2.0_toolbar/Resources/screenshot-3.png)
+
 
 # 已知问题 
 

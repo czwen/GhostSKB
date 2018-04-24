@@ -22,12 +22,15 @@
 
 #define TBL_CELL_INPUT_ID @"inputIdCell"
 #define TBL_CELL_INPUT_SHORTCUT_ID @"inputShortcutCell"
+#define DELAY_SLIDER_MIN 0.016
+#define DELAY_SLIDER_MAX 0.02
+#define DELAY_SLIDER_STEP 0.001
 
 @interface GHAdvanceViewController ()
 
 @property (nonatomic, strong)NSMutableArray *inputMethods;
-@property (assign) BOOL initialized;
-
+@property (assign, nonatomic) BOOL initialized;
+@property (assign, nonatomic) float delayTime;
 @property (nonatomic, strong)NSMutableDictionary *shortcut;
 
 @end
@@ -89,6 +92,13 @@
     [super viewDidLoad];
     NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
     [ncenter addObserver:self selector:@selector(inputSourceListChanged:) name:GH_NK_INPUT_SOURCE_LIST_CHANGED object:NULL];
+    
+    self.delayTimeSlider.maxValue = DELAY_SLIDER_MAX;
+    self.delayTimeSlider.minValue = DELAY_SLIDER_MIN;
+    self.delayTimeSlider.numberOfTickMarks = (DELAY_SLIDER_MAX - DELAY_SLIDER_MIN)/DELAY_SLIDER_STEP+1;
+    self.delayTime = 0.018;
+    [self.delayTimeSlider bind:NSValueBinding toObject:self withKeyPath:@"delayTime" options:NULL];
+    [self.delayTimeLabel bind:NSValueBinding toObject:self withKeyPath:@"delayTime" options:NULL];
 }
 
 #pragma mark - Notifications
@@ -184,4 +194,10 @@
     }
 }
 
+- (IBAction)delayTimeChanged:(id)sender {
+    NSSlider *slider = (NSSlider *)sender;
+    int num = round(([slider floatValue] - DELAY_SLIDER_MIN)/DELAY_SLIDER_STEP);
+    double doubleValue = slider.minValue + num*DELAY_SLIDER_STEP;
+    self.delayTime = doubleValue;
+}
 @end

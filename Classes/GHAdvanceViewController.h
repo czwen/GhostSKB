@@ -14,5 +14,9 @@
 @property (weak) IBOutlet NSTableView *inputSwitchTableView;
 @property (nonatomic, strong)NSString *profile;
 @property (nonatomic, strong)NSMutableArray *profiles;
+@property (weak) IBOutlet NSSlider *delayTimeSlider;
+@property (weak) IBOutlet NSTextField *delayTimeLabel;
+@property (weak) IBOutlet NSButton *hotkeyEnableButton;
+- (IBAction)delayTimeChanged:(id)sender;
 
 @end

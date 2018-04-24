@@ -26,20 +26,15 @@
 - (void)sortProfileNames;
 - (void)duplicatedProfile;
 - (void)tryAddNewProfile;
-- (void)setupHeaderTitle;
 
 - (void)updateProfileList;
 - (void)updateProfileConfigDicts;
 - (BOOL)profileContainAppInput:(NSString *)bundleId;
 
-- (void)updateDetailTableHeader;
-
 - (void)showAppSelectPanel:(BOOL)newInput;
 
 @property (strong, nonatomic) NSString *currentProfile;
 @property (strong, nonatomic) NSMutableArray *availableInputMethods;
-@property (strong, nonatomic) NSTextField *detailHeaderText;
-@property (strong, nonatomic) NSString *detailHeaderStr;
 @property (assign, nonatomic) BOOL removeAppInputBtnEnabled;
 @end
 
@@ -90,10 +85,6 @@
     }
 }
 
-- (void)updateDetailTableHeader {
-    self.detailHeaderStr = [NSString stringWithFormat:TBL_DETAIL_HEADER_FORMAT, self.currentProfile];
-}
-
 - (void) getAlivibleInputMethods {
     [self.availableInputMethods removeAllObjects];
     self.availableInputMethods = [GHDefaultManager getAlivibleInputMethods];
@@ -128,23 +119,6 @@
     [self sortProfileNames];
 }
 
-- (void)setupHeaderTitle {
-    NSTableHeaderView *profilesHeaderView = self.profilesTableView.headerView;
-    NSTextField *text = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.profilesTableView.bounds.size.width, profilesHeaderView.bounds.size.height)];
-    text.editable = FALSE;
-    text.alignment = NSTextAlignmentCenter;
-    [text setStringValue:@"profiles"];
-    [profilesHeaderView addSubview:text];
-    
-    NSTableHeaderView *detailHeaderView = self.profileDetailTableView.headerView;
-    NSTextField *text1 = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, self.profileDetailTableView.bounds.size.width, detailHeaderView.bounds.size.height)];
-    text1.editable = FALSE;
-    text1.alignment = NSTextAlignmentCenter;
-    [detailHeaderView addSubview:text1];
-    self.detailHeaderText = text1;
-    [self.detailHeaderText bind:NSValueBinding toObject:self withKeyPath:@"detailHeaderStr" options:nil];
-}
-
 - (void)selectDefaultProfile {
     NSString *defaultProfile = [[GHDefaultManager getInstance] getDefaultProfileName];
     if ([self.profiles containsObject:defaultProfile]) {
@@ -163,9 +137,7 @@
         if ([self.currentProfile isEqualToString:origin]) {
             self.currentProfile = new;
         }
-        if (self.profilesTableView.selectedRow == row) {
-            [self updateDetailTableHeader];
-        }
+
         [self.profiles replaceObjectAtIndex:row withObject:new];
     }
 }
@@ -203,7 +175,6 @@
     //hide header view of tables
     //these two tables have the same delegate and datasource : self
     
-    [self setupHeaderTitle];
     [self selectDefaultProfile];
     
     NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
@@ -269,7 +240,6 @@
             NSString *profileName = [self.profiles objectAtIndex:selectedRow];
             self.currentProfile = profileName;
             [self.profileDetailTableView reloadData];
-            [self updateDetailTableHeader];
         }
         self.removeAppInputBtnEnabled = FALSE;
     }
@@ -280,11 +250,7 @@
 
 - (void)tableViewColumnDidResize:(NSNotification *)notification {
     NSTableView *tableView = (NSTableView *)[notification object];
-    if ([tableView.identifier isEqualToString:TBL_IDENTIFIER_PROFILE_CONFIG_LIST]) {
-        NSRect frame = self.detailHeaderText.frame;
-        NSRect newFrame = NSMakeRect(frame.origin.x, frame.origin.y, tableView.bounds.size.width, frame.size.height);
-        self.detailHeaderText.frame = newFrame;
-    }
+    
 }
 
 - (void)showAppSelectPanel:(BOOL)newInput {

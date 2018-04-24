@@ -24,7 +24,7 @@
 #define TBL_CELL_INPUT_SHORTCUT_ID @"inputShortcutCell"
 #define DELAY_SLIDER_MIN 0.016
 #define DELAY_SLIDER_MAX 0.02
-#define DELAY_SLIDER_STEP 0.001
+#define DELAY_SLIDER_STEP 0.0002
 
 @interface GHAdvanceViewController ()
 

@@ -221,7 +221,7 @@
                                 </view>
                             </box>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2eg-Ui-8Eb">
-                                <rect key="frame" x="158" y="362" width="185" height="19"/>
+                                <rect key="frame" x="158" y="362" width="267" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" state="on" alignment="left" minValue="0.01" maxValue="0.02" doubleValue="0.017999999999999999" tickMarkPosition="above" sliderType="linear" id="xzU-C1-bW0"/>
                                 <connections>
@@ -237,8 +237,12 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="wqL-KI-bZF">
+                                <rect key="frame" x="20" y="347" width="537" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZHh-oC-jcS">
-                                <rect key="frame" x="353" y="365" width="54" height="17"/>
+                                <rect key="frame" x="429" y="365" width="54" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="dbJ-GW-JoZ">
                                     <font key="font" metaFont="system"/>
@@ -246,10 +250,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="wqL-KI-bZF">
-                                <rect key="frame" x="20" y="347" width="537" height="5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </box>
                         </subviews>
                     </view>
                     <connections>

@@ -320,4 +320,23 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     }
 }
 
+- (void)updateDelayTime:(double)delay {
+    NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    dict[@"switch_delay"] = @(delay);
+    [[NSUserDefaults standardUserDefaults] setObject:dict forKey:[self getPreferenceConfigKey]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
+
+- (double)getDelayTime {
+    NSDictionary *dict = [self getPreferenceConfigDict];
+    id delay = [dict objectForKey:@"switch_delay"];
+    if (delay == NULL) {
+        return GH_DEFAULT_DELAY_TIME;
+    }
+    else {
+        return [delay doubleValue];
+    }
+}
+
 @end

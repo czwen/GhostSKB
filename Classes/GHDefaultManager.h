@@ -43,4 +43,7 @@
 - (BOOL)updateKeyBindings:(NSDictionary *)bindingInfo for:(NSString *)profile;
 - (NSDictionary *)getKeyBindings:(NSString *)profile;
 
+- (void)updateDelayTime:(double)delay;
+- (double)getDelayTime;
+
 @end

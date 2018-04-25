@@ -14,6 +14,9 @@
 #import <AppKit/AppKit.h>
 #import <Carbon/Carbon.h>
 #import <ApplicationServices/ApplicationServices.h>
+
+static double switchDelay;
+
 @interface AppDelegate ()
 
 - (void)updateProfilesMenu:(NSMenu *)menu;
@@ -48,6 +51,7 @@ static void notificationCallback (CFNotificationCenterRef center,
     [notiCenter addObserver:self selector:@selector(profileListChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
     [notiCenter addObserver:self selector:@selector(profileRenamed:) name:GH_NK_PROFILE_RENAME object:NULL];
     [notiCenter addObserver:self selector:@selector(defaultProfileChanged:) name:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
+    [notiCenter addObserver:self selector:@selector(delayTimeChanged:) name:GH_NK_DELAY_TIME_CHANGED object:NULL];
     
     [GHDefaultManager getInstance];
     [[GHKeybindingManager getInstance] setProfileHotKeys:[[GHDefaultManager getInstance] getDefaultProfileName]];
@@ -57,7 +61,9 @@ static void notificationCallback (CFNotificationCenterRef center,
     CFNotificationCenterAddObserver(cfnCenter, NULL, notificationCallback, kTISNotifyEnabledKeyboardInputSourcesChanged, NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
     
     [self initStatusItem];
+    
     isBecomeActiveTheFirstTime = true;
+    switchDelay = [[GHDefaultManager getInstance] getDelayTime];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification
@@ -142,6 +148,10 @@ static void notificationCallback (CFNotificationCenterRef center,
 
 
 #pragma mark - Notifications
+
+- (void)delayTimeChanged:(NSNotification *)notification {
+    switchDelay = [[GHDefaultManager getInstance] getDelayTime];
+}
 - (void)profileListChanged {
     NSMenu *menu = statusItem.menu;
     for (NSMenuItem *item in menu.itemArray) {
@@ -309,7 +319,7 @@ static void notificationCallback (CFNotificationCenterRef center,
     NSString *targetInputId = [[GHDefaultManager getInstance] getInputId:bundleId withProfile:NULL];
     
     if (targetInputId != NULL) {
-        [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:0.018];
+        [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:switchDelay];
     }
 }
 

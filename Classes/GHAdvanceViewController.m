@@ -44,6 +44,15 @@
     self.inputMethods = [GHDefaultManager getAlivibleInputMethods];
 }
 
+- (void)initDelaySlider {
+    self.delayTimeSlider.maxValue = DELAY_SLIDER_MAX;
+    self.delayTimeSlider.minValue = DELAY_SLIDER_MIN;
+    self.delayTimeSlider.numberOfTickMarks = (DELAY_SLIDER_MAX - DELAY_SLIDER_MIN)/DELAY_SLIDER_STEP+1;
+    self.delayTime = [[GHDefaultManager getInstance] getDelayTime];
+    [self.delayTimeSlider bind:NSValueBinding toObject:self withKeyPath:@"delayTime" options:NULL];
+    [self.delayTimeLabel bind:NSValueBinding toObject:self withKeyPath:@"delayTime" options:NULL];
+}
+
 #pragma mark - View methods
 
 - (void)awakeFromNib {
@@ -93,12 +102,7 @@
     NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
     [ncenter addObserver:self selector:@selector(inputSourceListChanged:) name:GH_NK_INPUT_SOURCE_LIST_CHANGED object:NULL];
     
-    self.delayTimeSlider.maxValue = DELAY_SLIDER_MAX;
-    self.delayTimeSlider.minValue = DELAY_SLIDER_MIN;
-    self.delayTimeSlider.numberOfTickMarks = (DELAY_SLIDER_MAX - DELAY_SLIDER_MIN)/DELAY_SLIDER_STEP+1;
-    self.delayTime = 0.018;
-    [self.delayTimeSlider bind:NSValueBinding toObject:self withKeyPath:@"delayTime" options:NULL];
-    [self.delayTimeLabel bind:NSValueBinding toObject:self withKeyPath:@"delayTime" options:NULL];
+    [self initDelaySlider];
 }
 
 #pragma mark - Notifications
@@ -199,5 +203,8 @@
     int num = round(([slider floatValue] - DELAY_SLIDER_MIN)/DELAY_SLIDER_STEP);
     double doubleValue = slider.minValue + num*DELAY_SLIDER_STEP;
     self.delayTime = doubleValue;
+    
+    [[GHDefaultManager getInstance] updateDelayTime:doubleValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_DELAY_TIME_CHANGED object:NULL];
 }
 @end

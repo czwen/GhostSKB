@@ -145,11 +145,6 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
                 [self performSelector:selector];
             }
         }
-        else {
-            for (NSString *key in dict) {
-                NSLog(@"key %@", key);
-            }
-        }
     }
 }
 

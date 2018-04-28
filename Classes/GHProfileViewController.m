@@ -117,6 +117,9 @@
 }
 - (void)updateProfileList {
     self.profiles = [[[GHDefaultManager getInstance] getProfileList] mutableCopy];
+    if([self.profiles count] <= 0) {
+        [self tryAddNewProfile];
+    }
     [self sortProfileNames];
 }
 

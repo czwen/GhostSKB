@@ -186,8 +186,12 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 - (BOOL)addProfile:(NSString *)profileName {
     NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
     NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
+    
     if([profilesDict objectForKey:profileName] != NULL) {
         return FALSE;
+    }
+    if([[profilesDict allKeys] count] <= 0) {
+        [dict setObject:profileName forKey:@"currentProfile"];
     }
     [profilesDict setObject:@{@"config":@{}} forKey:profileName];
     [dict setObject:profilesDict forKey:@"profiles"];

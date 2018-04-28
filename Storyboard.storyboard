@@ -50,13 +50,39 @@
             <objects>
                 <viewController storyboardIdentifier="SyncViewController" id="qP4-yH-Uwy" customClass="GHSyncViewController" sceneMemberID="viewController">
                     <view key="view" id="fca-os-eOD">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="577" height="344"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bNP-0g-Tjd">
+                                <rect key="frame" x="101" y="267" width="156" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Auto Sync" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qov-1y-6dX">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vB-8Z-DyU">
+                                <rect key="frame" x="97" y="160" width="138" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="upload to icloud" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ufa-xD-PzQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1u-TI-yug">
+                                <rect key="frame" x="264" y="160" width="141" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="sync from icloud" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TzJ-9L-SbH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
                     </view>
                 </viewController>
                 <customObject id="tId-gs-pgz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="45" y="142"/>
+            <point key="canvasLocation" x="20.5" y="135"/>
         </scene>
         <!--Advance View Controller-->
         <scene sceneID="iyL-14-jLv">
@@ -413,6 +439,9 @@
                                                                                     <font key="font" metaFont="menu"/>
                                                                                     <menu key="menu" id="xub-vM-Ert"/>
                                                                                 </popUpButtonCell>
+                                                                                <connections>
+                                                                                    <action selector="appInputSourceChanged:" target="v4h-vN-eCv" id="1xX-ey-zgu"/>
+                                                                                </connections>
                                                                             </popUpButton>
                                                                         </subviews>
                                                                         <connections>
@@ -433,7 +462,7 @@
                                                 <color key="backgroundColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                             </clipView>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="6gR-Dk-ybn">
-                                                <rect key="frame" x="0.0" y="286" width="431" height="16"/>
+                                                <rect key="frame" x="0.0" y="-16" width="0.0" height="16"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="ILE-3N-zG4">

@@ -339,4 +339,10 @@
 - (IBAction)addAppInput:(id)sender {
     [self showAppSelectPanel:YES];
 }
+
+- (IBAction)appInputSourceChanged:(id)sender {
+    NSLog(@"appInputSourceChanged %ld", self.profileDetailTableView.selectedRow);
+    NSPopUpButton *btn = (NSPopUpButton *)sender;
+    NSInteger selectedIndex = btn.indexOfSelectedItem;
+}
 @end

@@ -64,6 +64,14 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
             [inputMethods addObject:dict];
         }
     }
+    [inputMethods sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        NSDictionary *dict1 = (NSDictionary *)obj1;
+        NSDictionary *dict2 = (NSDictionary *)obj2;
+        NSString *id1 = [dict1 objectForKey:@"id"];
+        NSString *id2 = [dict2 objectForKey:@"id"];
+        return [id1 compare:id2];
+    }];
+    
     return inputMethods;
 }
 

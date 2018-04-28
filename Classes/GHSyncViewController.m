@@ -7,6 +7,7 @@
 //
 
 #import "GHSyncViewController.h"
+#import <CloudKit/CloudKit.h>
 
 @interface GHSyncViewController ()
 

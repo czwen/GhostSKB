@@ -23,5 +23,6 @@
 @property (strong) NSMutableDictionary *profileConfigs;
 - (IBAction)removeAppInput:(id)sender;
 - (IBAction)addAppInput:(id)sender;
+- (IBAction)appInputSourceChanged:(id)sender;
 
 @end

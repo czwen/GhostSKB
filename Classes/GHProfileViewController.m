@@ -11,6 +11,7 @@
 #import "GHProfileContentCellView.h"
 #import "GHDefaultManager.h"
 #import "GHDefaultInfo.h"
+#import "MBProgressHUD.h"
 #import <Carbon/Carbon.h>
 
 #define TBL_IDENTIFIER_PROFILE_LIST @"profileList"
@@ -318,6 +319,14 @@
 }
 
 - (IBAction)removeProfile:(id)sender {
+    if ([self.profiles count] <= 1) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"The last profile can not be removed";
+        [hud hide:YES afterDelay:0.5];
+        return;
+    }
+    
     NSInteger selectedRow = self.profilesTableView.selectedRow;
     NSString *pname = (NSString *)[self.profiles objectAtIndex:selectedRow];
     BOOL ok = [[GHDefaultManager getInstance] removeProfile:pname];

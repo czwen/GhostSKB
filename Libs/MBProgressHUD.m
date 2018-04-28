@@ -429,7 +429,10 @@ static const CGFloat kDetailsLabelFontSize = 12.0f;
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 		[self setNeedsDisplay];
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
+        
         [self setNeedsDisplay:YES];
+        self.wantsLayer = YES;
+        self.canDrawSubviewsIntoLayer = YES;
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 		[self showUsingAnimation:useAnimation];
 	}

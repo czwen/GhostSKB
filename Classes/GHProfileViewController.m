@@ -219,6 +219,7 @@
         
         view.row = row;
         [view initContent:self.availableInputMethods with:defaultInfo];
+        view.profile = self.currentProfile;
         return view;
     }
     return NULL;
@@ -340,9 +341,4 @@
     [self showAppSelectPanel:YES];
 }
 
-- (IBAction)appInputSourceChanged:(id)sender {
-    NSLog(@"appInputSourceChanged %ld", self.profileDetailTableView.selectedRow);
-    NSPopUpButton *btn = (NSPopUpButton *)sender;
-    NSInteger selectedIndex = btn.indexOfSelectedItem;
-}
 @end

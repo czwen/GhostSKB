@@ -439,9 +439,6 @@
                                                                                     <font key="font" metaFont="menu"/>
                                                                                     <menu key="menu" id="xub-vM-Ert"/>
                                                                                 </popUpButtonCell>
-                                                                                <connections>
-                                                                                    <action selector="appInputSourceChanged:" target="v4h-vN-eCv" id="1xX-ey-zgu"/>
-                                                                                </connections>
                                                                             </popUpButton>
                                                                         </subviews>
                                                                         <connections>

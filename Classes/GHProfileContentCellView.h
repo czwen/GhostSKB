@@ -15,7 +15,7 @@
 @property (retain) IBOutlet NSButton *appButton;
 @property (retain) IBOutlet NSTextField *appName;
 @property (retain) IBOutlet NSPopUpButton *inputMethodsPopButton;
-
+@property (strong, nonatomic) NSString *profile;
 
 - (void)initContent:(NSArray *)inputMethodsInfoArray with:(GHDefaultInfo *)defaultInfo;
 @end

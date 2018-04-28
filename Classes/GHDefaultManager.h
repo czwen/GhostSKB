@@ -40,6 +40,9 @@
 - (BOOL)duplicateProfile:(NSString *)profileName;
 - (BOOL)changeDefaultProfile:(NSString *)profileName;
 
+- (BOOL)updateInputSource:(NSString *)profileName forApp:(NSString *)appBundleId inputSourceId:(NSString *)inputId;
+
+// key bindings 相关
 - (BOOL)updateKeyBindings:(NSDictionary *)bindingInfo for:(NSString *)profile;
 - (NSDictionary *)getKeyBindings:(NSString *)profile;
 

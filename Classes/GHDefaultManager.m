@@ -342,4 +342,23 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     }
 }
 
+- (BOOL)updateInputSource:(NSString *)profileName forApp:(NSString *)appBundleId inputSourceId:(NSString *)inputId {
+    NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
+    NSMutableDictionary *profileDict = [[profilesDict objectForKey:profileName] mutableCopy];
+    NSMutableDictionary *configDict = [[profileDict objectForKey:@"config"] mutableCopy];
+    if ([configDict objectForKey:appBundleId] != NULL) {
+        NSMutableDictionary *appDict = [[configDict objectForKey:appBundleId] mutableCopy];
+        [appDict setObject:inputId forKey:@"defaultInput"];
+        [configDict setObject:appDict forKey:appBundleId];
+        [profileDict setObject:configDict forKey:@"config"];
+        [profilesDict setObject:profileDict forKey:profileName];
+        [dict setObject:profilesDict forKey:@"profiles"];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:[self getPreferenceConfigKey]];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    return TRUE;
+}
+
 @end

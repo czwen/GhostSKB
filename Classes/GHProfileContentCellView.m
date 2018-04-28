@@ -7,7 +7,10 @@
 //
 
 #import "GHProfileContentCellView.h"
-
+@interface GHProfileContentCellView ()
+@property (nonatomic, strong) GHDefaultInfo *defaultInfo;
+@property (nonatomic, strong) NSArray *inputMethods;
+@end
 @implementation GHProfileContentCellView
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -17,12 +20,12 @@
 }
 
 - (void)initContent:(NSArray *)inputMethodsInfoArray with:(GHDefaultInfo *)defaultInfo {
-    
+    self.defaultInfo = defaultInfo;
+    self.inputMethods = [inputMethodsInfoArray copy];
     if (defaultInfo.defaultInput == NULL) {
         NSString *defaultInputId = (NSString *)[[inputMethodsInfoArray objectAtIndex:0] objectForKey:@"id"];
         defaultInfo.defaultInput = defaultInputId;
     }
-    
     
     if (defaultInfo.appUrl != NULL && defaultInfo.appBundleId != NULL){
         NSURL *appUrl = [NSURL fileURLWithPath:defaultInfo.appUrl];
@@ -47,9 +50,11 @@
             NSString *inputName = [inputInfo objectForKey:@"inputName"];
             NSMenuItem *item = [self.inputMethodsPopButton.menu
                                 addItemWithTitle:inputName
-                                action:NULL
+                                action:@selector(onInputSourceChanged:)
                                 keyEquivalent:@""];
-            item.representedObject = self;
+            
+            [item setTarget:self];
+            item.representedObject = self.inputMethodsPopButton;
         }
     }
     for (NSDictionary *info in inputMethodsInfoArray) {
@@ -57,7 +62,29 @@
             [self.inputMethodsPopButton selectItemWithTitle:[info objectForKey:@"inputName"]];
         }
     }
+}
 
+- (void)onInputSourceChanged:(id)sender {
+    NSLog(@"onInputSourceChanged:");
+    if (self.profile == NULL || [self.profile length] == 0) {
+        return;
+    }
+    NSMenuItem *item = (NSMenuItem *)sender;
+    NSString *inputName = item.title;
+    NSString *inputId = NULL;
+    for (NSDictionary *dict in self.inputMethods) {
+        if ([[dict objectForKey:@"inputName"] isEqualToString:inputName]) {
+            inputId = [dict objectForKey:@"id"];
+            break;
+        }
+    }
+    
+    if(inputId == NULL) {
+        return;
+    }
+    
+    NSString *appBundleId = [self.defaultInfo appBundleId];
+    [[GHDefaultManager getInstance] updateInputSource:self.profile forApp:appBundleId inputSourceId:inputId];
 }
 
 @end

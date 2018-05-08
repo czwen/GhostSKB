@@ -79,7 +79,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="uploadToICloud:" target="qP4-yH-Uwy" id="2QK-TN-26G"/>
+                                    <action selector="uploadToICloud:" target="qP4-yH-Uwy" id="zDh-dP-nJi"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1u-TI-yug">
@@ -90,13 +90,9 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="downloadFromICloud:" target="qP4-yH-Uwy" id="tOV-Ae-IpD"/>
+                                    <action selector="downloadFromICloud:" target="qP4-yH-Uwy" id="mGL-4S-uYC"/>
                                 </connections>
                             </button>
-                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="BoG-VA-EEz">
-                                <rect key="frame" x="93" y="84" width="350" height="5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </box>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bNP-0g-Tjd">
                                 <rect key="frame" x="91" y="39" width="156" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -105,11 +101,25 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="BoG-VA-EEz">
+                                <rect key="frame" x="93" y="84" width="350" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </box>
+                            <button fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="W7L-kf-Mt9">
+                                <rect key="frame" x="107" y="0.0" width="318" height="280"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" title="open iCloud preference " bezelStyle="shadowlessSquare" image="iCloud" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="9a3-8A-aqD">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tryOpeniCloudPrefPane:" target="qP4-yH-Uwy" id="uiK-sM-BMx"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="downloadFromCloud" destination="T1u-TI-yug" id="kAS-bs-3gp"/>
-                        <outlet property="uploadToCloud" destination="fca-os-eOD" id="qZm-gH-N89"/>
+                        <outlet property="loginButton" destination="W7L-kf-Mt9" id="fYd-WJ-Gac"/>
                     </connections>
                 </viewController>
                 <customObject id="tId-gs-pgz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -545,5 +555,6 @@
         <image name="GhostImage" width="128" height="128"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="iCloud" width="128" height="128"/>
     </resources>
 </document>

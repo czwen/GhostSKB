@@ -52,6 +52,7 @@
 		DE7CE1281D3B094A0054EC41 /* arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = DE7CE1271D3B094A0054EC41 /* arrow-right.png */; };
 		DE8D10491F72862F00718AD0 /* ghost_dark_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8D10471F72862F00718AD0 /* ghost_dark_small.png */; };
 		DE8D104A1F72862F00718AD0 /* ghost_dark_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8D10481F72862F00718AD0 /* ghost_dark_small@2x.png */; };
+		DE93984020A1986000D56989 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE93983F20A1986000D56989 /* ApplicationServices.framework */; };
 		DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B5207C564A00D682D8 /* GHProfileCellView.m */; };
 		DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */; };
 		DEBE9D5320A13C4100F6D055 /* cloud_download-512.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D4D20A13C4000F6D055 /* cloud_download-512.png */; };
@@ -60,6 +61,9 @@
 		DEBE9D5620A13C4100F6D055 /* cloud_download-128.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D5020A13C4000F6D055 /* cloud_download-128.png */; };
 		DEBE9D5720A13C4100F6D055 /* cloud_upload-512.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D5120A13C4000F6D055 /* cloud_upload-512.png */; };
 		DEBE9D5820A13C4100F6D055 /* cloud_download-256.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D5220A13C4100F6D055 /* cloud_download-256.png */; };
+		DEBE9D6F20A18A4900F6D055 /* icloud_drive-128.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D6C20A18A4800F6D055 /* icloud_drive-128.png */; };
+		DEBE9D7020A18A4900F6D055 /* icloud_drive-256.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D6D20A18A4800F6D055 /* icloud_drive-256.png */; };
+		DEBE9D7120A18A4900F6D055 /* icloud_drive-512.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D6E20A18A4800F6D055 /* icloud_drive-512.png */; };
 		DEBF9F3F208B7ADA00B836DC /* GHKeybindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */; };
 		DEBF9F43208F972300B836DC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBF9F42208F972300B836DC /* CloudKit.framework */; };
 		DEDE04091F1B1D2D005F9D70 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEDE040B1F1B1D2D005F9D70 /* InfoPlist.strings */; };
@@ -167,6 +171,9 @@
 		DE7CE1271D3B094A0054EC41 /* arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-right.png"; path = "Resources/arrow-right.png"; sourceTree = "<group>"; };
 		DE8D10471F72862F00718AD0 /* ghost_dark_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ghost_dark_small.png; path = Resources/ghost_dark_small.png; sourceTree = "<group>"; };
 		DE8D10481F72862F00718AD0 /* ghost_dark_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghost_dark_small@2x.png"; path = "Resources/ghost_dark_small@2x.png"; sourceTree = "<group>"; };
+		DE93983B20A194E200D56989 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
+		DE93983D20A194EB00D56989 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DE93983F20A1986000D56989 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		DEA777B4207C564A00D682D8 /* GHProfileCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileCellView.h; path = Classes/GHProfileCellView.h; sourceTree = "<group>"; };
 		DEA777B5207C564A00D682D8 /* GHProfileCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileCellView.m; path = Classes/GHProfileCellView.m; sourceTree = "<group>"; };
 		DEA777B7207C566F00D682D8 /* GHProfileContentCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileContentCellView.h; path = Classes/GHProfileContentCellView.h; sourceTree = "<group>"; };
@@ -177,6 +184,9 @@
 		DEBE9D5020A13C4000F6D055 /* cloud_download-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_download-128.png"; path = "Resources/cloud_download-128.png"; sourceTree = "<group>"; };
 		DEBE9D5120A13C4000F6D055 /* cloud_upload-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_upload-512.png"; path = "Resources/cloud_upload-512.png"; sourceTree = "<group>"; };
 		DEBE9D5220A13C4100F6D055 /* cloud_download-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_download-256.png"; path = "Resources/cloud_download-256.png"; sourceTree = "<group>"; };
+		DEBE9D6C20A18A4800F6D055 /* icloud_drive-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icloud_drive-128.png"; path = "Resources/icloud_drive-128.png"; sourceTree = "<group>"; };
+		DEBE9D6D20A18A4800F6D055 /* icloud_drive-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icloud_drive-256.png"; path = "Resources/icloud_drive-256.png"; sourceTree = "<group>"; };
+		DEBE9D6E20A18A4800F6D055 /* icloud_drive-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icloud_drive-512.png"; path = "Resources/icloud_drive-512.png"; sourceTree = "<group>"; };
 		DEBF9F3D208B7ADA00B836DC /* GHKeybindingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHKeybindingManager.h; path = Classes/GHKeybindingManager.h; sourceTree = "<group>"; };
 		DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHKeybindingManager.m; path = Classes/GHKeybindingManager.m; sourceTree = "<group>"; };
 		DEBF9F42208F972300B836DC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -195,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE93984020A1986000D56989 /* ApplicationServices.framework in Frameworks */,
 				DE166F852087AF6900E3FA71 /* ShortcutRecorder.framework in Frameworks */,
 				DE166F8F2087B58A00E3FA71 /* ShortcutRecorder.framework in Frameworks */,
 				DE166F862087AF6900E3FA71 /* PTHotKey.framework in Frameworks */,
@@ -257,6 +268,9 @@
 		DE166F822087AF6900E3FA71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE93983F20A1986000D56989 /* ApplicationServices.framework */,
+				DE93983D20A194EB00D56989 /* SystemConfiguration.framework */,
+				DE93983B20A194E200D56989 /* PreferencePanes.framework */,
 				DEBF9F42208F972300B836DC /* CloudKit.framework */,
 				DE166F8B2087B3D800E3FA71 /* AppKit.framework */,
 				DE166F94208A3CD700E3FA71 /* AppKit.framework */,
@@ -278,6 +292,9 @@
 		DE1B71BA1D2C082300A85EE0 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				DEBE9D6C20A18A4800F6D055 /* icloud_drive-128.png */,
+				DEBE9D6D20A18A4800F6D055 /* icloud_drive-256.png */,
+				DEBE9D6E20A18A4800F6D055 /* icloud_drive-512.png */,
 				DEBE9D5020A13C4000F6D055 /* cloud_download-128.png */,
 				DEBE9D5220A13C4100F6D055 /* cloud_download-256.png */,
 				DEBE9D4D20A13C4000F6D055 /* cloud_download-512.png */,
@@ -466,7 +483,7 @@
 								enabled = 1;
 							};
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.iCloud = {
 								enabled = 1;
@@ -519,7 +536,10 @@
 				DEBE9D5620A13C4100F6D055 /* cloud_download-128.png in Resources */,
 				DE40A1FF2084888000C1DEE0 /* ToolBarIconProfiles.tif in Resources */,
 				DE1B71B41D2C081B00A85EE0 /* ghostkbd-128.png in Resources */,
+				DEBE9D7020A18A4900F6D055 /* icloud_drive-256.png in Resources */,
 				DE204265207A12E800DB3661 /* Storyboard.storyboard in Resources */,
+				DEBE9D7120A18A4900F6D055 /* icloud_drive-512.png in Resources */,
+				DEBE9D6F20A18A4900F6D055 /* icloud_drive-128.png in Resources */,
 				DE40A1FE2084888000C1DEE0 /* ToolBarIconAbout.tif in Resources */,
 				DE5EC3751D31DCAF00B51843 /* ghostkbd-64.png in Resources */,
 				DE8D104A1F72862F00718AD0 /* ghost_dark_small@2x.png in Resources */,

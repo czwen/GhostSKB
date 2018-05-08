@@ -10,6 +10,9 @@
 
 @interface GHSyncViewController : NSViewController
 
-
+- (IBAction)downloadFromICloud:(id)sender;
+- (IBAction)uploadToICloud:(id)sender;
+- (IBAction)tryOpeniCloudPrefPane:(id)sender;
+@property (weak) IBOutlet NSButton *loginButton;
 
 @end

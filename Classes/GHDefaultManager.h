@@ -24,6 +24,7 @@
 - (NSString *)getPreferenceConfigKey;
 //获取键盘切换配置的Dict
 - (NSDictionary *)getPreferenceConfigDict;
+- (void)updatePreferenceConfigDict:(NSDictionary *)dict;
 //获取配置名的列表
 - (NSArray *)getProfileList;
 

@@ -106,6 +106,15 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     return arr;
 }
 
+- (void)updatePreferenceConfigDict:(NSDictionary *)dict {
+    if (dict != NULL) {
+        return;
+    }
+    NSString *key = [[GHDefaultManager getInstance] getPreferenceConfigKey];
+    [[NSUserDefaults standardUserDefaults] setObject:dict forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 -(NSDictionary *)getPreferenceConfigDict {
     NSString *key = [[GHDefaultManager getInstance] getPreferenceConfigKey];
     NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:key];
@@ -301,6 +310,9 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     NSMutableDictionary *profilesDict = [[dict objectForKey:@"profiles"] mutableCopy];
     NSMutableDictionary *profileDict = [[profilesDict objectForKey:profile] mutableCopy];
     NSMutableDictionary *configDict = [[profileDict objectForKey:@"config"] mutableCopy];
+    if (configDict == NULL) {
+        configDict = [[NSMutableDictionary alloc] initWithCapacity:1];
+    }
     NSDictionary *infoDict = [NSDictionary dictionaryWithObjectsAndKeys:info.appUrl, @"appUrl", info.defaultInput, @"defaultInput", info.appBundleId, @"appBundleId", nil];
     [configDict setObject:infoDict forKey:info.appBundleId];
     [profileDict setObject:configDict forKey:@"config"];

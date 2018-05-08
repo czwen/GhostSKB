@@ -6,7 +6,12 @@
 //  Copyright © 2018 丁明信. All rights reserved.
 //
 
+//TODO delete all config from icloud
+
 #import "GHSyncViewController.h"
+#import "GHDefaultManager.h"
+#import "MBProgressHUD.h"
+
 #import <CloudKit/CloudKit.h>
 
 @interface GHSyncViewController ()
@@ -77,11 +82,65 @@
 }
 
 - (IBAction)downloadFromICloud:(id)sender {
-    NSLog(@"download config");
+    //indicator
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"downloading...";
+    
+    CKDatabase *privateDatabase = [[CKContainer defaultContainer] privateCloudDatabase];
+    CKRecordID *artworkRecordID = [[CKRecordID alloc] initWithRecordName:@"profile_content"];
+    [privateDatabase fetchRecordWithID:artworkRecordID completionHandler:^(CKRecord *artworkRecord, NSError *error) {
+        if (error) {
+            //处理错误
+        }
+        else {
+            // 成功获取到数据
+            NSData *data = [artworkRecord objectForKey:@"configDict"];
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            [[GHDefaultManager getInstance] updatePreferenceConfigDict:dict];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [hud hide:YES afterDelay:0.2];
+            });
+            
+        }
+    }];
+    
 }
 
 - (IBAction)uploadToICloud:(id)sender {
-    NSLog(@"upload config");
+    
+    NSDictionary *dict = [[GHDefaultManager getInstance] getPreferenceConfigDict];
+    NSError *error;
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    CKRecordID *recordId = [[CKRecordID alloc] initWithRecordName:@"profile_content"];
+    CKRecord *record = [[CKRecord alloc] initWithRecordType:@"profile_v2" recordID:recordId];
+    record[@"configDict"] = data;
+    //私有数据库
+    CKContainer *myContainer = [CKContainer defaultContainer];
+    CKDatabase  *privateDatabase = [myContainer privateCloudDatabase];
+    
+    //indicator
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"uploading...";
+    
+    CKModifyRecordsOperation *modifyRecords = [[CKModifyRecordsOperation alloc] initWithRecordsToSave:@[record] recordIDsToDelete:NULL];
+    modifyRecords.savePolicy = CKRecordSaveAllKeys;
+    modifyRecords.qualityOfService = NSQualityOfServiceUserInitiated;
+    modifyRecords.modifyRecordsCompletionBlock = ^(NSArray<CKRecord *> * _Nullable savedRecords, NSArray<CKRecordID *> * _Nullable deletedRecordIDs, NSError * _Nullable operationError) {
+        if (error) {
+            NSLog(@"modify error:%@", error);
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hide:YES afterDelay:0.2];
+        });
+    };
+    
+    [privateDatabase addOperation:modifyRecords];
+    
 }
 
 - (IBAction)tryOpeniCloudPrefPane:(id)sender {

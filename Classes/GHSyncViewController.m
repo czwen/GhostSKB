@@ -10,14 +10,15 @@
 #import <CloudKit/CloudKit.h>
 
 @interface GHSyncViewController ()
+- (IBAction)downloadFromICloud:(id)sender;
+- (IBAction)uploadToICloud:(id)sender;
 
 @end
 
 @implementation GHSyncViewController
 
 - (void)awakeFromNib {
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,17 +26,11 @@
     // Do view setup here.
 }
 
-- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSTextField *tf = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 30, 20)];
-    return tf;
+- (IBAction)downloadFromICloud:(id)sender {
+    NSLog(@"download config");
 }
 
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return 3;
+- (IBAction)uploadToICloud:(id)sender {
+    NSLog(@"upload config");
 }
-
-- (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    NSLog(@"tableViewSelectionDidChange");
-}
-
 @end

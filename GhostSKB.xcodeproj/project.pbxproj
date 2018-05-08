@@ -54,6 +54,12 @@
 		DE8D104A1F72862F00718AD0 /* ghost_dark_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8D10481F72862F00718AD0 /* ghost_dark_small@2x.png */; };
 		DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B5207C564A00D682D8 /* GHProfileCellView.m */; };
 		DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */; };
+		DEBE9D5320A13C4100F6D055 /* cloud_download-512.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D4D20A13C4000F6D055 /* cloud_download-512.png */; };
+		DEBE9D5420A13C4100F6D055 /* cloud_upload-128.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D4E20A13C4000F6D055 /* cloud_upload-128.png */; };
+		DEBE9D5520A13C4100F6D055 /* cloud_upload-256.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D4F20A13C4000F6D055 /* cloud_upload-256.png */; };
+		DEBE9D5620A13C4100F6D055 /* cloud_download-128.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D5020A13C4000F6D055 /* cloud_download-128.png */; };
+		DEBE9D5720A13C4100F6D055 /* cloud_upload-512.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D5120A13C4000F6D055 /* cloud_upload-512.png */; };
+		DEBE9D5820A13C4100F6D055 /* cloud_download-256.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D5220A13C4100F6D055 /* cloud_download-256.png */; };
 		DEBF9F3F208B7ADA00B836DC /* GHKeybindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */; };
 		DEBF9F43208F972300B836DC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBF9F42208F972300B836DC /* CloudKit.framework */; };
 		DEDE04091F1B1D2D005F9D70 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEDE040B1F1B1D2D005F9D70 /* InfoPlist.strings */; };
@@ -165,6 +171,12 @@
 		DEA777B5207C564A00D682D8 /* GHProfileCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileCellView.m; path = Classes/GHProfileCellView.m; sourceTree = "<group>"; };
 		DEA777B7207C566F00D682D8 /* GHProfileContentCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileContentCellView.h; path = Classes/GHProfileContentCellView.h; sourceTree = "<group>"; };
 		DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileContentCellView.m; path = Classes/GHProfileContentCellView.m; sourceTree = "<group>"; };
+		DEBE9D4D20A13C4000F6D055 /* cloud_download-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_download-512.png"; path = "Resources/cloud_download-512.png"; sourceTree = "<group>"; };
+		DEBE9D4E20A13C4000F6D055 /* cloud_upload-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_upload-128.png"; path = "Resources/cloud_upload-128.png"; sourceTree = "<group>"; };
+		DEBE9D4F20A13C4000F6D055 /* cloud_upload-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_upload-256.png"; path = "Resources/cloud_upload-256.png"; sourceTree = "<group>"; };
+		DEBE9D5020A13C4000F6D055 /* cloud_download-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_download-128.png"; path = "Resources/cloud_download-128.png"; sourceTree = "<group>"; };
+		DEBE9D5120A13C4000F6D055 /* cloud_upload-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_upload-512.png"; path = "Resources/cloud_upload-512.png"; sourceTree = "<group>"; };
+		DEBE9D5220A13C4100F6D055 /* cloud_download-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_download-256.png"; path = "Resources/cloud_download-256.png"; sourceTree = "<group>"; };
 		DEBF9F3D208B7ADA00B836DC /* GHKeybindingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHKeybindingManager.h; path = Classes/GHKeybindingManager.h; sourceTree = "<group>"; };
 		DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHKeybindingManager.m; path = Classes/GHKeybindingManager.m; sourceTree = "<group>"; };
 		DEBF9F42208F972300B836DC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -266,6 +278,12 @@
 		DE1B71BA1D2C082300A85EE0 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				DEBE9D5020A13C4000F6D055 /* cloud_download-128.png */,
+				DEBE9D5220A13C4100F6D055 /* cloud_download-256.png */,
+				DEBE9D4D20A13C4000F6D055 /* cloud_download-512.png */,
+				DEBE9D4E20A13C4000F6D055 /* cloud_upload-128.png */,
+				DEBE9D4F20A13C4000F6D055 /* cloud_upload-256.png */,
+				DEBE9D5120A13C4000F6D055 /* cloud_upload-512.png */,
 				DE40A1FB2084887F00C1DEE0 /* ToolBarIconAbout.tif */,
 				DE40A1FC2084887F00C1DEE0 /* ToolBarIconProfiles.tif */,
 				DE40A1FD2084888000C1DEE0 /* ToolBarIconSync.tif */,
@@ -491,10 +509,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEBE9D5320A13C4100F6D055 /* cloud_download-512.png in Resources */,
 				DE1B71B61D2C081B00A85EE0 /* ghostkbd-512.png in Resources */,
+				DEBE9D5720A13C4100F6D055 /* cloud_upload-512.png in Resources */,
 				DE1B71B21D2C081B00A85EE0 /* ghostkbd-16.png in Resources */,
 				DE7CE1211D3A88780054EC41 /* quit.png in Resources */,
+				DEBE9D5820A13C4100F6D055 /* cloud_download-256.png in Resources */,
 				DE40A2002084888000C1DEE0 /* ToolBarIconSync.tif in Resources */,
+				DEBE9D5620A13C4100F6D055 /* cloud_download-128.png in Resources */,
 				DE40A1FF2084888000C1DEE0 /* ToolBarIconProfiles.tif in Resources */,
 				DE1B71B41D2C081B00A85EE0 /* ghostkbd-128.png in Resources */,
 				DE204265207A12E800DB3661 /* Storyboard.storyboard in Resources */,
@@ -508,7 +530,9 @@
 				DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */,
 				DE7CE11F1D3A87360054EC41 /* setting.png in Resources */,
 				DE25403F1F141DA50093EEB2 /* Localizable.strings in Resources */,
+				DEBE9D5420A13C4100F6D055 /* cloud_upload-128.png in Resources */,
 				DE1B71B31D2C081B00A85EE0 /* ghostkbd-32.png in Resources */,
+				DEBE9D5520A13C4100F6D055 /* cloud_upload-256.png in Resources */,
 				DE1B71B51D2C081B00A85EE0 /* ghostkbd-256.png in Resources */,
 				DE7CE1281D3B094A0054EC41 /* arrow-right.png in Resources */,
 				DE8D10491F72862F00718AD0 /* ghost_dark_small.png in Resources */,

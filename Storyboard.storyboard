@@ -50,39 +50,53 @@
             <objects>
                 <viewController storyboardIdentifier="SyncViewController" id="qP4-yH-Uwy" customClass="GHSyncViewController" sceneMemberID="viewController">
                     <view key="view" id="fca-os-eOD">
-                        <rect key="frame" x="0.0" y="0.0" width="577" height="344"/>
+                        <rect key="frame" x="0.0" y="0.0" width="532" height="280"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vB-8Z-DyU">
+                                <rect key="frame" x="93" y="112" width="100" height="126"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" title="upload to icloud" bezelStyle="shadowlessSquare" image="CloudUpload" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="Ufa-xD-PzQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="uploadToICloud:" target="qP4-yH-Uwy" id="2QK-TN-26G"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1u-TI-yug">
+                                <rect key="frame" x="337" y="112" width="106" height="126"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" title="sync from icloud" bezelStyle="shadowlessSquare" image="CloudDownload" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="TzJ-9L-SbH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="downloadFromICloud:" target="qP4-yH-Uwy" id="tOV-Ae-IpD"/>
+                                </connections>
+                            </button>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="BoG-VA-EEz">
+                                <rect key="frame" x="93" y="84" width="350" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </box>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bNP-0g-Tjd">
-                                <rect key="frame" x="101" y="267" width="156" height="30"/>
+                                <rect key="frame" x="91" y="39" width="156" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Auto Sync" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qov-1y-6dX">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vB-8Z-DyU">
-                                <rect key="frame" x="97" y="160" width="138" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="upload to icloud" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ufa-xD-PzQ">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1u-TI-yug">
-                                <rect key="frame" x="264" y="160" width="141" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="sync from icloud" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TzJ-9L-SbH">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="downloadFromCloud" destination="T1u-TI-yug" id="kAS-bs-3gp"/>
+                        <outlet property="uploadToCloud" destination="fca-os-eOD" id="qZm-gH-N89"/>
+                    </connections>
                 </viewController>
                 <customObject id="tId-gs-pgz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20.5" y="135"/>
+            <point key="canvasLocation" x="-2" y="103"/>
         </scene>
         <!--Advance View Controller-->
         <scene sceneID="iyL-14-jLv">
@@ -508,6 +522,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CloudDownload" width="354.4615478515625" height="354.4615478515625"/>
+        <image name="CloudUpload" width="354.4615478515625" height="354.4615478515625"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="ghostkbd-128" width="128" height="128"/>

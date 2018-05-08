@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface GHSyncViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource>
+@interface GHSyncViewController : NSViewController
 
-@property (weak) IBOutlet NSTableView *tableView;
+
+
 @end

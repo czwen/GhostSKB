@@ -22,7 +22,7 @@
     NSDateComponents *comp = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     
     NSInteger year = [comp year];
-    NSString *copyStr = [NSString stringWithFormat:@"2016-%zd @ dingmingxin all rights reserved", year];
+    NSString *copyStr = [NSString stringWithFormat:@"© 2016-%zd DingMingxin All Rights Reserved", year];
     [self.copyrightLabel setStringValue:copyStr];
 }
 

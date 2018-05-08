@@ -71,8 +71,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="532" height="280"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="W7L-kf-Mt9">
+                                <rect key="frame" x="107" y="0.0" width="318" height="280"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" title="open iCloud preference " bezelStyle="shadowlessSquare" image="iCloud" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="9a3-8A-aqD">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tryOpeniCloudPrefPane:" target="qP4-yH-Uwy" id="uiK-sM-BMx"/>
+                                </connections>
+                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vB-8Z-DyU">
-                                <rect key="frame" x="91" y="77" width="100" height="126"/>
+                                <rect key="frame" x="91" y="88" width="100" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="upload to icloud" bezelStyle="shadowlessSquare" image="CloudUpload" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="Ufa-xD-PzQ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -83,7 +94,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1u-TI-yug">
-                                <rect key="frame" x="335" y="77" width="106" height="126"/>
+                                <rect key="frame" x="335" y="88" width="106" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="sync from icloud" bezelStyle="shadowlessSquare" image="CloudDownload" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="TzJ-9L-SbH">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -91,17 +102,6 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="downloadFromICloud:" target="qP4-yH-Uwy" id="mGL-4S-uYC"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="W7L-kf-Mt9">
-                                <rect key="frame" x="107" y="0.0" width="318" height="280"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="open iCloud preference " bezelStyle="shadowlessSquare" image="iCloud" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="9a3-8A-aqD">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="tryOpeniCloudPrefPane:" target="qP4-yH-Uwy" id="uiK-sM-BMx"/>
                                 </connections>
                             </button>
                         </subviews>

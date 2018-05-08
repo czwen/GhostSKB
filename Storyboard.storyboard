@@ -30,20 +30,38 @@
             <objects>
                 <viewController title="InfoViewController" storyboardIdentifier="InfoViewController" id="Iuq-xJ-IWX" customClass="GHInfoViewController" sceneMemberID="viewController">
                     <view key="view" id="MNm-EX-wVV">
-                        <rect key="frame" x="0.0" y="0.0" width="458" height="304"/>
+                        <rect key="frame" x="0.0" y="0.0" width="458" height="238"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZOU-5y-dbN">
-                                <rect key="frame" x="165" y="135" width="129" height="129"/>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="muh-oq-4zE">
+                                <rect key="frame" x="157" y="75" width="143" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ghostkbd-128" id="pyN-cg-XJs"/>
-                            </imageView>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="GhostImage" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Fw6-g8-606">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="imageClicked:" target="Iuq-xJ-IWX" id="vgY-ON-Lt6"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zMV-89-9zS">
+                                <rect key="frame" x="62" y="38" width="335" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="Mia-Pj-T57">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="copyrightLabel" destination="zMV-89-9zS" id="qPI-Oj-uIt"/>
+                    </connections>
                 </viewController>
                 <customObject id="UUW-KV-1hH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-254" y="-254"/>
+            <point key="canvasLocation" x="-254" y="-287"/>
         </scene>
         <!--Sync View Controller-->
         <scene sceneID="OIL-yo-grI">
@@ -524,8 +542,8 @@
     <resources>
         <image name="CloudDownload" width="354.4615478515625" height="354.4615478515625"/>
         <image name="CloudUpload" width="354.4615478515625" height="354.4615478515625"/>
+        <image name="GhostImage" width="128" height="128"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
-        <image name="ghostkbd-128" width="128" height="128"/>
     </resources>
 </document>

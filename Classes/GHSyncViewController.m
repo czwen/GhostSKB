@@ -28,23 +28,21 @@
 - (void)awakeFromNib {
     
 }
+
 - (void)viewDidLoad {
+    NSLog(@"viewDidLoad");
     [super viewDidLoad];
     [self showAccessbilityDialog];
     [self refreshView];
-    
-    if (![self isiCloudLoggin]) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            while(TRUE) {
-                if ([self isiCloudLoggin]) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self animateRefreshView];
-                    });
-                    break;
-                }
-                sleep(0.3);
-            }
-        });
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector (iCloudAccountAvailabilityChanged:)
+                                                 name: NSUbiquityIdentityDidChangeNotification
+                                               object: nil];
+}
+
+- (void)iCloudAccountAvailabilityChanged:(NSNotification *)notification {
+    if ([self isiCloudLoggin]) {
+        [self animateRefreshView];
     }
 }
 

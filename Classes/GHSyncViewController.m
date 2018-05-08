@@ -20,6 +20,7 @@
 - (void)toggleViews:(BOOL)hidden;
 - (void)showAccessbilityDialog;
 - (void)refreshView;
+- (void)showNotLoginAlert;
 @end
 
 @implementation GHSyncViewController
@@ -29,7 +30,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self showAccessbilityDialog];
     [self refreshView];
     
     if (![self isiCloudLoggin]) {
@@ -58,6 +59,15 @@
     [self toggleViews:initViewHidden];
 }
 
+- (void)showNotLoginAlert {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"OK"];
+    [alert setMessageText:@"iCloud logged out!"];
+    [alert setInformativeText:@"Must login icloud in System Preference before sync"];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    [alert runModal];
+}
+
 - (void)showAccessbilityDialog {
 #if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1090
     if (AXIsProcessTrustedWithOptions) {
@@ -82,6 +92,10 @@
 }
 
 - (IBAction)downloadFromICloud:(id)sender {
+    if (![self isiCloudLoggin]) {
+        [self showNotLoginAlert];
+        return;
+    }
     //indicator
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
@@ -109,7 +123,11 @@
 }
 
 - (IBAction)uploadToICloud:(id)sender {
-    
+    if (![self isiCloudLoggin]) {
+        [self showNotLoginAlert];
+        return;
+    }
+
     NSDictionary *dict = [[GHDefaultManager getInstance] getPreferenceConfigDict];
     NSError *error;
     

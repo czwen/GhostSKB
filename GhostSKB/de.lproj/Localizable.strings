@@ -25,3 +25,7 @@
 "indicator_downloading" = "downloading...";
 "indicator_uploading" = "uploading...";
 "indicator_last_profile_cannot_remove"="The last profile can not be removed";
+"indicator_duplicated_hotkey" = "duplicated hotkey";
+
+"upload_to_icloud" = "upload to iCloud";
+"download_from_icloud" = "download from iCloud";

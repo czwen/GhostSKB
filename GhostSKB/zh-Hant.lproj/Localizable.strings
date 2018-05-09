@@ -6,22 +6,27 @@
   Copyright © 2017年 丁明信. All rights reserved.
 */
 
-"duplicated_app" = "Duplicated Application";
-"already_have_same_app" = "The app you selected is already in the list";
-"tab_profile_title" = "Profile";
-"tab_advance_title" = "Advance";
-"tab_sync_title" = "Sync";
-"tab_about_title" = "About";
-"click_to_login_icloud" = "Click to Login iCloud";
-"version" = "version";
-"auto_switch_delay" = "Auto Switch Delay";
-"select_profile_to_setup_hotkey" = "Select profile to setup hotkey";
-"table_header_title_input" = "Input Source";
-"table_header_title_shortcut" = "ShortCut";
-"enable_hotkey" = "Enabel Hotkey";
-"duplicate_copy" = "duplicate";
-"add_new_profile" = "add new profile";
+"already_have_same_app" = "您選擇的App已經在列表中";
+"duplicated_app" = "重複的應用";
 
-"indicator_downloading" = "downloading...";
-"indicator_uploading" = "uploading...";
-"indicator_last_profile_cannot_remove"="The last profile can not be removed";
+"tab_profile_title" = "配置";
+"tab_advance_title" = "高級";
+"tab_sync_title" = "同步";
+"tab_about_title" = "關於";
+"click_to_login_icloud" = "點擊登錄iCloud";
+"version" = "版本";
+"auto_switch_delay" = "自動切換延時";
+"select_profile_to_setup_hotkey" = "選擇配置文件設置快捷鍵";
+"table_header_title_input" = "輸入源";
+"table_header_title_shortcut" = "快捷鍵";
+"enable_hotkey" = "啟用快捷鍵";
+"duplicate_copy" = "複製";
+"add_new_profile" = "增加配置文件";
+
+"indicator_downloading" = "下載中...";
+"indicator_uploading" = "上傳中...";
+"indicator_last_profile_cannot_remove"="最後一個配置文件不能刪除";
+"indicator_duplicated_hotkey" = "重複的快捷鍵";
+
+"upload_to_icloud" = "上傳到iCloud";
+"download_from_icloud" = "從iCloud下載";

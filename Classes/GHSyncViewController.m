@@ -33,7 +33,8 @@
     
     [super viewDidLoad];
     self.loginButton.title = NSLocalizedString(@"click_to_login_icloud", @"");
-//    [self showAccessbilityDialog];
+    self.uploadButton.title = NSLocalizedString(@"upload_to_icloud", @"");
+    self.downloadButton.title = NSLocalizedString(@"download_from_icloud", @"");
     [self refreshView];
     
     [[NSNotificationCenter defaultCenter] addObserver: self

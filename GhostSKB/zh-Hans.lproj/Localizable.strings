@@ -23,3 +23,6 @@
 "indicator_last_profile_cannot_remove"="最后一个配置文件不能删除";
 "indicator_duplicated_hotkey" = "重复的快捷键";
 
+"upload_to_icloud" = "上传到iCloud";
+"download_from_icloud" = "从iCloud下载"
+

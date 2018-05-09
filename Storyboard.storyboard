@@ -117,7 +117,9 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="downloadButton" destination="T1u-TI-yug" id="g7r-Dc-mIR"/>
                         <outlet property="loginButton" destination="W7L-kf-Mt9" id="fYd-WJ-Gac"/>
+                        <outlet property="uploadButton" destination="9vB-8Z-DyU" id="dqJ-3v-Qzd"/>
                     </connections>
                 </viewController>
                 <customObject id="tId-gs-pgz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

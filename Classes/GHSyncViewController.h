@@ -14,5 +14,7 @@
 - (IBAction)uploadToICloud:(id)sender;
 - (IBAction)tryOpeniCloudPrefPane:(id)sender;
 @property (weak) IBOutlet NSButton *loginButton;
+@property (weak) IBOutlet NSButton *uploadButton;
+@property (weak) IBOutlet NSButton *downloadButton;
 
 @end

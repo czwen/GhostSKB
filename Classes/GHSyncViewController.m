@@ -100,10 +100,7 @@
         return;
     }
     //indicator
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.minSize = CGSizeMake(400, 200);
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = NSLocalizedString(@"indicator_downloading", @"");;
+    MBProgressHUD *hud = [self showProgress:NSLocalizedString(@"indicator_downloading", @"")];
     
     CKDatabase *privateDatabase = [[CKContainer defaultContainer] privateCloudDatabase];
     CKRecordID *artworkRecordID = [[CKRecordID alloc] initWithRecordName:@"profile_content"];
@@ -126,6 +123,19 @@
     
 }
 
+- (MBProgressHUD *)showProgress:(NSString *)text {
+    CGSize hudSize = CGSizeMake(280, 200);
+    CGPoint center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
+    MBProgressHUD *hud = [[MBProgressHUD alloc]initWithFrame: CGRectMake(center.x-hudSize.width/2, center.y-hudSize.height/2, hudSize.width, hudSize.height)];
+    
+    hud.minSize = hudSize;
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = text;
+    [self.view addSubview:hud];
+    [hud show:YES];
+    return hud;
+}
+
 - (IBAction)uploadToICloud:(id)sender {
     if (![self isiCloudLoggin]) {
         [self showNotLoginAlert];
@@ -145,17 +155,7 @@
     CKDatabase  *privateDatabase = [myContainer privateCloudDatabase];
     
     //indicator
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    CGSize hudSize = CGSizeMake(280, 200);
-    CGPoint center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
-    MBProgressHUD *hud = [[MBProgressHUD alloc]initWithFrame: CGRectMake(center.x-hudSize.width/2, center.y-hudSize.height/2, hudSize.width, hudSize.height)];
-
-    hud.minSize = hudSize;
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = NSLocalizedString(@"indicator_uploading", @"");
-    hud.detailsLabelText = NSLocalizedString(@"indicator_uploading", @"");
-    [self.view addSubview:hud];
-    [hud show:YES];
+    MBProgressHUD *hud = [self showProgress:NSLocalizedString(@"indicator_uploading", @"")];
     
     CKModifyRecordsOperation *modifyRecords = [[CKModifyRecordsOperation alloc] initWithRecordsToSave:@[record] recordIDsToDelete:NULL];
     modifyRecords.savePolicy = CKRecordSaveAllKeys;

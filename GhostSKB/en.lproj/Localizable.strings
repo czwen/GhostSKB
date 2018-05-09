@@ -8,3 +8,20 @@
 
 "duplicated_app" = "Duplicated Application";
 "already_have_same_app" = "The app you selected is already in the list";
+"tab_profile_title" = "Profile";
+"tab_advance_title" = "Advance";
+"tab_sync_title" = "Sync";
+"tab_about_title" = "About";
+"click_to_login_icloud" = "Click to Login iCloud";
+"version" = "version";
+"auto_switch_delay" = "Auto Switch Delay";
+"select_profile_to_setup_hotkey" = "Select profile to setup hotkey";
+"table_header_title_input" = "Input Source";
+"table_header_title_shortcut" = "ShortCut";
+"enable_hotkey" = "Enabel Hotkey";
+"duplicate_copy" = "duplicate";
+"add_new_profile" = "add new profile";
+
+"indicator_downloading" = "downloading...";
+"indicator_uploading" = "uploading...";
+"indicator_last_profile_cannot_remove"="The last profile can not be removed";

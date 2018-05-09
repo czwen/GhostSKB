@@ -102,7 +102,19 @@
     NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
     [ncenter addObserver:self selector:@selector(inputSourceListChanged:) name:GH_NK_INPUT_SOURCE_LIST_CHANGED object:NULL];
     
+    [self.labelSelectProfile setStringValue:NSLocalizedString(@"select_profile_to_setup_hotkey", @"")];
+    [self.labelAutoSwitchDelay setStringValue:NSLocalizedString(@"auto_switch_delay", @"")];
+    
+    NSArray *titleStrIds = @[@"table_header_title_input", @"table_header_title_shortcut"];
+    for (int i=0; i< [self.inputSwitchTableView.tableColumns count]; i++) {
+        NSTableColumn *column = [self.inputSwitchTableView.tableColumns objectAtIndex:i];
+        NSString *strId = [titleStrIds objectAtIndex:i];
+        column.headerCell.title = NSLocalizedString(strId, @"");
+    }
+    [self.hotkeyEnableButton setTitle:NSLocalizedString(@"enable_hotkey", @"")];
     [self initDelaySlider];
+    
+    
 }
 
 #pragma mark - Notifications
@@ -157,7 +169,7 @@
         if ([newComb isEqual:aComb]) {
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.mode = MBProgressHUDModeText;
-            hud.labelText = @"duplicated hotkey";
+            hud.labelText = NSLocalizedString(@"indicator_duplicated_hotkey", @"");
             [hud hide:YES afterDelay:0.5];
             return NO;
         }

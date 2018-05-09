@@ -20,7 +20,6 @@
 #define TBL_CELL_IDENTIFIER_PROFILE_CELL @"profileCell"
 #define TBL_CELL_IDENTIFIER_PROFILE_CONTENT_CELL @"profileItemCell"
 
-#define TBL_DETAIL_HEADER_FORMAT @"config list of profile: %@"
 
 @interface GHProfileViewController ()
 
@@ -314,10 +313,12 @@
     NSInteger selectedRow = self.profilesTableView.selectedRow;
     NSMenu *menu = [[NSMenu alloc] init];
     if (selectedRow >= 0) {
-        [menu addItemWithTitle:[NSString stringWithFormat:@"duplicate %@", [self.profiles objectAtIndex:selectedRow]] action:@selector(duplicatedProfile) keyEquivalent:@""];
+        NSString *duplicateStr = NSLocalizedString(@"duplicate_copy", @"");
+        [menu addItemWithTitle:[NSString stringWithFormat:@"%@ %@",duplicateStr, [self.profiles objectAtIndex:selectedRow]] action:@selector(duplicatedProfile) keyEquivalent:@""];
         [menu addItem:[NSMenuItem separatorItem]];
     }
-    [menu addItemWithTitle:@"add new profile" action:@selector(tryAddNewProfile) keyEquivalent:@""];
+    NSString *addNewProfileStr = NSLocalizedString(@"add_new_profile", @"");
+    [menu addItemWithTitle:addNewProfileStr action:@selector(tryAddNewProfile) keyEquivalent:@""];
     [NSMenu popUpContextMenu:menu withEvent:[[NSApplication sharedApplication] currentEvent] forView:sender];
 }
 
@@ -325,7 +326,7 @@
     if ([self.profiles count] <= 1) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"The last profile can not be removed";
+        hud.labelText = NSLocalizedString(@"indicator_last_profile_cannot_remove", @"");
         [hud hide:YES afterDelay:0.5];
         return;
     }

@@ -30,10 +30,12 @@
 }
 
 - (void)viewDidLoad {
-    NSLog(@"viewDidLoad");
+    
     [super viewDidLoad];
-    [self showAccessbilityDialog];
+    self.loginButton.title = NSLocalizedString(@"click_to_login_icloud", @"");
+//    [self showAccessbilityDialog];
     [self refreshView];
+    
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector (iCloudAccountAvailabilityChanged:)
                                                  name: NSUbiquityIdentityDidChangeNotification
@@ -43,6 +45,9 @@
 - (void)iCloudAccountAvailabilityChanged:(NSNotification *)notification {
     if ([self isiCloudLoggin]) {
         [self animateRefreshView];
+    }
+    else {
+        [self refreshView];
     }
 }
 
@@ -96,8 +101,9 @@
     }
     //indicator
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.minSize = CGSizeMake(400, 200);
     hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"downloading...";
+    hud.labelText = NSLocalizedString(@"indicator_downloading", @"");;
     
     CKDatabase *privateDatabase = [[CKContainer defaultContainer] privateCloudDatabase];
     CKRecordID *artworkRecordID = [[CKRecordID alloc] initWithRecordName:@"profile_content"];
@@ -139,16 +145,24 @@
     CKDatabase  *privateDatabase = [myContainer privateCloudDatabase];
     
     //indicator
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    CGSize hudSize = CGSizeMake(280, 200);
+    CGPoint center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
+    MBProgressHUD *hud = [[MBProgressHUD alloc]initWithFrame: CGRectMake(center.x-hudSize.width/2, center.y-hudSize.height/2, hudSize.width, hudSize.height)];
+
+    hud.minSize = hudSize;
     hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"uploading...";
+    hud.labelText = NSLocalizedString(@"indicator_uploading", @"");
+    hud.detailsLabelText = NSLocalizedString(@"indicator_uploading", @"");
+    [self.view addSubview:hud];
+    [hud show:YES];
     
     CKModifyRecordsOperation *modifyRecords = [[CKModifyRecordsOperation alloc] initWithRecordsToSave:@[record] recordIDsToDelete:NULL];
     modifyRecords.savePolicy = CKRecordSaveAllKeys;
     modifyRecords.qualityOfService = NSQualityOfServiceUserInitiated;
     modifyRecords.modifyRecordsCompletionBlock = ^(NSArray<CKRecord *> * _Nullable savedRecords, NSArray<CKRecordID *> * _Nullable deletedRecordIDs, NSError * _Nullable operationError) {
         if (error) {
-            NSLog(@"modify error:%@", error);
+//            NSLog(@"modify error:%@", error);
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide:YES afterDelay:0.2];

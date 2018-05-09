@@ -4,3 +4,22 @@
 /* No comment provided by engineer. */
 "duplicated_app" = "重复的应用";
 
+"tab_profile_title" = "配置";
+"tab_advance_title" = "高级";
+"tab_sync_title" = "同步";
+"tab_about_title" = "关于";
+"click_to_login_icloud" = "点击登录iCloud";
+"version" = "版本";
+"auto_switch_delay" = "自动切换延时";
+"select_profile_to_setup_hotkey" = "选择配置文件设置快捷键";
+"table_header_title_input" = "输入源";
+"table_header_title_shortcut" = "快捷键";
+"enable_hotkey" = "启用快捷键";
+"duplicate_copy" = "复制";
+"add_new_profile" = "增加配置文件";
+
+"indicator_downloading" = "下载中...";
+"indicator_uploading" = "上传中...";
+"indicator_last_profile_cannot_remove"="最后一个配置文件不能删除";
+"indicator_duplicated_hotkey" = "重复的快捷键";
+

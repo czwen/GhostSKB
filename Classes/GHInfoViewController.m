@@ -11,6 +11,8 @@
 @interface GHInfoViewController ()
 @property (weak) IBOutlet NSTextField *copyrightLabel;
 - (IBAction)imageClicked:(id)sender;
+@property (weak) IBOutlet NSTextField *versionLabel;
+
 
 @end
 
@@ -24,6 +26,11 @@
     NSInteger year = [comp year];
     NSString *copyStr = [NSString stringWithFormat:@"© 2016-%zd DingMingxin All Rights Reserved", year];
     [self.copyrightLabel setStringValue:copyStr];
+    
+    
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
+    [self.versionLabel setStringValue:[NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"version", @""), version]];
 }
 
 - (IBAction)imageClicked:(id)sender {

@@ -11,10 +11,10 @@
 #import "Constant.h"
 #import "GHProfileViewController.h"
 
-#define ID_PROFILES @"Profiles"
-#define ID_SYNC @"Sync"
-#define ID_ADVANCE @"Advance"
-#define ID_ABOUT @"About"
+#define ID_PROFILES @"profile"
+#define ID_SYNC @"sync"
+#define ID_ADVANCE @"advance"
+#define ID_ABOUT @"about"
 
 @interface GHSettingWindowControler ()
 
@@ -38,16 +38,17 @@
     NSMutableDictionary *items = [[NSMutableDictionary alloc] initWithCapacity:1];
     NSArray *identifiers = @[ID_PROFILES, ID_ADVANCE, ID_SYNC, ID_ABOUT];
     NSArray *icons = @[
-                       [NSString stringWithFormat:@"ToolBarIcon%@", ID_PROFILES],
+                       [NSString stringWithFormat:@"toolbaricon_%@", ID_PROFILES],
                        NSImageNameAdvanced,
-                       [NSString stringWithFormat:@"ToolBarIcon%@", ID_SYNC],
+                       [NSString stringWithFormat:@"toolbaricon_%@", ID_SYNC],
                        NSImageNameInfo,
                        ];
     NSInteger tag = 0;
     for (int i=0; i< [identifiers count]; i++) {
         NSString *identifier = [identifiers objectAtIndex:i];
         NSToolbarItem* item = [[NSToolbarItem alloc] initWithItemIdentifier:identifier];
-        [item setLabel:identifier];
+        NSString *key = [NSString stringWithFormat:@"tab_%@_title", identifier];
+        [item setLabel:NSLocalizedString(key, @"")];
         [item setImage:[NSImage imageNamed:[icons objectAtIndex:i]]];
         [item setTarget:self];
         [item setAction:@selector(toolbarItemSelected:)];
@@ -111,7 +112,8 @@
     [newView setFrameOrigin:NSZeroPoint];
     [newView setAutoresizingMask:NSViewMaxYMargin | NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin];
 
-    [self.window setTitle:identifier];
+    NSString *key = [NSString stringWithFormat:@"tab_%@_title", identifier];
+    [self.window setTitle:NSLocalizedString(key, @"")];
     [self.window setContentView:newView];
     self.window.contentViewController = controller;
     [self.window setFrame:newFrame display:YES animate:YES];

@@ -887,6 +887,10 @@ static const CGFloat kDetailsLabelFontSize = 12.0f;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
     CGSize labelSize = MB_TEXTSIZE(label.string, label.font);
     if (labelSize.width > 0.0f) labelSize.width += 10.0f;
+    if (self.minSize.width > 0.0f) {
+        labelSize.width = self.minSize.width;
+    }
+    
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 	labelSize.width = MIN(labelSize.width, maxWidth);
 	totalSize.width = MAX(totalSize.width, labelSize.width);
@@ -902,6 +906,10 @@ static const CGFloat kDetailsLabelFontSize = 12.0f;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
     CGSize detailsLabelSize = MB_TEXTSIZE(detailsLabel.string, detailsLabel.font);
     if (detailsLabelSize.width > 0.0f) detailsLabelSize.width += 10.0f;
+    if (self.minSize.width > 0.0f) {
+        detailsLabelSize.width = self.minSize.width;
+    }
+
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
     detailsLabelSize.width = MIN(detailsLabelSize.width, maxWidth);
 	totalSize.width = MAX(totalSize.width, detailsLabelSize.width);

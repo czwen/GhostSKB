@@ -176,17 +176,8 @@
 		DE93984D20A294F000D56989 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		DE93984F20A2D73700D56989 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = GhostSKB/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE93985020A2D73700D56989 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DE93985120A2D74400D56989 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = GhostSKB/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DE93985220A2D74400D56989 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DE93985520A2D75D00D56989 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "GhostSKB/zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DE93985620A2D75D00D56989 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		DE93985720A2D78300D56989 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = GhostSKB/es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DE93985820A2D78300D56989 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DE93985920A2D7A100D56989 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = GhostSKB/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DE93985A20A2D7A100D56989 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DE93985B20A2D7A700D56989 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
-		DE93985C20A2D7A700D56989 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = GhostSKB/de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DE93985D20A2D7A700D56989 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DEA777B4207C564A00D682D8 /* GHProfileCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileCellView.h; path = Classes/GHProfileCellView.h; sourceTree = "<group>"; };
 		DEA777B5207C564A00D682D8 /* GHProfileCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileCellView.m; path = Classes/GHProfileCellView.m; sourceTree = "<group>"; };
 		DEA777B7207C566F00D682D8 /* GHProfileContentCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileContentCellView.h; path = Classes/GHProfileContentCellView.h; sourceTree = "<group>"; };
@@ -522,11 +513,7 @@
 				Base,
 				"zh-Hans",
 				ja,
-				ko,
 				"zh-Hant",
-				es,
-				fr,
-				de,
 			);
 			mainGroup = DE6634771CB21551009EE247;
 			productRefGroup = DE6634811CB21552009EE247 /* Products */;
@@ -662,11 +649,7 @@
 				DE25403E1F141DA50093EEB2 /* en */,
 				DE2540401F141DD70093EEB2 /* zh-Hans */,
 				DE93984F20A2D73700D56989 /* ja */,
-				DE93985120A2D74400D56989 /* ko */,
 				DE93985520A2D75D00D56989 /* zh-Hant */,
-				DE93985720A2D78300D56989 /* es */,
-				DE93985920A2D7A100D56989 /* fr */,
-				DE93985C20A2D7A700D56989 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -676,7 +659,6 @@
 			children = (
 				DE66348C1CB21552009EE247 /* Base */,
 				DEDE040C1F1B1D2D005F9D70 /* zh-Hans */,
-				DE93985B20A2D7A700D56989 /* de */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -686,11 +668,7 @@
 			children = (
 				DEDE040A1F1B1D2D005F9D70 /* zh-Hans */,
 				DE93985020A2D73700D56989 /* ja */,
-				DE93985220A2D74400D56989 /* ko */,
 				DE93985620A2D75D00D56989 /* zh-Hant */,
-				DE93985820A2D78300D56989 /* es */,
-				DE93985A20A2D7A100D56989 /* fr */,
-				DE93985D20A2D7A700D56989 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

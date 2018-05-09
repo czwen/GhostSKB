@@ -178,8 +178,6 @@
 		DE93985020A2D73700D56989 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DE93985120A2D74400D56989 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = GhostSKB/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE93985220A2D74400D56989 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DE93985320A2D74D00D56989 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = GhostSKB/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DE93985420A2D74D00D56989 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DE93985520A2D75D00D56989 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "GhostSKB/zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DE93985620A2D75D00D56989 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DE93985720A2D78300D56989 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = GhostSKB/es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -525,7 +523,6 @@
 				"zh-Hans",
 				ja,
 				ko,
-				ru,
 				"zh-Hant",
 				es,
 				fr,
@@ -666,7 +663,6 @@
 				DE2540401F141DD70093EEB2 /* zh-Hans */,
 				DE93984F20A2D73700D56989 /* ja */,
 				DE93985120A2D74400D56989 /* ko */,
-				DE93985320A2D74D00D56989 /* ru */,
 				DE93985520A2D75D00D56989 /* zh-Hant */,
 				DE93985720A2D78300D56989 /* es */,
 				DE93985920A2D7A100D56989 /* fr */,
@@ -691,7 +687,6 @@
 				DEDE040A1F1B1D2D005F9D70 /* zh-Hans */,
 				DE93985020A2D73700D56989 /* ja */,
 				DE93985220A2D74400D56989 /* ko */,
-				DE93985420A2D74D00D56989 /* ru */,
 				DE93985620A2D75D00D56989 /* zh-Hant */,
 				DE93985820A2D78300D56989 /* es */,
 				DE93985A20A2D7A100D56989 /* fr */,

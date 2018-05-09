@@ -184,15 +184,7 @@
 }
 
 - (void)openiCloudPrefPane {
-    
-    NSDictionary* errorDict;
-    NSAppleScript* scriptObject = [[NSAppleScript alloc] initWithSource:
-                                   @"\
-                                   tell application \"System Preferences\"\n\
-                                   activate\n\
-                                   set the current pane to pane id \"com.apple.preferences.icloud\"\n\
-                                   end tell"];
-    [scriptObject executeAndReturnError: &errorDict];
+    [[NSWorkspace sharedWorkspace] openFile:@"/System/Library/PreferencePanes/iCloudPref.prefPane"];
 }
 
 - (void)toggleViews:(BOOL)hidden {

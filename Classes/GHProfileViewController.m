@@ -58,6 +58,7 @@
     BOOL ok = [[GHDefaultManager getInstance] duplicateProfile:profileName];
     if (ok) {
         [self updateProfileList];
+        [self updateProfileConfigDicts];
         [self.profilesTableView reloadData];
         [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
     }

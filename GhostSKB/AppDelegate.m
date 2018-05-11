@@ -26,7 +26,6 @@ static double switchDelay;
 
 @implementation AppDelegate
 @synthesize preferenceController;
-@synthesize isBecomeActiveTheFirstTime;
 
 #pragma mark - App Life Cycle
 
@@ -62,19 +61,13 @@ static void notificationCallback (CFNotificationCenterRef center,
     
     [self initStatusItem];
     
-    isBecomeActiveTheFirstTime = true;
     switchDelay = [[GHDefaultManager getInstance] getDelayTime];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification
 {
-    if (isBecomeActiveTheFirstTime) {
-        isBecomeActiveTheFirstTime = false;
-    }
-    else {
-        //再次点击的时候显示icon
-        [statusItem setVisible:true];
-    }
+    //再次点击的时候显示icon
+    [statusItem setVisible:true];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -122,12 +115,15 @@ static void notificationCallback (CFNotificationCenterRef center,
     [menu addItem:[NSMenuItem separatorItem]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Preference..." action:@selector(showPreference) keyEquivalent:@","]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Disable GhostSKB" action:@selector(toggleGhostSKB:) keyEquivalent:@""]];
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Hide Menu Bar Icon" action:@selector(hideMenuBarIcon:) keyEquivalent:@""]];
     [menu addItem:[NSMenuItem separatorItem]];
     [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit GhostSKB" action:@selector(quitGhostSKB) keyEquivalent:@"Q"]];
     statusItem.menu = menu;
     
     [statusItem.button setAction:@selector(onStatusItemSelected:)];
 }
+
+
 
 - (void)updateProfilesMenu:(NSMenu *)menu {
     NSArray *profiles = [[GHDefaultManager getInstance] getProfileList];
@@ -220,6 +216,10 @@ static void notificationCallback (CFNotificationCenterRef center,
     NSMenuItem *item = (NSMenuItem *)sender;
     [[GHDefaultManager getInstance] changeDefaultProfile:item.title];
     [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_DEFAULT_PROFILE_CHANGED object:item.title];
+}
+
+- (void)hideMenuBarIcon:(id)sender {
+    [statusItem setVisible:FALSE];
 }
 
 - (void)toggleGhostSKB:(id)sender {

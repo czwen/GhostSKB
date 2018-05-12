@@ -6,26 +6,26 @@
   Copyright © 2017年 丁明信. All rights reserved.
 */
 
-"duplicated_app" = "Duplicated Application";
-"already_have_same_app" = "The app you selected is already in the list";
-"tab_profile_title" = "Profile";
-"tab_advance_title" = "Advance";
-"tab_sync_title" = "Sync";
-"tab_about_title" = "About";
-"click_to_login_icloud" = "Click to Login iCloud";
-"version" = "version";
-"auto_switch_delay" = "Auto Switch Delay";
-"select_profile_to_setup_hotkey" = "Select profile to setup hotkey";
-"table_header_title_input" = "Input Source";
-"table_header_title_shortcut" = "ShortCut";
-"enable_hotkey" = "Enabel Hotkey";
-"duplicate_copy" = "duplicate";
-"add_new_profile" = "add new profile";
+"duplicated_app" = "重複する応用";
+"already_have_same_app" = "あなたが選んだAppは既にリストにあります";
+"tab_profile_title" = "設定";
+"tab_advance_title" = "高級";
+"tab_sync_title" = "シンクロ";
+"tab_about_title" = "iCloudについて";
+"click_to_login_icloud" = "iCloudにログインする";
+"version" = "バージョン";
+"auto_switch_delay" = "自動切り替え遅延";
+"select_profile_to_setup_hotkey" = "設定ファイルを選択して、ショートカットキーを設定する";
+"table_header_title_input" = "にゅうりょくげん";
+"table_header_title_shortcut" = "ショ—トカットキ—";
+"enable_hotkey" = "ショートカットキーを起用する";
+"duplicate_copy" = "複製";
+"add_new_profile" = "プロファイルを増やす";
 
-"indicator_downloading" = "downloading...";
-"indicator_uploading" = "uploading...";
-"indicator_last_profile_cannot_remove"="The last profile can not be removed";
-"indicator_duplicated_hotkey" = "duplicated hotkey";
+"indicator_downloading" = "ダウンロード...";
+"indicator_uploading" = "アップロード...";
+"indicator_last_profile_cannot_remove"="最後の構成ファイルは削除できない";
+"indicator_duplicated_hotkey" = "反復のショートカットキーです";
 
-"upload_to_icloud" = "upload to iCloud";
-"download_from_icloud" = "download from iCloud";
+"upload_to_icloud" = "iCloudにアップロードする";
+"download_from_icloud" = "iCloudにダウンロードする";

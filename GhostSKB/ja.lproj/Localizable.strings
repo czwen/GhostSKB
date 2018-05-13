@@ -6,26 +6,26 @@
   Copyright © 2017年 丁明信. All rights reserved.
 */
 
-"duplicated_app" = "重複する応用";
-"already_have_same_app" = "あなたが選んだAppは既にリストにあります";
-"tab_profile_title" = "設定";
+"duplicated_app" = "重複アプリ";
+"already_have_same_app" = "選んだAppは既にリストにあります";
+"tab_profile_title" = "配置";
 "tab_advance_title" = "高級";
 "tab_sync_title" = "シンクロ";
-"tab_about_title" = "iCloudについて";
+"tab_about_title" = "GhostSKBについて";
 "click_to_login_icloud" = "iCloudにログインする";
 "version" = "バージョン";
 "auto_switch_delay" = "自動切り替え遅延";
-"select_profile_to_setup_hotkey" = "設定ファイルを選択して、ショートカットキーを設定する";
-"table_header_title_input" = "にゅうりょくげん";
+"select_profile_to_setup_hotkey" = "プロフィールを選択して、ホットキーを設定する";
+"table_header_title_input" = "入力元";
 "table_header_title_shortcut" = "ショ—トカットキ—";
-"enable_hotkey" = "ショートカットキーを起用する";
+"enable_hotkey" = "ホットキーを有効化する";
 "duplicate_copy" = "複製";
-"add_new_profile" = "プロファイルを増やす";
+"add_new_profile" = "新規プロファイルを追加します";
 
 "indicator_downloading" = "ダウンロード...";
 "indicator_uploading" = "アップロード...";
-"indicator_last_profile_cannot_remove"="最後の構成ファイルは削除できない";
-"indicator_duplicated_hotkey" = "反復のショートカットキーです";
+"indicator_last_profile_cannot_remove"="ラストプロフィールは削除できません";
+"indicator_duplicated_hotkey" = "デュプレケートホットキー";
 
-"upload_to_icloud" = "iCloudにアップロードする";
-"download_from_icloud" = "iCloudにダウンロードする";
+"upload_to_icloud" = "iCloudにアップロードします";
+"download_from_icloud" = "iCloudにダウンロードします";

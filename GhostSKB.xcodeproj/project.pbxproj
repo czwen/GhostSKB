@@ -55,6 +55,8 @@
 		DE93984E20A294F100D56989 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE93984D20A294F000D56989 /* Storyboard.storyboard */; };
 		DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B5207C564A00D682D8 /* GHProfileCellView.m */; };
 		DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */; };
+		DEB19AA220A97088000B7F0C /* GHInputSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB19AA120A97088000B7F0C /* GHInputSourceManager.m */; };
+		DEB19AA520A97148000B7F0C /* GHInputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB19AA420A97148000B7F0C /* GHInputSource.m */; };
 		DEBE9D5320A13C4100F6D055 /* cloud_download-512.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D4D20A13C4000F6D055 /* cloud_download-512.png */; };
 		DEBE9D5420A13C4100F6D055 /* cloud_upload-128.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D4E20A13C4000F6D055 /* cloud_upload-128.png */; };
 		DEBE9D5520A13C4100F6D055 /* cloud_upload-256.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D4F20A13C4000F6D055 /* cloud_upload-256.png */; };
@@ -182,6 +184,11 @@
 		DEA777B5207C564A00D682D8 /* GHProfileCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileCellView.m; path = Classes/GHProfileCellView.m; sourceTree = "<group>"; };
 		DEA777B7207C566F00D682D8 /* GHProfileContentCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileContentCellView.h; path = Classes/GHProfileContentCellView.h; sourceTree = "<group>"; };
 		DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileContentCellView.m; path = Classes/GHProfileContentCellView.m; sourceTree = "<group>"; };
+		DEB19A9E20A96301000B7F0C /* InputMethodKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InputMethodKit.framework; path = System/Library/Frameworks/InputMethodKit.framework; sourceTree = SDKROOT; };
+		DEB19AA020A97088000B7F0C /* GHInputSourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHInputSourceManager.h; path = Classes/GHInputSourceManager.h; sourceTree = "<group>"; };
+		DEB19AA120A97088000B7F0C /* GHInputSourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHInputSourceManager.m; path = Classes/GHInputSourceManager.m; sourceTree = "<group>"; };
+		DEB19AA320A97148000B7F0C /* GHInputSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHInputSource.h; path = Classes/GHInputSource.h; sourceTree = "<group>"; };
+		DEB19AA420A97148000B7F0C /* GHInputSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHInputSource.m; path = Classes/GHInputSource.m; sourceTree = "<group>"; };
 		DEBE9D4D20A13C4000F6D055 /* cloud_download-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_download-512.png"; path = "Resources/cloud_download-512.png"; sourceTree = "<group>"; };
 		DEBE9D4E20A13C4000F6D055 /* cloud_upload-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_upload-128.png"; path = "Resources/cloud_upload-128.png"; sourceTree = "<group>"; };
 		DEBE9D4F20A13C4000F6D055 /* cloud_upload-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloud_upload-256.png"; path = "Resources/cloud_upload-256.png"; sourceTree = "<group>"; };
@@ -272,6 +279,7 @@
 		DE166F822087AF6900E3FA71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DEB19A9E20A96301000B7F0C /* InputMethodKit.framework */,
 				DE93983F20A1986000D56989 /* ApplicationServices.framework */,
 				DE93983D20A194EB00D56989 /* SystemConfiguration.framework */,
 				DE93983B20A194E200D56989 /* PreferencePanes.framework */,
@@ -329,6 +337,10 @@
 		DE6634771CB21551009EE247 = {
 			isa = PBXGroup;
 			children = (
+				DEB19AA020A97088000B7F0C /* GHInputSourceManager.h */,
+				DEB19AA120A97088000B7F0C /* GHInputSourceManager.m */,
+				DEB19AA320A97148000B7F0C /* GHInputSource.h */,
+				DEB19AA420A97148000B7F0C /* GHInputSource.m */,
 				DE18E27E208DD4B0002E1E08 /* Libs */,
 				DE166F812087A23100E3FA71 /* Headers */,
 				DEA777B3207C561200D682D8 /* TableCellViews */,
@@ -599,6 +611,7 @@
 				DE40A1FA2084443600C1DEE0 /* GHProfilesTableView.m in Sources */,
 				DEE204FF207B42E6009627BB /* NSColor+Extensions.m in Sources */,
 				DE396984207B064500376496 /* GHProfileViewController.m in Sources */,
+				DEB19AA220A97088000B7F0C /* GHInputSourceManager.m in Sources */,
 				DE40A1D72080D4FA00C1DEE0 /* GHProfileTextField.m in Sources */,
 				DE166F932087B8A200E3FA71 /* GHAdvanceViewController.m in Sources */,
 				DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */,
@@ -608,6 +621,7 @@
 				DE6634851CB21552009EE247 /* AppDelegate.m in Sources */,
 				DE5951F7208880550004D663 /* GHAdvanceInputShortcutCellView.m in Sources */,
 				DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */,
+				DEB19AA520A97148000B7F0C /* GHInputSource.m in Sources */,
 				DE5951F4208880350004D663 /* GHAdvanceInputIdCellView.m in Sources */,
 				DE396981207B061C00376496 /* GHInfoViewController.m in Sources */,
 			);

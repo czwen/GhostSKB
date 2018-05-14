@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "GHDefaultManager.h"
 #import "GHKeybindingManager.h"
+#import "GHInputSourceManager.h"
 #import "Constant.h"
 
 #import <AppKit/AppKit.h>
@@ -52,6 +53,7 @@ static void notificationCallback (CFNotificationCenterRef center,
     [notiCenter addObserver:self selector:@selector(defaultProfileChanged:) name:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
     [notiCenter addObserver:self selector:@selector(delayTimeChanged:) name:GH_NK_DELAY_TIME_CHANGED object:NULL];
     
+    [GHInputSourceManager getInstance];
     [GHDefaultManager getInstance];
     [[GHKeybindingManager getInstance] setProfileHotKeys:[[GHDefaultManager getInstance] getDefaultProfileName]];
     
@@ -202,8 +204,6 @@ static void notificationCallback (CFNotificationCenterRef center,
 }
 
 - (void) handleAppActivateNoti:(NSNotification *)noti {
-    
-    _lastAppInputSourceId = [self getCurrentInputSourceId];
     NSRunningApplication *runningApp = (NSRunningApplication *)[noti.userInfo objectForKey:@"NSWorkspaceApplicationKey"];
     NSString *identifier = runningApp.bundleIdentifier;
     [self changeInputSourceForApp:identifier];
@@ -265,12 +265,6 @@ static void notificationCallback (CFNotificationCenterRef center,
 
 
 #pragma mark - Core Methods
-- (NSMutableString *)getCurrentInputSourceId
-{
-    TISInputSourceRef inputSource = TISCopyCurrentKeyboardInputSource();
-    NSMutableString *inputId = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
-    return inputId;
-}
 
 - (void)changeInputSource:(NSString *)inputId {
     [self doChangeInputSource:inputId];
@@ -278,40 +272,7 @@ static void notificationCallback (CFNotificationCenterRef center,
 
 - (void)doChangeInputSource:(NSString *)targetInputId
 {
-    TISInputSourceRef inputSource = NULL;
-    TISInputSourceRef currentInputSource = TISCopyCurrentKeyboardInputSource();
-    NSMutableString *currentInputSourceId = (__bridge NSMutableString *)(TISGetInputSourceProperty(currentInputSource, kTISPropertyInputSourceID));
-    if ([targetInputId isEqualToString:currentInputSourceId]) {
-        return;
-    }
-    NSDictionary *property=[NSDictionary dictionaryWithObject:(NSString*)kTISCategoryKeyboardInputSource
-                                                      forKey:(NSString*)kTISPropertyInputSourceCategory];
-    CFArrayRef availableInputs = TISCreateInputSourceList((__bridge CFDictionaryRef)property, FALSE);
-    NSUInteger count = CFArrayGetCount(availableInputs);
-    
-    
-    
-    for (int i = 0; i < count; i++) {
-        inputSource = (TISInputSourceRef)CFArrayGetValueAtIndex(availableInputs, i);
-        
-        //获取输入源的id
-        NSMutableString *inputSourceId = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
-        if ([inputSourceId isEqualToString:targetInputId]) {
-            NSNumber* pIsSelectCapable = (__bridge NSNumber*)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceIsSelectCapable));
-            BOOL canSelect = [pIsSelectCapable boolValue];
-            
-            NSNumber *pIsEnableCapable= (__bridge NSNumber *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceIsEnableCapable));
-            BOOL canEnable = [pIsEnableCapable boolValue];
-            if (canEnable) {
-                TISEnableInputSource(inputSource);
-            }
-            if (canSelect) {
-                TISSelectInputSource(inputSource);
-            }
-            
-            break;
-        }
-    }
+    [[GHInputSourceManager getInstance] selectInputSource:targetInputId];
 }
 
 

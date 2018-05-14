@@ -14,7 +14,6 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate> {
     @private
     NSStatusBarButton *_statusBarButton;
-    NSMutableString *_lastAppInputSourceId;
     @public
     NSStatusItem *statusItem;
     BOOL statusItemSelected;

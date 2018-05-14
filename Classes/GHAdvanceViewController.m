@@ -11,6 +11,7 @@
 #import "GHAdvanceInputShortcutCellView.h"
 #import "GHDefaultManager.h"
 #import "GHKeybindingManager.h"
+#import "GHInputSourceManager.h"
 #import "Constant.h"
 
 #import <Carbon/Carbon.h>
@@ -160,6 +161,10 @@
     PTKeyCombo *newComb = [PTKeyCombo keyComboWithKeyCode:keyCode modifiers:modifiers];
     
     for (NSString *dkey in self.shortcut) {
+        NSString *inputId = [dkey stringByReplacingOccurrencesOfString:@"_" withString:@"."];
+        if (![[GHInputSourceManager getInstance] hasInputSourceEnabled:inputId]) {
+            continue;
+        }
         NSDictionary *info = [self.shortcut objectForKey:dkey];
         NSInteger aKeyCode = [[info objectForKey:@"keyCode"] integerValue];
         NSUInteger aModifiers = SRCocoaToCarbonFlags([[info objectForKey:@"modifierFlags"] unsignedIntegerValue]);

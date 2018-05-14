@@ -9,6 +9,7 @@
 #import "GHKeybindingManager.h"
 #import "Constant.h"
 #import "GHDefaultManager.h"
+#import "GHInputSourceManager.h"
 #import "AppDelegate.h"
 
 #import <Carbon/Carbon.h>
@@ -58,7 +59,6 @@ static GHKeybindingManager *sharedManager;
     
     NSMutableArray *inputMethods = [GHDefaultManager getAlivibleInputMethods];
     NSDictionary *dict = [manager getKeyBindings:profile];
-    
     for (NSDictionary *inputMethodInfo in inputMethods) {
         NSString *inputId = [inputMethodInfo objectForKey:@"id"];
         //先解绑旧的快捷键

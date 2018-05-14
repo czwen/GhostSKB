@@ -68,7 +68,6 @@
 }
 
 - (void)onInputSourceChanged:(id)sender {
-    NSLog(@"onInputSourceChanged:");
     if (self.profile == NULL || [self.profile length] == 0) {
         return;
     }

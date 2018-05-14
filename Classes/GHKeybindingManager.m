@@ -94,6 +94,7 @@ static GHKeybindingManager *sharedManager;
 - (void)selectInputMethod:(NSString *)inputId {
     AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
     [delegate changeInputSource:inputId];
+//    TSMSetDocumentProperty
 }
 
 @end

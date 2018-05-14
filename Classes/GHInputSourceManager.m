@@ -60,11 +60,11 @@ static GHInputSourceManager *sharedManager;
 }
 
 - (BOOL)selectInputSource:(NSString *)inputSourceId {
-    
     GHInputSource *ghInputSource = [self.inputSources objectForKey:inputSourceId];
     if(ghInputSource == NULL) {
         return FALSE;
     }
+    
     if ([ghInputSource isCJKV]) {
         [ghInputSource select];
     }
@@ -72,6 +72,8 @@ static GHInputSourceManager *sharedManager;
         [ghInputSource select];
     }
     return TRUE;
+    
+    
 }
 
 - (BOOL)hasInputSourceEnabled:(NSString *)inputSourceId {

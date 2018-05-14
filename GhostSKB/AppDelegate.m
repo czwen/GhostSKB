@@ -267,7 +267,7 @@ static void notificationCallback (CFNotificationCenterRef center,
 #pragma mark - Core Methods
 
 - (void)changeInputSource:(NSString *)inputId {
-    [self doChangeInputSource:inputId];
+     [self performSelector:@selector(doChangeInputSource:) withObject:inputId afterDelay:switchDelay];
 }
 
 - (void)doChangeInputSource:(NSString *)targetInputId
@@ -278,7 +278,6 @@ static void notificationCallback (CFNotificationCenterRef center,
 
 - (void)changeInputSourceForApp:(NSString *)bundleId {
     NSString *targetInputId = [[GHDefaultManager getInstance] getInputId:bundleId withProfile:NULL];
-    
     if (targetInputId != NULL) {
         [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:switchDelay];
     }

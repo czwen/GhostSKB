@@ -39,8 +39,10 @@
 }
 
 - (void)select {
+    if (self.canEnable) {
+        TISEnableInputSource(self.inputSource);
+    }
     if(TISSelectInputSource(self.inputSource) == noErr) {
-        NSLog(@"select sucess fully");
     }
 }
 

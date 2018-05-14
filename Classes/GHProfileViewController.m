@@ -95,7 +95,6 @@
     self.profileConfigs = [[NSMutableDictionary alloc] initWithCapacity:1];
     for (NSString *profileName in self.profiles) {
         NSMutableArray *config = [[[GHDefaultManager getInstance] getProfileInputConfig:profileName] mutableCopy];
-        [self sortDefaultInputArray:config];
         [self.profileConfigs setObject:config forKey:profileName];
     }
 }
@@ -132,6 +131,7 @@
     }
 }
 
+#pragma mark - Notifications
 - (void)profileRenamed:(NSNotification *)notification {
     NSDictionary *info = [notification object];
     NSString *origin = [info objectForKey:@"origin"];
@@ -144,6 +144,20 @@
 
         [self.profiles replaceObjectAtIndex:row withObject:new];
     }
+}
+
+- (void)appInputChanged:(NSNotification *)notification {
+    NSDictionary *dict = (NSDictionary *)[notification object];
+    NSString *profile = dict[@"profile"];
+    NSString *inputId = dict[@"input_source_id"];
+    NSString *appBundleId = dict[@"app_id"];
+    NSMutableArray *configs = self.profileConfigs[profile];
+    for (GHDefaultInfo *config in configs) {
+        if ([config.appBundleId isEqualToString:appBundleId]) {
+            config.defaultInput = inputId;
+        }
+    }
+    [self.profileDetailTableView reloadData];
 }
 
 - (void)profilelistChanged {
@@ -185,6 +199,7 @@
     [notiCenter addObserver:self selector:@selector(profilelistChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
     [notiCenter addObserver:self selector:@selector(defaultProfileChanged:) name:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
     [notiCenter addObserver:self selector:@selector(profileRenamed:) name:GH_NK_PROFILE_RENAME object:NULL];
+    [notiCenter addObserver:self selector:@selector(appInputChanged:) name:GH_NK_APP_INPUT_SOURCE_CHANGED object:NULL];
     
     [self.removeInputConfig bind:NSEnabledBinding toObject:self withKeyPath:@"removeAppInputBtnEnabled" options:nil];
 }
@@ -253,11 +268,6 @@
     }
 }
 
-- (void)tableViewColumnDidResize:(NSNotification *)notification {
-    NSTableView *tableView = (NSTableView *)[notification object];
-    
-}
-
 - (void)showAppSelectPanel:(BOOL)newInput {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     NSArray *appDirs = NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSLocalDomainMask, YES);
@@ -294,9 +304,6 @@
             if(newInput) {
                 [self addNewDefaultInput:self.currentProfile with:info];
                 [self.profileDetailTableView reloadData];
-            }
-            else {
-                //TODO update app info
             }
 
             // post application

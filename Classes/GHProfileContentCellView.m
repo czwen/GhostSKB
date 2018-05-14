@@ -7,10 +7,13 @@
 //
 
 #import "GHProfileContentCellView.h"
+#import "Constant.h"
+
 @interface GHProfileContentCellView ()
 @property (nonatomic, strong) GHDefaultInfo *defaultInfo;
 @property (nonatomic, strong) NSArray *inputMethods;
 @end
+
 @implementation GHProfileContentCellView
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -85,6 +88,8 @@
     
     NSString *appBundleId = [self.defaultInfo appBundleId];
     [[GHDefaultManager getInstance] updateInputSource:self.profile forApp:appBundleId inputSourceId:inputId];
+    NSDictionary *dict = @{@"profile": self.profile, @"input_source_id": inputId, @"app_id": appBundleId};
+    [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_APP_INPUT_SOURCE_CHANGED object:dict];
 }
 
 @end

@@ -107,7 +107,7 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
 }
 
 - (void)updatePreferenceConfigDict:(NSDictionary *)dict {
-    if (dict != NULL) {
+    if (dict == NULL) {
         return;
     }
     NSString *key = [[GHDefaultManager getInstance] getPreferenceConfigKey];

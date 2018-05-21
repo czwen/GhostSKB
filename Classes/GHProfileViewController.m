@@ -160,10 +160,6 @@
     [self.profileDetailTableView reloadData];
 }
 
-- (void)profilelistChanged {
-    
-}
-
 - (void)defaultProfileChanged:(NSNotification *)notification {
     [self selectDefaultProfile];
 }
@@ -196,7 +192,6 @@
     [self selectDefaultProfile];
     
     NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
-    [notiCenter addObserver:self selector:@selector(profilelistChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
     [notiCenter addObserver:self selector:@selector(defaultProfileChanged:) name:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
     [notiCenter addObserver:self selector:@selector(profileRenamed:) name:GH_NK_PROFILE_RENAME object:NULL];
     [notiCenter addObserver:self selector:@selector(appInputChanged:) name:GH_NK_APP_INPUT_SOURCE_CHANGED object:NULL];

@@ -333,14 +333,25 @@
         [hud hide:YES afterDelay:0.5];
         return;
     }
-    
+    GHDefaultManager *ghManager = [GHDefaultManager getInstance];
+    NSString *defaultProfileName = [ghManager getDefaultProfileName];
     NSInteger selectedRow = self.profilesTableView.selectedRow;
     NSString *pname = (NSString *)[self.profiles objectAtIndex:selectedRow];
-    BOOL ok = [[GHDefaultManager getInstance] removeProfile:pname];
+
+    BOOL ok = [ghManager removeProfile:pname];
     if (ok) {
         [self.profiles removeObjectAtIndex:selectedRow];
+      
         [self.profilesTableView reloadData];
         [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_PROFILE_LIST_CHANGED object:NULL];
+        if ([pname isEqualToString:defaultProfileName]) {
+            for (NSString *p_name in self.profiles) {
+                if (![p_name isEqualToString:defaultProfileName]) {
+                    [ghManager changeDefaultProfile:p_name];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_DEFAULT_PROFILE_CHANGED object:p_name];
+                }
+            }
+        }
     }
 }
 

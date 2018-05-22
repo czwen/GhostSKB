@@ -20,11 +20,15 @@ Mac OS X 10.8 or above
 
 # 截图
 
-![screenshot 1 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/v2.0_toolbar/Resources/screenshot-1.png)
+![screenshot 1 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/v2.0_toolbar/Resources/screenshot1.png)
 
-![screenshot 2 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/v2.0_toolbar/Resources/screenshot-2.png)
+![screenshot 2 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/v2.0_toolbar/Resources/screenshot2.png)
 
-![screenshot 3 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/v2.0_toolbar/Resources/screenshot-3.png)
+![screenshot 3 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/v2.0_toolbar/Resources/screenshot3.png)
+
+![screenshot 4 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/v4.0_toolbar/Resources/screenshot4.png)
+
+![screenshot 5 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/v2.0_toolbar/Resources/screenshot5.png)
 
 
 # 已知问题 

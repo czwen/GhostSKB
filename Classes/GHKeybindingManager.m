@@ -25,6 +25,11 @@ static GHKeybindingManager *sharedManager;
 - (void)doSetupHotKeys:(NSString *)profile;
 - (void)inputHotKeyAction:(id)sender;
 - (void)selectInputMethod:(NSString *)inputId;
+- (void)selectPreviousInputSource;
+
+@property (strong) NSNumber *selectPreviousKey;
+@property (strong) NSNumber *selectPreviousModifier;
+
 @end
 
 @implementation GHKeybindingManager
@@ -92,9 +97,37 @@ static GHKeybindingManager *sharedManager;
 }
 
 - (void)selectInputMethod:(NSString *)inputId {
-    AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
-    [delegate changeInputSource:inputId];
+    [self selectPreviousInputSource];
+    NSLog(@"------selectInputMethod");
+//    AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
+//    [delegate changeInputSource:inputId];
 //    TSMSetDocumentProperty
+}
+
+- (void)setSystemSelectPreviousKey:(NSNumber *)key withModifier:(NSNumber *)modifier
+{
+    self.selectPreviousKey = key;
+    self.selectPreviousModifier = modifier;
+
+}
+
+- (void)selectPreviousInputSource {
+    if (!self.selectPreviousModifier || !self.selectPreviousKey) {
+        NSLog(@"key not exist");
+        return;
+    }
+    CGEventSourceRef eventSource = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+    CGEventRef down = CGEventCreateKeyboardEvent(eventSource, (CGKeyCode)[self.selectPreviousKey unsignedIntValue],true);
+    CGEventRef up = CGEventCreateKeyboardEvent(eventSource, (CGKeyCode)[self.selectPreviousKey unsignedIntValue], false);
+    CGEventSetType(down, kCGEventKeyDown);
+    CGEventSetType(up, kCGEventKeyUp);
+    CGEventSetFlags(down, (CGEventFlags)[self.selectPreviousModifier unsignedIntValue]);
+    CGEventSetFlags(up, (CGEventFlags)[self.selectPreviousModifier unsignedIntValue]);
+    CGEventPost(kCGHIDEventTap, down);
+    CGEventPost(kCGHIDEventTap, up);
+    
+    CFRelease(down);
+    CFRelease(up);
 }
 
 @end

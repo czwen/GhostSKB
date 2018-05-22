@@ -13,4 +13,5 @@
 + (GHKeybindingManager *)getInstance;
 
 - (void)setProfileHotKeys:(NSString *)profile;
+- (void)setSystemSelectPreviousKey:(NSNumber *)key withModifier:(NSNumber *)modifier;
 @end

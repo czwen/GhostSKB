@@ -248,11 +248,43 @@
             NSPropertyListFormat plistFormat;
             NSDictionary *dict = (NSDictionary *)[NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:&plistFormat error:&error];
             if (!error) {
-                NSLog(@"plist dict: %@", dict);
+//                NSLog(@"plist dict: %@", dict);
+                [self getPreviousInputSourceShortCut:dict];
             }
             break;
         }
     }];
+}
+
+- (void)getPreviousInputSourceShortCut:(NSDictionary *)dict {
+    NSDictionary* hotKeys = dict[@"AppleSymbolicHotKeys"];
+    if (!hotKeys) {
+        NSLog(@"AppleSymbolicHotKeys not exist");
+        return;
+    }
+    NSDictionary *hotKey = hotKeys[@"60"];
+    if (!hotKey) {
+        NSLog(@"60 hotkey not exist");
+        return;
+    }
+    
+    NSNumber *enabled = hotKey[@"enabled"];
+    if ([enabled intValue] != 1) {
+        NSLog(@"hot key not enabled");
+        return;
+    }
+    
+    NSDictionary *value = hotKey[@"value"];
+    NSArray *parameters = value[@"parameters"];
+    if (!parameters) {
+        NSLog(@"no parameters");
+        return;
+    }
+    
+    NSNumber *key = parameters[0];
+    NSNumber *modifier = parameters[1];
+    [[GHKeybindingManager getInstance] setSystemSelectPreviousKey:key withModifier:modifier];
+//    NSLog(@"key:%ld modifier:%ld", [key intValue], [modifier unsignedIntValue]);
 }
 
 #pragma mark - NSOpenSavePanelDelegate

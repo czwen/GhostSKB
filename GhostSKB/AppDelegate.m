@@ -52,7 +52,7 @@ static void notificationCallback (CFNotificationCenterRef center,
     [notiCenter addObserver:self selector:@selector(profileRenamed:) name:GH_NK_PROFILE_RENAME object:NULL];
     [notiCenter addObserver:self selector:@selector(defaultProfileChanged:) name:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
     [notiCenter addObserver:self selector:@selector(delayTimeChanged:) name:GH_NK_DELAY_TIME_CHANGED object:NULL];
-    
+    [notiCenter addObserver:self selector:@selector(icloudSyncingOk:) name:GH_NK_ICLOUD_DOWNLOAD_SYNCING_OK object:NULL];
     [GHInputSourceManager getInstance];
     [GHDefaultManager getInstance];
     [[GHKeybindingManager getInstance] setProfileHotKeys:[[GHDefaultManager getInstance] getDefaultProfileName]];
@@ -101,6 +101,18 @@ static void notificationCallback (CFNotificationCenterRef center,
     return newProfiles;
 }
 
+- (void)refreshMenu {
+    NSMenu *menu = statusItem.menu;
+    for (NSMenuItem *item in menu.itemArray) {
+        if ([item.title isEqualToString:@""] || item.title == NULL) {
+            break;
+        }
+        [menu removeItem:item];
+    }
+    
+    [self updateProfilesMenu:menu];
+}
+
 - (void)initStatusItem {
     statusItemSelected = false;
     NSString *imageName = @"ghost_dark_small";
@@ -146,20 +158,15 @@ static void notificationCallback (CFNotificationCenterRef center,
 
 
 #pragma mark - Notifications
+- (void)icloudSyncingOk:(NSNotification *)notification {
+    [self refreshMenu];
+}
 
 - (void)delayTimeChanged:(NSNotification *)notification {
     switchDelay = [[GHDefaultManager getInstance] getDelayTime];
 }
 - (void)profileListChanged {
-    NSMenu *menu = statusItem.menu;
-    for (NSMenuItem *item in menu.itemArray) {
-        if ([item.title isEqualToString:@""] || item.title == NULL) {
-            break;
-        }
-        [menu removeItem:item];
-    }
-    
-    [self updateProfilesMenu:menu];
+    [self refreshMenu];
 }
 
 - (void)profileRenamed:(NSNotification *)notification {

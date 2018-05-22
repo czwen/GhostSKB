@@ -11,7 +11,7 @@
 #import "GHSyncViewController.h"
 #import "GHDefaultManager.h"
 #import "MBProgressHUD.h"
-
+#import "Constant.h"
 #import <CloudKit/CloudKit.h>
 
 @interface GHSyncViewController ()
@@ -115,7 +115,7 @@
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
             [[GHDefaultManager getInstance] updatePreferenceConfigDict:dict];
             dispatch_async(dispatch_get_main_queue(), ^{
-                
+                [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_ICLOUD_DOWNLOAD_SYNCING_OK object:NULL];
                 [hud hide:YES afterDelay:0.2];
             });
             

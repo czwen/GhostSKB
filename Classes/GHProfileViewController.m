@@ -271,6 +271,7 @@
     [panel setCanChooseFiles:YES];
     [panel setCanChooseDirectories:NO];
     [panel setAllowsMultipleSelection:NO]; // yes if more than one dir is allowed
+    [panel setAllowedFileTypes:@[@"app"]];
 
     NSWindow *window = self.view.window;
     [panel beginSheetModalForWindow:window completionHandler:^(NSModalResponse result) {

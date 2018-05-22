@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
-@interface GHAdvanceViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate>
+@interface GHAdvanceViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource, SRRecorderControlDelegate, NSOpenSavePanelDelegate>
 @property (weak) IBOutlet NSPopUpButton *profileSelector;
 @property (weak) IBOutlet NSTableView *inputSwitchTableView;
 @property (nonatomic, strong)NSString *profile;

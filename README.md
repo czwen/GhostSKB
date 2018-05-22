@@ -4,7 +4,7 @@
 
 # 系统要求
 
-Mac OS X 10.8 or above
+Mac OS X 10.10 or above
 
 # 特点
 

@@ -77,8 +77,9 @@ static GHInputSourceManager *sharedManager;
 
     if ([ghInputSource isCJKV]) {
         [ghInputSource select];
-        [NSThread sleepForTimeInterval:0.15];
+        
         if([self canExecuteSwitchScript]) {
+            [NSThread sleepForTimeInterval:0.15];
             [self selectNonCJKVInputSource];
             [self selectPreviousInputSource];
         }
@@ -99,14 +100,23 @@ static GHInputSourceManager *sharedManager;
 }
 
 - (void)executeSwitchScript {
+
+    // parameter
+    NSAppleEventDescriptor *parameter = [NSAppleEventDescriptor descriptorWithInt32:49];
+    NSAppleEventDescriptor *parameters = [NSAppleEventDescriptor listDescriptor];
+    [parameters insertDescriptor:parameter atIndex:1];
+
+    // target
     ProcessSerialNumber psn = {0, kCurrentProcess};
     NSAppleEventDescriptor *target = [NSAppleEventDescriptor descriptorWithDescriptorType:typeProcessSerialNumber bytes:&psn length:sizeof(ProcessSerialNumber)];
-    
+
     // function
-    NSAppleEventDescriptor *function = [NSAppleEventDescriptor descriptorWithString:@"switch"];
-    
+    NSString *funcName = [NSString stringWithFormat:@"switch_%@", self.switchModifierStr];
+    NSAppleEventDescriptor *function = [NSAppleEventDescriptor descriptorWithString:funcName];
+
     // event
     NSAppleEventDescriptor *event = [NSAppleEventDescriptor appleEventWithEventClass:kASAppleScriptSuite eventID:kASSubroutineEvent targetDescriptor:target returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID];
+    [event setParamDescriptor:parameters forKeyword:keyDirectObject];
     [event setParamDescriptor:function forKeyword:keyASSubroutineName];
     
     NSError *error;

@@ -15,4 +15,6 @@
 - (BOOL)selectNonCJKVInputSource;
 - (BOOL)hasInputSourceEnabled:(NSString *)inputSourceId;
 
+@property (strong) NSString *switchModifierStr;
+
 @end

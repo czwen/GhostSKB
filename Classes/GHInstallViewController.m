@@ -8,6 +8,7 @@
 
 #import "GHInstallViewController.h"
 #import "GHKeybindingManager.h"
+#import "GHInputSourceManager.h"
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
@@ -43,32 +44,31 @@
             if ([selectedURL isEqual:directoryURL]) {
                 NSURL *destinationURL = [selectedURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.scpt", DEST_SCRIPT_FILE]];
                 NSFileManager *fileManager = [NSFileManager defaultManager];
-//                NSURL *sourceURL = [[NSBundle mainBundle] URLForResource:SOURCE_SCRIPT_FILE withExtension:@"txt"];
-                
-                NSString *sourceFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.scpt", SOURCE_SCRIPT_FILE]];
-                NSURL *sourceURL = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", sourceFilePath]];
-                NSLog(@"sourceUrl %@", sourceURL);
+                NSURL *sourceURL = [[NSBundle mainBundle] URLForResource:SOURCE_SCRIPT_FILE withExtension:@"txt"];
                 
                 NSError *error;
                 BOOL success = false;
-                if([fileManager fileExistsAtPath:sourceFilePath]) {
-                    NSLog(@"---------file exist");
-                }
-//                if([fileManager fileExistsAtPath:[destinationURL path]]) {
-//                    NSString *fileName = [NSString stringWithFormat:@"%@.txt", SOURCE_SCRIPT_FILE];
-//                    NSString *tmpPath = [NSTemporaryDirectory() stringByAppendingPathComponent:fileName];
-//                    [fileManager copyItemAtURL:sourceURL toURL:[NSURL fileURLWithPath:tmpPath] error:NULL];
-//
+                if([fileManager fileExistsAtPath:[destinationURL path]]) {
+                    NSString *fileName = [NSString stringWithFormat:@"%@.txt", SOURCE_SCRIPT_FILE];
+                    NSString *tmpPath = [NSTemporaryDirectory() stringByAppendingPathComponent:fileName];
+                    if([fileManager fileExistsAtPath:tmpPath]) {
+                        [fileManager removeItemAtPath:tmpPath error:NULL];
+                    }
+                    [fileManager copyItemAtURL:sourceURL toURL:[NSURL fileURLWithPath:tmpPath] error:NULL];
+                    
                     //replaceItemAtURL is a move action
-                    success = [fileManager replaceItemAtURL:destinationURL withItemAtURL:sourceURL backupItemName:NULL options:NSFileManagerItemReplacementUsingNewMetadataOnly resultingItemURL:NULL error:&error];
-//                }
-//                else {
-//                    success = [fileManager copyItemAtURL:sourceURL toURL:destinationURL error:&error];
-//                }
+                    success = [fileManager replaceItemAtURL:destinationURL withItemAtURL:[NSURL fileURLWithPath:tmpPath] backupItemName:NULL options:NSFileManagerItemReplacementUsingNewMetadataOnly resultingItemURL:NULL error:&error];
+                }
+                else {
+                    success = [fileManager copyItemAtURL:sourceURL toURL:destinationURL error:&error];
+                }
                 
                 
                 if (success) {
-                    NSAlert *alert = [NSAlert alertWithMessageText:@"Script Installed" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"The Switch script was installed succcessfully."];
+                    NSAlert *alert = [[NSAlert alloc] init];
+                    alert.messageText = @"Script Installed";
+                    [alert addButtonWithTitle:@"OK"];
+                    [alert setInformativeText:@"The Switch script was installed succcessfully."];
                     [alert runModal];
                 
                     // NOTE: This is a bit of a hack to get the Application Scripts path out of the next open or save panel that appears.
@@ -82,33 +82,6 @@
     }];
     
     
-}
-
-- (void)executeSwitchScript {
-    ProcessSerialNumber psn = {0, kCurrentProcess};
-    NSAppleEventDescriptor *target = [NSAppleEventDescriptor descriptorWithDescriptorType:typeProcessSerialNumber bytes:&psn length:sizeof(ProcessSerialNumber)];
-    
-    // function
-    NSAppleEventDescriptor *function = [NSAppleEventDescriptor descriptorWithString:@"switch"];
-    
-    // event
-    NSAppleEventDescriptor *event = [NSAppleEventDescriptor appleEventWithEventClass:kASAppleScriptSuite eventID:kASSubroutineEvent targetDescriptor:target returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID];
-    [event setParamDescriptor:function forKeyword:keyASSubroutineName];
-    
-    //        NSUserAppleScriptTask *task = [[NSUserAppleScriptTask alloc] initWithURL:[NSURL URLWithString:scriptFilePath] error:NULL];
-    NSError *error;
-    NSURL *directoryURL = [[NSFileManager defaultManager] URLForDirectory:NSApplicationScriptsDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:&error];
-    NSURL *scriptURL = [directoryURL URLByAppendingPathComponent:@"switch.scpt"];
-    NSUserAppleScriptTask *task = [[NSUserAppleScriptTask alloc] initWithURL:scriptURL error:&error];
-    if(error) {
-        NSLog(@"task init error %@", error);
-    }
-    
-    [task executeWithAppleEvent:event completionHandler:^(NSAppleEventDescriptor * result, NSError * error) {
-        if(error) {
-            NSLog(@"execute error %@", error);
-        }
-    }];
 }
 
 - (IBAction)installScript:(id)sender {
@@ -177,44 +150,27 @@
     NSUInteger keyCode = [parameters[1] unsignedIntegerValue];
     NSUInteger modifier = [parameters[2] unsignedIntegerValue];
     
-    [self generateTempScriptFile:keyCode withModifier:modifier];
+    [self generateModifierStr:keyCode withModifier:modifier];
 }
 
-- (void)generateTempScriptFile:(NSUInteger)keyCode withModifier:(NSUInteger)modifier {
-    NSURL *sourceURL = [[NSBundle mainBundle] URLForResource:SOURCE_SCRIPT_FILE withExtension:@"txt"];
-    
-    NSString *scriptContent = [NSString stringWithContentsOfFile:[sourceURL path] encoding:NSUTF8StringEncoding error:NULL];
-    
-    scriptContent = [scriptContent stringByReplacingOccurrencesOfString:@"#key" withString:[NSString stringWithFormat:@"%u", keyCode]];
-    
+- (void)generateModifierStr:(NSUInteger)keyCode withModifier:(NSUInteger)modifier {
     NSMutableArray *modifiers = [[NSMutableArray alloc] initWithCapacity:3];
     if (modifier & NSEventModifierFlagCommand) {
-        [modifiers insertObject:@"command down" atIndex:0];
-    }
-    if (modifier & NSEventModifierFlagShift) {
-        [modifiers insertObject:@"shift down" atIndex:0];
+        [modifiers insertObject:@"command" atIndex:0];
     }
     if(modifier & NSEventModifierFlagControl) {
-        [modifiers insertObject:@"control down" atIndex:0];
+        [modifiers insertObject:@"control" atIndex:0];
     }
     if(modifier & NSEventModifierFlagOption) {
-        [modifiers insertObject:@"option down" atIndex:0];
+        [modifiers insertObject:@"option" atIndex:0];
+    }
+    if (modifier & NSEventModifierFlagShift) {
+        [modifiers insertObject:@"shift" atIndex:0];
     }
     
-    NSString *modifierStr = [modifiers componentsJoinedByString:@","];
-    scriptContent = [scriptContent stringByReplacingOccurrencesOfString:@"#modifier" withString:[NSString stringWithFormat:@"{ %@ }", modifierStr]];
-    
-    NSString *fileName = [NSString stringWithFormat:@"%@.scpt", SOURCE_SCRIPT_FILE];
-    NSString *tmpPath = [NSTemporaryDirectory() stringByAppendingPathComponent:fileName];
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if([fileManager fileExistsAtPath:tmpPath]) {
-        [fileManager removeItemAtPath:tmpPath error:NULL];
-    }
-    
-    [fileManager createFileAtPath:tmpPath contents:[NSData dataWithBytes:[scriptContent UTF8String] length:[scriptContent length]] attributes:NULL];
+    NSString *modifierStr = [modifiers componentsJoinedByString:@"_"];
+    [GHInputSourceManager getInstance].switchModifierStr = modifierStr;
 }
-
 
 #pragma mark - NSOpenSavePanelDelegate
 

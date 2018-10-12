@@ -138,7 +138,6 @@ static void notificationCallback (CFNotificationCenterRef center,
 }
 
 
-
 - (void)updateProfilesMenu:(NSMenu *)menu {
     NSArray *profiles = [[GHDefaultManager getInstance] getProfileList];
     profiles = [self sortProfileNames:profiles];
@@ -198,10 +197,6 @@ static void notificationCallback (CFNotificationCenterRef center,
 -(void)darkModeChanged:(NSNotification *)notification {
     
 }
-
-//- (void) handleAppDeactiveNoti:(NSNotification *)noti {
-//    TISSelectInputSource(TISCopyCurrentASCIICapableKeyboardInputSource());
-//}
 
 - (void) handleGHAppSelectedNoti:(NSNotification *)noti {
     //get forcus
@@ -274,13 +269,7 @@ static void notificationCallback (CFNotificationCenterRef center,
     }
 }
 
-
 #pragma mark - Core Methods
-
-//- (void)changeInputSource:(NSString *)inputId {
-////     [self performSelector:@selector(doChangeInputSource:) withObject:inputId afterDelay:switchDelay];
-//    [self doChangeInputSource:inputId];
-//}
 
 - (void)doChangeInputSource:(NSString *)targetInputId
 {
@@ -291,7 +280,6 @@ static void notificationCallback (CFNotificationCenterRef center,
 - (void)changeInputSourceForApp:(NSString *)bundleId {
     NSString *targetInputId = [[GHDefaultManager getInstance] getInputId:bundleId withProfile:NULL];
     if (targetInputId != NULL) {
-//        [self performSelector:@selector(doChangeInputSource:) withObject:targetInputId afterDelay:switchDelay];
         [self doChangeInputSource:targetInputId];
     }
 }

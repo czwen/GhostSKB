@@ -27,9 +27,6 @@ static GHKeybindingManager *sharedManager;
 - (void)selectInputMethod:(NSString *)inputId;
 - (void)selectPreviousInputSource;
 
-@property (strong) NSNumber *selectPreviousKey;
-@property (assign) NSUInteger selectPreviousModifier;
-
 @end
 
 @implementation GHKeybindingManager
@@ -98,28 +95,6 @@ static GHKeybindingManager *sharedManager;
 
 - (void)selectInputMethod:(NSString *)inputId {
     [[GHInputSourceManager getInstance] selectInputSource:inputId];
-}
-
-- (void)setSystemSelectPreviousKey:(NSNumber *)key withModifier:(NSUInteger)modifier
-{
-    self.selectPreviousKey = key;
-    self.selectPreviousModifier = modifier;
-    uint64 carbonFlag = 0;
-    carbonFlag |= cmdKey;
-    carbonFlag |= shiftKey;
-    NSLog(@"-----%lld", carbonFlag);
-    
-    uint64 cocoaFlag = 0;
-    cocoaFlag |= NSCommandKeyMask;
-    cocoaFlag |= NSShiftKeyMask;
-    NSLog(@"-----cocoaflag: %lld", cocoaFlag);
-    NSLog(@"----dmx--setsys");
-    if(modifier & cmdKey) {
-        NSLog(@"command mask");
-    }
-    if(modifier & shiftKey) {
-        NSLog(@"shift mask");
-    }
 }
 
 

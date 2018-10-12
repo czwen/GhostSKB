@@ -28,7 +28,7 @@ static GHKeybindingManager *sharedManager;
 - (void)selectPreviousInputSource;
 
 @property (strong) NSNumber *selectPreviousKey;
-@property (strong) NSNumber *selectPreviousModifier;
+@property (assign) NSUInteger selectPreviousModifier;
 
 @end
 
@@ -97,37 +97,30 @@ static GHKeybindingManager *sharedManager;
 }
 
 - (void)selectInputMethod:(NSString *)inputId {
-    [self selectPreviousInputSource];
-    NSLog(@"------selectInputMethod");
-//    AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
-//    [delegate changeInputSource:inputId];
-//    TSMSetDocumentProperty
+    [[GHInputSourceManager getInstance] selectInputSource:inputId];
 }
 
-- (void)setSystemSelectPreviousKey:(NSNumber *)key withModifier:(NSNumber *)modifier
+- (void)setSystemSelectPreviousKey:(NSNumber *)key withModifier:(NSUInteger)modifier
 {
     self.selectPreviousKey = key;
     self.selectPreviousModifier = modifier;
-
-}
-
-- (void)selectPreviousInputSource {
-    if (!self.selectPreviousModifier || !self.selectPreviousKey) {
-        NSLog(@"key not exist");
-        return;
-    }
-    CGEventSourceRef eventSource = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
-    CGEventRef down = CGEventCreateKeyboardEvent(eventSource, (CGKeyCode)[self.selectPreviousKey unsignedIntValue],true);
-    CGEventRef up = CGEventCreateKeyboardEvent(eventSource, (CGKeyCode)[self.selectPreviousKey unsignedIntValue], false);
-    CGEventSetType(down, kCGEventKeyDown);
-    CGEventSetType(up, kCGEventKeyUp);
-    CGEventSetFlags(down, (CGEventFlags)[self.selectPreviousModifier unsignedIntValue]);
-    CGEventSetFlags(up, (CGEventFlags)[self.selectPreviousModifier unsignedIntValue]);
-    CGEventPost(kCGHIDEventTap, down);
-    CGEventPost(kCGHIDEventTap, up);
+    uint64 carbonFlag = 0;
+    carbonFlag |= cmdKey;
+    carbonFlag |= shiftKey;
+    NSLog(@"-----%lld", carbonFlag);
     
-    CFRelease(down);
-    CFRelease(up);
+    uint64 cocoaFlag = 0;
+    cocoaFlag |= NSCommandKeyMask;
+    cocoaFlag |= NSShiftKeyMask;
+    NSLog(@"-----cocoaflag: %lld", cocoaFlag);
+    NSLog(@"----dmx--setsys");
+    if(modifier & cmdKey) {
+        NSLog(@"command mask");
+    }
+    if(modifier & shiftKey) {
+        NSLog(@"shift mask");
+    }
 }
+
 
 @end

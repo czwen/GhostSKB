@@ -13,6 +13,7 @@
 "tab_advance_title" = "高級";
 "tab_sync_title" = "同步";
 "tab_about_title" = "關於";
+"tab_install_title" = "Install";
 "click_to_login_icloud" = "點擊登錄iCloud";
 "version" = "版本";
 "auto_switch_delay" = "自動切換延時";

@@ -14,9 +14,9 @@
 @property(assign) BOOL canSelect;
 @property(assign) BOOL canEnable;
 @property(strong) NSArray *sourceLanguages;
-@property(assign) TISInputSourceRef inputSource;
+@property TISInputSourceRef inputSource;
 
 - (id)initWithInputSource:(TISInputSourceRef)inputSource;
-- (BOOL) isCJKV;
+- (BOOL)isCJKV;
 - (void)select;
 @end

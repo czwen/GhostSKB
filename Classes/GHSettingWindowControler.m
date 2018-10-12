@@ -15,6 +15,7 @@
 #define ID_SYNC @"sync"
 #define ID_ADVANCE @"advance"
 #define ID_ABOUT @"about"
+#define ID_INSTALL @"install"
 
 @interface GHSettingWindowControler ()
 
@@ -36,9 +37,10 @@
 
 - (void)initToolbar {
     NSMutableDictionary *items = [[NSMutableDictionary alloc] initWithCapacity:1];
-    NSArray *identifiers = @[ID_PROFILES, ID_ADVANCE, ID_SYNC, ID_ABOUT];
+    NSArray *identifiers = @[ID_PROFILES, ID_ADVANCE, ID_INSTALL, ID_SYNC, ID_ABOUT];
     NSArray *icons = @[
                        [NSString stringWithFormat:@"toolbaricon_%@", ID_PROFILES],
+                       NSImageNameAdvanced,
                        NSImageNameAdvanced,
                        [NSString stringWithFormat:@"toolbaricon_%@", ID_SYNC],
                        NSImageNameInfo,
@@ -81,6 +83,7 @@
     self.controllerIdMap = [[NSDictionary alloc] initWithObjectsAndKeys:
                             @"ProfileViewController", ID_PROFILES,
                             @"InfoViewController", ID_ABOUT,
+                            @"InstallViewController", ID_INSTALL,
                             @"SyncViewController", ID_SYNC,
                             @"AdvanceViewController", ID_ADVANCE,
                             nil];

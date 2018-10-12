@@ -33,7 +33,6 @@
 @property (assign, nonatomic) BOOL initialized;
 @property (assign, nonatomic) float delayTime;
 @property (nonatomic, strong)NSMutableDictionary *shortcut;
-- (IBAction)fileTest:(id)sender;
 
 @end
 
@@ -226,76 +225,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_DELAY_TIME_CHANGED object:NULL];
 }
 
-- (IBAction)fileTest:(id)sender {
-    NSOpenPanel *panel = [NSOpenPanel openPanel];
-    NSArray *dirs = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *libDir = [dirs objectAtIndex:0];
-    [panel setDirectoryURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/Preferences/", libDir]]];
-    [panel setCanChooseFiles:YES];
-    [panel setCanChooseDirectories:NO];
-    [panel setAllowsMultipleSelection:NO];
-    [panel setAllowedFileTypes:@[@"plist"]];
-    panel.delegate = self;
-    
-    NSWindow *window = self.view.window;
-    [panel beginSheetModalForWindow:window completionHandler:^(NSModalResponse result) {
-        if(result != NSFileHandlingPanelOKButton) {
-            return;
-        }
-        for (NSURL *url in [panel URLs]) {
-            NSError *error;
-            NSData *data = [NSData dataWithContentsOfURL:url];
-            NSPropertyListFormat plistFormat;
-            NSDictionary *dict = (NSDictionary *)[NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:&plistFormat error:&error];
-            if (!error) {
-//                NSLog(@"plist dict: %@", dict);
-                [self getPreviousInputSourceShortCut:dict];
-            }
-            break;
-        }
-    }];
-}
 
-- (void)getPreviousInputSourceShortCut:(NSDictionary *)dict {
-    NSDictionary* hotKeys = dict[@"AppleSymbolicHotKeys"];
-    if (!hotKeys) {
-        NSLog(@"AppleSymbolicHotKeys not exist");
-        return;
-    }
-    NSDictionary *hotKey = hotKeys[@"60"];
-    if (!hotKey) {
-        NSLog(@"60 hotkey not exist");
-        return;
-    }
-    
-    NSNumber *enabled = hotKey[@"enabled"];
-    if ([enabled intValue] != 1) {
-        NSLog(@"hot key not enabled");
-        return;
-    }
-    
-    NSDictionary *value = hotKey[@"value"];
-    NSArray *parameters = value[@"parameters"];
-    if (!parameters) {
-        NSLog(@"no parameters");
-        return;
-    }
-    
-    NSNumber *key = parameters[0];
-    NSNumber *modifier = parameters[1];
-    [[GHKeybindingManager getInstance] setSystemSelectPreviousKey:key withModifier:modifier];
-//    NSLog(@"key:%ld modifier:%ld", [key intValue], [modifier unsignedIntValue]);
-}
 
-#pragma mark - NSOpenSavePanelDelegate
-
-- (BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
-    if ([url.path containsString:@"com.apple.symbolichotkeys.plist"]) {
-        return YES;
-    }
-    else {
-        return NO;
-    }
-    
-}
 @end

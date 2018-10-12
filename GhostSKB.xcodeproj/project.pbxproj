@@ -27,6 +27,7 @@
 		DE1B71C91D2C082F00A85EE0 /* GHInputDefaultCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71BF1D2C082F00A85EE0 /* GHInputDefaultCellView.m */; };
 		DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */; };
 		DE25403F1F141DA50093EEB2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE25403D1F141DA50093EEB2 /* Localizable.strings */; };
+		DE29674E216C937000936D8D /* GHInstallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE29674D216C937000936D8D /* GHInstallViewController.m */; };
 		DE39697B207B020C00376496 /* GHSettingTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE39697A207B020C00376496 /* GHSettingTabViewController.m */; };
 		DE396981207B061C00376496 /* GHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE396980207B061C00376496 /* GHInfoViewController.m */; };
 		DE396984207B064500376496 /* GHProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE396983207B064400376496 /* GHProfileViewController.m */; };
@@ -68,6 +69,7 @@
 		DEBE9D7120A18A4900F6D055 /* icloud_drive-512.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBE9D6E20A18A4800F6D055 /* icloud_drive-512.png */; };
 		DEBF9F3F208B7ADA00B836DC /* GHKeybindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */; };
 		DEBF9F43208F972300B836DC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBF9F42208F972300B836DC /* CloudKit.framework */; };
+		DED170BB216EF431003E2F1D /* switch_scpt.txt in Resources */ = {isa = PBXBuildFile; fileRef = DED170BA216EF431003E2F1D /* switch_scpt.txt */; };
 		DEDE04091F1B1D2D005F9D70 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEDE040B1F1B1D2D005F9D70 /* InfoPlist.strings */; };
 		DEE204FF207B42E6009627BB /* NSColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE204FC207B42E6009627BB /* NSColor+Extensions.m */; };
 		DEE20500207B42E6009627BB /* NSView+MyCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE204FE207B42E6009627BB /* NSView+MyCategory.m */; };
@@ -111,7 +113,6 @@
 		DE166F7E207E55C200E3FA71 /* SyncButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SyncButton.m; path = Classes/SyncButton.m; sourceTree = "<group>"; };
 		DE166F832087AF6900E3FA71 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
 		DE166F842087AF6900E3FA71 /* PTHotKey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PTHotKey.framework; path = Frameworks/PTHotKey.framework; sourceTree = "<group>"; };
-		DE166F8B2087B3D800E3FA71 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		DE166F912087B8A200E3FA71 /* GHAdvanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHAdvanceViewController.h; path = Classes/GHAdvanceViewController.h; sourceTree = "<group>"; };
 		DE166F922087B8A200E3FA71 /* GHAdvanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHAdvanceViewController.m; path = Classes/GHAdvanceViewController.m; sourceTree = "<group>"; };
 		DE166F94208A3CD700E3FA71 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -133,6 +134,8 @@
 		DE1B71C61D2C082F00A85EE0 /* GHDefaultManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHDefaultManager.h; path = Classes/GHDefaultManager.h; sourceTree = "<group>"; };
 		DE25403E1F141DA50093EEB2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = GhostSKB/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE2540401F141DD70093EEB2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "GhostSKB/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		DE29674C216C937000936D8D /* GHInstallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHInstallViewController.h; path = Classes/GHInstallViewController.h; sourceTree = "<group>"; };
+		DE29674D216C937000936D8D /* GHInstallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHInstallViewController.m; path = Classes/GHInstallViewController.m; sourceTree = "<group>"; };
 		DE396979207B020C00376496 /* GHSettingTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHSettingTabViewController.h; path = Classes/GHSettingTabViewController.h; sourceTree = "<group>"; };
 		DE39697A207B020C00376496 /* GHSettingTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHSettingTabViewController.m; path = Classes/GHSettingTabViewController.m; sourceTree = "<group>"; };
 		DE39697F207B061C00376496 /* GHInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHInfoViewController.h; path = Classes/GHInfoViewController.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 		DEBF9F3D208B7ADA00B836DC /* GHKeybindingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHKeybindingManager.h; path = Classes/GHKeybindingManager.h; sourceTree = "<group>"; };
 		DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHKeybindingManager.m; path = Classes/GHKeybindingManager.m; sourceTree = "<group>"; };
 		DEBF9F42208F972300B836DC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		DED170B3216D9D79003E2F1D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		DED170BA216EF431003E2F1D /* switch_scpt.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = switch_scpt.txt; sourceTree = "<group>"; };
 		DEDE040A1F1B1D2D005F9D70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DEDE040C1F1B1D2D005F9D70 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		DEE204FB207B42E6009627BB /* NSView+MyCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+MyCategory.h"; path = "Classes/NSView+MyCategory.h"; sourceTree = "<group>"; };
@@ -259,6 +264,7 @@
 		DE166F812087A23100E3FA71 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				DE29674C216C937000936D8D /* GHInstallViewController.h */,
 				DEBF9F3D208B7ADA00B836DC /* GHKeybindingManager.h */,
 				DE166F912087B8A200E3FA71 /* GHAdvanceViewController.h */,
 				DE40A1F82084443600C1DEE0 /* GHProfilesTableView.h */,
@@ -279,12 +285,12 @@
 		DE166F822087AF6900E3FA71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DED170B3216D9D79003E2F1D /* AppKit.framework */,
 				DEB19A9E20A96301000B7F0C /* InputMethodKit.framework */,
 				DE93983F20A1986000D56989 /* ApplicationServices.framework */,
 				DE93983D20A194EB00D56989 /* SystemConfiguration.framework */,
 				DE93983B20A194E200D56989 /* PreferencePanes.framework */,
 				DEBF9F42208F972300B836DC /* CloudKit.framework */,
-				DE166F8B2087B3D800E3FA71 /* AppKit.framework */,
 				DE166F94208A3CD700E3FA71 /* AppKit.framework */,
 				DE166F842087AF6900E3FA71 /* PTHotKey.framework */,
 				DE166F832087AF6900E3FA71 /* ShortcutRecorder.framework */,
@@ -356,6 +362,7 @@
 				DE166F922087B8A200E3FA71 /* GHAdvanceViewController.m */,
 				DE40A20520849EC800C1DEE0 /* GHSyncViewController.m */,
 				DE396980207B061C00376496 /* GHInfoViewController.m */,
+				DE29674D216C937000936D8D /* GHInstallViewController.m */,
 				DE1B71C51D2C082F00A85EE0 /* GHDefaultInfo.m */,
 				DE1B71BB1D2C082F00A85EE0 /* GHDefaultManager.m */,
 				DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */,
@@ -380,6 +387,7 @@
 		DE6634821CB21552009EE247 /* GhostSKB */ = {
 			isa = PBXGroup;
 			children = (
+				DED170BA216EF431003E2F1D /* switch_scpt.txt */,
 				DEDE040B1F1B1D2D005F9D70 /* InfoPlist.strings */,
 				DE53E5181D375BC2003D6E72 /* GhostSKB.entitlements */,
 				DE6634831CB21552009EE247 /* AppDelegate.h */,
@@ -564,6 +572,7 @@
 				DEEAE1331D3364B6005893F5 /* ghost_white_small.png in Resources */,
 				DE66348A1CB21552009EE247 /* Assets.xcassets in Resources */,
 				DEDE04091F1B1D2D005F9D70 /* InfoPlist.strings in Resources */,
+				DED170BB216EF431003E2F1D /* switch_scpt.txt in Resources */,
 				DE5EC3771D31DDC200B51843 /* ghostkbd-1024.png in Resources */,
 				DE7CE11F1D3A87360054EC41 /* setting.png in Resources */,
 				DE25403F1F141DA50093EEB2 /* Localizable.strings in Resources */,
@@ -602,6 +611,7 @@
 				DE166F7F207E55C200E3FA71 /* SyncButton.m in Sources */,
 				DE1B71CC1D2C082F00A85EE0 /* GHDefaultInfo.m in Sources */,
 				DE18E27D208DD4A7002E1E08 /* MBProgressHUD.m in Sources */,
+				DE29674E216C937000936D8D /* GHInstallViewController.m in Sources */,
 				DEE20500207B42E6009627BB /* NSView+MyCategory.m in Sources */,
 				DE39697B207B020C00376496 /* GHSettingTabViewController.m in Sources */,
 				DE6634881CB21552009EE247 /* main.m in Sources */,

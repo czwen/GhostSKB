@@ -12,6 +12,7 @@
 
 + (GHInputSourceManager *)getInstance;
 - (BOOL)selectInputSource:(NSString *)inputSourceId;
+- (BOOL)selectNonCJKVInputSource;
 - (BOOL)hasInputSourceEnabled:(NSString *)inputSourceId;
 
 @end

@@ -8,6 +8,7 @@
 "tab_advance_title" = "高级";
 "tab_sync_title" = "同步";
 "tab_about_title" = "关于";
+"tab_install_title" = "Install";
 "click_to_login_icloud" = "点击登录iCloud";
 "version" = "版本";
 "auto_switch_delay" = "自动切换延时";

@@ -35,9 +35,7 @@
     [openPanel setCanChooseDirectories:YES];
     [openPanel setCanChooseFiles:NO];
     [openPanel setPrompt:@"Select Script Folder"];
-    NSString *message = [NSString stringWithFormat:@"Please select the User > Library > Application Scripts > %@", [[NSBundle mainBundle] bundleIdentifier]];
 
-    
     [openPanel beginWithCompletionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
             NSURL *selectedURL = [openPanel URL];

@@ -17,6 +17,7 @@ static GHInputSourceManager *sharedManager;
 
 @property (strong) NSMutableDictionary *inputSources;
 @property TISInputSourceRef asciiInputSource;
+@property (strong) NSString *currentSwitchInputId;
 - (void)updateInputSourceList;
 @end
 
@@ -63,9 +64,12 @@ static GHInputSourceManager *sharedManager;
 }
 
 - (BOOL)selectInputSource:(NSString *)inputSourceId {
-    TISInputSourceRef currentInputSource = TISCopyCurrentKeyboardInputSource();
+    NSLog(@"selectInputSource: %@", inputSourceId);
+    self.currentSwitchInputId = [inputSourceId copy];
+    TISInputSourceRef currentInputSource = TISCopyCurrentKeyboardLayoutInputSource();
     NSString *currentInputId = (__bridge  NSString *)TISGetInputSourceProperty(currentInputSource, kTISPropertyInputSourceID);
     if ([currentInputId isEqualToString:inputSourceId]) {
+        NSLog(@"sdfsdfsdfsdf");
         return TRUE;
     }
     CFRelease(currentInputSource);
@@ -74,14 +78,22 @@ static GHInputSourceManager *sharedManager;
     if(ghInputSource == NULL) {
         return FALSE;
     }
-
+    static void (^switchBlock)(NSString *, GHInputSourceManager *) = ^(NSString *inputId, GHInputSourceManager *manager){
+        [NSThread sleepForTimeInterval:0.15];
+        if([inputId isEqualToString:manager.currentSwitchInputId]) {
+            [manager selectNonCJKVInputSource];
+            [manager selectPreviousInputSource];
+        }
+        else {
+            NSLog(@"======= dmx -----");
+        }
+     
+    };
     if ([ghInputSource isCJKV]) {
         [ghInputSource select];
         
         if([self canExecuteSwitchScript]) {
-            [NSThread sleepForTimeInterval:0.15];
-            [self selectNonCJKVInputSource];
-            [self selectPreviousInputSource];
+            switchBlock([inputSourceId copy], self);
         }
     }
     else {

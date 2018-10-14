@@ -11,25 +11,15 @@ Mac OS X 10.10 or above
 - [x] 1. 自动根据应用切换输入法
 - [x] 2. icloud同步配置文件
 - [x] 3. 支持多个profile
-- [x] 4. 每个应用的切换延迟时间可变
-- [ ] 5. 每个输入法可以设置一个快捷键
+- [x] 4. 每个输入法可以设置一个快捷键
 
 # 下载安装
 
 [GhostSKB in Mac AppStore](https://itunes.apple.com/cn/app/ghostskb/id1134384859)
 
-# 截图
-
-![screenshot 1 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot1.png)
-
-![screenshot 2 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot2.png)
-
-![screenshot 3 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot3.png)
-
-![screenshot 4 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot4.png)
-
-![screenshot 5 of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/screenshot5.png)
-
+# 使用
+  
+  首次打开
 
 # 已知问题 
 

@@ -32,3 +32,8 @@
 
 "btn_text_install_script" = "インストールスクリプト";
 "btn_text_read_shortcuts" = "ショートカットを読む";
+
+"menu_preference" = "設定...";
+"menu_disable_ghostskb" = "無効にする GhostSKB";
+"menu_hide_menubar_icon" = "隠す MenuBar アイコン";
+"menu_quit" = "閉じる GhostSKB";

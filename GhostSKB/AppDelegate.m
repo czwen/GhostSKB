@@ -124,11 +124,12 @@ static void notificationCallback (CFNotificationCenterRef center,
     NSMenu *menu = [[NSMenu alloc] init];
     [self updateProfilesMenu:menu];
     [menu addItem:[NSMenuItem separatorItem]];
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Preference..." action:@selector(showPreference) keyEquivalent:@","]];
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Disable GhostSKB" action:@selector(toggleGhostSKB:) keyEquivalent:@""]];
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Hide Menu Bar Icon" action:@selector(hideMenuBarIcon:) keyEquivalent:@""]];
+    
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"menu_preference", @"") action:@selector(showPreference) keyEquivalent:@","]];
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"menu_disable_ghostskb", @"") action:@selector(toggleGhostSKB:) keyEquivalent:@""]];
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"menu_hide_menubar_icon", @"") action:@selector(hideMenuBarIcon:) keyEquivalent:@""]];
     [menu addItem:[NSMenuItem separatorItem]];
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit GhostSKB" action:@selector(quitGhostSKB) keyEquivalent:@"Q"]];
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"menu_quit", @"") action:@selector(quitGhostSKB) keyEquivalent:@"Q"]];
     statusItem.menu = menu;
     
     [statusItem.button setAction:@selector(onStatusItemSelected:)];

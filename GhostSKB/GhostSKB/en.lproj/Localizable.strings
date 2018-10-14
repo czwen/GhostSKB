@@ -32,3 +32,8 @@
 
 "btn_text_install_script" = "Install Script";
 "btn_text_read_shortcuts" = "Read System Shortcut";
+
+"menu_preference" = "Preference...";
+"menu_disable_ghostskb" = "Disable GhostSKB";
+"menu_hide_menubar_icon" = "Hide Menu Bar Icon";
+"menu_quit" = "Quit GhostSKB";

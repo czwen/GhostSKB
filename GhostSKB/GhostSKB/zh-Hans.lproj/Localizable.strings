@@ -29,3 +29,8 @@
 "btn_text_install_script" = "安装脚本";
 "btn_text_read_shortcuts" = "读取系统快捷键";
 
+"menu_preference" = "设置...";
+"menu_disable_ghostskb" = "禁用 GhostSKB";
+"menu_hide_menubar_icon" = "隐藏 MenuBar 图标";
+"menu_quit" = "关闭 GhostSKB";
+

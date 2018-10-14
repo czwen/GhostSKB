@@ -24,6 +24,5 @@
 
 + (BOOL)isSystemCurrentDarkMode;
 
-- (void)changeInputSource:(NSString *)inputId;
 @end
 

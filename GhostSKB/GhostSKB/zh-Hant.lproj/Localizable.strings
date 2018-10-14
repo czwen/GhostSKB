@@ -33,3 +33,8 @@
 
 "btn_text_install_script" = "安裝腳本";
 "btn_text_read_shortcuts" = "讀取系統快捷鍵";
+
+"menu_preference" = "設置...";
+"menu_disable_ghostskb" = "禁用 GhostSKB";
+"menu_hide_menubar_icon" = "隱藏 MenuBar 圖標";
+"menu_quit" = "关闭 GhostSKB";

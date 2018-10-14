@@ -59,7 +59,7 @@ static GHKeybindingManager *sharedManager;
     GHDefaultManager *manager = [GHDefaultManager getInstance];
     PTHotKeyCenter *hcenter = [PTHotKeyCenter sharedCenter];
     
-    NSMutableArray *inputMethods = [GHDefaultManager getAlivibleInputMethods];
+    NSMutableArray *inputMethods = [GHInputSourceManager getAlivibleInputMethods];
     NSDictionary *dict = [manager getKeyBindings:profile];
     for (NSDictionary *inputMethodInfo in inputMethods) {
         NSString *inputId = [inputMethodInfo objectForKey:@"id"];

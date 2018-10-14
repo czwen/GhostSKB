@@ -10,6 +10,7 @@
 #import "GHProfileCellView.h"
 #import "GHProfileContentCellView.h"
 #import "GHDefaultManager.h"
+#import "GHInputSourceManager.h"
 #import "GHDefaultInfo.h"
 #import "MBProgressHUD.h"
 #import <Carbon/Carbon.h>
@@ -88,7 +89,7 @@
 
 - (void) getAlivibleInputMethods {
     [self.availableInputMethods removeAllObjects];
-    self.availableInputMethods = [GHDefaultManager getAlivibleInputMethods];
+    self.availableInputMethods = [GHInputSourceManager getAlivibleInputMethods];
 }
 
 - (void)updateProfileConfigDicts {

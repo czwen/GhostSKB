@@ -14,6 +14,7 @@
 - (BOOL)selectInputSource:(NSString *)inputSourceId;
 - (BOOL)selectNonCJKVInputSource;
 - (BOOL)hasInputSourceEnabled:(NSString *)inputSourceId;
++ (NSMutableArray *) getAlivibleInputMethods;
 
 @property (strong) NSString *switchModifierStr;
 

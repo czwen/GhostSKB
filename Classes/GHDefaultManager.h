@@ -17,7 +17,6 @@
 @property(assign) NSInteger rememberAppInputExpireTime;
 
 + (GHDefaultManager *)getInstance;
-+ (NSMutableArray *) getAlivibleInputMethods;
 
 - (NSString *)getInputId:(NSString *)appBundleId withProfile:(nullable NSString *)profileName;
 //获取键盘切换配置的key

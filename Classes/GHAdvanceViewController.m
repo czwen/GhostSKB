@@ -42,7 +42,7 @@
 
 
 - (void) getAlivibleInputMethods {    
-    self.inputMethods = [GHDefaultManager getAlivibleInputMethods];
+    self.inputMethods = [GHInputSourceManager getAlivibleInputMethods];
 }
 
 - (void)initDelaySlider {

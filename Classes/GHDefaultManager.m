@@ -41,41 +41,6 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     return sharedGHDefaultManager;
 }
 
-+ (NSMutableArray *) getAlivibleInputMethods {
-    
-    NSMutableString *thisID;
-    CFArrayRef availableInputs = TISCreateInputSourceList(NULL, false);
-    NSUInteger count = CFArrayGetCount(availableInputs);
-    NSMutableArray *inputMethods = [NSMutableArray arrayWithCapacity:2];
-    for (int i = 0; i < count; i++) {
-        TISInputSourceRef inputSource = (TISInputSourceRef)CFArrayGetValueAtIndex(availableInputs, i);
-        CFStringRef type = TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceCategory);
-        if (!CFStringCompare(type, kTISCategoryKeyboardInputSource, 0)) {
-            thisID = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID));
-            NSString *canSelectStr = (__bridge NSString *)TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceIsSelectCapable);
-            Boolean canSelect = [canSelectStr boolValue];
-            if (!canSelect) {
-                continue;
-            }
-            
-            NSMutableString *inputName = (__bridge NSMutableString *)(TISGetInputSourceProperty(inputSource, kTISPropertyLocalizedName));
-            
-            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[thisID description],@"id", [inputName description], @"inputName", nil];
-            [inputMethods addObject:dict];
-        }
-    }
-    [inputMethods sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        NSDictionary *dict1 = (NSDictionary *)obj1;
-        NSDictionary *dict2 = (NSDictionary *)obj2;
-        NSString *id1 = [dict1 objectForKey:@"id"];
-        NSString *id2 = [dict2 objectForKey:@"id"];
-        return [id1 compare:id2];
-    }];
-    
-    return inputMethods;
-}
-
-
 - (NSDictionary *)getProfileInputConfigDict:(NSString *)profileName {
     NSDictionary *dict = [self getPreferenceConfigDict];
     NSDictionary *profilesDict = (NSDictionary *)[dict objectForKey:@"profiles"];

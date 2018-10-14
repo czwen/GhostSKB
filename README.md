@@ -17,9 +17,11 @@ Mac OS X 10.10 or above
 
 [GhostSKB in Mac AppStore](https://itunes.apple.com/cn/app/ghostskb/id1134384859)
 
-# 使用
+# 使用须知
   
-  首次打开
+  首次打开后进入 设置 -> 安装 点一下 “安装脚本”和“读取系统快捷键” 按钮。 完成后后面的红色TODO会变成绿色的DONE
+  
+  只有这样，才能保证正确的切换输入法
 
 # 已知问题 
 

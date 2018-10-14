@@ -153,8 +153,8 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     NSInteger currentMinVersion = 0;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *wholeDict = [defaults dictionaryRepresentation];
-    NSArray *allKeys = wholeDict.allKeys;
     
+    //get the min version
     for (NSInteger i=currentVersion-1; i>0; i--) {
         NSString *key = [NSString stringWithFormat:@"%@%ld", GH_DATA_KEY_FORMAT, (long)i];
         if (wholeDict[key]!= NULL) {
@@ -165,6 +165,7 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
         }
     }
     
+    //convert from min version to current version
     for (NSInteger i=minVersion; i<currentVersion; i++) {
         currentMinVersion = i+1;
         NSString *key = [self getPrefrenceKeyByVersion:[@(currentMinVersion) stringValue]];

@@ -75,7 +75,9 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="installBtn" destination="DBy-Zl-J3h" id="Vnu-hb-PaL"/>
                         <outlet property="installStatusLabel" destination="j8j-7l-pWS" id="6ao-Uo-YFs"/>
+                        <outlet property="readBtn" destination="l9S-h4-k1u" id="yzA-dA-OOy"/>
                         <outlet property="shortcutStatusLabel" destination="SIj-1S-GZO" id="7Mg-uu-FCI"/>
                     </connections>
                 </viewController>

@@ -12,7 +12,7 @@
 "tab_advance_title" = "高級";
 "tab_sync_title" = "シンクロ";
 "tab_about_title" = "GhostSKBについて";
-"tab_install_title" = "Install";
+"tab_install_title" = "インストール";
 "click_to_login_icloud" = "iCloudにログインする";
 "version" = "バージョン";
 "auto_switch_delay" = "自動切り替え遅延";
@@ -30,3 +30,6 @@
 
 "upload_to_icloud" = "iCloudにアップロードします";
 "download_from_icloud" = "iCloudにダウンロードします";
+
+"btn_text_install_script" = "インストールスクリプト";
+"btn_text_read_shortcuts" = "ショートカットを読む";

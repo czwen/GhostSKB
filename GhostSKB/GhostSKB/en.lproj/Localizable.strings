@@ -30,3 +30,6 @@
 
 "upload_to_icloud" = "upload to iCloud";
 "download_from_icloud" = "download from iCloud";
+
+"btn_text_install_script" = "Install Script";
+"btn_text_read_shortcuts" = "Read System Shortcut";

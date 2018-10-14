@@ -8,7 +8,7 @@
 "tab_advance_title" = "高级";
 "tab_sync_title" = "同步";
 "tab_about_title" = "关于";
-"tab_install_title" = "Install";
+"tab_install_title" = "安装";
 "click_to_login_icloud" = "点击登录iCloud";
 "version" = "版本";
 "auto_switch_delay" = "自动切换延时";
@@ -26,4 +26,7 @@
 
 "upload_to_icloud" = "上传到iCloud";
 "download_from_icloud" = "从iCloud下载";
+
+"btn_text_install_script" = "安装脚本";
+"btn_text_read_shortcuts" = "读取系统快捷键";
 

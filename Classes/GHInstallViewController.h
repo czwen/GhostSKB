@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)getSystemShortcuts:(id)sender;
 @property (weak) IBOutlet NSTextField *installStatusLabel;
 @property (weak) IBOutlet NSTextField *shortcutStatusLabel;
+@property (weak) IBOutlet NSButton *installBtn;
+@property (weak) IBOutlet NSButton *readBtn;
 
 @end
 

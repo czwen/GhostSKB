@@ -32,6 +32,8 @@
 }
 
 - (void)updateInstallStatus {
+    self.installBtn.title = NSLocalizedString(@"btn_text_install_script", @"");
+    
     if (![self checkSwitchScriptInstalled]) {
         self.installStatusLabel.textColor = [NSColor redColor];
         self.installStatusLabel.stringValue = @"TODO";
@@ -43,6 +45,7 @@
 }
 
 - (void)updateShortCutStatus {
+    self.readBtn.title = NSLocalizedString(@"btn_text_read_shortcuts", @"");
     NSString *switchKey = [GHDefaultManager getInstance].switchKey;
     if(switchKey != nil && switchKey.length > 0) {
         self.shortcutStatusLabel.textColor = [NSColor greenColor];

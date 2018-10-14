@@ -41,7 +41,7 @@
     NSArray *icons = @[
                        [NSString stringWithFormat:@"toolbaricon_%@", ID_PROFILES],
                        NSImageNameAdvanced,
-                       NSImageNameAdvanced,
+                       [NSString stringWithFormat:@"toolbaricon_%@", ID_INSTALL],
                        [NSString stringWithFormat:@"toolbaricon_%@", ID_SYNC],
                        NSImageNameInfo,
                        ];

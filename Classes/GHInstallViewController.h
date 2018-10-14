@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GHInstallViewController : NSViewController<NSOpenSavePanelDelegate>
 - (IBAction)installScript:(id)sender;
 - (IBAction)getSystemShortcuts:(id)sender;
+@property (weak) IBOutlet NSTextField *installStatusLabel;
+@property (weak) IBOutlet NSTextField *shortcutStatusLabel;
 
 @end
 

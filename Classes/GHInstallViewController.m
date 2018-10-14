@@ -26,6 +26,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    [self updateInstallStatus];
+    [self updateShortCutStatus];
+}
+
+- (void)updateInstallStatus {
+    if (![self checkSwitchScriptInstalled]) {
+        self.installStatusLabel.textColor = [NSColor redColor];
+        self.installStatusLabel.stringValue = @"TODO";
+    }
+    else {
+        self.installStatusLabel.textColor = [NSColor greenColor];
+        self.installStatusLabel.stringValue = @"DONE";
+    }
+}
+
+- (void)updateShortCutStatus {
+    NSString *switchKey = [GHDefaultManager getInstance].switchKey;
+    if(switchKey != nil && switchKey.length > 0) {
+        self.shortcutStatusLabel.textColor = [NSColor greenColor];
+        self.shortcutStatusLabel.stringValue = @"DONE";
+    }
+    else {
+        self.shortcutStatusLabel.textColor = [NSColor redColor];
+        self.shortcutStatusLabel.stringValue = @"TODO";
+    }
+}
+
+- (BOOL)checkSwitchScriptInstalled {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSError *error;
+    NSURL *directoryURL = [fileManager URLForDirectory:NSApplicationScriptsDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:&error];
+    NSURL *scriptFileUrl = [directoryURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.scpt", DEST_SCRIPT_FILE]];
+    if([fileManager fileExistsAtPath:[scriptFileUrl path]]) {
+        return TRUE;
+    }
+    return FALSE;
 }
 
 - (void)doInstallScript {
@@ -64,6 +102,7 @@
                 
                 
                 if (success) {
+                    [self updateInstallStatus];
                     NSAlert *alert = [[NSAlert alloc] init];
                     alert.messageText = @"Script Installed";
                     [alert addButtonWithTitle:@"OK"];
@@ -116,6 +155,7 @@
                 NSString *switchKey = [self readShortcutFromDict:dict];
                 [GHInputSourceManager getInstance].switchModifierStr = switchKey;
                 [[GHDefaultManager getInstance] updateSwitchKey:switchKey];
+                [self updateShortCutStatus];
                 break;
             }
             

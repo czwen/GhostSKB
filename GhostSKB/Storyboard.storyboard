@@ -240,9 +240,11 @@
                                                                         <rect key="frame" x="1" y="1" width="216" height="40"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
-                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h4O-Au-aRM">
+                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h4O-Au-aRM">
                                                                                 <rect key="frame" x="1" y="3" width="195" height="28"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="28" id="jPI-vc-NAR"/>
+                                                                                </constraints>
                                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="qe7-z5-IY6">
                                                                                     <font key="font" metaFont="system"/>
                                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -250,6 +252,11 @@
                                                                                 </textFieldCell>
                                                                             </textField>
                                                                         </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="h4O-Au-aRM" firstAttribute="leading" secondItem="Gzt-hR-qWE" secondAttribute="leading" constant="3" id="Zm5-wb-aG9"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="h4O-Au-aRM" secondAttribute="trailing" constant="22" id="icA-qs-UDI"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="h4O-Au-aRM" secondAttribute="bottom" constant="3" id="zWV-Ni-6ND"/>
+                                                                        </constraints>
                                                                         <connections>
                                                                             <outlet property="inputIdLabel" destination="h4O-Au-aRM" id="8DW-yA-uta"/>
                                                                         </connections>
@@ -312,8 +319,17 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </tableHeaderView>
                                         </scrollView>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dk1-cV-vu9">
+                                            <rect key="frame" x="25" y="278" width="241" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Select profile to setup hotkey:" id="vgc-S3-m1M">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WbP-aS-LPC">
-                                            <rect key="frame" x="225" y="277" width="144" height="26"/>
+                                            <rect key="frame" x="348" y="270" width="144" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="CP5-aU-PHY">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -326,15 +342,6 @@
                                                 <binding destination="BNT-Zb-51R" name="contentValues" keyPath="profiles" previousBinding="M9K-mM-H89" id="tpI-zT-gWY"/>
                                             </connections>
                                         </popUpButton>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dk1-cV-vu9">
-                                            <rect key="frame" x="25" y="278" width="241" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Select profile to setup hotkey:" id="vgc-S3-m1M">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                     </subviews>
                                 </view>
                             </box>

@@ -23,15 +23,11 @@
 
 #define TBL_CELL_INPUT_ID @"inputIdCell"
 #define TBL_CELL_INPUT_SHORTCUT_ID @"inputShortcutCell"
-#define DELAY_SLIDER_MIN 0.016
-#define DELAY_SLIDER_MAX 0.02
-#define DELAY_SLIDER_STEP 0.0002
 
 @interface GHAdvanceViewController ()
 
 @property (nonatomic, strong)NSMutableArray *inputMethods;
 @property (assign, nonatomic) BOOL initialized;
-@property (assign, nonatomic) float delayTime;
 @property (nonatomic, strong)NSMutableDictionary *shortcut;
 
 @end
@@ -45,14 +41,6 @@
     self.inputMethods = [GHInputSourceManager getAlivibleInputMethods];
 }
 
-- (void)initDelaySlider {
-    self.delayTimeSlider.maxValue = DELAY_SLIDER_MAX;
-    self.delayTimeSlider.minValue = DELAY_SLIDER_MIN;
-    self.delayTimeSlider.numberOfTickMarks = (DELAY_SLIDER_MAX - DELAY_SLIDER_MIN)/DELAY_SLIDER_STEP+1;
-    self.delayTime = [[GHDefaultManager getInstance] getDelayTime];
-    [self.delayTimeSlider bind:NSValueBinding toObject:self withKeyPath:@"delayTime" options:NULL];
-    [self.delayTimeLabel bind:NSValueBinding toObject:self withKeyPath:@"delayTime" options:NULL];
-}
 
 #pragma mark - View methods
 
@@ -104,7 +92,6 @@
     [ncenter addObserver:self selector:@selector(inputSourceListChanged:) name:GH_NK_INPUT_SOURCE_LIST_CHANGED object:NULL];
     
     [self.labelSelectProfile setStringValue:NSLocalizedString(@"select_profile_to_setup_hotkey", @"")];
-    [self.labelAutoSwitchDelay setStringValue:NSLocalizedString(@"auto_switch_delay", @"")];
     
     NSArray *titleStrIds = @[@"table_header_title_input", @"table_header_title_shortcut"];
     for (int i=0; i< [self.inputSwitchTableView.tableColumns count]; i++) {
@@ -113,9 +100,6 @@
         column.headerCell.title = NSLocalizedString(strId, @"");
     }
     [self.hotkeyEnableButton setTitle:NSLocalizedString(@"enable_hotkey", @"")];
-    [self initDelaySlider];
-    
-    
 }
 
 #pragma mark - Notifications
@@ -215,15 +199,6 @@
     }
 }
 
-- (IBAction)delayTimeChanged:(id)sender {
-    NSSlider *slider = (NSSlider *)sender;
-    int num = round(([slider floatValue] - DELAY_SLIDER_MIN)/DELAY_SLIDER_STEP);
-    double doubleValue = slider.minValue + num*DELAY_SLIDER_STEP;
-    self.delayTime = doubleValue;
-    
-    [[GHDefaultManager getInstance] updateDelayTime:doubleValue];
-    [[NSNotificationCenter defaultCenter] postNotificationName:GH_NK_DELAY_TIME_CHANGED object:NULL];
-}
 
 
 

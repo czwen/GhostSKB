@@ -16,7 +16,6 @@
 #import <Carbon/Carbon.h>
 #import <ApplicationServices/ApplicationServices.h>
 
-static double switchDelay;
 
 @interface AppDelegate ()
 
@@ -51,7 +50,6 @@ static void notificationCallback (CFNotificationCenterRef center,
     [notiCenter addObserver:self selector:@selector(profileListChanged) name:GH_NK_PROFILE_LIST_CHANGED object:NULL];
     [notiCenter addObserver:self selector:@selector(profileRenamed:) name:GH_NK_PROFILE_RENAME object:NULL];
     [notiCenter addObserver:self selector:@selector(defaultProfileChanged:) name:GH_NK_DEFAULT_PROFILE_CHANGED object:NULL];
-    [notiCenter addObserver:self selector:@selector(delayTimeChanged:) name:GH_NK_DELAY_TIME_CHANGED object:NULL];
     [notiCenter addObserver:self selector:@selector(icloudSyncingOk:) name:GH_NK_ICLOUD_DOWNLOAD_SYNCING_OK object:NULL];
     [GHInputSourceManager getInstance];
     [GHDefaultManager getInstance];
@@ -63,7 +61,6 @@ static void notificationCallback (CFNotificationCenterRef center,
     
     [self initStatusItem];
     
-    switchDelay = [[GHDefaultManager getInstance] getDelayTime];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification
@@ -161,9 +158,6 @@ static void notificationCallback (CFNotificationCenterRef center,
     [self refreshMenu];
 }
 
-- (void)delayTimeChanged:(NSNotification *)notification {
-    switchDelay = [[GHDefaultManager getInstance] getDelayTime];
-}
 - (void)profileListChanged {
     [self refreshMenu];
 }

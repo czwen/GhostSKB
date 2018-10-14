@@ -152,6 +152,19 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     NSInteger minVersion = 1;
     NSInteger currentMinVersion = 0;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *wholeDict = [defaults dictionaryRepresentation];
+    NSArray *allKeys = wholeDict.allKeys;
+    
+    for (NSInteger i=currentVersion-1; i>0; i--) {
+        NSString *key = [NSString stringWithFormat:@"%@%ld", GH_DATA_KEY_FORMAT, (long)i];
+        if (wholeDict[key]!= NULL) {
+            minVersion = i;
+        }
+        else {
+            break;
+        }
+    }
+    
     for (NSInteger i=minVersion; i<currentVersion; i++) {
         currentMinVersion = i+1;
         NSString *key = [self getPrefrenceKeyByVersion:[@(currentMinVersion) stringValue]];
@@ -177,6 +190,22 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     NSDictionary *profilesDict = [NSDictionary dictionaryWithObjectsAndKeys:configDict, @"default", nil];
     NSDictionary *newDict = [NSDictionary dictionaryWithObjectsAndKeys:profilesDict, @"profiles", @"default", @"currentProfile", nil];
 
+    [defaults setObject:newDict forKey:toKey];
+    [defaults synchronize];
+}
+
+- (void)convert_2_to_3 {
+    NSInteger from = 2;
+    NSInteger to = 3;
+    NSString *fromKey = [self getPrefrenceKeyByVersion:[@(from) stringValue]];
+    NSString *toKey = [self getPrefrenceKeyByVersion:[@(to) stringValue]];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSDictionary *dict = [defaults dictionaryForKey:fromKey];
+    NSMutableDictionary *newDict = [NSMutableDictionary dictionaryWithDictionary:dict];
+    newDict[@"switch_key"] = @"";
+    
     [defaults setObject:newDict forKey:toKey];
     [defaults synchronize];
 }

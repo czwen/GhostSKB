@@ -377,4 +377,17 @@ static GHDefaultManager *sharedGHDefaultManager = nil;
     return TRUE;
 }
 
+- (void)updateSwitchKey:(NSString *)key {
+     NSMutableDictionary *dict = [[self getPreferenceConfigDict] mutableCopy];
+    [dict setObject:key forKey:@"switch_key"];
+    [[NSUserDefaults standardUserDefaults] setObject:dict forKey:[self getPreferenceConfigKey]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)switchKey {
+    NSDictionary *dict = [self getPreferenceConfigDict];
+    NSString* key = (NSString *)[dict objectForKey:@"switch_key"];
+    return key;
+}
+
 @end

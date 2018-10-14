@@ -9,6 +9,7 @@
 #import "GHInputSourceManager.h"
 #import "GHInputSource.h"
 #import "GHKeybindingManager.h"
+#import "GHDefaultManager.h"
 #import <Carbon/Carbon.h>
 
 static GHInputSourceManager *sharedManager;
@@ -29,6 +30,7 @@ static GHInputSourceManager *sharedManager;
     if (self) {
         self.inputSources = [[NSMutableDictionary alloc] initWithCapacity:2];
         [self updateInputSourceList];
+        self.switchModifierStr = [[GHDefaultManager getInstance] switchKey];
 }
     return self;
 }

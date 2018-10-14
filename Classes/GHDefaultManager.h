@@ -27,6 +27,10 @@
 //获取配置名的列表
 - (NSArray *)getProfileList;
 
+//update 切换的系统的快捷键信息
+- (void)updateSwitchKey:(NSString *)key;
+- (NSString *)switchKey;
+
 //根据配置名，获取配置的内容列表
 - (NSMutableArray *)getProfileInputConfig:(NSString *)profileName;
 //默认配置的名字

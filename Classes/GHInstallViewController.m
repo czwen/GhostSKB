@@ -9,6 +9,7 @@
 #import "GHInstallViewController.h"
 #import "GHKeybindingManager.h"
 #import "GHInputSourceManager.h"
+#import "GHDefaultManager.h"
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
@@ -112,46 +113,45 @@
             NSDictionary *dict = (NSDictionary *)[NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:&plistFormat error:&error];
             if (!error) {
                 //                NSLog(@"plist dict: %@", dict);
-                [self getPreviousInputSourceShortCut:dict];
+                NSString *switchKey = [self readShortcutFromDict:dict];
+                [GHInputSourceManager getInstance].switchModifierStr = switchKey;
+                [[GHDefaultManager getInstance] updateSwitchKey:switchKey];
+                break;
             }
-            break;
+            
         }
     }];
 }
 
-- (void)getPreviousInputSourceShortCut:(NSDictionary *)dict {
+- (NSString *)readShortcutFromDict:(NSDictionary *)dict {
     NSDictionary* hotKeys = dict[@"AppleSymbolicHotKeys"];
     if (!hotKeys) {
-        NSLog(@"AppleSymbolicHotKeys not exist");
-        return;
+        return nil;
     }
     NSDictionary *hotKey = hotKeys[@"60"];
     if (!hotKey) {
-        NSLog(@"60 hotkey not exist");
-        return;
+        return nil;
     }
     
     NSNumber *enabled = hotKey[@"enabled"];
     if ([enabled intValue] != 1) {
         NSLog(@"hot key not enabled");
-        return;
+        return nil;
     }
     
     NSDictionary *value = hotKey[@"value"];
     NSArray *parameters = value[@"parameters"];
     if (!parameters) {
-        NSLog(@"no parameters");
-        return;
+        return nil;
     }
-    
     
     NSUInteger keyCode = [parameters[1] unsignedIntegerValue];
     NSUInteger modifier = [parameters[2] unsignedIntegerValue];
     
-    [self generateModifierStr:keyCode withModifier:modifier];
+    return [self generateModifierStr:keyCode withModifier:modifier];
 }
 
-- (void)generateModifierStr:(NSUInteger)keyCode withModifier:(NSUInteger)modifier {
+- (NSString *)generateModifierStr:(NSUInteger)keyCode withModifier:(NSUInteger)modifier {
     NSMutableArray *modifiers = [[NSMutableArray alloc] initWithCapacity:3];
     if (modifier & NSEventModifierFlagCommand) {
         [modifiers insertObject:@"command" atIndex:0];
@@ -167,7 +167,7 @@
     }
     
     NSString *modifierStr = [modifiers componentsJoinedByString:@"_"];
-    [GHInputSourceManager getInstance].switchModifierStr = modifierStr;
+    return modifierStr;
 }
 
 #pragma mark - NSOpenSavePanelDelegate

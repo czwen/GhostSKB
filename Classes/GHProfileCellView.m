@@ -10,7 +10,8 @@
 #import "GHDefaultManager.h"
 #import "Constant.h"
 @interface GHProfileCellView ()
-
+@property (assign) BOOL isSelected;
+@property (assign) BOOL isDarkMode;
 @end
 
 @implementation GHProfileCellView
@@ -21,9 +22,35 @@
     // Drawing code here.
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.profileName.cellView = self;
+    [self checkIsDarkMode];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(darkModeChanged:) name:@"AppleInterfaceThemeChangedNotification" object:nil];
+}
+
+- (void)checkIsDarkMode {
+    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    if (osxMode != nil && [osxMode isEqualToString:@"Dark"]) {
+        self.isDarkMode = TRUE;
+    }
+    else {
+        self.isDarkMode = FALSE;
+    }
+}
+
+- (void)darkModeChanged:(NSNotification *)notification {
+    [self checkIsDarkMode];
+    [self markSelected:self.isSelected];
 }
 
 - (void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle {
@@ -31,11 +58,17 @@
 }
 
 - (void)markSelected:(BOOL)isSelected {
+    self.isSelected = isSelected;
+    NSColor *selectedColor = [NSColor greenColor];
+    NSColor *normalColor = [NSColor blackColor];
+    if (self.isDarkMode) {
+        normalColor = [NSColor whiteColor];
+    }
     if (isSelected) {
-        self.profileName.textColor = [NSColor whiteColor];
+        self.profileName.textColor = selectedColor;
     }
     else {
-        self.profileName.textColor = [NSColor blackColor];
+        self.profileName.textColor = normalColor;
     }
 }
 

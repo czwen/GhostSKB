@@ -27,21 +27,7 @@
     [super viewDidLoad];
     // Do view setup here.
     
-    [self updateInstallStatus];
     [self updateShortCutStatus];
-}
-
-- (void)updateInstallStatus {
-    self.installBtn.title = NSLocalizedString(@"btn_text_install_script", @"");
-    
-    if (![self checkSwitchScriptInstalled]) {
-        self.installStatusLabel.textColor = [NSColor redColor];
-        self.installStatusLabel.stringValue = @"TODO";
-    }
-    else {
-        self.installStatusLabel.textColor = [NSColor greenColor];
-        self.installStatusLabel.stringValue = @"DONE";
-    }
 }
 
 - (void)updateShortCutStatus {
@@ -105,7 +91,6 @@
                 
                 
                 if (success) {
-                    [self updateInstallStatus];
                     NSAlert *alert = [[NSAlert alloc] init];
                     alert.messageText = @"Script Installed";
                     [alert addButtonWithTitle:@"OK"];
@@ -125,12 +110,12 @@
     
 }
 
-- (IBAction)installScript:(id)sender {
-    if(true) {
-        [self doInstallScript];
-        return;
-    }
-}
+//- (IBAction)installScript:(id)sender {
+//    if(true) {
+//        [self doInstallScript];
+//        return;
+//    }
+//}
 
 - (IBAction)getSystemShortcuts:(id)sender {
     NSOpenPanel *panel = [NSOpenPanel openPanel];

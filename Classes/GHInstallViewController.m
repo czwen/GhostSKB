@@ -45,7 +45,9 @@
     
     
     NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://github.com/dingmingxin/GhostSKB/blob/v%@/%@", version, readmeStr]];
-    self.readmeLabel.stringValue = [NSAttributedString hyperlinkFromString:@"Please read the README file" withURL:url];
+    
+    
+    self.readmeLabel.stringValue = [NSAttributedString hyperlinkFromString:NSLocalizedString(@"label_please_read_readme", @"") withURL:url];
 }
 
 - (void)updateShortCutStatus {

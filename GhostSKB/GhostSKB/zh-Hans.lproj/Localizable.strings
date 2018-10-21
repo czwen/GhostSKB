@@ -33,4 +33,5 @@
 "menu_disable_ghostskb" = "禁用 GhostSKB";
 "menu_hide_menubar_icon" = "隐藏 MenuBar 图标";
 "menu_quit" = "关闭 GhostSKB";
+"label_please_read_readme" = "请阅读README文件";
 

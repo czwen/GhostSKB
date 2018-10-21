@@ -27,5 +27,5 @@ Mac OS X 10.8 or above
   2. Copy GhostSKB/switch.scpt file in the project to ~/Library/Application\ Scripts/com.dmx.GhostSKB/
   3. Enter System setting, Keyboard->Shortcuts->Input Sources, Enable "Select the previous input source" and "Select next source in input menu" shortcuts.
   
-  Only by doing this can make GhostSKB can work correctly.
+  Only by doing this can make GhostSKB work correctly.
 

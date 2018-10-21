@@ -10,6 +10,8 @@
 #import "GHKeybindingManager.h"
 #import "GHInputSourceManager.h"
 #import "GHDefaultManager.h"
+#import "NSAttributedString+Hyperlink.h"
+
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
@@ -28,6 +30,22 @@
     // Do view setup here.
     
     [self updateShortCutStatus];
+    [self initLinkLabel];
+}
+
+- (void)initLinkLabel {
+    NSLocale *locale = [NSLocale currentLocale];
+    NSString *readmeStr = @"README.md";
+    if([locale.languageCode isEqualToString:@"en"]) {
+        readmeStr = @"README_en.md";
+    }
+    
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
+    
+    
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://github.com/dingmingxin/GhostSKB/blob/v%@/%@", version, readmeStr]];
+    self.readmeLabel.stringValue = [NSAttributedString hyperlinkFromString:@"Please read the README file" withURL:url];
 }
 
 - (void)updateShortCutStatus {
@@ -209,4 +227,6 @@
     }
 }
 
+- (IBAction)gotoReadme:(id)sender {
+}
 @end

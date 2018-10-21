@@ -54,6 +54,8 @@
 		DE93984520A28F3E00D56989 /* toolbaricon_sync.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE93984220A28F3E00D56989 /* toolbaricon_sync.tif */; };
 		DE93984620A28F3E00D56989 /* toolbaricon_about.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE93984320A28F3E00D56989 /* toolbaricon_about.tif */; };
 		DE93984E20A294F100D56989 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE93984D20A294F000D56989 /* Storyboard.storyboard */; };
+		DE9E0650217C287A004A1A3F /* NSAttributedString+Hyperlink.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9E064F217C287A004A1A3F /* NSAttributedString+Hyperlink.m */; };
+		DE9E0653217C2A55004A1A3F /* HyperLinkTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9E0652217C2A55004A1A3F /* HyperLinkTextField.m */; };
 		DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B5207C564A00D682D8 /* GHProfileCellView.m */; };
 		DEA777B9207C566F00D682D8 /* GHProfileContentCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA777B8207C566F00D682D8 /* GHProfileContentCellView.m */; };
 		DEB19AA220A97088000B7F0C /* GHInputSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB19AA120A97088000B7F0C /* GHInputSourceManager.m */; };
@@ -184,6 +186,10 @@
 		DE93985020A2D73700D56989 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DE93985520A2D75D00D56989 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "GhostSKB/zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DE93985620A2D75D00D56989 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		DE9E064E217C287A004A1A3F /* NSAttributedString+Hyperlink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Hyperlink.h"; path = "Classes/NSAttributedString+Hyperlink.h"; sourceTree = "<group>"; };
+		DE9E064F217C287A004A1A3F /* NSAttributedString+Hyperlink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Hyperlink.m"; path = "Classes/NSAttributedString+Hyperlink.m"; sourceTree = "<group>"; };
+		DE9E0651217C2A55004A1A3F /* HyperLinkTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HyperLinkTextField.h; path = Classes/HyperLinkTextField.h; sourceTree = "<group>"; };
+		DE9E0652217C2A55004A1A3F /* HyperLinkTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HyperLinkTextField.m; path = Classes/HyperLinkTextField.m; sourceTree = "<group>"; };
 		DEA777B4207C564A00D682D8 /* GHProfileCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileCellView.h; path = Classes/GHProfileCellView.h; sourceTree = "<group>"; };
 		DEA777B5207C564A00D682D8 /* GHProfileCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHProfileCellView.m; path = Classes/GHProfileCellView.m; sourceTree = "<group>"; };
 		DEA777B7207C566F00D682D8 /* GHProfileContentCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHProfileContentCellView.h; path = Classes/GHProfileContentCellView.h; sourceTree = "<group>"; };
@@ -360,6 +366,8 @@
 				DEBF9F3E208B7ADA00B836DC /* GHKeybindingManager.m */,
 				DEB19AA120A97088000B7F0C /* GHInputSourceManager.m */,
 				DEB19AA420A97148000B7F0C /* GHInputSource.m */,
+				DE9E0651217C2A55004A1A3F /* HyperLinkTextField.h */,
+				DE9E0652217C2A55004A1A3F /* HyperLinkTextField.m */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -436,6 +444,8 @@
 				DEE204FC207B42E6009627BB /* NSColor+Extensions.m */,
 				DEE204FB207B42E6009627BB /* NSView+MyCategory.h */,
 				DEE204FE207B42E6009627BB /* NSView+MyCategory.m */,
+				DE9E064E217C287A004A1A3F /* NSAttributedString+Hyperlink.h */,
+				DE9E064F217C287A004A1A3F /* NSAttributedString+Hyperlink.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -626,6 +636,7 @@
 				DE1B71C71D2C082F00A85EE0 /* GHDefaultManager.m in Sources */,
 				DE1B71C91D2C082F00A85EE0 /* GHInputDefaultCellView.m in Sources */,
 				DE7CE1251D3A906A0054EC41 /* GHSettingWindowControler.m in Sources */,
+				DE9E0653217C2A55004A1A3F /* HyperLinkTextField.m in Sources */,
 				DE40A1FA2084443600C1DEE0 /* GHProfilesTableView.m in Sources */,
 				DEE204FF207B42E6009627BB /* NSColor+Extensions.m in Sources */,
 				DE396984207B064500376496 /* GHProfileViewController.m in Sources */,
@@ -638,6 +649,7 @@
 				DEBF9F3F208B7ADA00B836DC /* GHKeybindingManager.m in Sources */,
 				DE6634851CB21552009EE247 /* AppDelegate.m in Sources */,
 				DE5951F7208880550004D663 /* GHAdvanceInputShortcutCellView.m in Sources */,
+				DE9E0650217C287A004A1A3F /* NSAttributedString+Hyperlink.m in Sources */,
 				DEA777B6207C564A00D682D8 /* GHProfileCellView.m in Sources */,
 				DEB19AA520A97148000B7F0C /* GHInputSource.m in Sources */,
 				DE5951F4208880350004D663 /* GHAdvanceInputIdCellView.m in Sources */,

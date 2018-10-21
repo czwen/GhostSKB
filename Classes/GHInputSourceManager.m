@@ -127,6 +127,8 @@ static GHInputSourceManager *sharedManager;
         }
     }
     else {
+        [self selectPreviousInputSource];
+        [NSThread sleepForTimeInterval:0.1];
         [ghInputSource select];
     }
     return TRUE;

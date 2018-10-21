@@ -41,11 +41,11 @@
 - (void)select {
     if(self.canSelect) {
         if(TISSelectInputSource(self.inputSource) == noErr) {
-            NSLog(@"select -- ok");
+//            NSLog(@"select -- ok");
         }
-        else {
-            NSLog(@"select -- error");
-        }
+//        else {
+//            NSLog(@"select -- error");
+//        }
         
     }
     

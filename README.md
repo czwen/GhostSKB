@@ -1,4 +1,5 @@
 # GhostSKB
+
 一个自动切换输入法的工具
 ![logo of ghostkbd](https://github.com/dingmingxin/GhostSKB/blob/master/Resources/ghostkbd-256.png)
 

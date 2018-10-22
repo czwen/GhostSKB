@@ -114,7 +114,7 @@ static GHInputSourceManager *sharedManager;
         return FALSE;
     }
     static void (^switchBlock)(NSString *, GHInputSourceManager *) = ^(NSString *inputId, GHInputSourceManager *manager){
-        [NSThread sleepForTimeInterval:0.15];
+        [NSThread sleepForTimeInterval:0.16];
         if([inputId isEqualToString:manager.currentSwitchInputId]) {
             [manager selectNonCJKVInputSource];
             [manager selectPreviousInputSource];
@@ -127,8 +127,8 @@ static GHInputSourceManager *sharedManager;
         }
     }
     else {
-        [self selectPreviousInputSource];
-        [NSThread sleepForTimeInterval:0.1];
+//        [self selectPreviousInputSource];
+//        [NSThread sleepForTimeInterval:0.1];
         [ghInputSource select];
     }
     return TRUE;
